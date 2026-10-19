@@ -1,0 +1,12 @@
+---
+import Intro from './Intro.astro';
+import TextPanel from './TextPanel.astro';
+import Photograph from './Photograph.astro';
+import Section from './Section.astro';
+import {validatePage} from '../../lib/blocks.mjs';
+const {page,context}=Astro.props;
+validatePage(page);
+const components={intro:Intro,'text-panel':TextPanel,photograph:Photograph,section:Section};
+const anchors=page.blocks.map(b=>b.anchor);const nav=page.blocks.filter(b=>b.navLabel);
+---
+{page.blocks.map((block,i)=>{const Component=components[block.type];return <Fragment><Component block={block} context={{...context,anchors}}/>{i===0&&nav.length>0&&<nav class="songs-wayfinding wrap" aria-label="Explore terrace culture">{nav.map(n=><a href={`#${n.anchor}`}>{n.navLabel}</a>)}</nav>}{i<page.blocks.length-1?'\n':''}</Fragment>;})}

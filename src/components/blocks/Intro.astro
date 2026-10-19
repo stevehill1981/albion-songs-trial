@@ -1,0 +1,7 @@
+---
+import {renderParts} from '../../lib/blocks.mjs';
+import {headingHTML} from '../../lib/component-preview.mjs';
+const {block:b,context={}}=Astro.props;
+const songbookAnchor=context.songbookAnchor||'songbook';
+---
+<section class="songs-hero"><div class="wrap"><a href="/">← Back to the museum</a><div class="songs-hero-layout"><div><h1 set:html={headingHTML(b.heading,b.emphasiseLastLine)}/><p set:html={headingHTML(b.text)}/>{b.buttonLabel&&context.anchors?.includes(songbookAnchor)&&<a class="button" href={`#${songbookAnchor}`}>{b.buttonLabel}</a>}</div><figure><img src="/assets/hawthorns.jpg" width="3840" height="1080" alt={b.imageAlt}/><figcaption set:html={renderParts(b.caption)}/></figure></div></div></section>

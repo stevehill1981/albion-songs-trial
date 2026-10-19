@@ -27,8 +27,8 @@ export function renderListing(shell,{title,description,items=[],revision,body}){
  const content=body??`<section class="wrap section"><h1>${esc(title)}</h1><p>${esc(description)}</p><ul>${items.map(i=>`<li><h2><a href="${esc(i.href)}">${esc(i.title)}</a></h2><p>${esc(i.description)}</p></li>`).join('')}</ul></section>`;
  return shell.replace(' aria-current="page"','').replace(/<title>[\s\S]*?<\/title>/,()=>`<title>${esc(title)}</title>`).replace(/<meta name="description" content="[^"]*">/,()=>`<meta name="description" content="${esc(description)}">`).replace('<!-- PAGE_CONTENT -->',()=>content).replace('</head>',`<meta name="trial-revision" content="${esc(revision)}"></head>`);
 }
-export function publicPage(content,page,revision){
- let html=renderDocument(content.nativeShells?.[page.slug]||content.shell,page,{...content,fact:content.fact,revision});
+export function publicPage(content,page,revision,body){
+ let html=renderDocument(content.nativeShells?.[page.slug]||content.shell,page,{...content,fact:content.fact,revision},body);
  if(content.navigation){const menu=content.navigation.menus[page.slug]||content.navigation.menus.songs;html=html.replace(/<nav aria-label="Main navigation">([\s\S]*?)<\/nav>/,(_,old)=>{const anchors=[...old.matchAll(/<a([^>]*?)href="([^"]*)"([^>]*)>[\s\S]*?<\/a>/g)];return `<nav aria-label="Main navigation">${menu.map(item=>{const match=anchors.find(a=>a[2].replaceAll('&amp;','&')===item.href);return `<a${match?match[1]:' '}href="${esc(item.href)}"${match?match[3]:''}>${esc(item.label)}</a>`;}).join('')}</nav>`;});}
  const kinds=JSON.stringify(page.blocks.map(b=>b.type));
  const resources=['/layout.css',...(kinds.includes('home-')||kinds.includes('museum')?['/app.js']:[]),...(kinds.includes('hawthorns-')?['/hawthorns.css','/hawthorns.js']:[]),...(kinds.includes('results-')?['/results.css',...(kinds.includes('results-ledger')?['/results.js']:[])]:[]),...(kinds.includes('wartime-')?['/results.css','/wartime.css',...(kinds.includes('wartime-wartime-ledger')?['/wartime.js']:[])]:[])];

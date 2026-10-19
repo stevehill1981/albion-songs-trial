@@ -1,0 +1,9 @@
+---
+import BlockList from './blocks/BlockList.astro';
+import {publicPage} from '../lib/content.mjs';
+const {page,content,revision}=Astro.props;
+const marker='<!-- ASTRO_COMPONENT_BODY -->';
+const html=publicPage(content,page,revision,marker);const parts=html.split(marker);
+if(parts.length!==2)throw Error('The Astro page body slot is missing.');
+---
+<Fragment set:html={parts[0]}/><BlockList page={page} context={content}/><Fragment set:html={parts[1]}/>

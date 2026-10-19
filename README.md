@@ -4,6 +4,7 @@ A free Astro/Decap CMS trial retaining all five published museum pages, with edi
 
 - Public trial: https://albion-songs-trial.steve-e85.workers.dev/songs
 - Editor: https://albion-songs-trial.steve-e85.workers.dev/admin/
+- Real Astro component trial: https://albion-songs-trial.steve-e85.workers.dev/component-preview-trial
 - Publishing status and instructions: https://albion-songs-trial.steve-e85.workers.dev/publication.html
 
 ## Owner setup
@@ -35,6 +36,14 @@ Competitive and wartime JSON/CSV, computed totals, evidence labels and saved res
 
 Marie needs her own GitHub account with repository write access, but no Cloudflare login. Her independent usability acceptance remains pending until she can complete editing, preview and publication herself.
 
+## Immediate Astro component preview
+
+Open **Pages → Build a page with Marie** to try the real component preview. Introductions, text panels, photographs and sections containing those blocks use the same `.astro` markup in the editor and on the published page. Changes are requested after a 400 ms pause, without saving or committing. Network and GitHub access checks add some delay. Incomplete fields keep the last successful preview visible; restore the required text to resume. Backgrounds, spacing and one to three columns remain the existing supported choices.
+
+The first sign-in after this update may need **Login with GitHub** again. It uses the existing OAuth app and permissions. Each preview checks repository write access; no token or draft is stored by the preview Worker. The trial accepts up to 64 KB, 20 top-level blocks and 60 blocks overall. Other museum block types and unpublished image-record previews retain their existing browser previews. Select a published credited photograph for the Astro page trial. Saved GitHub build previews still check the whole page and its interactions before publication.
+
+The remaining component migration is gated on an authorised hosted-editor test and measured Free-plan CPU use. Local simulator success is not evidence of Cloudflare CPU usage.
+
 ## Uploading and reusing images
 
 Open **Photographs and credits → New**, set a stable address, and use **Image → Choose an image** to upload or select a JPEG, PNG or WebP. Upload while editing this credited record so the file travels with its draft. The thumbnail shows its automatically detected dimensions; no pixel measurements need entering. Add the image description, caption, photographer/creator, licence or permission, and HTTPS source record URL. Existing photographs retain their addresses and credits.
@@ -49,7 +58,7 @@ Use a new filename when replacing an image, then update its selection. Published
 
 Use Node 24.22.0 or later. `npm ci`, `npm test`, `npm run build`; `npm run dev` serves a local preview. Astro 7.4.1 and Decap CMS 3.17.1 are pinned. `build/` is disposable output. `content/` holds editorial JSON; `src/lib/museum-patterns.json` holds protected original section markup. `legacy/shell.html` retains the shared site chrome; `src/lib/blocks.mjs` validates and renders both public and editor content. `content/fact.json` retains the compatible shared fact entry. Non-writable migration fixtures under `test/fixtures/` prove initial preservation without preventing legitimate future edits. The build checks every generated page, collection membership, the root museum page and shared preview renderers. Tests compare 1,646 original markup/text tokens and deliberately corrupt a caveat to verify that the comparator can fail. Full museum provenance is recorded in `plans/full-museum-origins.json`. Run `python3 scripts/compare-museum.py build` and `python3 scripts/compare-songs.py build/songs.html` for the one-time migration comparison; these frozen baselines must not prevent later legitimate edits. The build also checks archive arithmetic, evidence agreement and local links, with negative controls.
 
-The CLI mandated for this project is `cf`, currently pinned to 1.0.0-beta.14 in publication commands. The small `scripts/cloudflare-output.mjs` adapter writes its verified prebuilt output contract, avoiding automatic framework setup or a public request-time Worker. Recheck this adapter before changing the CLI version. The authentication Worker is separate, uses GitHub authorization code flow with PKCE and secure state cookies, verifies repository push access, and sends a token only to the exact configured editor origin. It logs no token and persists no editor token server-side. GitHub's `public_repo` OAuth permission covers public repositories the user can write to; it is not a single-repository permission.
+The CLI mandated for this project is `cf`, currently pinned to 1.0.0-beta.14 in publication commands. The small `scripts/cloudflare-output.mjs` adapter writes its verified prebuilt output contract, avoiding automatic framework setup. Public pages remain static; only the authenticated `/editor-preview` route uses the official Astro Cloudflare adapter at request time. The build exercises the compiled route in Cloudflare’s local runtime, including rejected access and preview/public markup parity. No KV, image service or other storage binding is provisioned. Recheck this adapter before changing the CLI version. The authentication Worker is separate, uses GitHub authorization code flow with PKCE and secure state cookies, verifies repository push access, and sends a token only to the exact configured editor origin. It logs no token and persists no editor token server-side. GitHub's `public_repo` OAuth permission covers public repositories the user can write to; it is not a single-repository permission.
 
 ## Free operation
 

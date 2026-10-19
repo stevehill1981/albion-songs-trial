@@ -1,0 +1,8 @@
+---
+import TextPanel from './TextPanel.astro';
+import Photograph from './Photograph.astro';
+import {headingHTML} from '../../lib/component-preview.mjs';
+const {block:b,context}=Astro.props;
+const components={'text-panel':TextPanel,photograph:Photograph};
+---
+<section id={b.anchor} class={`layout-section layout-bg-${b.background} layout-spacing-${b.spacing}`}><div class="wrap">{b.heading&&<h2 set:html={headingHTML(b.heading)}/>}<div class={`layout-columns layout-columns-${b.columns.length}`}>{b.columns.map(column=><div class="layout-column">{column.blocks.map(block=>{const Component=components[block.type];if(!Component)throw Error('Choose a supported column component.');return <Component block={block} context={context}/>;})}</div>)}</div></div></section>

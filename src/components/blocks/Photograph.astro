@@ -1,0 +1,8 @@
+---
+import {photoURL} from '../../lib/image-paths.mjs';
+import {headingHTML} from '../../lib/component-preview.mjs';
+const {block:b,context}=Astro.props;
+const image=Object.hasOwn(context.photographs,b.photograph)?context.photographs[b.photograph]:null;
+if(!image)throw Error('Choose a photograph from the credited library.');
+---
+<figure class="wrap section" id={b.anchor}><h2 set:html={headingHTML(b.heading)}/><img src={photoURL(image.file)} width={image.width} height={image.height} alt={image.alt} loading="lazy"/><figcaption>{image.caption} {image.author} · <a href={image.url}>Image source</a> · {image.licence}</figcaption></figure>

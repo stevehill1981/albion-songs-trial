@@ -1,7 +1,7 @@
-import { mkdir, cp, writeFile, rm } from 'node:fs/promises';
+import { mkdir, cp, writeFile, rm, readFile, readdir } from 'node:fs/promises';
 
 // Pinned cf 1.0.0-beta.14 prebuilt contract. No automatic framework setup,
-// Worker runtime or storage is introduced into the static public site.
+// The Astro preview runtime is packaged separately from static public assets.
 const auth = process.argv.includes('--auth');
 const root = auth ? 'auth/.cloudflare/output/v0' : '.cloudflare/output/v0';
 await rm(root, {recursive:true, force:true});
@@ -15,6 +15,16 @@ if (auth) {
   config.manifest = {type:'complete',mainModule:'index.mjs',modules:{'index.mjs':{type:'esm'}}};
 } else {
   await cp('build', `${worker}/assets`, {recursive:true});
-  config.assets = {htmlHandling:'drop-trailing-slash',notFoundHandling:'none'};
+  const adapter=JSON.parse(await readFile('.astro-server/wrangler.json','utf8'));
+  if(adapter.assets?.binding!=='ASSETS'||adapter.kv_namespaces?.length||adapter.images||adapter.r2_buckets?.length||adapter.durable_objects?.bindings?.length)throw Error('The free preview trial must not provision storage or image services.');
+  const modules={};
+  const collect=async directory=>{for(const entry of await readdir(`.astro-server/${directory}`,{withFileTypes:true})){const name=directory+entry.name;if(entry.isDirectory())await collect(name+'/');else if(/\.(?:mjs|js)$/.test(name)){modules[name]={type:'esm'};await cp(`.astro-server/${name}`,`${worker}/bundle/${name}`,{recursive:true});}}};
+  await mkdir(`${worker}/bundle`,{recursive:true});await collect('');
+  if(!modules[adapter.main])throw Error('The Astro adapter entrypoint is missing.');
+  config.manifest={type:'complete',mainModule:adapter.main,modules};
+  config.compatibilityFlags=adapter.compatibility_flags;
+  config.env={ASSETS:{type:'assets'}};
+  config.assets = {htmlHandling:'drop-trailing-slash',notFoundHandling:'none',runWorkerFirst:['/editor-preview']};
+  config.observability={enabled:true,redactQueryString:true,logs:{enabled:true,headSamplingRate:1},traces:{enabled:true,headSamplingRate:1}};
 }
 await writeFile(`${worker}/worker.config.json`, JSON.stringify(config));
