@@ -27,13 +27,23 @@ To reuse a published layout, select it above Content blocks and choose **Replace
 
 Layouts are independent copies. Changing a template does not change pages already made from it. Copied content includes wording and source links, so replace them with the new story and its evidence before publishing. Copy/paste stays in the current browser session; save a draft before closing it.
 
-**Museum collections** groups pages into topics; publish a collection before assigning it. Pages appear in the page directory and their collection landing pages. **Exhibits**, **Eras** and **Sources** control the museum cards and readable stories. **Photographs** maintains the existing credited library; adding new files still needs a checked code change. **Museum settings** controls ordering, featured exhibits, navigation and quiz questions. The shared blue-vinyl fact remains compatible with its original four fields.
+**Museum collections** groups pages into topics; publish a collection before assigning it. Pages appear in the page directory and their collection landing pages. **Exhibits**, **Eras** and **Sources** control the museum cards and readable stories. **Photographs and credits** lets you upload an image, add its description and credits, and publish it for reuse. See the image workflow below. **Museum settings** controls ordering, featured exhibits, navigation and quiz questions. The shared blue-vinyl fact remains compatible with its original four fields.
 
 Save a draft, wait for **View preview**, and check wording, links, credits and interactions. After saving again, Decap can temporarily retain the previous preview link; reload the saved editor entry after checks finish and confirm the preview contains your latest wording before publishing. Mark Ready, then **Publish → Publish now**. Required validation and deployment checks must pass. The workflow verifies the actual served revision of every page, collection and template preview. Check publication status and the public page afterward. To undo an edit, restore the earlier wording and preview/publish again; GitHub keeps file history.
 
 Competitive and wartime JSON/CSV, computed totals, evidence labels and saved result tables are protected source files. They are not CMS fields. Research corrections use the checked archive workflow; wartime results never enter competitive totals. Editorial builds do not fetch or silently refresh match data. The existing browser-side free-feed fallback behaviour is preserved.
 
 Marie needs her own GitHub account with repository write access, but no Cloudflare login. Her independent usability acceptance remains pending until she can complete editing, preview and publication herself.
+
+## Uploading and reusing images
+
+Open **Photographs and credits → New**, set a stable address, and use **Image → Choose an image** to upload or select a JPEG, PNG or WebP. Upload while editing this credited record so the file travels with its draft. The thumbnail shows its automatically detected dimensions; no pixel measurements need entering. Add the image description, caption, photographer/creator, licence or permission, and HTTPS source record URL. Existing photographs retain their addresses and credits.
+
+Save a draft and wait for the full photograph preview. Check its image, credits and description, then mark Ready and publish. Once deployment finishes, reload the editor and choose that published photograph in a page’s Photograph block, an exhibit or an era. The [image library](https://albion-songs-trial.steve-e85.workers.dev/images) provides thumbnails and full credit records. Shared photograph edits update their uses; page templates continue to copy layout structure independently.
+
+Files are limited to 5 MB each, 8,000 pixels on either side and 32 megapixels. The upload folder is bounded to 500 files and 100 MB total. Exceeding a limit stops publication; there is no automatic paid upgrade. Resize oversized files before uploading. Dimensions and format are checked again from the actual file during the build.
+
+Use a new filename when replacing an image, then update its selection. Published files cannot be overwritten or removed by an editorial draft, so existing image links stay available. New uploads must have a credited photograph record. The general Media button is not an alternative publication path: start a photograph draft to upload; main branch protection and checks still apply. Original hero photographs in fixed page templates retain their existing configuration.
 
 ## Development and verification
 

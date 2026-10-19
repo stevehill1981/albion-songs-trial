@@ -23,8 +23,8 @@ export async function loadContent({root=pathToFileURL(process.cwd()+'/')}={}){
  for(const slug of ['home','hawthorns','results','wartime'])if(pages.some(p=>p.slug===slug))nativeShells[slug]=await readFile(new URL(`legacy/${slug}-shell.html`,root),'utf8');
  return {pages,collections,fact,shell,templates,nativeShells,navigation,...museum};
 }
-export function renderListing(shell,{title,description,items,revision}){
- const content=`<section class="wrap section"><h1>${esc(title)}</h1><p>${esc(description)}</p><ul>${items.map(i=>`<li><h2><a href="${esc(i.href)}">${esc(i.title)}</a></h2><p>${esc(i.description)}</p></li>`).join('')}</ul></section>`;
+export function renderListing(shell,{title,description,items=[],revision,body}){
+ const content=body??`<section class="wrap section"><h1>${esc(title)}</h1><p>${esc(description)}</p><ul>${items.map(i=>`<li><h2><a href="${esc(i.href)}">${esc(i.title)}</a></h2><p>${esc(i.description)}</p></li>`).join('')}</ul></section>`;
  return shell.replace(' aria-current="page"','').replace(/<title>[\s\S]*?<\/title>/,()=>`<title>${esc(title)}</title>`).replace(/<meta name="description" content="[^"]*">/,()=>`<meta name="description" content="${esc(description)}">`).replace('<!-- PAGE_CONTENT -->',()=>content).replace('</head>',`<meta name="trial-revision" content="${esc(revision)}"></head>`);
 }
 export function publicPage(content,page,revision){

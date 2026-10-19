@@ -21,7 +21,7 @@ try {
   const url=draft?candidates.find(x=>!x.includes('://albion-songs-trial.')):'https://albion-songs-trial.steve-e85.workers.dev';
   if(!url) throw Error('Cloudflare did not return a draft version URL.');
   const content=await loadContent();
-  await waitForRevision(url,sha,{routes:['/pages',...content.pages.map(p=>`/${p.slug}`),...content.collections.map(c=>`/collections/${c.slug}`),...content.templates.map(p=>`/templates/${p.slug}`)]});
+  await waitForRevision(url,sha,{routes:['/pages','/images',...content.photoEntries.map(p=>`/images/${p.id}`),...content.pages.map(p=>`/${p.slug}`),...content.collections.map(c=>`/collections/${c.slug}`),...content.templates.map(p=>`/templates/${p.slug}`)]});
   await status('success',draft ? url : `${url}/songs#terrace-facts`,draft?'This exact draft is ready to preview.':'This revision is live.');
   await writeFile(process.env.GITHUB_STEP_SUMMARY||'/dev/null',`[${draft?'Preview this draft':'View the published Songs page'}](${url}/songs#terrace-facts)\n\nVerified served revision: ${sha}\n`);
 } catch(error) {

@@ -16,7 +16,7 @@ for(const c of content.collections){
  assert(index.includes(`/collections/${c.slug}`));
  for(const p of content.pages.filter(p=>p.collections.includes(c.slug)))assert(html.includes(`href="/${p.slug}"`));
 }
-for(const name of ['blocks','fact','layout-copy'])assert.equal(await readFile(`build/admin/${name}.mjs`,'utf8'),await readFile(`src/lib/${name}.mjs`,'utf8'));
+for(const name of ['blocks','fact','layout-copy','image-paths','image-library'])assert.equal(await readFile(`build/admin/${name}.mjs`,'utf8'),await readFile(`src/lib/${name}.mjs`,'utf8'));
 const config=JSON.parse(await readFile('build/admin/config.yml','utf8'));
 assert(config.collections.find(c=>c.name==='pages').create);
 assert(config.collections.find(c=>c.name==='pages').fields.find(f=>f.name==='blocks').types.some(t=>t.name==='section'));
@@ -29,4 +29,16 @@ if(content.pages.some(p=>p.slug==='home')){
  execFileSync(process.execPath,['scripts/check-wartime-output.mjs'],{stdio:'inherit'});
  execFileSync('python3',['scripts/check-links.py'],{stdio:'inherit'});
  for(const template of content.templates){const html=await readFile(`build/templates/${template.slug}.html`,'utf8');assert(html.includes(`<meta name="trial-revision" content="${version.revision}">`));}
+}
+
+if(content.photoEntries){
+ const gallery=await readFile('build/images.html','utf8');
+ for(const p of content.photoEntries){
+  assert(gallery.includes(`/images/${p.id}`));
+  const record=await readFile(`build/images/${p.id}.html`,'utf8');
+  assert(record.includes(`<meta name="trial-revision" content="${version.revision}">`));
+  assert(record.includes(`width="${p.width}" height="${p.height}"`));
+ }
+ const photos=config.collections.find(c=>c.name==='photographs');assert(photos.create);assert.equal(photos.fields.find(f=>f.name==='file').widget,'museum-image');
+ console.log(`PASS: ${content.photoEntries.length} credited images have gallery thumbnails, exact preview routes and automatic dimensions.`);
 }

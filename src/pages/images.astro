@@ -1,0 +1,8 @@
+---
+import {loadContent,renderListing} from '../lib/content.mjs';
+import {renderImageLibrary} from '../lib/image-library.mjs';
+import version from '../../public/version.json';
+const content=await loadContent();
+const html=renderListing(content.shell,{title:'Photographs & credits — Albion museum',description:'Browse the museum’s credited image library.',revision:version.revision,body:renderImageLibrary(content.photoEntries)}).replace('</head>','<link rel="stylesheet" href="/image-library.css"></head>');
+---
+<Fragment set:html={html}/>
