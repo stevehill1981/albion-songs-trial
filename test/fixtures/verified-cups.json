@@ -1,0 +1,543 @@
+{
+  "matches": [
+    {
+      "date": "1970-05-02",
+      "home": "West Bromwich Albion",
+      "away": "Lanerossi Vicenza",
+      "hg": 0,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1970-05-08",
+      "home": "West Bromwich Albion",
+      "away": "Roma",
+      "hg": 4,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1970-05-23",
+      "home": "Roma",
+      "away": "West Bromwich Albion",
+      "hg": 1,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1970-09-14",
+      "home": "Morton",
+      "away": "West Bromwich Albion",
+      "hg": 2,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Texaco Cup"
+    },
+    {
+      "date": "1970-09-30",
+      "home": "West Bromwich Albion",
+      "away": "Morton",
+      "hg": 0,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Texaco Cup"
+    },
+    {
+      "date": "1971-05-26",
+      "home": "West Bromwich Albion",
+      "away": "Inter Milan",
+      "hg": 1,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1971-05-29",
+      "home": "West Bromwich Albion",
+      "away": "Cagliari",
+      "hg": 1,
+      "ag": 2,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1971-06-01",
+      "home": "Inter Milan",
+      "away": "West Bromwich Albion",
+      "hg": 1,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1971-06-04",
+      "home": "Cagliari",
+      "away": "West Bromwich Albion",
+      "hg": 1,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1971-07-31",
+      "home": "Wrexham",
+      "away": "West Bromwich Albion",
+      "hg": 1,
+      "ag": 2,
+      "pens": null,
+      "aet": false,
+      "competition": "Watney Cup"
+    },
+    {
+      "date": "1971-08-04",
+      "home": "Halifax Town",
+      "away": "West Bromwich Albion",
+      "hg": 0,
+      "ag": 2,
+      "pens": null,
+      "aet": false,
+      "competition": "Watney Cup"
+    },
+    {
+      "date": "1971-08-07",
+      "home": "West Bromwich Albion",
+      "away": "Colchester United",
+      "hg": 4,
+      "ag": 4,
+      "pens": [
+        3,
+        4
+      ],
+      "aet": false,
+      "competition": "Watney Cup"
+    },
+    {
+      "date": "1972-09-19",
+      "home": "Sheffield United",
+      "away": "West Bromwich Albion",
+      "hg": 1,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Texaco Cup"
+    },
+    {
+      "date": "1972-09-26",
+      "home": "West Bromwich Albion",
+      "away": "Sheffield United",
+      "hg": 1,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Texaco Cup"
+    },
+    {
+      "date": "1972-10-25",
+      "home": "West Bromwich Albion",
+      "away": "Newcastle United",
+      "hg": 2,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Texaco Cup"
+    },
+    {
+      "date": "1972-11-08",
+      "home": "Newcastle United",
+      "away": "West Bromwich Albion",
+      "hg": 3,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Texaco Cup"
+    },
+    {
+      "date": "1974-08-03",
+      "home": "West Bromwich Albion",
+      "away": "Birmingham City",
+      "hg": 0,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Texaco Cup"
+    },
+    {
+      "date": "1974-08-06",
+      "home": "West Bromwich Albion",
+      "away": "Norwich City",
+      "hg": 5,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Texaco Cup"
+    },
+    {
+      "date": "1974-08-10",
+      "home": "Peterborough United",
+      "away": "West Bromwich Albion",
+      "hg": 2,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Texaco Cup"
+    },
+    {
+      "date": "1975-08-02",
+      "home": "West Bromwich Albion",
+      "away": "Mansfield Town",
+      "hg": 1,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Scottish Cup"
+    },
+    {
+      "date": "1975-08-06",
+      "home": "Hull City",
+      "away": "West Bromwich Albion",
+      "hg": 1,
+      "ag": 2,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Scottish Cup"
+    },
+    {
+      "date": "1975-08-09",
+      "home": "Leicester City",
+      "away": "West Bromwich Albion",
+      "hg": 2,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Scottish Cup"
+    },
+    {
+      "date": "1976-08-07",
+      "home": "Bristol City",
+      "away": "West Bromwich Albion",
+      "hg": 1,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Scottish Cup"
+    },
+    {
+      "date": "1976-08-14",
+      "home": "West Bromwich Albion",
+      "away": "Notts County",
+      "hg": 3,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Scottish Cup"
+    },
+    {
+      "date": "1985-10-02",
+      "home": "Brighton & Hove Albion",
+      "away": "West Bromwich Albion",
+      "hg": 1,
+      "ag": 2,
+      "pens": null,
+      "aet": false,
+      "competition": "Full Members' Cup"
+    },
+    {
+      "date": "1985-10-23",
+      "home": "West Bromwich Albion",
+      "away": "Crystal Palace",
+      "hg": 2,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Full Members' Cup"
+    },
+    {
+      "date": "1985-11-13",
+      "home": "West Bromwich Albion",
+      "away": "Chelsea",
+      "hg": 2,
+      "ag": 2,
+      "pens": [
+        4,
+        5
+      ],
+      "aet": true,
+      "competition": "Full Members' Cup"
+    },
+    {
+      "date": "1986-10-21",
+      "home": "Millwall",
+      "away": "West Bromwich Albion",
+      "hg": 2,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Full Members' Cup"
+    },
+    {
+      "date": "1987-11-10",
+      "home": "Oldham Athletic",
+      "away": "West Bromwich Albion",
+      "hg": 0,
+      "ag": 3,
+      "pens": null,
+      "aet": false,
+      "competition": "Full Members' Cup"
+    },
+    {
+      "date": "1987-12-01",
+      "home": "Ipswich Town",
+      "away": "West Bromwich Albion",
+      "hg": 2,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Full Members' Cup"
+    },
+    {
+      "date": "1988-11-09",
+      "home": "West Ham United",
+      "away": "West Bromwich Albion",
+      "hg": 5,
+      "ag": 2,
+      "pens": null,
+      "aet": false,
+      "competition": "Full Members' Cup"
+    },
+    {
+      "date": "1989-11-29",
+      "home": "West Bromwich Albion",
+      "away": "Derby County",
+      "hg": 0,
+      "ag": 5,
+      "pens": null,
+      "aet": false,
+      "competition": "Full Members' Cup"
+    },
+    {
+      "date": "1990-11-21",
+      "home": "West Bromwich Albion",
+      "away": "Barnsley",
+      "hg": 3,
+      "ag": 5,
+      "pens": null,
+      "aet": false,
+      "competition": "Full Members' Cup"
+    },
+    {
+      "date": "1991-10-22",
+      "home": "West Bromwich Albion",
+      "away": "Shrewsbury Town",
+      "hg": 4,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Football League Trophy"
+    },
+    {
+      "date": "1991-12-04",
+      "home": "Lincoln City",
+      "away": "West Bromwich Albion",
+      "hg": 1,
+      "ag": 2,
+      "pens": null,
+      "aet": false,
+      "competition": "Football League Trophy"
+    },
+    {
+      "date": "1992-01-14",
+      "home": "West Bromwich Albion",
+      "away": "Exeter City",
+      "hg": 0,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Football League Trophy"
+    },
+    {
+      "date": "1993-01-05",
+      "home": "West Bromwich Albion",
+      "away": "Walsall",
+      "hg": 4,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Football League Trophy"
+    },
+    {
+      "date": "1993-01-12",
+      "home": "Mansfield Town",
+      "away": "West Bromwich Albion",
+      "hg": 0,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Football League Trophy"
+    },
+    {
+      "date": "1993-02-09",
+      "home": "West Bromwich Albion",
+      "away": "Torquay United",
+      "hg": 2,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Football League Trophy"
+    },
+    {
+      "date": "1993-02-16",
+      "home": "Stoke City",
+      "away": "West Bromwich Albion",
+      "hg": 2,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Football League Trophy"
+    },
+    {
+      "date": "1993-09-08",
+      "home": "Leicester City",
+      "away": "West Bromwich Albion",
+      "hg": 0,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1993-09-15",
+      "home": "West Bromwich Albion",
+      "away": "Peterborough United",
+      "hg": 3,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1993-10-12",
+      "home": "West Bromwich Albion",
+      "away": "Pescara",
+      "hg": 1,
+      "ag": 2,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1993-11-09",
+      "home": "West Bromwich Albion",
+      "away": "Padova",
+      "hg": 3,
+      "ag": 4,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1993-11-16",
+      "home": "Fiorentina",
+      "away": "West Bromwich Albion",
+      "hg": 2,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1993-12-22",
+      "home": "Cosenza",
+      "away": "West Bromwich Albion",
+      "hg": 2,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1995-09-05",
+      "home": "Salernitana",
+      "away": "West Bromwich Albion",
+      "hg": 0,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1995-10-11",
+      "home": "West Bromwich Albion",
+      "away": "Foggia",
+      "hg": 1,
+      "ag": 2,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1995-11-08",
+      "home": "West Bromwich Albion",
+      "away": "Reggiana",
+      "hg": 2,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1995-12-13",
+      "home": "Brescia",
+      "away": "West Bromwich Albion",
+      "hg": 0,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1996-01-30",
+      "home": "Birmingham City",
+      "away": "West Bromwich Albion",
+      "hg": 2,
+      "ag": 2,
+      "pens": [
+        1,
+        4
+      ],
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1996-02-24",
+      "home": "West Bromwich Albion",
+      "away": "Port Vale",
+      "hg": 0,
+      "ag": 0,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    },
+    {
+      "date": "1996-03-05",
+      "home": "Port Vale",
+      "away": "West Bromwich Albion",
+      "hg": 3,
+      "ag": 1,
+      "pens": null,
+      "aet": false,
+      "competition": "Anglo-Italian Cup"
+    }
+  ]
+}

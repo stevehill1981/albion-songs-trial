@@ -1,0 +1,21 @@
+{
+  "id": "team-photo",
+  "year": 1888,
+  "date": "1888",
+  "era": "roots",
+  "type": "objects",
+  "title": "The faces in the first cup photograph.",
+  "deck": "Look closely at the photograph that opens this museum.",
+  "image": "team-1888",
+  "body": [
+    "A posed team photograph can make the distant past unexpectedly close. Albion’s 1888 players appear in striped shirts, with the formal posture and arrangements familiar from Victorian group portraits.",
+    "This surviving image is catalogued by Wikimedia Commons as the 1888 team. The photographer is unknown. Enlarge it and look at the individual faces, the clothing and the differences from a modern squad photograph. It is an archival photograph, rather than a modern reconstruction."
+  ],
+  "sources": [],
+  "imageSource": true,
+  "related": [
+    "cup-1888",
+    "bassett",
+    "villa-1892"
+  ]
+}

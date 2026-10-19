@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In which year was the club founded?",
+      "answers": [
+        "1878",
+        "1888",
+        "1900"
+      ],
+      "correct": 0,
+      "explanation": "1878. The story began with young workers at George Salter’s spring factory."
+    },
+    {
+      "question": "Who scored the winner in the 1968 FA Cup final?",
+      "answers": [
+        "Tony Brown",
+        "Jeff Astle",
+        "Cyrille Regis"
+      ],
+      "correct": 1,
+      "explanation": "Jeff Astle. His extra-time goal beat Everton 1–0."
+    },
+    {
+      "question": "What was Albion’s dramatic survival in 2005 called?",
+      "answers": [
+        "The Wembley double",
+        "The Great Escape",
+        "The promotion party"
+      ],
+      "correct": 1,
+      "explanation": "The Great Escape. Albion stayed up after being bottom at Christmas."
+    }
+  ]
+}

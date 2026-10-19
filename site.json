@@ -1,4 +1,5 @@
 {
   "origin": "https://albion-songs-trial.steve-e85.workers.dev",
-  "authOrigin": "https://albion-songs-auth.steve-e85.workers.dev"
+  "authOrigin": "https://albion-songs-auth.steve-e85.workers.dev",
+  "museum": true
 }

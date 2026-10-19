@@ -1,0 +1,22 @@
+{
+  "id": "programme",
+  "year": 1905,
+  "date": "2 September 1905",
+  "era": "champions",
+  "type": "objects",
+  "title": "A programme with a purpose.",
+  "deck": "Albion News began as a way to help the club survive.",
+  "visual": "programme",
+  "body": [
+    "The club traces the birth of The Albion News & Official Programme to the opening home match of the 1905 season, against Burnley. It followed a period of serious financial pressure and the destruction of the old “Noah’s Ark” stand by fire.",
+    "The programme offered a regular new source of income. That origin gives a familiar matchday object a different meaning: something bought to read before kick-off was also part of an effort to sustain the club. The type treatment here is a modern interpretation, not a scan of the 1905 issue."
+  ],
+  "sources": [
+    "programme"
+  ],
+  "related": [
+    "everiss",
+    "reader-kit",
+    "matchbox"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hawthorns-now",
+  "year": 2013,
+  "date": "December 2013",
+  "era": "returns",
+  "type": "places",
+  "title": "Same home, another century.",
+  "deck": "Compare the modern panorama with the winter of 1969.",
+  "image": "hawthorns",
+  "body": [
+    "Dom fellowes photographed this panorama at The Hawthorns in December 2013. The lit pitch and surrounding stands offer a later view of the same ground seen in John Ball’s 1969 winter photograph.",
+    "The club has played here since 1900. Comparing the two photographs is a way of reading change through a place: the stadium’s architecture, sightlines and enclosure are part of its history, just as much as the fixtures it hosts. Use the enlarge control to look more closely at the archival image."
+  ],
+  "sources": [
+    "ground"
+  ],
+  "imageSource": true,
+  "related": [
+    "winter-1969",
+    "hawthorns-opening",
+    "astle-gates"
+  ]
+}

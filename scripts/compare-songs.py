@@ -5,6 +5,7 @@ import re
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlsplit, urlunsplit
 
 
 class Canonical(HTMLParser):
@@ -22,25 +23,26 @@ class Canonical(HTMLParser):
             if tag not in ["img", "br", "input", "meta", "link"]:
                 self.skip += 1
             return
+        if tag == "link" and a.get("href") == "/layout.css":
+            return
         if tag == "meta" and a.get("name") == "trial-revision":
             return
         for key in ["src", "href"]:
             value = a.get(key)
-            if value and (
-                value.startswith("assets/")
-                or value
-                in [
-                    "styles.css",
-                    "museum.css",
-                    "albion.css",
-                    "songs.css",
-                    "albion.js",
-                    "songs.js",
-                ]
-            ):
-                a[key] = "/" + value
-        if tag == "a" and a.get("href") == "songs.html":
-            a["href"] = "/songs"
+            if not value:
+                continue
+            value = value.replace(
+                "https://maries-albion-scrapbook.stevehill1981.chatgpt.site/", "/", 1
+            )
+            parsed = urlsplit(value)
+            if not parsed.scheme and not parsed.netloc and parsed.path:
+                path = "/" + parsed.path.lstrip("/")
+                if key == "href" and path.endswith(".html"):
+                    path = path[:-5]
+                if path == "/index":
+                    path = "/"
+                value = urlunsplit(("", "", path, parsed.query, parsed.fragment))
+            a[key] = value
         self.tokens.append(("open", tag, sorted(a.items())))
 
     def handle_endtag(self, tag: str) -> None:

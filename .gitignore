@@ -13,3 +13,7 @@ public/version.json
 public/publication.html
 public/admin/blocks.mjs
 public/admin/preview-context.json
+public/admin/museum-patterns.json
+public/admin/layout-library.json
+__pycache__/
+.ruff_cache/
