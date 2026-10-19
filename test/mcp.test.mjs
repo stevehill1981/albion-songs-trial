@@ -1,0 +1,91 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createMuseumClient,recordPath,REPOSITORY,MAX_DOCUMENT_BYTES} from '../auth/mcp/github.mjs';
+const MAIN='a'.repeat(40),HEAD='b'.repeat(40),MERGED='c'.repeat(40),NEXT='d'.repeat(40);
+const token='unit_test_github_credential_only';
+const fixture=JSON.parse(await readFile(new URL('../content/pages/component-preview-trial.json',import.meta.url),'utf8'));
+const basePage=structuredClone(fixture);basePage.slug='museum-test';basePage.blocks[0].heading='Museum draft';
+function harness(){
+ const calls=[];let allowed=true,main=MAIN,head=HEAD,checked=true,published=MAIN,missingPreview=false,extraFile=false,merged=false,existing=null;
+ const pr=()=>({number:17,state:merged?'closed':'open',changed_files:extraFile?2:1,head:{sha:head,ref:'cms/mcp/pages/museum-test/1234abcd',repo:{full_name:REPOSITORY}},base:{ref:'main'}});
+ const fetcher=async(url,init={})=>{
+  calls.push({url,method:init.method||'GET',body:init.body?JSON.parse(init.body):null});
+  if(url.startsWith('https://api.github.com/')){
+   assert.equal(init.headers.Authorization,`Bearer ${token}`);assert.equal(init.redirect,'manual');
+   const path=new URL(url).pathname.replace(`/repos/${REPOSITORY}`,'');const method=init.method||'GET';
+   if(path==='')return Response.json({permissions:{push:allowed}});
+   if(path==='/git/ref/heads/main')return Response.json({object:{sha:main}});
+   if(path.startsWith('/git/ref/heads/cms/'))return Response.json({object:{sha:head}});
+   if(path==='/contents/content/collections')return Response.json([]);
+   if(path==='/contents/content/photographs')return Response.json([{type:'file',name:'team-1888.json'}]);
+   if(path==='/contents/content/pages/museum-test.json'){
+    if(method==='PUT')return Response.json({commit:{sha:NEXT}});
+    return existing?Response.json({size:100,encoding:'base64',sha:HEAD,content:Buffer.from(JSON.stringify(existing)).toString('base64')}):new Response('',{status:404});
+   }
+   if(path==='/git/refs')return Response.json({});
+   if(path==='/pulls')return Response.json({number:17,html_url:'https://github.com/'+REPOSITORY+'/pull/17'});
+   if(path==='/pulls/17')return Response.json(pr());
+   if(path==='/pulls/17/files')return Response.json([{filename:'content/pages/museum-test.json',status:'added'},...(extraFile?[{filename:'package.json',status:'modified'}]:[])]);
+   if(path==='/pulls/17/commits')return Response.json([{parents:[{sha:MAIN}]}]);
+   if(path===`/commits/${HEAD}/status`)return Response.json({statuses:checked?[{context:'albion/deploy-preview',state:'success',target_url:'https://1234abcd-albion-songs-trial.steve-e85.workers.dev'}]:[]});
+   if(path===`/commits/${HEAD}/check-runs`)return Response.json({check_runs:checked?[{name:'Validate Songs page',status:'completed',conclusion:'success'}]:[]});
+   if(path===`/commits/${MERGED}/status`)return Response.json({statuses:[{context:'albion/production',state:'success'}]});
+   if(path==='/pulls/17/merge'){merged=true;return Response.json({merged:true,sha:MERGED});}
+   throw Error('Unexpected GitHub path '+path);
+  }
+  assert.equal(init.headers?.Authorization,undefined,'Upstream credentials must never be sent to a preview URL');
+  if(url.endsWith('/version.json'))return Response.json({revision:url.includes('1234abcd-')?HEAD:published});
+  return missingPreview?new Response('missing',{status:404}):new Response(`<meta name="trial-revision" content="${HEAD}">`);
+ };
+ return{client:createMuseumClient(token,fetcher),calls,set(values){({allowed=allowed,main=main,head=head,checked=checked,published=published,missingPreview=missingPreview,extraFile=extraFile,existing=existing}=values);}};
+}
+test('museum tools fail closed on missing push access and never accept arbitrary repository paths',async()=>{
+ const h=harness();h.set({allowed:false});await assert.rejects(h.client.save({kind:'pages',id:'museum-test',document:basePage,baseRevision:MAIN}),/editor access/);assert.equal(h.calls.length,1);
+ for(const [kind,id]of [['pages','../secrets'],['data','results'],['pages','x/y']])assert.throws(()=>recordPath(kind,id));
+ assert.throws(()=>createMuseumClient('invalid'));
+});
+test('draft validation rejects stale main, missing credits, unknown fields and unsafe source links before mutations',async()=>{
+ const variants=[{baseRevision:HEAD},{document:{...basePage,unknown:true}},{kind:'photographs',document:{id:'museum-test'}},{document:{...basePage,collections:['missing']}},{document:{...basePage,title:'x'.repeat(MAX_DOCUMENT_BYTES)}},];
+ const missing=structuredClone(basePage);missing.blocks[1].columns[1].blocks[0].photograph='missing';variants.push({document:missing});
+ const unsafe=structuredClone(basePage);unsafe.blocks[0].caption=[{type:'link',text:'Unsafe',url:'javascript:alert(1)'}];variants.push({document:unsafe});
+ for(const extra of variants){const h=harness();await assert.rejects(h.client.save({kind:'pages',id:'museum-test',document:basePage,baseRevision:MAIN,...extra}));assert(!h.calls.some(c=>c.method!=='GET'));}
+});
+test('a valid independent page draft uses only its fixed editorial path and the checked cms workflow',async()=>{
+ const h=harness();const result=await h.client.save({kind:'pages',id:'museum-test',document:basePage,baseRevision:MAIN});assert.equal(result.state,'draft');assert.equal(result.commit,NEXT);
+ const write=h.calls.find(c=>c.method==='PUT');assert.equal(new URL(write.url).pathname,`/repos/${REPOSITORY}/contents/content/pages/museum-test.json`);assert.match(write.body.branch,/^cms\/mcp\/pages\/museum-test\/[a-f0-9]{8}$/);assert.deepEqual(JSON.parse(Buffer.from(write.body.content,'base64').toString()),basePage);
+ assert(h.calls.find(c=>c.method==='POST'&&new URL(c.url).pathname.endsWith('/pulls')));
+ assert(!h.calls.some(c=>c.url.endsWith('/merge')));
+});
+test('publication rejects missing checks, stale commits, stale main, extra files, unserved previews and absent approval',async()=>{
+ for(const values of [{checked:false},{head:NEXT},{main:NEXT},{missingPreview:true},{extraFile:true}]){const h=harness();h.set(values);await assert.rejects(h.client.publish({draftNumber:17,expectedCommit:HEAD,baseRevision:MAIN,confirmation:'Publish this previewed revision'}));assert(!h.calls.some(c=>c.url.endsWith('/merge')));}
+ const h=harness();await assert.rejects(h.client.publish({draftNumber:17,expectedCommit:HEAD,baseRevision:MAIN,confirmation:''}),/approve/);
+});
+test('preview, exact-commit merge and served publication form a complete sequence with negative live controls',async()=>{
+ const h=harness();const preview=await h.client.status({draftNumber:17});assert.equal(preview.canPublish,true);assert.equal(preview.commit,HEAD);assert(preview.previewUrl.endsWith('/museum-test'));
+ const merge=await h.client.publish({draftNumber:17,expectedCommit:HEAD,baseRevision:MAIN,confirmation:'Publish this previewed revision'});assert.equal(merge.state,'publishing');assert.equal(merge.revision,MERGED);
+ assert.equal((await h.client.publication({revision:MERGED})).state,'publishing','A green production status without the actual served revision is not live');h.set({published:MERGED});assert.equal((await h.client.publication({revision:MERGED})).state,'live');
+ const put=h.calls.find(c=>c.url.endsWith('/merge'));assert.equal(put.body.sha,HEAD);
+});
+test('updating a draft refuses concurrent changes or unchanged content',async()=>{
+ const h=harness();await assert.rejects(h.client.save({kind:'pages',id:'museum-test',document:basePage,baseRevision:MAIN,draftNumber:17,expectedCommit:NEXT}),/draft changed/);assert(!h.calls.some(c=>c.method!=='GET'));
+ const same=harness();same.set({existing:basePage});await assert.rejects(same.client.save({kind:'pages',id:'museum-test',document:basePage,baseRevision:MAIN}),/content change/);assert(!same.calls.some(c=>c.method!=='GET'));
+});
+
+test('the actual MCP server exposes eight tools, validates inputs and invokes the museum operations',async()=>{
+ const {createMuseumServer}=await import('../auth/mcp/server.mjs');
+ const {Client}=await import('@modelcontextprotocol/client');
+ const {InMemoryTransport}=await import('@modelcontextprotocol/server');
+ const calls=[];
+ const museum={guide:async()=>({instructions:'Read the checked preview before publishing.'}),list:async input=>{calls.push(input);return{ids:['songs'],revision:MAIN};},publish:async input=>{calls.push(input);return{state:'publishing',revision:MERGED};}};
+ const server=createMuseumServer({client:museum});const client=new Client({name:'Museum protocol acceptance',version:'1'});const [a,b]=InMemoryTransport.createLinkedPair();
+ try{
+  await server.connect(a);await client.connect(b);
+  const tools=await client.listTools();assert.equal(tools.tools.length,8);assert.equal(tools.tools.find(t=>t.name==='save_draft').annotations.readOnlyHint,false);assert(!tools.tools.some(t=>/shell|delete|deploy|archive/.test(t.name)));
+  const guide=await client.callTool({name:'museum_guide',arguments:{}});assert(!guide.isError);assert.equal(guide.structuredContent.instructions,'Read the checked preview before publishing.');
+  const listed=await client.callTool({name:'list_content',arguments:{kind:'pages'}});assert(!listed.isError);assert.deepEqual(calls[0],{kind:'pages'});
+  assert.equal((await client.callTool({name:'list_content',arguments:{kind:'data'}})).isError,true);assert.equal(calls.length,1);
+  assert.equal((await client.callTool({name:'publish_draft',arguments:{draftNumber:17,expectedCommit:HEAD,baseRevision:MAIN,confirmation:'Do whatever'}})).isError,true);assert.equal(calls.length,1);
+  const published=await client.callTool({name:'publish_draft',arguments:{draftNumber:17,expectedCommit:HEAD,baseRevision:MAIN,confirmation:'Publish this previewed revision'}});assert.equal(published.structuredContent.state,'publishing');assert.equal(calls.length,2);
+ }finally{await client.close();await server.close();}
+});

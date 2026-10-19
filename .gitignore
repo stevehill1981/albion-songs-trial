@@ -26,3 +26,5 @@ src/generated/component-context.json
 public/admin/component-preview.mjs
 public/admin/live-preview.mjs
 .wrangler/
+
+auth/build/

@@ -11,7 +11,12 @@ await writeFile(`${root}/config.json`, JSON.stringify({buildContext:{isPreview:f
 const config = {name:auth ? 'albion-songs-auth' : 'albion-songs-trial', compatibilityDate:'2026-10-19', workersDev:true, observability:{enabled:false}};
 if (auth) {
   await mkdir(`${worker}/bundle`, {recursive:true});
-  await cp('auth/worker.mjs', `${worker}/bundle/index.mjs`);
+  await import('./build-auth.mjs');
+  await cp('auth/build/index.mjs', `${worker}/bundle/index.mjs`);
+  config.compatibilityFlags=['nodejs_compat','global_fetch_strictly_public'];
+  config.observability={enabled:true,redactQueryString:true,logs:{enabled:true,headSamplingRate:1},traces:{enabled:true,headSamplingRate:1}};
+  const mcp=await readFile('auth/mcp-config.json','utf8').then(JSON.parse).catch(error=>{if(error.code==='ENOENT')return null;throw error;});
+  if(mcp){if(!/^[a-f0-9]{32}$/.test(mcp.namespaceId))throw Error('Invalid museum OAuth KV namespace.');config.env={OAUTH_KV:{type:'kv',id:mcp.namespaceId}};}
   config.manifest = {type:'complete',mainModule:'index.mjs',modules:{'index.mjs':{type:'esm'}}};
 } else {
   await cp('build', `${worker}/assets`, {recursive:true});
