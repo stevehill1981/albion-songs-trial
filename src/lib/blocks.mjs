@@ -162,7 +162,7 @@ export function cmsField(f){
  if(f.kind==='url')return {...base,widget:'string',pattern:['^https://','Use an HTTPS source link.']};
  if(f.kind==='select')return {...base,widget:'select',options:f.options};
  if(f.kind==='boolean')return {...base,widget:'boolean',default:false};
- if(f.kind==='list')return {...base,required:f.min>0&&!f.optional,widget:'list',collapsed:true,min:f.min,max:f.max,summary:'{{fields.title}}{{fields.label}}{{fields.text}}',fields:f.fields.map(cmsField),default:[]};
+ if(f.kind==='list')return {...base,required:f.min>0&&!f.optional,widget:'list',collapsed:true,min:f.min,max:f.max,summary:f.name==='columns'?'Column — expand to edit content':'{{fields.title}}{{fields.label}}{{fields.text}}',fields:f.fields.map(cmsField),default:[]};
  if(f.kind==='relations')return {...base,widget:'relation',collection:'museum-collections',search_fields:['title'],value_field:'slug',display_fields:['title'],multiple:true,required:false,default:[]};
  if(f.kind==='blocks'||f.kind==='children')return {...base,widget:'list',collapsed:true,min:1,max:50,typeKey:'type',types:blockTypes.filter(t=>f.kind!=='children'||simpleTypes.includes(t.name)).map(t=>({name:t.name,label:t.label,widget:'object',summary:'{{fields.heading}}',fields:t.fields.map(cmsField)}))};
  throw Error('Unknown editor field.');
