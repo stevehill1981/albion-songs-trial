@@ -14,3 +14,9 @@ test('a permanently stale page fails even when metadata reports the new revision
   const fetcher=async url=>url.endsWith('version.json')?Response.json({revision:'new'}):new Response('<meta name="trial-revision" content="old">');
   await assert.rejects(waitForRevision('https://example.com','new',{fetcher,sleep:async()=>{},attempts:2}),/does not match/);
 });
+
+test('a new page must be served too; a missing route cannot receive a successful preview',async()=>{
+ const fetcher=async url=>url.endsWith('version.json')?Response.json({revision:'new'}):url.endsWith('/missing-page')?new Response('Missing',{status:404}):new Response('<meta name="trial-revision" content="new">');
+ await assert.rejects(waitForRevision('https://example.com','new',{fetcher,sleep:async()=>{},attempts:1,routes:['/songs','/missing-page']}),/does not match/);
+ await assert.rejects(waitForRevision('https://example.com','new',{routes:[]}),/At least one/);
+});

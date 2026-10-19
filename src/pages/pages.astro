@@ -1,0 +1,7 @@
+---
+import {loadContent,renderListing} from '../lib/content.mjs';
+import version from '../../public/version.json';
+const content=await loadContent();
+const html=renderListing(content.shell,{title:'Explore the museum pages',description:'Pages and collections from the Albion editing trial.',revision:version.revision,items:[...content.collections.map(c=>({...c,href:`/collections/${c.slug}`})),...content.pages.map(p=>({...p,href:`/${p.slug}`}))]});
+---
+<Fragment set:html={html}/>

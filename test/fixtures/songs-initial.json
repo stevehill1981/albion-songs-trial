@@ -1,0 +1,936 @@
+{
+  "slug": "songs",
+  "title": "Songs & terrace culture — Albion, through the years",
+  "description": "Why do Albion fans Boing Boing? Why The Lord’s My Shepherd? Explore the stories, disputed origins and a sourced Albion songbook.",
+  "collections": [
+    "terrace-culture"
+  ],
+  "blocks": [
+    {
+      "type": "intro",
+      "heading": "Boing.\nBoing.",
+      "emphasiseLastLine": true,
+      "text": "The bounce. The hymns. The noise.\nThe Albion, in our own voices.",
+      "buttonLabel": "Explore the songbook ↓",
+      "imageAlt": "The Hawthorns under floodlights, with supporters around the pitch",
+      "caption": [
+        {
+          "type": "text",
+          "text": "The Hawthorns, December 2013 · dom fellowes · "
+        },
+        {
+          "type": "link",
+          "text": "CC BY 2.0",
+          "url": "https://creativecommons.org/licenses/by/2.0/"
+        },
+        {
+          "type": "text",
+          "text": ". Cropped. "
+        },
+        {
+          "type": "link",
+          "text": "Image source",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Hawthorns_2013-12-21.jpg"
+        },
+        {
+          "type": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "story",
+      "anchor": "boing",
+      "navLabel": "Why Boing Boing?",
+      "heading": "A celebration\nwith a spring in it.",
+      "deck": "Boing Boing is a chant and a movement: supporters bouncing together. Its beginning is less settled than its place in Albion life.",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "BOING’s archive preserves four retrospective explanations. None proves a single inventor."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "The club’s own 2018 retrospective names its book and DVD about the 1992/93 promotion campaign "
+            },
+            {
+              "type": "emphasis",
+              "text": "Boing Boing!"
+            },
+            {
+              "type": "text",
+              "text": " That documents the association with the Ardiles season; it does not settle who bounced first."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "The club’s 1992/93 retrospective ↗",
+          "url": "https://www.wba.co.uk/news/2018/april/boing-boing-book--dvd-celebrates-the-199293-wembley-win"
+        }
+      ],
+      "accountsHeading": "Four explanations worth keeping.",
+      "accounts": [
+        {
+          "title": "The Dutch dance record",
+          "paragraphs": [
+            {
+              "parts": [
+                {
+                  "type": "text",
+                  "text": "Glynis Wright links Rotterdam Termination Source’s "
+                },
+                {
+                  "type": "emphasis",
+                  "text": "Poing"
+                },
+                {
+                  "type": "text",
+                  "text": ", a local disco and Albion supporters at Orient."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "The Baggie Bounce",
+          "paragraphs": [
+            {
+              "parts": [
+                {
+                  "type": "text",
+                  "text": "Wright also recalls a charity bounce involving Jeff Astle."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "A cold afternoon at Hull",
+          "paragraphs": [
+            {
+              "parts": [
+                {
+                  "type": "text",
+                  "text": "Gideon Beddows and Martin Jamieson recall bouncing at Hull; they disagree about the score at the time."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "“Boinging” towards promotion",
+          "paragraphs": [
+            {
+              "parts": [
+                {
+                  "type": "text",
+                  "text": "John Bayliss credits a Malcolm Boyden radio remark in 1993."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "accountsSources": [
+        {
+          "label": "Read the competing supporter accounts ↗",
+          "url": "https://www.baggies.com/faq/"
+        }
+      ]
+    },
+    {
+      "type": "accounts",
+      "anchor": "shepherd",
+      "navLabel": "Why the hymn?",
+      "heading": "Why on earth\nThe Lord’s My Shepherd?",
+      "emphasiseLastLine": true,
+      "deck": "It’s Psalm 23, rather than the Lord’s Prayer. How a hymn became Albion’s anthem is a story with several claimants.",
+      "accounts": [
+        {
+          "title": "A Sunday at Everton, 1974",
+          "paragraphs": [
+            {
+              "parts": [
+                {
+                  "type": "text",
+                  "text": "The familiar explanation places the singing at Goodison Park on 27 January 1974, when Albion played an FA Cup tie on a Sunday. In that telling, a church hymn was a joke about football taking place on a Sunday."
+                }
+              ]
+            },
+            {
+              "parts": [
+                {
+                  "type": "text",
+                  "text": "A supporter interviewed in 2014 recalled attending, but could not confirm it was first sung there. Treat this as a popular origin story."
+                }
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "label": "Read the recollection and its caveat ↗",
+              "url": "https://morethantheball.wordpress.com/2014/12/20/the-lord-is-my-shepherd-even-in-the-midlands/"
+            }
+          ]
+        },
+        {
+          "title": "Giles as the shepherd, 1976",
+          "paragraphs": [
+            {
+              "parts": [
+                {
+                  "type": "text",
+                  "text": "In its 2018 investigation, the Express & Star reported Keith White’s claim that supporters first sang a version about manager Johnny Giles in early 1976, before returning to the hymn’s words."
+                }
+              ]
+            },
+            {
+              "parts": [
+                {
+                  "type": "text",
+                  "text": "A named supporter’s explanation, rather than a confirmed first performance."
+                }
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "label": "The newspaper’s account of the rival claims ↗",
+              "url": "https://www.expressandstar.com/sport/football/west-bromwich-albion/west-broms-psalm-23-we-found-a-hymn-book-on-a-bus-6198545"
+            }
+          ]
+        },
+        {
+          "title": "A hymn book on a bus, 1976",
+          "paragraphs": [
+            {
+              "parts": [
+                {
+                  "type": "text",
+                  "text": "John Bishop told the same newspaper that fellow fans found a hymn book while travelling to the ground. Singing continued in the Birmingham Road End bar, then on the terrace."
+                }
+              ]
+            },
+            {
+              "parts": [
+                {
+                  "type": "text",
+                  "text": "The paper cites West Ham footage dated 31 October 1976 as its earliest recorded example. The match and programme dates are distinguished below. Whether the hymn can actually be heard in the footage remains unverified; even confirmation would establish use by then, rather than its first performance."
+                }
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "label": "Read Bishop’s first-person account ↗",
+              "url": "https://www.expressandstar.com/sport/football/west-bromwich-albion/west-broms-psalm-23-we-found-a-hymn-book-on-a-bus-6198545"
+            }
+          ]
+        }
+      ],
+      "footageHeading": "Listen to the 1976 footage.",
+      "footageIntro": [
+        {
+          "type": "strong",
+          "text": "Match: Saturday 30 October 1976."
+        },
+        {
+          "type": "text",
+          "text": " Albion beat West Ham 3–0. "
+        },
+        {
+          "type": "strong",
+          "text": "Programme: Sunday 31 October 1976"
+        },
+        {
+          "type": "text",
+          "text": ", the date "
+        },
+        {
+          "type": "link",
+          "text": "listed by DigiGuide for The Big Match programme",
+          "url": "https://digiguide.tv/programme/Sport/The-Big-Match-Revisited/636865/season-4/"
+        },
+        {
+          "type": "text",
+          "text": ". The next-day programme date may explain the newspaper’s 31 October reference; that explanation remains an inference."
+        }
+      ],
+      "footageLinks": [
+        {
+          "parts": [
+            {
+              "type": "link",
+              "text": "Watch the approximately seven-minute match highlights on YouTube ↗",
+              "url": "https://www.youtube.com/watch?v=sm2q-OMQ9TM"
+            },
+            {
+              "type": "text",
+              "text": " — uploaded by The Free Football Library, titled “W.B.A. v West Ham Utd 30-10-1976”."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "link",
+              "text": "Watch the corresponding episode of The Big Match Revisited on ITVX ↗",
+              "url": "https://www.itv.com/watch/the-big-match-revisited/1a6464/1a6464a0041"
+            },
+            {
+              "type": "text",
+              "text": " — Series 3, Episode 5, including Albion v West Ham. Playback is subject to ITVX availability and sign-in requirements."
+            }
+          ]
+        }
+      ],
+      "footageNotice": [
+        {
+          "type": "strong",
+          "text": "Singing unverified."
+        },
+        {
+          "type": "text",
+          "text": " The YouTube transcript covers commentary and applause without identifying the hymn. It cannot establish whether terrace singing is audible underneath. These links are provided so you can listen for yourselves; no confirmed singing timestamp is claimed."
+        }
+      ],
+      "conclusion": "So why was it “chosen”? These accounts describe a song catching on among supporters, rather than a formal club selection. The exact first occasion remains disputed."
+    },
+    {
+      "type": "songbook",
+      "anchor": "songbook",
+      "navLabel": "The songbook",
+      "heading": "The Albion songbook.",
+      "deck": "A way into the songs: club identity, heroes, local rivals and the music around kick-off.",
+      "scope": "This is a selected historical catalogue, not every chant ever sung or a promise of today’s playlist. Player tributes belong to past teams. Source archives and recordings document the songs; they do not establish how often they are sung now. Some linked recordings and archives contain strong language.",
+      "songs": [
+        {
+          "title": "Boing Boing",
+          "text": "The bounce. Explore the competing origin accounts above.",
+          "category": "Club songs",
+          "sourceURL": "https://www.fanchants.com/football-songs/west_bromwich_albion-chants/boing-boing-1/",
+          "sourceLabel": "Recording & source ↗"
+        },
+        {
+          "title": "The Lord’s My Shepherd",
+          "text": "Psalm 23. Read the hymn’s disputed origins above.",
+          "category": "Club songs",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Albion, Albion, Albion",
+          "text": "A repeated club-name chant.",
+          "category": "Club songs",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "And It’s West Bromwich Albion",
+          "text": "The full club name, sung with pride.",
+          "category": "Club songs",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Albion Till We Die",
+          "text": "Loyalty, with a Wolves jibe.",
+          "category": "Club songs",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Come On You Baggies",
+          "text": "A short encouragement.",
+          "category": "Club songs",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Going Down the Brummie Road",
+          "text": "The Albion aces and their supporters.",
+          "category": "Club songs",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Go West, Bromwich Albion",
+          "text": "Tune: Go West, as recorded by the Pet Shop Boys.",
+          "category": "Club songs",
+          "sourceURL": "https://www.fanchants.com/football-songs/west_bromwich_albion-chants/go-west-bromwich-albion/",
+          "sourceLabel": "Recording & source ↗"
+        },
+        {
+          "title": "Oh When the Stripes",
+          "text": "Tune: When the Saints Go Marching In.",
+          "category": "Club songs",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "We All Follow the Albion",
+          "text": "Following the team on its travels.",
+          "category": "Club songs",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "We Are Albion",
+          "text": "A declaration of identity.",
+          "category": "Club songs",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "We Love You Albion",
+          "text": "A simple love song to the club.",
+          "category": "Club songs",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Yam Yam",
+          "text": "Tune: The Dam Busters March.",
+          "category": "Club songs",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Astle Is the King",
+          "text": "Jeff Astle. Historical chant.",
+          "category": "Players & managers",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Super Bob",
+          "text": "Bobby Taylor. Historical chant.",
+          "category": "Players & managers",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Big Dave",
+          "text": "Darren Moore. Historical chant.",
+          "category": "Players & managers",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Feed the Horse",
+          "text": "Geoff Horsfield. Historical chant.",
+          "category": "Players & managers",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Jason Koumas",
+          "text": "Tune: Papa’s Got a Brand New Pigbag. Historical chant.",
+          "category": "Players & managers",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Lloyd Dyer My Lord",
+          "text": "Lloyd Dyer. Historical chant.",
+          "category": "Players & managers",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Walking in a Wallwork Wonderland",
+          "text": "Ronnie Wallwork. Historical chant.",
+          "category": "Players & managers",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Tommy Gaardsoe",
+          "text": "Tune: The Entertainer. Historical chant.",
+          "category": "Players & managers",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Oh Andy Hunt",
+          "text": "Tune: When the Saints Go Marching In. Historical chant.",
+          "category": "Players & managers",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Scott Dobie",
+          "text": "Tune: That’s Amore. Historical chant.",
+          "category": "Players & managers",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Mulumbu",
+          "text": "A recorded Youssouf Mulumbu tribute. Historical chant.",
+          "category": "Players & managers",
+          "sourceURL": "https://www.fanchants.com/football-songs/west_bromwich_albion-chants/mulumbuu/",
+          "sourceLabel": "Recording & source ↗"
+        },
+        {
+          "title": "Oh I Do Like to Be Beside the Seaside",
+          "text": "Villa. Rivalry chant; source includes strong language.",
+          "category": "Rivalries",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Chim Chiminee",
+          "text": "Villa. Tune: Chim Chim Cher-ee. Rivalry chant; source includes strong language.",
+          "category": "Rivalries",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Are You Watching Wanderers",
+          "text": "Wolves. Rivalry chant; source includes strong language.",
+          "category": "Rivalries",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Wipe That Snot",
+          "text": "Birmingham. Parodies Keep Right On. Rivalry chant; source includes strong language.",
+          "category": "Rivalries",
+          "sourceURL": "https://www.albiontillwedie.co.uk/fans/terracechants.html",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Rather Be a Baggie Than a Wolf",
+          "text": "Listed in the supporter recording catalogue.",
+          "category": "Rivalries",
+          "sourceURL": "https://www.fanchants.com/football-chants/classic/championship/west_bromwich_albion/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Are You Villa in Disguise",
+          "text": "Listed in the supporter recording catalogue.",
+          "category": "Rivalries",
+          "sourceURL": "https://www.fanchants.com/football-chants/classic/championship/west_bromwich_albion/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Smethwick’s Our Home",
+          "text": "Listed in the supporter recording catalogue.",
+          "category": "Stands & belonging",
+          "sourceURL": "https://www.fanchants.com/football-chants/classic/championship/west_bromwich_albion/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Boys of the Black Country",
+          "text": "Listed in the supporter recording catalogue.",
+          "category": "Stands & belonging",
+          "sourceURL": "https://www.fanchants.com/football-chants/classic/championship/west_bromwich_albion/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Smethwick (Brummie)",
+          "text": "Listed in the supporter recording catalogue.",
+          "category": "Stands & belonging",
+          "sourceURL": "https://www.fanchants.com/football-chants/classic/championship/west_bromwich_albion/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "W E S T",
+          "text": "Listed in the supporter recording catalogue.",
+          "category": "Stands & belonging",
+          "sourceURL": "https://www.fanchants.com/football-chants/classic/championship/west_bromwich_albion/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "East Stand Give Us a Song",
+          "text": "Listed in the supporter recording catalogue.",
+          "category": "Stands & belonging",
+          "sourceURL": "https://www.fanchants.com/football-chants/classic/championship/west_bromwich_albion/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Brummie Give Us a Song",
+          "text": "Listed in the supporter recording catalogue.",
+          "category": "Stands & belonging",
+          "sourceURL": "https://www.fanchants.com/football-chants/classic/championship/west_bromwich_albion/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "West Brom F.C. from the Black Country",
+          "text": "Listed in the supporter recording catalogue.",
+          "category": "Stands & belonging",
+          "sourceURL": "https://www.fanchants.com/football-chants/classic/championship/west_bromwich_albion/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "The Liquidator",
+          "text": "Harry J. All Stars. See the dated club explanation below. Historical PA selection.",
+          "category": "Matchday music",
+          "sourceURL": "https://www.baggies.com/faq/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "The Stars and Stripes Forever",
+          "text": "John Philip Sousa. Recalled for the 1950s and 1960s. Historical PA selection.",
+          "category": "Matchday music",
+          "sourceURL": "https://www.baggies.com/faq/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "O Fortuna",
+          "text": "Carl Orff. Recalled entrance music. Historical PA selection.",
+          "category": "Matchday music",
+          "sourceURL": "https://www.baggies.com/faq/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Jump Around",
+          "text": "House of Pain. Recalled replacement for The Liquidator. Historical PA selection.",
+          "category": "Matchday music",
+          "sourceURL": "https://www.baggies.com/faq/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Insomnia",
+          "text": "Faithless. Recalled first-half entrance music. Historical PA selection.",
+          "category": "Matchday music",
+          "sourceURL": "https://www.baggies.com/faq/",
+          "sourceLabel": "Source catalogue ↗"
+        },
+        {
+          "title": "Sandstorm",
+          "text": "Darude. Recalled second-half entrance music. Historical PA selection.",
+          "category": "Matchday music",
+          "sourceURL": "https://www.baggies.com/faq/",
+          "sourceLabel": "Source catalogue ↗"
+        }
+      ],
+      "more": [
+        {
+          "type": "text",
+          "text": "Keep exploring: "
+        },
+        {
+          "type": "link",
+          "text": "FanChants’ larger Albion recording catalogue ↗",
+          "url": "https://www.fanchants.com/football-team/west_bromwich_albion/"
+        },
+        {
+          "type": "text",
+          "text": " · "
+        },
+        {
+          "type": "link",
+          "text": "Albion Till We Die’s historical chant archive ↗",
+          "url": "https://www.albiontillwedie.co.uk/fans/terracechants.html"
+        },
+        {
+          "type": "text",
+          "text": ". Recordings stay on their publishers’ sites; some listening features may require a free account."
+        }
+      ]
+    },
+    {
+      "type": "timeline",
+      "anchor": "liquidator",
+      "navLabel": "The Liquidator",
+      "heading": "The Liquidator.\nThe record, the ritual,\nthe arguments.",
+      "deck": "An instrumental on the PA. A response from the terraces. A matchday tradition that keeps returning.",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Albion made this Jamaican reggae record part of their own matchday identity. The point of dispute was what supporters shouted over it, particularly about local rivals. Its history involves withdrawals, attempted returns and occasional use, rather than a single ban followed by one permanent comeback."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "The earliest Albion play date is still unresolved. The chronology below distinguishes club records, contemporary reports and later recollections. It does not award Albion a “first club to play it” claim."
+            }
+          ]
+        }
+      ],
+      "factsLinkLabel": "Baggie Bird’s music & terrace facts ↓",
+      "events": [
+        {
+          "date": "1969",
+          "title": "A Jamaican instrumental becomes a British hit.",
+          "text": "The Harry J All Stars recording reached the UK chart on 25 October 1969, eventually peaking at number nine. Its recording history belongs to Jamaican reggae; its later football life was an adoption by supporters and stadiums.",
+          "sources": [
+            {
+              "label": "The original chart run ↗",
+              "url": "https://www.officialcharts.com/songs/harry-j-all-stars-the-liquidator/"
+            }
+          ]
+        },
+        {
+          "date": "Adoption date unresolved",
+          "title": "From a record to an Albion ritual.",
+          "text": "Writing for the club in July 2016, Dave Bowler connects Albion’s ska tradition with adopting The Liquidator as an anthem, before supporters added their own words. That helps explain its life at The Hawthorns: a PA instrumental became a participatory club ritual. The account does not identify its first match or the person who selected it.",
+          "sources": [
+            {
+              "label": "The club historian on football and music ↗",
+              "url": "https://www.wba.co.uk/news/2016/july/bowlers-delivery-if-football-be-the-food-of-love"
+            }
+          ]
+        },
+        {
+          "date": "Early 2000s",
+          "title": "The problem was the crowd’s words.",
+          "text": "BOING’s Albion FAQ recalls the record being removed because the accompanying chants were considered likely to provoke disturbances. A contemporary report dated 8 August 2002 documents police objections at Wolves to foul and abusive language. That report concerns Molineux: it is context for the local dispute, not proof of Albion’s withdrawal date.",
+          "sources": [
+            {
+              "label": "Albion supporters’ account of the withdrawal ↗",
+              "url": "https://www.baggies.com/faq/"
+            },
+            {
+              "label": "The 2002 report about Wolves ↗",
+              "url": "https://www.thefootballnetwork.net/main/s115/st9809.htm"
+            }
+          ]
+        },
+        {
+          "date": "August 2003 — reported",
+          "title": "A return with a request to clap.",
+          "text": "Thom Gibbs’s September 2026 retrospective reports an August 2003 Albion programme asking supporters to clap or use replacement words shown on the screen. We have inspected the public report excerpt, not the original notice. Albion Till We Die catalogues three August home issues: Brentford on 12 August (No. 2, 32 pages), Burnley on 16 August (No. 3, 100 pages) and Preston North End on 25 August (No. 4, 100 pages). These are candidates, not an identification of the issue containing the notice.",
+          "sources": [
+            {
+              "label": "Read the retrospective report ↗",
+              "url": "https://currently.att.yahoo.com/att/woke-nonsense-why-wolves-ban-070000876.html"
+            },
+            {
+              "label": "The home programme catalogue ↗",
+              "url": "https://www.albiontillwedie.co.uk/seasonarchive/programmes/home/2003-04.html"
+            }
+          ]
+        },
+        {
+          "date": "8 January 2004",
+          "title": "A contemporary report of withdrawal.",
+          "text": "BOING’s “Liquidator R.I.P.”, dated 8 January 2004, says Albion removed it that morning following pressure from the safety committee. It attributes to club secretary Dr John Evans the explanation that a minority would not follow requests to clap. It also names House of Pain’s “Jump Around” as the replacement. This is a contemporary supporter-site report; the original club notice or committee record has not been inspected.",
+          "sources": [
+            {
+              "label": "Read the January 2004 report ↗",
+              "url": "https://www.baggies.com/news/?id=622&pag=8"
+            }
+          ]
+        },
+        {
+          "date": "2005/06 — recalled",
+          "title": "A return still awaiting a match date.",
+          "text": "In a Digital Spy discussion on 29 January 2013, poster soulboy77 recalled Albion restoring the track for 2005/06 and dropping it again. We have not located a contemporary announcement or a dated Albion home recording confirming that episode. Replies quoting the same post are not independent corroboration.",
+          "sources": [
+            {
+              "label": "Read the supporter recollection ↗",
+              "url": "https://forums.digitalspy.com/discussion/1792841/why-did-west-brom-stop-using-the-liquidator-as-their-players-entrance-music"
+            }
+          ]
+        },
+        {
+          "date": "May 2007 — Wembley lead",
+          "title": "A supporter upload from the play-off month.",
+          "text": "The YouTube video “West Brom at Wembley - The Liquidator!” by @kingy1966 was uploaded on 30 May 2007. Its title and description place The Liquidator at Wembley; the upload followed Albion’s final against Derby on 28 May. That match association is an inference from the context, not a verified filming date. The soundtrack has not been independently assessed here. It does not establish playback at the Wolves semi-final or a permanent return at The Hawthorns.",
+          "sources": [
+            {
+              "label": "Watch the 2007 Wembley supporter video ↗",
+              "url": "https://www.youtube.com/watch?v=yjprYB5UEoA"
+            },
+            {
+              "label": "The final’s contemporary match report ↗",
+              "url": "https://www.theguardian.com/football/2007/may/28/minutebyminute.westbrom"
+            }
+          ]
+        },
+        {
+          "date": "29 March 2014",
+          "title": "Cardiff: supporters record another return.",
+          "text": "A fan upload by JoshWBAF1 is titled “West Brom fans sing The Liquidator v Cardiff”; its description identifies the pre-match scene and the 3–3 game on 29 March 2014. Another upload by Kyle Jones calls it “The Return Of The Liquidator West Brom 2014”. These are supporter-labelled recordings of that occasion, not an official announcement of permanent reinstatement.",
+          "sources": [
+            {
+              "label": "Watch the Cardiff supporter recording ↗",
+              "url": "https://www.youtube.com/watch?v=bFjwkodvads"
+            },
+            {
+              "label": "The second uploader’s “return” recording ↗",
+              "url": "https://www.youtube.com/watch?v=yrjE1AFrADQ"
+            }
+          ]
+        },
+        {
+          "date": "30 March 2023",
+          "title": "Occasional use, according to the club.",
+          "text": "The Albion Assembly minutes say Ian Skidmore explained that the song was not banned, but reserved for special occasions, with the number of children attending a consideration. The minutes were published on 6 April. They summarise the meeting rather than provide verbatim quotations. This is the club’s position at that date, not a guarantee of today’s playlist.",
+          "sources": [
+            {
+              "label": "Read the club’s meeting record ↗",
+              "url": "https://www.wba.co.uk/news/albion-assembly-meeting-minutes-march-2023"
+            }
+          ]
+        },
+        {
+          "date": "21 April 2023",
+          "title": "Even the head coach asks for it.",
+          "text": "The Express & Star reported that Carlos Corberán asked about using it for the approaching Sunderland match, amid supporter demand. The report said the request was under consideration. A request is evidence of the song’s appeal, not confirmation that it was played or that policy changed.",
+          "sources": [
+            {
+              "label": "Read the report of Corberán’s request ↗",
+              "url": "https://www.expressandstar.com/sport/football/west-bromwich-albion/fired-up-west-brom-looking-to-produce-liquid-football-as-boss-requests-tune-5868193"
+            }
+          ]
+        }
+      ],
+      "checksHeading": "What still needs checking?",
+      "checks": [
+        {
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "The 2005/06 revival remains a single-source recollection. The May 2007 video is a Wembley lead, not confirmation of playback at the Wolves semi-final or a lasting Hawthorns return. The earliest Albion use and intervening playlist changes remain unresolved."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "The hunt for the August 2003 programme"
+        },
+        {
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "The home programme catalogue gives us three candidates: No. 2, Brentford, 12 August (32 pages); No. 3, Burnley, 16 August (100 pages); and No. 4, Preston North End, 25 August (100 pages). We have inspected the Burnley front and back covers in the Clarets Mad archive, but no interior page containing the notice. None of these issues has yet been identified as the one cited by Thom Gibbs."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "link",
+              "text": "Browse the home programme catalogue ↗",
+              "url": "https://www.albiontillwedie.co.uk/seasonarchive/programmes/home/2003-04.html"
+            },
+            {
+              "type": "text",
+              "text": " · "
+            },
+            {
+              "type": "link",
+              "text": "See the Burnley programme covers ↗",
+              "url": "https://www.clarets-mad.co.uk/feat/edw4/programmes__season_200304_743073/index.shtml"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "parts": [
+            {
+              "type": "text",
+              "text": "The next evidence needed is the original inside page, with its issue and page number. A cover establishes that an issue exists; it cannot confirm what the Liquidator notice said."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "facts",
+      "anchor": "terrace-facts",
+      "navLabel": "",
+      "heading": "Did you know?",
+      "imageAlt": "Baggie Bird in Albion stripes, an independent fan illustration",
+      "includeBlueVinyl": true,
+      "facts": [
+        {
+          "title": "The King released a single, too.",
+          "text": "Jeff Astle’s musical career included “Sweetwater”, as well as his later singing appearances on Fantasy Football. A different sort of performance from Albion’s famous number nine.",
+          "sourceURL": "https://www.wba.co.uk/news/2016/july/bowlers-delivery-if-football-be-the-food-of-love",
+          "sourceLabel": "Read the club historian’s musical memories ↗"
+        },
+        {
+          "title": "A chart return before the terrace returns.",
+          "text": "The Liquidator reached number nine in the UK in 1969. In 1980, a pairing with the Pioneers’ “Long Shot Kick De Bucket” reached number 42. They are separate chart entries.",
+          "sourceURL": "https://www.officialcharts.com/artist/12436/harry-j-all-stars/",
+          "sourceLabel": "Check the Official Charts record ↗"
+        },
+        {
+          "title": "The organ has a name behind it.",
+          "text": "Reggae historian David Katz identifies Winston Wright as the keyboardist whose organ melody transformed the track in Harry Johnson’s care. The Harry J All Stars name does not tell the whole musical story.",
+          "sourceURL": "https://www.thevinylfactory.com/features/50-of-the-greatest-trojan-records",
+          "sourceLabel": "Read David Katz’s account of the recording ↗"
+        },
+        {
+          "title": "There was more than one hymn in the book.",
+          "text": "In John Bishop’s account of the 1976 hymn-book episode, the fans also sang “All Things Bright and Beautiful”. It is a recollection, not proof of when Albion’s anthem began.",
+          "sourceURL": "https://www.expressandstar.com/sport/football/west-bromwich-albion/west-broms-psalm-23-we-found-a-hymn-book-on-a-bus-6198545",
+          "sourceLabel": "Read Bishop’s account ↗"
+        },
+        {
+          "title": "Before reggae, there was Sousa.",
+          "text": "BOING’s supporter archive recalls teams entering to “The Stars and Stripes Forever” in the 1950s and 1960s. That older soundtrack is preserved as a supporter recollection.",
+          "sourceURL": "https://www.baggies.com/faq/",
+          "sourceLabel": "Explore the historical music recollections ↗"
+        }
+      ]
+    },
+    {
+      "type": "closing",
+      "anchor": "closing",
+      "navLabel": "",
+      "heading": "The song travels\nwith the supporter.",
+      "text": "This page keeps recollection, documented use and origin claims distinct. A song can have a firm place in Albion life even when nobody can prove who started it.",
+      "linkLabel": "Back to The Hawthorns →",
+      "linkURL": "https://maries-albion-scrapbook.stevehill1981.chatgpt.site/hawthorns.html",
+      "notesHeading": "Sources and artwork notes",
+      "notes": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Research checked 19 October 2026. Origin accounts are linked beside each story; song entries link to their archive or recording. We have not reproduced full lyrics or hosted other people’s audio. The newspaper’s earliest-footage claim remains attributed to its investigation."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "The throstle uses "
+            },
+            {
+              "type": "link",
+              "text": "the club’s published monochrome mark",
+              "url": "https://cdn.wba.co.uk/sites/default/files/favicons/safari-pinned-tab.svg"
+            },
+            {
+              "type": "text",
+              "text": ". Baggie Bird reuses the museum’s generated fan illustration, based on "
+            },
+            {
+              "type": "link",
+              "text": "the club’s mascot photograph",
+              "url": "https://www.wba.co.uk/news/west-midlands-safari-park-sponsor-girls-game-programme"
+            },
+            {
+              "type": "text",
+              "text": "; it is not official club artwork. Photograph credit appears beside the image."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

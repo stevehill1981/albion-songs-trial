@@ -1,0 +1,8 @@
+---
+import {loadContent,renderListing} from '../../lib/content.mjs';
+import version from '../../../public/version.json';
+export async function getStaticPaths(){const content=await loadContent();return content.collections.map(collection=>({params:{slug:collection.slug},props:{collection,content}}));}
+const {collection,content}=Astro.props;
+const html=renderListing(content.shell,{...collection,revision:version.revision,items:content.pages.filter(p=>p.collections.includes(collection.slug)).map(p=>({...p,href:`/${p.slug}`}))});
+---
+<Fragment set:html={html}/>
