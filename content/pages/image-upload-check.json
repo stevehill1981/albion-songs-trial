@@ -1,0 +1,82 @@
+{
+  "slug": "image-upload-check",
+  "title": "Image upload preview check",
+  "description": "Temporary verification of a credited upload reused in a museum page.",
+  "collections": [],
+  "blocks": [
+    {
+      "type": "intro",
+      "heading": "Image upload preview check",
+      "emphasiseLastLine": false,
+      "text": "Temporary verification of a credited upload reused in a museum page.",
+      "buttonLabel": "",
+      "imageAlt": "The Hawthorns under floodlights, with supporters around the pitch",
+      "caption": [
+        {
+          "type": "text",
+          "text": "The Hawthorns, December 2013 · dom fellowes · "
+        },
+        {
+          "type": "link",
+          "text": "CC BY 2.0",
+          "url": "https://creativecommons.org/licenses/by/2.0/"
+        },
+        {
+          "type": "text",
+          "text": ". Cropped. "
+        },
+        {
+          "type": "link",
+          "text": "Image source",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Hawthorns_2013-12-21.jpg"
+        },
+        {
+          "type": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "anchor": "story-section",
+      "navLabel": "",
+      "heading": "",
+      "background": "white",
+      "spacing": "standard",
+      "columns": [
+        {
+          "blocks": [
+            {
+              "type": "text-panel",
+              "anchor": "story-copy",
+              "navLabel": "",
+              "heading": "Albion’s 1888 cup winners",
+              "paragraphs": [
+                {
+                  "parts": [
+                    {
+                      "type": "text",
+                      "text": "Albion’s 1888 FA Cup-winning team. Unknown photographer; public domain."
+                    }
+                  ]
+                }
+              ],
+              "sources": []
+            }
+          ]
+        },
+        {
+          "blocks": [
+            {
+              "type": "photograph",
+              "anchor": "story-photo",
+              "navLabel": "",
+              "heading": "From the archive",
+              "photograph": "image-upload-check"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
