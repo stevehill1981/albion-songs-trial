@@ -4,6 +4,18 @@ import { validateFact } from '../src/lib/fact.mjs';
 
 validateFact(JSON.parse(await readFile('content/fact.json', 'utf8')));
 await copyFile('node_modules/decap-cms/dist/decap-cms.js', 'public/admin/decap-cms.js');
+await copyFile('src/lib/fact.mjs', 'public/admin/fact.mjs');
+const pageTemplate=await readFile('legacy/songs.html','utf8');
+const marker=pageTemplate.indexOf('<!-- EDITABLE_FACT -->');
+if(marker<0)throw Error('The editable fact marker is missing.');
+const start=pageTemplate.lastIndexOf('<aside ',marker);
+const end=pageTemplate.indexOf('</aside>',marker);
+if(start<0 || end<0)throw Error('The fact section is missing.');
+const previewTemplate=pageTemplate.slice(start,end+8)
+  .replace(/<article class="fact-panel" data-fact>[\s\S]*?<\/article>/g,'')
+  .replace(/<div class="fact-controls" hidden>[\s\S]*?<\/div>/,'')
+  .replaceAll('src="assets/','src="/assets/');
+await writeFile('public/admin/preview-template.json',JSON.stringify({html:previewTemplate})+'\n');
 let revision = process.env.GITHUB_SHA;
 if (!revision) {
   try { revision = execFileSync('git', ['rev-parse', 'HEAD'], {encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim(); }
