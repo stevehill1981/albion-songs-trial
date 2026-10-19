@@ -41,6 +41,7 @@ const config={backend,publish_mode:'editorial_workflow',site_url:site.origin,dis
 ]};
 await writeFile('public/admin/config.yml',JSON.stringify(config,null,2)+'\n');
 await copyFile('src/lib/blocks.mjs','public/admin/blocks.mjs');
+await copyFile('src/lib/layout-copy.mjs','public/admin/layout-copy.mjs');
 await copyFile('src/lib/museum-patterns.json','public/admin/museum-patterns.json');
 await writeFile('public/admin/preview-context.json',JSON.stringify({fact:content.fact,museumMarkup:content.museumMarkup,photoCredits:content.photoCredits,photographs:content.photographs}));
 await writeFile('public/admin/layout-library.json',JSON.stringify([...content.templates.map(p=>({key:`template:${p.slug}`,kind:'Template',title:p.title,blocks:p.blocks})),...content.pages.map(p=>({key:`page:${p.slug}`,kind:'Page',title:p.title,blocks:p.blocks}))]));

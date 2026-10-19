@@ -16,7 +16,7 @@ for(const c of content.collections){
  assert(index.includes(`/collections/${c.slug}`));
  for(const p of content.pages.filter(p=>p.collections.includes(c.slug)))assert(html.includes(`href="/${p.slug}"`));
 }
-for(const name of ['blocks','fact'])assert.equal(await readFile(`build/admin/${name}.mjs`,'utf8'),await readFile(`src/lib/${name}.mjs`,'utf8'));
+for(const name of ['blocks','fact','layout-copy'])assert.equal(await readFile(`build/admin/${name}.mjs`,'utf8'),await readFile(`src/lib/${name}.mjs`,'utf8'));
 const config=JSON.parse(await readFile('build/admin/config.yml','utf8'));
 assert(config.collections.find(c=>c.name==='pages').create);
 assert(config.collections.find(c=>c.name==='pages').fields.find(f=>f.name==='blocks').types.some(t=>t.name==='section'));

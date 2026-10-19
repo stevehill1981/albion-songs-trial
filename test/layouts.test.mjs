@@ -1,7 +1,7 @@
 import{test}from'node:test';
 import assert from'node:assert/strict';
 import{readFile}from'node:fs/promises';
-import{cloneLayout}from'../public/admin/layout-widget.mjs';
+import{cloneLayout}from'../src/lib/layout-copy.mjs';
 import{validatePage,renderPageContent}from'../src/lib/blocks.mjs';
 import{loadContent,publicPage}from'../src/lib/content.mjs';
 test('saved layout copies are independent, retain columns, and reject unsupported nesting',async()=>{

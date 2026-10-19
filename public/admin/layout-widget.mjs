@@ -1,12 +1,7 @@
+import{cloneLayout,toEditorValue}from'./layout-copy.mjs';
 import{validatePage}from'./blocks.mjs';
 const key='albion-layout-copy-v1';
 const plain=value=>value?.toJS?value.toJS():value||[];
-export function cloneLayout(blocks){return structuredClone(blocks);}
-export function toEditorValue(value,field){
- const map=field.clear();const list=field.get('types').clear();
- const convert=item=>Array.isArray(item)?item.reduce((result,v)=>result.push(convert(v)),list):item&&typeof item==='object'?Object.entries(item).reduce((result,[key,v])=>result.set(key,convert(v)),map):item;
- return convert(value);
-}
 export function registerLayoutWidget(){
  window.CMS.registerWidget('answer-choice',window.createClass({render(){return window.h('select',{id:this.props.forID,value:this.props.value??0,onChange:e=>this.props.onChange(Number(e.target.value)),className:this.props.classNameWrapper},...[0,1,2,3,4,5].map(i=>window.h('option',{key:i,value:i},`Answer ${i+1}`)));}}));
  const List=window.CMS.getWidget('list').control;

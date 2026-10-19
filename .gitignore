@@ -17,3 +17,4 @@ public/admin/museum-patterns.json
 public/admin/layout-library.json
 __pycache__/
 .ruff_cache/
+public/admin/layout-copy.mjs
