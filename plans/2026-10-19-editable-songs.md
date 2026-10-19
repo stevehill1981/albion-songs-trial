@@ -28,3 +28,18 @@ Official capability references checked during design:
 https://decapcms.org/docs/collection-folder/
 https://decapcms.org/docs/variable-type-widgets/
 https://decapcms.org/docs/widgets/relation/
+
+
+## Browser form proof and external publication blocker
+
+The generated CMS configuration was exercised with Decap's built-in disposable test backend on a temporary local server. Pages and Museum collections appeared alongside the compatible shared fact entry. The New Page form showed all seven block types; adding a story updated the styled preview, and saving produced CHANGES SAVED / Status: Draft. No real GitHub data was written by this local test. The form check also identified redundant “optional” labels; those were removed and the block picker label shortened to Content blocks.
+
+The deployed feature preview at https://af66cffd-albion-songs-trial.steve-e85.workers.dev/songs matches all 1,646 original parsed markup/text tokens. Desktop and 390-pixel phone layouts were inspected. Screenshot: [deployed draft](evidence/reusable-pages-draft.jpg).
+
+Feature PR: https://github.com/stevehill1981/albion-songs-trial/pull/6 . Its preview status succeeded, but the required Validate Songs page check was still queued. A normal merge was correctly rejected: “the base branch policy prohibits the merge.” No administrative merge, disabled check, billing upgrade or altered branch protection was used.
+
+GitHub's public status page on 19 October 2026 reported an unresolved Actions/Pages incident beginning at 15:49 UTC, followed by Webhooks degradation at 15:50 UTC: https://www.githubstatus.com/ . This is consistent with the observed queue; it does not establish the precise cause of this individual job's delay. The real GitHub editor create/preview/publish check remains outstanding and must not be described as complete. The current production editor retains its previous functionality until the feature merges.
+
+Resume: wait for required checks, merge PR #6 normally and verify the exact public revision and all generated routes. Reload the saved Safari editor without discarding any new owner draft. Create/publish a useful museum-project collection, then an About this trial page with an introduction and sourced story, assign its collection, and verify the actual browser draft preview, public page and collection navigation. Keep the useful page or undo disposable test content through a deliberate recovery-aware operation. Record those results, then finish cleanup. Marie's own acceptance remains separate.
+
+Cleanup: the temporary generated local page and disposable editor backend are not part of the committed site. The task-owned Astro and Python test servers were stopped; other projects' servers were left alone. Build/cache output and temporary PR/HTML files are removed after final checks. Keep this durable checkout and the pushed feature branch for the pending publication test.

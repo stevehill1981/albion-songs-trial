@@ -8,19 +8,19 @@ const inlineFields=[{name:'type',label:'Style',kind:'select',options:['text','em
 const inline=(name,label)=>list(name,label,inlineFields,{min:1});
 const paragraphs=(name='paragraphs',label='Paragraphs')=>list(name,label,[inline('parts','Text and links')]);
 const sources=(name='sources',label='Sources')=>list(name,label,[text('label','Link label'),url('url')],{max:30});
-const anchor=[text('anchor','Section address'),text('navLabel','Jump-link label (optional)',{optional:true})];
+const anchor=[text('anchor','Section address'),text('navLabel','Jump-link label',{optional:true})];
 const heading=text('heading','Heading (new line creates a line break)',{lines:true});
 const factFields=[text('title','Heading'),text('text','Fact'),url('sourceURL'),text('sourceLabel','Source label')];
 export const blockTypes=[
- {name:'intro',label:'Page introduction',fields:[heading,bool('emphasiseLastLine','Italicise last heading line'),text('text','Introduction',{lines:true}),text('buttonLabel','Songbook button label (optional)',{optional:true}),text('imageAlt','Photograph description'),inline('caption','Photograph caption and credits')]},
+ {name:'intro',label:'Page introduction',fields:[heading,bool('emphasiseLastLine','Italicise last heading line'),text('text','Introduction',{lines:true}),text('buttonLabel','Songbook button label',{optional:true}),text('imageAlt','Photograph description'),inline('caption','Photograph caption and credits')]},
  {name:'story',label:'Sourced story and origin accounts',fields:[...anchor,heading,text('deck','Introduction'),paragraphs(),sources(),text('accountsHeading','Accounts heading',{optional:true}),list('accounts','Origin accounts',[text('title','Heading'),paragraphs()],{max:30}),sources('accountsSources','Sources for the accounts')]},
  {name:'accounts',label:'Accounts and footage',fields:[...anchor,heading,bool('emphasiseLastLine','Italicise last heading line'),text('deck','Introduction'),list('accounts','Accounts',[text('title','Heading'),paragraphs(),sources()],{min:1,max:30}),text('footageHeading','Footage heading'),inline('footageIntro','Match and broadcast details'),list('footageLinks','Footage links',[inline('parts','Link and description')],{min:1,max:30}),inline('footageNotice','Evidence caveat'),text('conclusion','Conclusion')]},
  {name:'songbook',label:'Searchable songbook',fields:[...anchor,heading,text('deck','Introduction'),text('scope','Catalogue scope and language notice'),list('songs','Songs',[text('title','Song title'),text('text','Description and evidence caveat'),text('category','Theme'),url('sourceURL'),text('sourceLabel','Source label')],{min:1,max:500}),inline('more','Further listening and sources')]},
- {name:'timeline',label:'Sourced timeline',fields:[...anchor,heading,text('deck','Introduction'),paragraphs(),text('factsLinkLabel','Facts jump-link label (optional)',{optional:true}),list('events','Timeline entries',[text('date','Date and evidence label'),text('title','Heading'),text('text','Account and caveat'),sources()],{min:1,max:100}),text('checksHeading','Open questions heading'),list('checks','Open questions',[{name:'type',label:'Style',kind:'select',options:['paragraph','heading']},{...text('text','Heading text'),optional:true},{...inline('parts','Paragraph text and links'),optional:true}],{min:1})]},
+ {name:'timeline',label:'Sourced timeline',fields:[...anchor,heading,text('deck','Introduction'),paragraphs(),text('factsLinkLabel','Facts jump-link label',{optional:true}),list('events','Timeline entries',[text('date','Date and evidence label'),text('title','Heading'),text('text','Account and caveat'),sources()],{min:1,max:100}),text('checksHeading','Open questions heading'),list('checks','Open questions',[{name:'type',label:'Style',kind:'select',options:['paragraph','heading']},{...text('text','Heading text'),optional:true},{...inline('parts','Paragraph text and links'),optional:true}],{min:1})]},
  {name:'facts',label:'Baggie Bird facts',fields:[...anchor,heading,text('imageAlt','Mascot description'),bool('includeBlueVinyl','Include the shared blue-vinyl fact first'),list('facts','Facts',factFields,{max:100})]},
  {name:'closing',label:'Closing and source notes',fields:[...anchor,heading,text('text','Closing paragraph'),text('linkLabel','Related page link label'),url('linkURL','Related page link'),text('notesHeading','Source notes heading'),paragraphs('notes','Source and artwork notes')]}
 ];
-export const pageFields=[text('slug','Page address — set once; lower-case words separated by hyphens'),text('title','Page title'),text('description','Page description'),{name:'collections',label:'Museum collections',kind:'relations',optional:true}, {name:'blocks',label:'Page sections — add a template, then move it into position',kind:'blocks'}];
+export const pageFields=[text('slug','Page address — set once; lower-case words separated by hyphens'),text('title','Page title'),text('description','Page description'),{name:'collections',label:'Museum collections',kind:'relations',optional:true}, {name:'blocks',label:'Content blocks',kind:'blocks',hint:'Add a template, then move it into position. Start with Page introduction.'}];
 export const collectionFields=[text('slug','Collection address — set once'),text('title','Collection title'),text('description','Description')];
 const identifier=/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
 export function validateIdentifier(value) { if(typeof value!=='string'||value.length>80||!identifier.test(value)) throw Error('Use a short, lower-case address with hyphens between words.'); return value; }
@@ -123,7 +123,7 @@ export function renderDocument(shell,page,context){
  return shell.replace(/<title>[\s\S]*?<\/title>/,()=>`<title>${esc(page.title)}</title>`).replace(/<meta name="description" content="[^"]*">/,()=>`<meta name="description" content="${esc(page.description)}">`).replace('<!-- PAGE_CONTENT -->',()=>body).replace('</head>',`<meta name="trial-revision" content="${esc(context.revision)}"></head>`);
 }
 export function cmsField(f){
- const base={name:f.name,label:f.label,required:!f.optional};
+ const base={name:f.name,label:f.label,required:!f.optional,...(f.hint?{hint:f.hint}:{})};
  if(f.kind==='text')return {...base,widget:f.lines?'text':f.name==='text'||f.name==='deck'||f.name==='scope'||f.name==='conclusion'?'text':'string'};
  if(f.kind==='url')return {...base,widget:'string',pattern:['^https://','Use an HTTPS source link.']};
  if(f.kind==='select')return {...base,widget:'select',options:f.options};

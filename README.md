@@ -14,7 +14,7 @@ A free Astro/Decap CMS trial retaining the existing Albion Songs page, with edit
 
 ## Marie's trial
 
-Sign in at the editor and open **Pages → Songs & terrace culture**. Expand the section you want to edit. Add a section with **Add Page sections**, choose its template, and move it into position. Text, emphasis, bold text and source links have separate labelled fields; no HTML or Markdown is needed. Use View preview for the full interactive page.
+Sign in at the editor and open **Pages → Songs & terrace culture**. Expand the section you want to edit. Add a section with **Add Content blocks**, choose its template, and move it into position. Text, emphasis, bold text and source links have separate labelled fields; no HTML or Markdown is needed. Use View preview for the full interactive page.
 
 To create a page, choose **Pages → New Page**, set its lower-case hyphenated address, title and description, and complete the Page introduction. Set the address once; changing it later requires a checked URL migration. Add story, accounts/footage, songbook, timeline, Baggie Bird facts and source-note sections as needed. Each section needs a unique address. The current library retains the Hawthorns introduction photograph and its credits; it is not an image upload tool. The introduction must come first; one songbook, footage section and fact rotator per page keeps their controls distinct.
 
