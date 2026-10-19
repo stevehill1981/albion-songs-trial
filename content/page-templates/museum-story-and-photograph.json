@@ -1,0 +1,81 @@
+{
+  "slug": "museum-story-and-photograph",
+  "description": "A two-column museum story with a credited archive photograph.",
+  "title": "Museum story and photograph",
+  "blocks": [
+    {
+      "type": "intro",
+      "heading": "A new Albion story.",
+      "emphasiseLastLine": false,
+      "text": "Add your introduction and supporting evidence.",
+      "buttonLabel": "",
+      "imageAlt": "The Hawthorns under floodlights, with supporters around the pitch",
+      "caption": [
+        {
+          "type": "text",
+          "text": "The Hawthorns, December 2013 · dom fellowes · "
+        },
+        {
+          "type": "link",
+          "text": "CC BY 2.0",
+          "url": "https://creativecommons.org/licenses/by/2.0/"
+        },
+        {
+          "type": "text",
+          "text": ". Cropped. "
+        },
+        {
+          "type": "link",
+          "text": "Image source",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Hawthorns_2013-12-21.jpg"
+        },
+        {
+          "type": "text",
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "anchor": "story-section",
+      "navLabel": "",
+      "heading": "From the museum archive",
+      "background": "navy",
+      "spacing": "roomy",
+      "columns": [
+        {
+          "blocks": [
+            {
+              "type": "text-panel",
+              "anchor": "story-copy",
+              "navLabel": "",
+              "heading": "Your story",
+              "paragraphs": [
+                {
+                  "parts": [
+                    {
+                      "type": "text",
+                      "text": "Write the story here, and add its sources below."
+                    }
+                  ]
+                }
+              ],
+              "sources": []
+            }
+          ]
+        },
+        {
+          "blocks": [
+            {
+              "type": "photograph",
+              "anchor": "story-photo",
+              "navLabel": "",
+              "heading": "From the archive",
+              "photograph": "team-1888"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
