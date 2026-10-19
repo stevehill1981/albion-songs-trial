@@ -7,11 +7,12 @@
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
-    "build": "node scripts/prepare.mjs && astro build && node scripts/verify-build.mjs && node scripts/cloudflare-output.mjs",
+    "build": "node scripts/prepare.mjs && astro build && node scripts/verify-build.mjs && node scripts/cloudflare-output.mjs && node scripts/check-component-runtime.mjs",
     "test": "node --test",
     "preview": "astro preview --host 127.0.0.1"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "14.4.1",
     "astro": "7.4.1",
     "decap-cms": "3.17.1"
   }

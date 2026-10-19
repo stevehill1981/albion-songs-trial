@@ -1,0 +1,15 @@
+---
+import BlockList from '../components/blocks/BlockList.astro';
+import {preparePreviewRequest} from '../lib/preview-request.mjs';
+import context from '../generated/component-context.json';
+export const prerender=false;
+export const partial=true;
+const result=await preparePreviewRequest(Astro.request,fetch,context.photographs);
+if(result.response){result.response.headers.set('X-Albion-Renderer','astro-components');result.response.headers.set('X-Albion-Revision',context.revision);return result.response;}
+Astro.response.headers.set('Cache-Control','no-store');
+Astro.response.headers.set('X-Content-Type-Options','nosniff');
+Astro.response.headers.set('Referrer-Policy','no-referrer');
+Astro.response.headers.set('X-Albion-Renderer','astro-components');
+Astro.response.headers.set('X-Albion-Revision',context.revision);
+---
+<BlockList page={result.page} context={context}/>

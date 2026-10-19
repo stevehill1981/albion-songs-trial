@@ -95,7 +95,7 @@ export function validateBlock(block){
 }
 export function validatePage(page){
  validateFields(page,pageFields,'Page');page.collections??=[];validateIdentifier(page.slug);
- const reserved=['admin','assets','pages','collections','publication','version','index','templates','data','uploads','images'];
+ const reserved=['admin','assets','pages','collections','publication','version','index','templates','data','uploads','images','editor-preview'];
  if(reserved.includes(page.slug))throw Error('That page address is reserved.');
  const all=page.blocks.flatMap(b=>b.type==='section'?[b,...b.columns.flatMap(c=>c.blocks)]:[b]);
  if(all.some(b=>b.type==='results-ledger')!==all.some(b=>b.type==='results-div-2'))throw Error('Keep the results ledger and its source-status section together.');
@@ -151,8 +151,8 @@ export function renderPageContent(page,context){
  if(new Set(ids).size!==ids.length)throw Error('Two blocks use the same section or control address.');
  return output;
 }
-export function renderDocument(shell,page,context){
- const body=renderPageContent(page,context);
+export function renderDocument(shell,page,context,suppliedBody){
+ const body=suppliedBody??renderPageContent(page,context);
  return shell.replace(/<title>[\s\S]*?<\/title>/,()=>`<title>${esc(page.title)}</title>`).replace(/<meta name="description" content="[^"]*">/,()=>`<meta name="description" content="${esc(page.description)}">`).replace('<!-- PAGE_CONTENT -->',()=>body).replace('</head>',`<meta name="trial-revision" content="${esc(context.revision)}"></head>`);
 }
 export function cmsField(f){

@@ -1,6 +1,6 @@
 import { execFileSync } from 'node:child_process';
 import { writeFile } from 'node:fs/promises';
-import { waitForRevision } from './served-revision.mjs';
+import { waitForRevision,waitForPreviewRuntime } from './served-revision.mjs';
 import { loadContent } from '../src/lib/content.mjs';
 const sha=process.env.GITHUB_SHA;
 const repo=process.env.GITHUB_REPOSITORY;
@@ -22,6 +22,7 @@ try {
   if(!url) throw Error('Cloudflare did not return a draft version URL.');
   const content=await loadContent();
   await waitForRevision(url,sha,{routes:['/pages','/images',...content.photoEntries.map(p=>`/images/${p.id}`),...content.pages.map(p=>`/${p.slug}`),...content.collections.map(c=>`/collections/${c.slug}`),...content.templates.map(p=>`/templates/${p.slug}`)]});
+  await waitForPreviewRuntime(url,sha);
   await status('success',draft ? url : `${url}/songs#terrace-facts`,draft?'This exact draft is ready to preview.':'This revision is live.');
   await writeFile(process.env.GITHUB_STEP_SUMMARY||'/dev/null',`[${draft?'Preview this draft':'View the published Songs page'}](${url}/songs#terrace-facts)\n\nVerified served revision: ${sha}\n`);
 } catch(error) {

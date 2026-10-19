@@ -14,3 +14,18 @@ export async function waitForRevision(origin,revision,{fetcher=fetch,sleep=setTi
  }
  throw Error('Served revision does not match the revision built by this workflow.');
 }
+
+export async function waitForPreviewRuntime(origin,revision,{fetcher=fetch,sleep=setTimeout,attempts=6}={}){
+ for(let attempt=0;attempt<attempts;attempt++){
+  try{
+   const options={cache:'no-store',signal:AbortSignal.timeout(15000)};
+   const [method,unauthorised]=await Promise.all([
+    fetcher(`${origin}/editor-preview`,options),
+    fetcher(`${origin}/editor-preview`,{...options,method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:'{}'})
+   ]);
+   if(method.status===405&&unauthorised.status===401&&[method,unauthorised].every(response=>response.headers.get('X-Albion-Renderer')==='astro-components'&&response.headers.get('X-Albion-Revision')===revision&&response.headers.get('Cache-Control')==='no-store'))return;
+  }catch{/* Retry a bounded deployment propagation delay. */}
+  if(attempt+1<attempts)await sleep(2000);
+ }
+ throw Error('The deployed Astro preview runtime is missing, stale or does not reject unauthenticated requests.');
+}

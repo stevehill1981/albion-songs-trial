@@ -16,7 +16,7 @@ for(const c of content.collections){
  assert(index.includes(`/collections/${c.slug}`));
  for(const p of content.pages.filter(p=>p.collections.includes(c.slug)))assert(html.includes(`href="/${p.slug}"`));
 }
-for(const name of ['blocks','fact','layout-copy','image-paths','image-library'])assert.equal(await readFile(`build/admin/${name}.mjs`,'utf8'),await readFile(`src/lib/${name}.mjs`,'utf8'));
+for(const name of ['blocks','fact','layout-copy','image-paths','image-library','component-preview','live-preview'])assert.equal(await readFile(`build/admin/${name}.mjs`,'utf8'),await readFile(`src/lib/${name}.mjs`,'utf8'));
 const config=JSON.parse(await readFile('build/admin/config.yml','utf8'));
 assert(config.collections.find(c=>c.name==='pages').create);
 assert(config.collections.find(c=>c.name==='pages').fields.find(f=>f.name==='blocks').types.some(t=>t.name==='section'));
@@ -42,3 +42,8 @@ if(content.photoEntries){
  const photos=config.collections.find(c=>c.name==='photographs');assert(photos.create);assert.equal(photos.fields.find(f=>f.name==='file').widget,'museum-image');
  console.log(`PASS: ${content.photoEntries.length} credited images have gallery thumbnails, exact preview routes and automatic dimensions.`);
 }
+
+assert.equal(config.backend.name,'albion-github');
+const previewScript=await readFile('build/admin/astro-preview.mjs','utf8');assert(previewScript.includes("fetch('/editor-preview'"));
+const generated=JSON.parse(await readFile('src/generated/component-context.json','utf8'));assert.equal(generated.revision,version.revision);
+console.log('PASS: native Astro trial content, editor modules and runtime context share this build revision.');

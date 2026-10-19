@@ -20,3 +20,9 @@ __pycache__/
 public/admin/layout-copy.mjs
 public/admin/image-paths.mjs
 public/admin/image-library.mjs
+
+src/generated/component-context.json
+.astro-server/
+public/admin/component-preview.mjs
+public/admin/live-preview.mjs
+.wrangler/
