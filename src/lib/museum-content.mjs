@@ -1,5 +1,7 @@
-import {readFile,readdir,access} from 'node:fs/promises';
+import {readFile,readdir} from 'node:fs/promises';
 import {validateIdentifier,validateURL} from './blocks.mjs';
+import {inspectImage,inspectUploads} from './image-files.mjs';
+import {photoURL} from './image-paths.mjs';
 import {renderMuseum} from './museum.mjs';
 const string=(v,label)=>{if(typeof v!=='string'||!v.trim()||v.length>20000)throw Error(`Complete ${label}.`);};
 export async function loadMuseum(root){
@@ -11,13 +13,14 @@ export async function loadMuseum(root){
  if(!exhibits.length||!eras.length||!sourceEntries.length||!photoEntries.length)throw Error('The museum collections must not be empty.');
  for(const [entries,order]of [[exhibits,catalogue.exhibits],[eras,catalogue.eras],[photoEntries,catalogue.photographs]]){if(!Array.isArray(order)||new Set(order).size!==order.length||order.some(id=>!entries.some(e=>e.id===id)))throw Error('Check the catalogue ordering references.');entries.sort((a,b)=>{const i=order.indexOf(a.id),j=order.indexOf(b.id);return(i<0?99999:i)-(j<0?99999:j);});}
  const sources=Object.fromEntries(sourceEntries.map(s=>{string(s.label,'source label');validateURL(s.url);return[s.id,[s.label,s.url]];}));
- const images=Object.fromEntries(photoEntries.map(p=>{
+ const uploads=await inspectUploads(root);
+ const photographs=await Promise.all(photoEntries.map(async p=>{
   for(const key of ['file','alt','caption','author','licence'])string(p[key],`photograph ${key}`);
-  if(!/^[a-zA-Z0-9.-]+\.(jpg|jpeg|png|webp)$/.test(p.file))throw Error('Choose a file from the verified photograph library.');
-  for(const key of ['width','height'])if(!Number.isInteger(p[key])||p[key]<1||p[key]>20000)throw Error('Photograph dimensions are invalid.');
-  validateURL(p.url);if(p.licenceUrl)validateURL(p.licenceUrl);return[p.id,p];
+  validateURL(p.url);if(p.licenceUrl)validateURL(p.licenceUrl);
+  const path=photoURL(p.file);const dimensions=uploads.get(path)||await inspectImage(root,path);
+  return{...p,width:dimensions.width,height:dimensions.height};
  }));
- await Promise.all(photoEntries.map(p=>access(new URL(`public/assets/${p.file}`,root))));
+ const images=Object.fromEntries(photographs.map(p=>[p.id,p]));
  const byId=new Map(exhibits.map(e=>[e.id,e]));
  for(const e of exhibits){
   for(const key of ['date','title','deck'])string(e[key],`exhibit ${key}`);
@@ -41,5 +44,5 @@ export async function loadMuseum(root){
  for(const q of quiz.questions){string(q.question,'quiz question');string(q.explanation,'quiz explanation');if(!Array.isArray(q.answers)||q.answers.length<2||q.answers.length>6||!Number.isInteger(q.correct)||q.correct<0||q.correct>=q.answers.length)throw Error('Choose a valid correct answer.');q.answers.forEach(a=>string(a,'answer'));}
  if(!Array.isArray(catalogue.featured)||catalogue.featured.some(id=>!byId.has(id)))throw Error('Choose known featured exhibits.');
  const rendered=renderMuseum({exhibits,eras,sources,images,featured:catalogue.featured});
- return{...rendered,museumMarkup:rendered.markup,photographs:images,exhibits,eras,sourceEntries,photoEntries,quiz};
+ return{...rendered,museumMarkup:rendered.markup,photographs:images,exhibits,eras,sourceEntries,photoEntries:photographs,quiz};
 }

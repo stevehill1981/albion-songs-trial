@@ -35,10 +35,14 @@ def verify(pages: dict[Path, Page]) -> None:
             if parsed.netloc != "museum.invalid" or parsed.scheme != "https":
                 continue
             target = ROOT / unquote(parsed.path).lstrip("/")
-            if target.is_dir():
-                target /= "index.html"
-            elif not target.is_file() and not target.suffix:
+            if (
+                not target.is_file()
+                and not target.suffix
+                and target.with_suffix(".html").is_file()
+            ):
                 target = target.with_suffix(".html")
+            elif target.is_dir():
+                target /= "index.html"
             assert target.is_file(), f"Missing local target in {path}: {link}"
             if parsed.fragment and target.suffix == ".html" and target in pages:
                 assert unquote(parsed.fragment) in pages[target].ids, (

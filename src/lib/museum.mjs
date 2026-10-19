@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {photoURL} from './image-paths.mjs';
 export function renderMuseum({exhibits,eras,sources,images,featured}){
 const escape = (value) => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const types = {stories:'Stories',matches:'Matches',people:'People',objects:'Objects',places:'Places'};
@@ -15,7 +16,7 @@ for (const entry of exhibits) {
  if(entry.image) assert(images[entry.image],`Missing image: ${entry.id}`);
 }
 
-const imageMarkup = (key, cls='', eager=false) => { const i=images[key]; return `<img class="${cls}" src="assets/${escape(i.file)}" width="${i.width}" height="${i.height}" ${eager?'':'loading="lazy"'} alt="${escape(i.alt)}">`; };
+const imageMarkup = (key, cls='', eager=false) => { const i=images[key]; return `<img class="${cls}" src="${i.file.startsWith('/')?escape(photoURL(i.file)):`assets/${escape(i.file)}`}" width="${i.width}" height="${i.height}" ${eager?'':'loading="lazy"'} alt="${escape(i.alt)}">`; };
 const credit = (key) => { const i=images[key];return `${escape(i.author)} · <a href="${escape(i.url)}">Image source</a> · ${i.licenceUrl?`<a href="${escape(i.licenceUrl)}">${escape(i.licence)}</a>`:i.licence}. ${key==='astle-gates'?'Resized; ':''}Cropped for display. ${i.licence.includes('BY-SA')?'Image adaptations remain under this licence.':''}`; };
 const score = (e) => `<div class="match-board"><span>${escape(e.score[0])}</span><strong>${escape(e.score[1])}</strong><span>${escape(e.score[2])}</span>${e.scoreNote?`<small>${escape(e.scoreNote)}</small>`:''}</div>`;
 const objectSymbol = (e) => `<div class="object-specimen specimen-${escape(e.visual||'archive')}" aria-hidden="true"><span>${e.visual==='names'?'REGIS<br>CUNNINGHAM<br>BATSON':e.visual==='programme'?'THE<br>ALBION<br>NEWS':e.visual==='matchbox'?'ALBION<br>CHAMPIONS<br>1920':e.visual==='kit'?'JOE<br>READER':e.visual==='ticket'?'OSBORNE<br>TESTIMONIAL':e.visual==='double'?'THE CUP<br>& PROMOTION':e.visual==='film'?'ALBION<br>ON FILM':`ALBION<br>${escape(e.date)}`}</span></div>`;

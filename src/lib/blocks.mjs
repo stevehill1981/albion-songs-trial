@@ -1,3 +1,4 @@
+import {photoURL} from './image-paths.mjs';
 import patterns from './museum-patterns.json' with {type:'json'};
 import { escapeHTML as esc, renderFact, validateFact } from './fact.mjs';
 
@@ -94,7 +95,7 @@ export function validateBlock(block){
 }
 export function validatePage(page){
  validateFields(page,pageFields,'Page');page.collections??=[];validateIdentifier(page.slug);
- const reserved=['admin','assets','pages','collections','publication','version','index','templates','data','uploads'];
+ const reserved=['admin','assets','pages','collections','publication','version','index','templates','data','uploads','images'];
  if(reserved.includes(page.slug))throw Error('That page address is reserved.');
  const all=page.blocks.flatMap(b=>b.type==='section'?[b,...b.columns.flatMap(c=>c.blocks)]:[b]);
  if(all.some(b=>b.type==='results-ledger')!==all.some(b=>b.type==='results-div-2'))throw Error('Keep the results ledger and its source-status section together.');
@@ -125,7 +126,7 @@ export function renderBlock(b,context={}){
  if(pattern)return pattern.template.replace(/\{\{(field[0-9]+)\}\}/g,(_,key)=>esc(b[key]||'')).replace('<!-- PHOTO_CREDITS -->',()=>`<ul class="collection-credits">${photoCredits}</ul>`);
  if(b.type==='museum'){if(!museumMarkup)throw Error('The exhibit collection is unavailable.');return museumMarkup;}
  if(b.type==='text-panel')return `<section class="wrap section" id="${a}"><h2>${h}</h2>${ps(b.paragraphs)}${links(b.sources)}</section>`;
- if(b.type==='photograph'){const image=Object.hasOwn(photographs,b.photograph)?photographs[b.photograph]:null;if(!image)throw Error('Choose a photograph from the credited library.');return `<figure class="wrap section" id="${a}"><h2>${h}</h2><img src="/assets/${esc(image.file)}" width="${image.width}" height="${image.height}" alt="${esc(image.alt)}" loading="lazy"><figcaption>${esc(image.caption)} ${esc(image.author)} · <a href="${esc(image.url)}">Image source</a> · ${esc(image.licence)}</figcaption></figure>`;}
+ if(b.type==='photograph'){const image=Object.hasOwn(photographs,b.photograph)?photographs[b.photograph]:null;if(!image)throw Error('Choose a photograph from the credited library.');return `<figure class="wrap section" id="${a}"><h2>${h}</h2><img src="${esc(photoURL(image.file))}" width="${image.width}" height="${image.height}" alt="${esc(image.alt)}" loading="lazy"><figcaption>${esc(image.caption)} ${esc(image.author)} · <a href="${esc(image.url)}">Image source</a> · ${esc(image.licence)}</figcaption></figure>`;}
  if(b.type==='link-cards')return `<section class="wrap section" id="${a}"><h2>${h}</h2><div class="layout-cards">${b.cards.map(c=>`<article><h3><a href="${esc(c.href)}">${esc(c.title)}</a></h3><p>${esc(c.text)}</p></article>`).join('')}</div></section>`;
  if(b.type==='section')return `<section id="${a}" class="layout-section layout-bg-${b.background} layout-spacing-${b.spacing}"><div class="wrap">${h?`<h2>${h}</h2>`:''}<div class="layout-columns layout-columns-${b.columns.length}">${b.columns.map(c=>`<div class="layout-column">${c.blocks.map(child=>renderBlock(child,context)).join('')}</div>`).join('')}</div></div></section>`;
  if(b.type==='intro')return `<section class="songs-hero"><div class="wrap"><a href="/">← Back to the museum</a><div class="songs-hero-layout"><div><h1>${h}</h1><p>${lines(b.text)}</p>${b.buttonLabel&&anchors.includes(songbookAnchor)?`<a class="button" href="#${esc(songbookAnchor)}">${esc(b.buttonLabel)}</a>`:''}</div><figure><img src="/assets/hawthorns.jpg" width="3840" height="1080" alt="${esc(b.imageAlt)}"><figcaption>${renderParts(b.caption)}</figcaption></figure></div></div></section>`;
