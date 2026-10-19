@@ -1,0 +1,7 @@
+---
+import template from '../../legacy/songs.html?raw';
+import fact from '../../content/fact.json';
+import { renderFact } from '../lib/fact.mjs';
+const html = template.replace('<!-- EDITABLE_FACT -->', renderFact(fact));
+---
+<Fragment set:html={html} />

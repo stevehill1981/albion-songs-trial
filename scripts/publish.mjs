@@ -1,0 +1,30 @@
+import { execFileSync } from 'node:child_process';
+import { writeFile } from 'node:fs/promises';
+const sha=process.env.GITHUB_SHA;
+const repo=process.env.GITHUB_REPOSITORY;
+const branch=process.env.GITHUB_REF_NAME;
+if(!sha || !repo || !branch || !process.env.GITHUB_TOKEN) throw Error('Run publishing from the configured GitHub workflow.');
+const draft=branch!=='main';
+const context=draft?'albion/deploy-preview':'albion/production';
+async function status(state,url,description) {
+  const res=await fetch(`https://api.github.com/repos/${repo}/statuses/${sha}`,{method:'POST',headers:{Authorization:`Bearer ${process.env.GITHUB_TOKEN}`,Accept:'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify({state,context,target_url:url,description})});
+  if(!res.ok) throw Error(`Could not record ${context} status: ${res.status}`);
+}
+await status('pending',undefined,draft?'Building this draft’s preview.':'Publishing the Songs trial.');
+try {
+  const args=draft?['workers','versions','create','--prebuilt','--tag',sha.slice(0,8),'--message',sha]:['deploy','--prebuilt','--tag',sha.slice(0,8),'--message',sha];
+  const output=execFileSync('npx',['--yes','--package=cf@1.0.0-beta.14','cf',...args],{encoding:'utf8',maxBuffer:4*1024*1024});
+  console.log(output);
+  const candidates=[...output.matchAll(/https:\/\/[a-zA-Z0-9.-]+\.workers\.dev/g)].map(x=>x[0]);
+  const url=draft?candidates.find(x=>!x.includes('://albion-songs-trial.')):'https://albion-songs-trial.steve-e85.workers.dev';
+  if(!url) throw Error('Cloudflare did not return a draft version URL.');
+  const served=await fetch(`${url}/version.json`,{cache:'no-store'});
+  if(!served.ok || (await served.json()).revision!==sha) throw Error('Served revision does not match the revision built by this workflow.');
+  const page=await fetch(`${url}/songs`,{cache:'no-store'});
+  if(!page.ok || !(await page.text()).includes('data-fact')) throw Error('The published Songs page is unavailable.');
+  await status('success',`${url}/songs#terrace-facts`,draft?'This exact draft is ready to preview.':'This revision is live.');
+  await writeFile(process.env.GITHUB_STEP_SUMMARY||'/dev/null',`[${draft?'Preview this draft':'View the published Songs page'}](${url}/songs#terrace-facts)\n\nVerified served revision: ${sha}\n`);
+} catch(error) {
+  await status('failure',undefined,'Build or publication failed; see the workflow log.');
+  throw error;
+}

@@ -1,0 +1,11 @@
+node_modules/
+build/
+.astro/
+.cloudflare/
+.dev.vars*
+.env*
+.DS_Store
+public/admin/decap-cms.js
+public/admin/config.yml
+public/version.json
+public/publication.html

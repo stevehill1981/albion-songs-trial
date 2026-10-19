@@ -1,0 +1,37 @@
+name: Songs trial
+on:
+  push:
+    branches: [main, 'cms/**', 'trial/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+  statuses: write
+concurrency:
+  group: songs-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  validate:
+    name: Validate Songs page
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 24.22.0
+      - name: Limit CMS drafts to the editable fact
+        if: startsWith(github.ref_name, 'cms/')
+        run: |
+          git diff --name-only origin/main...HEAD > changed-files.txt
+          node --input-type=module -e "import{readFileSync}from'node:fs';const files=readFileSync('changed-files.txt','utf8').trim().split('\n');if(files.length!==1||files[0]!=='content/fact.json')throw Error('CMS drafts may change only the trial fact.');"
+      - run: npm ci --no-fund --no-audit
+      - run: npm test
+      - run: npm run build
+      - name: Publish an exact draft preview or production revision
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/publish.mjs
