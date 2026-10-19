@@ -18,6 +18,8 @@ Sign in at the editor, open **Songs & terrace culture**, and edit **Baggie Bird 
 
 To undo an edit, restore the previous wording in the editor and preview/publish again. Previous versions remain in GitHub's file history. The trial's acceptance is still pending until Marie completes these steps herself; unit tests cannot establish usability for her.
 
+The owner completed the full Safari edit, preview, publish and restore workflow on 19 October 2026. See the [browser test record](plans/owner-workflow-test.md), including the preview-link fix and public deployment evidence.
+
 ## Development and verification
 
 Use Node 24.22.0 or later. `npm ci`, `npm test`, `npm run build`; `npm run dev` serves a local preview. Astro 7.4.1 and Decap CMS 3.17.1 are pinned. `build/` is disposable output. `legacy/songs.html` holds the preserved page with one fact marker; `content/fact.json` is the sole editable fact. The build verifies that both generated routes match the retained page, inserting that fact. All other source assets are recorded in `plans/origins.json`.
