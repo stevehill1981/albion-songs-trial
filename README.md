@@ -42,7 +42,7 @@ Open **Pages → Build a page with Marie** to try the real component preview. In
 
 The first sign-in after this update may need **Login with GitHub** again. It uses the existing OAuth app and permissions. Each preview checks repository write access; no token or draft is stored by the preview Worker. The trial accepts up to 64 KB, 20 top-level blocks and 60 blocks overall. Other museum block types and unpublished image-record previews retain their existing browser previews. Select a published credited photograph for the Astro page trial. Saved GitHub build previews still check the whole page and its interactions before publication.
 
-The remaining component migration is gated on an authorised hosted-editor test and measured Free-plan CPU use. Local simulator success is not evidence of Cloudflare CPU usage.
+The owner-account Safari test passed unsaved editing, error recovery, saved full-page preview and CMS publication. The remaining component migration is gated on measured Free-plan CPU use; CLI sign-in is still needed for that measurement. Successful requests and local simulator checks are not CPU measurements. Marie’s own acceptance remains pending.
 
 ## Uploading and reusing images
 

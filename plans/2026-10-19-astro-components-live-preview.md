@@ -33,7 +33,7 @@ Proceed beyond the trial only when the actual deployed renderer meets the free C
 - Astro on-demand rendering: https://docs.astro.build/en/guides/on-demand-rendering/
 - Official Cloudflare adapter: https://docs.astro.build/en/guides/integrations-guide/cloudflare/
 - Workers Free limits: https://developers.cloudflare.com/workers/platform/limits/
-- Current local code is static Astro 7.4.1 with Decap CMS 3.17.1 and shared JavaScript HTML renderers; it does not yet have individual Astro block components.
+- Starting point: static Astro 7.4.1 with Decap CMS 3.17.1 and shared JavaScript HTML renderers, without individual Astro block components.
 
 ## Implementation and verification record
 
@@ -43,4 +43,8 @@ Proceed beyond the trial only when the actual deployed renderer meets the free C
 - The compiled Worker test caught unsupported Workers `redirect: error`; the fixed GitHub lookup uses `manual` and rejects redirects. Browser fetch keeps its supported redirect policy.
 - Local tests exercised actual compiled Astro output for 13 variants, authentication rejection, unsafe content, missing photographs and revoked access. Unit tests exercise stale response rejection, disposal, incomplete drafts and served-revision checks with negative controls.
 - The disposable local Decap UI confirmed an unsaved heading update, retained last-good output for an empty heading, navy background, roomy spacing and the loaded credited photograph. Test-only credentials and backend changes exist only in temporary files outside the build.
-- Pending: fresh final checks, checked deployment, authorised Safari hosted preview, actual Free-plan CPU measurement. Do not claim the broader migration or Marie’s independent acceptance is complete.
+- Final local verification: 34 tests; full build; compiled route parity for 13 variants; 6,918 museum, 784 Hawthorns, 1,192 results, 9,975 wartime and 1,646 Songs preservation tokens passed, including credits and sources. Build checks retained 5,842 competitive and 266 separate wartime records.
+- PR 14 passed both required checks and merged normally. Production verified every route and actual runtime revision. PR 15 was created by the real Safari CMS save, checked, marked Ready and published from Safari. The public page and runtime served its merge revision `0dd33cb5cd63021041d52ce71951198ed17941e6` and the changed heading.
+- Hosted owner-account acceptance: existing OAuth login succeeded with unchanged permissions; unsaved heading updated through Astro; clearing it retained last-good output; restoring it recovered. The saved full-page preview contained the latest heading before publication. A 390 px public viewport stacked columns with document width 390 px.
+- Earlier About-page draft remains unsaved and intact in its original Safari tab. Its stale editor shows copied placeholder content; it has not been published. The Mac locked while preparing safe recovery in the spare tab, so completion of that separate new-page test needs the user to unlock it.
+- Actual Free-plan CPU measurement is pending Cloudflare CLI sign-in. No paid plan or storage service was added. Wider component conversion and Marie’s independent acceptance remain gated; do not infer measured CPU from successful requests.
