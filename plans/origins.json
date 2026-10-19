@@ -12,5 +12,11 @@
     "assets/club-throstle.svg": "f698e68b4cdd8e2c7d6add45e580edbfa6dd692c43de130cd1cf61a7db4112f3",
     "assets/baggie-bird.webp": "0e30f16dac2e9a6981cb7f99c9743bfde6af526370c9d851705631a144f850c8",
     "assets/hawthorns.jpg": "4105ad580aec6b42179dc0432592c2d3f9b43128edb4fc28076c676ce5bd4150"
+  },
+  "initialFact": {
+    "title": "An Albion anthem on blue vinyl.",
+    "text": "Ray King’s “West Bromwich Albion” dates from 1979. Dave Bowler’s club retrospective remembers the blue-vinyl release and its tribute to Ron Atkinson. The reggae connection goes beyond The Liquidator.",
+    "sourceURL": "https://www.wba.co.uk/news/2016/july/bowlers-delivery-if-football-be-the-food-of-love",
+    "sourceLabel": "Dave Bowler on Albion and music ↗"
   }
 }

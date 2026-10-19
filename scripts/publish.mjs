@@ -1,5 +1,6 @@
 import { execFileSync } from 'node:child_process';
 import { writeFile } from 'node:fs/promises';
+import { waitForRevision } from './served-revision.mjs';
 const sha=process.env.GITHUB_SHA;
 const repo=process.env.GITHUB_REPOSITORY;
 const branch=process.env.GITHUB_REF_NAME;
@@ -18,10 +19,7 @@ try {
   const candidates=[...output.matchAll(/https:\/\/[a-zA-Z0-9.-]+\.workers\.dev/g)].map(x=>x[0]);
   const url=draft?candidates.find(x=>!x.includes('://albion-songs-trial.')):'https://albion-songs-trial.steve-e85.workers.dev';
   if(!url) throw Error('Cloudflare did not return a draft version URL.');
-  const served=await fetch(`${url}/version.json`,{cache:'no-store'});
-  if(!served.ok || (await served.json()).revision!==sha) throw Error('Served revision does not match the revision built by this workflow.');
-  const page=await fetch(`${url}/songs`,{cache:'no-store'});
-  if(!page.ok || !(await page.text()).includes('data-fact')) throw Error('The published Songs page is unavailable.');
+  await waitForRevision(url,sha);
   await status('success',`${url}/songs#terrace-facts`,draft?'This exact draft is ready to preview.':'This revision is live.');
   await writeFile(process.env.GITHUB_STEP_SUMMARY||'/dev/null',`[${draft?'Preview this draft':'View the published Songs page'}](${url}/songs#terrace-facts)\n\nVerified served revision: ${sha}\n`);
 } catch(error) {

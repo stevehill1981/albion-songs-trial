@@ -4,7 +4,8 @@ import { renderFact } from '../src/lib/fact.mjs';
 const template = await readFile('legacy/songs.html','utf8');
 assert.equal(template.split('<!-- EDITABLE_FACT -->').length,2);
 const fact = JSON.parse(await readFile('content/fact.json','utf8'));
-const expected = template.replace('<!-- EDITABLE_FACT -->',renderFact(fact));
+const version=JSON.parse(await readFile('public/version.json','utf8'));
+const expected = template.replace('<!-- EDITABLE_FACT -->',renderFact(fact)).replace('</head>',`<meta name="trial-revision" content="${version.revision}"></head>`);
 for (const page of ['build/index.html','build/songs.html']) {
   const html = await readFile(page,'utf8');
   const text = value => value.replace(/\s+/g,' ').trim();
