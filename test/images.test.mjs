@@ -27,7 +27,8 @@ test('upload drafts add credited raster files while keeping published files and 
 test('actual image bytes determine dimensions and credited uploads render in reusable blocks',async()=>{
  const dir=await mkdtemp(join(tmpdir(),'albion-images-'));const root=pathToFileURL(dir+'/');
  try{
-  await cp('content',join(dir,'content'),{recursive:true});await mkdir(join(dir,'public/uploads'),{recursive:true});await cp('public/assets',join(dir,'public/assets'),{recursive:true});
+  await cp('content',join(dir,'content'),{recursive:true});await cp('public',join(dir,'public'),{recursive:true});await mkdir(join(dir,'public/uploads'),{recursive:true});
+  const existingUploads=(await inspectUploads(root)).size;
   const target=join(dir,'public/uploads/new-photo.jpg');await cp('public/assets/team-1888.jpg',target);
   const original=JSON.parse(await readFile('content/photographs/team-1888.json','utf8'));
   const photo={...original,id:'new-photo',file:'/uploads/new-photo.jpg',width:1,height:1};
@@ -35,7 +36,7 @@ test('actual image bytes determine dimensions and credited uploads render in reu
   const museum=await loadMuseum(root);const actual=museum.photographs['new-photo'];assert.equal(actual.width,675);assert.equal(actual.height,492);
   const page=JSON.parse(await readFile('test/fixtures/layout-initial.json','utf8'));page.blocks[1].columns[1].blocks[0].photograph='new-photo';
   const html=renderPageContent(page,museum);assert(html.includes('src="/uploads/new-photo.jpg" width="675" height="492"'));assert(html.includes(actual.author));
-  const parsed=await inspectUploads(root);assert.equal(parsed.size,1);
+  const parsed=await inspectUploads(root);assert.equal(parsed.size,existingUploads+1);
   for(const key of ['alt','caption','author','licence','url']){await writeFile(record,JSON.stringify({...photo,[key]:''}));await assert.rejects(loadMuseum(root));}
   await writeFile(record,JSON.stringify(photo));await rm(target);await assert.rejects(loadMuseum(root),/missing/);
   await writeFile(target,'not an image');await assert.rejects(inspectImage(root,'/uploads/new-photo.jpg'),/could not be read/);
