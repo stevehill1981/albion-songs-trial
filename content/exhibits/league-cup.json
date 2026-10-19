@@ -1,0 +1,27 @@
+{
+  "id": "league-cup",
+  "year": 1966,
+  "date": "1965/66",
+  "era": "cup-days",
+  "type": "matches",
+  "title": "A final won at home.",
+  "deck": "The League Cup, before the Wembley final.",
+  "score": [
+    "Albion",
+    "5–3",
+    "West Ham"
+  ],
+  "scoreNote": "Aggregate score across two legs",
+  "body": [
+    "Albion won the League Cup in 1966, when the final was still played over two legs. The opponents were West Ham, a side featuring Bobby Moore, Martin Peters and Geoff Hurst.",
+    "The route included wins over Walsall, Leeds, Coventry and Aston Villa, followed by a two-legged semi-final against Peterborough. Albion emerged from the final with a 5–3 aggregate victory. It was a major trophy celebrated at The Hawthorns, before the competition’s final moved to Wembley the following year."
+  ],
+  "sources": [
+    "cup1966"
+  ],
+  "related": [
+    "tony-brown",
+    "jeff-astle",
+    "final-1968"
+  ]
+}

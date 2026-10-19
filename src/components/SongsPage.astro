@@ -2,6 +2,6 @@
 import {loadContent,publicPage} from '../lib/content.mjs';
 import version from '../../public/version.json';
 const content=await loadContent();
-const html=publicPage(content,content.pages.find(p=>p.slug==='songs'),version.revision);
+const html=publicPage(content,content.pages.find(p=>p.slug==='home')||content.pages.find(p=>p.slug==='songs'),version.revision);
 ---
 <Fragment set:html={html}/>

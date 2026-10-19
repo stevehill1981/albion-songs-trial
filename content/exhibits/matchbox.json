@@ -1,0 +1,22 @@
+{
+  "id": "matchbox",
+  "year": 1920,
+  "date": "1920",
+  "era": "champions",
+  "type": "objects",
+  "title": "A championship in your pocket.",
+  "deck": "An everyday object becomes a tiny piece of football history.",
+  "visual": "matchbox",
+  "body": [
+    "A commemorative matchbox cover in the club’s archive celebrates Albion’s 1920 championship. Produced by Glossoids of London, it carries blue and white stripes, championship wording and a team photograph.",
+    "The club historian draws attention to the photograph’s setting in front of the Halfords Lane stand, suggesting an image different from the more familiar champions’ portrait. Such small objects can preserve evidence that larger accounts miss. The linked source shows the actual cover; this museum’s graphic is a modern interpretation."
+  ],
+  "sources": [
+    "matchbox"
+  ],
+  "related": [
+    "champions-1920",
+    "fred-morris",
+    "programme"
+  ]
+}

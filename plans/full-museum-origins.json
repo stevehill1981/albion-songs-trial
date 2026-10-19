@@ -1,0 +1,128 @@
+{
+  "source": "Published dist plus structured curated content already rendered publicly; internal research excluded.",
+  "originalPublicVersion": 25,
+  "assets": {
+    "hawthorns.js": {
+      "bytes": 2635,
+      "sha256": "68ce9e3b239f2004c840709532dfe1fb5c4fcd92a5b5b73eeb954f2dc0e414dd"
+    },
+    "albion.js": {
+      "bytes": 830,
+      "sha256": "9f82ebd08ce506a3297fa5d7e0251adb1dd2c9cb0ef72697cb4ca4f3ba17008a"
+    },
+    "results-core.mjs": {
+      "bytes": 4474,
+      "sha256": "3743fb6a4946e02395d5ff4ba709131fb5a0ae013173cdf470f0c94225c701ec"
+    },
+    "songs.js": {
+      "bytes": 1646,
+      "sha256": "9b9b7235e12792cbb4d8d45609186d2eff8c8af105a513fdd3718dedf88d4523"
+    },
+    "styles.css": {
+      "bytes": 14262,
+      "sha256": "63bfbb23d84ff58f3ad42828f2e653e28e811597947eb277e2a5ed2571b59a6b"
+    },
+    "results.js": {
+      "bytes": 9510,
+      "sha256": "9b5c7f84afe5118deac05ed22d02d7d22dc4f227d846791811fd9e71243d2e95"
+    },
+    "hawthorns.css": {
+      "bytes": 11095,
+      "sha256": "9d38e2f4cd037df15caaaae9ac5abf4f087e194e829d345b773aefdad9d8213d"
+    },
+    "results.css": {
+      "bytes": 11217,
+      "sha256": "28fd91ae905e37181ed77f9ea4b2e0304ad1fe0a889ca7e707ab7fee06ab19e6"
+    },
+    "songs.css": {
+      "bytes": 6048,
+      "sha256": "b1f25929a453d2d2e0f4f1b6ec5ec3229db83b3a11d35be969e5e95aa033bdd9"
+    },
+    "wartime.css": {
+      "bytes": 912,
+      "sha256": "f1f9384da8c7e2389a6e45861960d07eae893706111603189c6d37a46022da1b"
+    },
+    "museum.css": {
+      "bytes": 20334,
+      "sha256": "5be6e2f7a9068b9e427f594737dea80e32173ef7013b4b5da0de69eb3813f482"
+    },
+    "wartime.js": {
+      "bytes": 3951,
+      "sha256": "9655537cc1fe26d2cce3917b6cf4ba79977827db0b2dd1a192a85ddbf62bc4bc"
+    },
+    "app.js": {
+      "bytes": 12006,
+      "sha256": "50d33c268324940f724c88bd67071d935395a1d299ad74bcb73f2cf3bcca4f9d"
+    },
+    "albion.css": {
+      "bytes": 8973,
+      "sha256": "17d49e923ae8e459a910cd7a3bb0c4b204ff45821d4c3dbee22ad0cdce4d89d3"
+    },
+    "data/historical-results.csv": {
+      "bytes": 673,
+      "sha256": "8934badc73544c81a831d3a5927eacb54ae04dcba2c8eb5cc685371ecb4e1958"
+    },
+    "data/results.json": {
+      "bytes": 1709942,
+      "sha256": "94d8af210b869017967d35e79205e4637e030770ff78cc123114e661b5b3a2b0"
+    },
+    "data/wartime-results.json": {
+      "bytes": 166309,
+      "sha256": "bcc987758dd9d2d9787147cdf3c40f22ae8724f01029942aa17d94e117b73fa9"
+    },
+    "data/results.csv": {
+      "bytes": 958075,
+      "sha256": "da7c1111638796942d05ce246d0846f8ac3578c03f2cc2e671a04439a583c196"
+    },
+    "data/wartime-results.csv": {
+      "bytes": 62395,
+      "sha256": "ec760ce3218c07a292e3d9383b3904f3d15d79568cafb12784c45b3f0b89b271"
+    },
+    "assets/hawthorns.jpg": {
+      "bytes": 830382,
+      "sha256": "4105ad580aec6b42179dc0432592c2d3f9b43128edb4fc28076c676ce5bd4150"
+    },
+    "assets/club-throstle.svg": {
+      "bytes": 4118,
+      "sha256": "f698e68b4cdd8e2c7d6add45e580edbfa6dd692c43de130cd1cf61a7db4112f3"
+    },
+    "assets/team-1888.jpg": {
+      "bytes": 119873,
+      "sha256": "41a9f1c9d19d165f1e98a947e461ff80f5665b94daecb4e9e5b14545588df04a"
+    },
+    "assets/team-1912.jpg": {
+      "bytes": 72143,
+      "sha256": "84d8a0607ead385e4d8fd54fc9551b168540c9079b6eaebe600f215dd584bab8"
+    },
+    "assets/astle-gates.jpg": {
+      "bytes": 906073,
+      "sha256": "598890ea8f143a686e7b97e7673e6bce3dc9b6f337eed6e2b834ef4cee51b2f0"
+    },
+    "assets/baggie-bird.webp": {
+      "bytes": 49178,
+      "sha256": "0e30f16dac2e9a6981cb7f99c9743bfde6af526370c9d851705631a144f850c8"
+    },
+    "assets/team-1920.jpg": {
+      "bytes": 174451,
+      "sha256": "6cc24e9f7814ee1a683af1c0433a55d2f63dae17361f8fa4cfa33088d6a79e2b"
+    },
+    "assets/hawthorns-1969.jpg": {
+      "bytes": 96070,
+      "sha256": "cfd55d46c268bec8f94fc6eec22e26fd3c4328de6cef1cd5c5ef80f89fc5fee4"
+    },
+    "assets/team-1892.jpg": {
+      "bytes": 186656,
+      "sha256": "92ffa680133086dfb9c41736385a5bd3c9861714cb7b5e728e4475b772ccbc1e"
+    },
+    "assets/favicon.svg": {
+      "bytes": 245,
+      "sha256": "bef1be93c7b9b44bb09506472fc00c6690de59ca0e01b589e93b9c9eb89db349"
+    }
+  },
+  "competitiveMatches": 5842,
+  "wartimeMatches": 266,
+  "structuredSources": [
+    "content/collection.mjs: published exhibits, eras, source links and photo credits",
+    "content/historical-results.json: the three publicly listed annulled fixtures"
+  ]
+}

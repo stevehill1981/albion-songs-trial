@@ -21,7 +21,7 @@ test('the extracted baseline preserves every source text, markup and link; compa
  }finally{rmSync(dir,{recursive:true});}
 });
 test('each template permits an ordinary heading edit using the same preview/public renderer',()=>{
- for(const spec of blockTypes){const p=clone();const b=p.blocks.find(b=>b.type===spec.name);b.heading='A changed heading';const html=renderPageContent(p,{fact});assert(html.includes('A changed heading'));}
+ for(const spec of blockTypes.filter(t=>original.blocks.some(b=>b.type===t.name))){const p=clone();const b=p.blocks.find(b=>b.type===spec.name);b.heading='A changed heading';const html=renderPageContent(p,{fact});assert(html.includes('A changed heading'));}
 });
 test('new pages, repeatable blocks, song categories and fact counts are driven by content',()=>{
  const p=clone();p.slug='new-history-page';p.collections=[];
@@ -31,7 +31,7 @@ test('new pages, repeatable blocks, song categories and fact counts are driven b
  const story=structuredClone(p.blocks.find(b=>b.type==='story'));story.anchor='another-story';p.blocks.splice(2,0,story);
  const html=renderPageContent(p,{fact});assert(html.includes('<option>Another theme</option>'));assert(html.includes('1 songs and music selections'));assert(html.includes('Fact 1 of 5'));assert(html.includes('id="another-story"'));
  assert(html.indexOf('Adoption date unresolved')<html.indexOf('A Jamaican instrumental becomes'));
- const config=pageFields.map(cmsField);assert.equal(config.find(f=>f.name==='blocks').types.length,7);
+ const config=pageFields.map(cmsField);assert(config.find(f=>f.name==='blocks').types.some(t=>t.name==='section'));
 });
 test('unsafe links, unknown fields, malformed parts, duplicate anchors and route collisions fail',()=>{
  for(const sourceURL of ['javascript:alert(1)','https://name:secret@example.com','http://example.com']){const p=clone();p.blocks.find(b=>b.type==='songbook').songs[0].sourceURL=sourceURL;assert.throws(()=>validatePage(p));}

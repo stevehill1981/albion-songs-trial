@@ -1,0 +1,41 @@
+{
+  "matches": [
+    {
+      "date": "1939-08-26",
+      "season": "1939-40",
+      "home": "Swansea Town",
+      "away": "West Bromwich Albion",
+      "hg": 1,
+      "ag": 2,
+      "competition": "Second Division — annulled",
+      "status": "Annulled",
+      "source": "https://www.wba.co.uk/club/125-years-hawthorns/24-game-never-was",
+      "dateSource": "https://www.albiontillwedie.co.uk/seasonarchive/results/1939-40.html"
+    },
+    {
+      "date": "1939-08-28",
+      "season": "1939-40",
+      "home": "Coventry City",
+      "away": "West Bromwich Albion",
+      "hg": 3,
+      "ag": 3,
+      "competition": "Second Division — annulled",
+      "status": "Annulled",
+      "source": "https://www.wba.co.uk/club/125-years-hawthorns/24-game-never-was",
+      "dateSource": "https://www.albiontillwedie.co.uk/seasonarchive/results/1939-40.html"
+    },
+    {
+      "date": "1939-09-02",
+      "season": "1939-40",
+      "home": "West Bromwich Albion",
+      "away": "Tottenham Hotspur",
+      "hg": 3,
+      "ag": 4,
+      "competition": "Second Division — annulled",
+      "status": "Annulled",
+      "source": "https://www.wba.co.uk/club/125-years-hawthorns/24-game-never-was",
+      "dateSource": "https://www.albiontillwedie.co.uk/seasonarchive/results/1939-40.html"
+    }
+  ],
+  "note": "Played matches from the annulled 1939/40 league campaign. Kept outside competitive ledger and head-to-head totals. Swansea Town retains its contemporary name."
+}

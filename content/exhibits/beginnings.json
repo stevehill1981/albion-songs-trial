@@ -1,0 +1,23 @@
+{
+  "id": "beginnings",
+  "year": 1878,
+  "date": "1878",
+  "era": "roots",
+  "type": "stories",
+  "title": "It starts at the spring works.",
+  "deck": "Young workers, a football and the beginning of Albion.",
+  "image": "team-1888",
+  "imageNote": "The team pictured ten years later, in 1888.",
+  "body": [
+    "The club that became West Bromwich Albion was formed in 1878 by young workers at George Salter’s spring factory. Its first identity was West Bromwich Strollers; the Albion name followed.",
+    "The club’s own history presents the walk to Wednesbury to buy a ball as a legend, rather than an established record. What is certain is how quickly the team grew: within a decade, Albion were FA Cup winners and members of the new Football League."
+  ],
+  "sources": [
+    "history"
+  ],
+  "related": [
+    "cup-1888",
+    "stoney-lane",
+    "bassett"
+  ]
+}

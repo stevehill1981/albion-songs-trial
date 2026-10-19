@@ -1,0 +1,114 @@
+{
+  "menus": {
+    "home": [
+      {
+        "label": "The eras",
+        "href": "#history"
+      },
+      {
+        "label": "The collection",
+        "href": "#collection"
+      },
+      {
+        "label": "Results & rivals",
+        "href": "/results.html"
+      },
+      {
+        "label": "The silverware",
+        "href": "#trophies"
+      },
+      {
+        "label": "The Hawthorns",
+        "href": "/hawthorns.html"
+      },
+      {
+        "label": "Songs & culture",
+        "href": "/songs.html"
+      }
+    ],
+    "hawthorns": [
+      {
+        "label": "The eras",
+        "href": "/index.html#history"
+      },
+      {
+        "label": "The collection",
+        "href": "/index.html#collection"
+      },
+      {
+        "label": "The silverware",
+        "href": "/index.html#trophies"
+      },
+      {
+        "label": "Results & rivals",
+        "href": "/results.html"
+      },
+      {
+        "label": "The Hawthorns",
+        "href": "/hawthorns.html"
+      },
+      {
+        "label": "Songs & culture",
+        "href": "/songs.html"
+      }
+    ],
+    "results": [
+      {
+        "label": "The eras",
+        "href": "/index.html#history"
+      },
+      {
+        "label": "The collection",
+        "href": "/index.html#collection"
+      },
+      {
+        "label": "The Hawthorns",
+        "href": "/hawthorns.html"
+      },
+      {
+        "label": "Results & rivals",
+        "href": "/results.html"
+      }
+    ],
+    "wartime": [
+      {
+        "label": "The eras",
+        "href": "/index.html#history"
+      },
+      {
+        "label": "The collection",
+        "href": "/index.html#collection"
+      },
+      {
+        "label": "The Hawthorns",
+        "href": "/hawthorns.html"
+      },
+      {
+        "label": "Results & rivals",
+        "href": "/results.html"
+      }
+    ],
+    "songs": [
+      {
+        "label": "The eras",
+        "href": "/#history"
+      },
+      {
+        "label": "The collection",
+        "href": "/#collection"
+      },
+      {
+        "label": "Songs & culture",
+        "href": "/songs"
+      },
+      {
+        "label": "Results & rivals",
+        "href": "/results.html"
+      },
+      {
+        "label": "The Hawthorns",
+        "href": "/hawthorns.html"
+      }
+    ]
+  }
+}
