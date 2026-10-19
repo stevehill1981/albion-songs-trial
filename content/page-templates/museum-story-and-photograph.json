@@ -39,9 +39,9 @@
       "type": "section",
       "anchor": "story-section",
       "navLabel": "",
-      "heading": "",
-      "background": "white",
-      "spacing": "standard",
+      "heading": "From the museum archive",
+      "background": "navy",
+      "spacing": "roomy",
       "columns": [
         {
           "blocks": [
