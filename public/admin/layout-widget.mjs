@@ -6,11 +6,11 @@ export function registerLayoutWidget(){
  window.CMS.registerWidget('answer-choice',window.createClass({render(){return window.h('select',{id:this.props.forID,value:this.props.value??0,onChange:e=>this.props.onChange(Number(e.target.value)),className:this.props.classNameWrapper},...[0,1,2,3,4,5].map(i=>window.h('option',{key:i,value:i},`Answer ${i+1}`)));}}));
  const List=window.CMS.getWidget('list').control;
  const Control=window.createClass({
-  getInitialState(){return{library:[],selected:'',message:''};},
+  getInitialState(){return{library:[],selected:'',message:'',listRevision:0};},
   componentDidMount(){this.live=true;fetch('/admin/layout-library.json').then(r=>{if(!r.ok)throw Error();return r.json();}).then(library=>{if(this.live)this.setState({library});}).catch(()=>{if(this.live)this.setState({message:'Saved layouts are unavailable. You can still arrange blocks manually.'});});},
   componentWillUnmount(){this.live=false;},
   isValid(){try{validatePage({slug:'layout-check',title:'Layout',description:'Layout',collections:[],blocks:plain(this.props.value)});return true;}catch(e){return{error:{message:e.message}};}},
-  apply(blocks){const copied=cloneLayout(blocks);validatePage({slug:'layout-check',title:'Layout',description:'Layout',collections:[],blocks:copied});this.props.onChange(toEditorValue(copied,this.props.field));this.setState({message:'Layout copied. This page has its own independent blocks; save a draft and preview before publishing.'});},
+  apply(blocks){const copied=cloneLayout(blocks);validatePage({slug:'layout-check',title:'Layout',description:'Layout',collections:[],blocks:copied});this.props.onChange(toEditorValue(copied,this.props.field));this.setState({listRevision:this.state.listRevision+1,message:'Layout copied. This page has its own independent blocks; save a draft and preview before publishing.'});},
   render(){
    const selected=this.state.library.find(item=>item.key===this.state.selected);
    return window.h('div',{},
@@ -22,7 +22,7 @@ export function registerLayoutWidget(){
      window.h('p',{role:'status'},this.state.message),
      window.h('p',{},'Template copies are independent. Changing a saved template affects future copies only. Layouts keep their text and links: replace sample content before publishing.')
     ),
-    window.h(List,{...this.props,field:this.props.field.set('widget','list')})
+    window.h(List,{...this.props,key:this.state.listRevision,field:this.props.field.set('widget','list')})
    );
   }
  });
