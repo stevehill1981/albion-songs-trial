@@ -51,9 +51,11 @@ test('incomplete image previews cannot introduce executable credit links or mark
 });
 
 test('image control forwards media updates and resolves draft assets before public URLs',async()=>{
- const {registerImageWidget}=await import('../public/admin/image-widget.mjs');
+ const dir=await mkdtemp(join(tmpdir(),'albion-image-widget-'));
  let control;const requested=[];const previous=globalThis.window;
  try{
+  await cp('public/admin/image-widget.mjs',join(dir,'image-widget.mjs'));await cp('src/lib/image-paths.mjs',join(dir,'image-paths.mjs'));
+  const {registerImageWidget}=await import(pathToFileURL(join(dir,'image-widget.mjs')));
   globalThis.window={CMS:{getWidget:()=>({control:function NativeImage(){}}),registerWidget:(_name,definition)=>{control=definition;}},createClass:definition=>definition,h:(type,props,...children)=>({type,props,children})};
   registerImageWidget();
   const instance={...control,props:{value:'/uploads/new-photo.jpg',field:{set(){return this;}},getAsset:path=>{requested.push(path);return{toString:()=> 'blob:local-draft',fileObj:{size:100}};}},state:control.getInitialState(),setState(update){Object.assign(this.state,update);}};
@@ -62,5 +64,5 @@ test('image control forwards media updates and resolves draft assets before publ
   const tree=instance.render();tree.children.find(node=>node?.type==='img').props.onLoad({currentTarget:{naturalWidth:675,naturalHeight:492}});
   assert.equal(instance.state.dimensions,'675 × 492 pixels');assert.equal(instance.isValid(),true);
   instance.props.value='https://untrusted.example/image.jpg';instance.resolveImage();assert.doesNotThrow(()=>instance.render());assert(instance.isValid().error);
- }finally{globalThis.window=previous;}
+ }finally{globalThis.window=previous;await rm(dir,{recursive:true,force:true});}
 });

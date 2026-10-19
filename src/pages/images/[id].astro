@@ -5,6 +5,6 @@ import {escapeHTML as esc} from '../../lib/fact.mjs';
 import version from '../../../public/version.json';
 export async function getStaticPaths(){const content=await loadContent();return content.photoEntries.map(photo=>({params:{id:photo.id},props:{photo,content}}));}
 const {photo,content}=Astro.props;
-const html=renderListing(content.shell,{title:photo.caption,description:photo.alt,revision:version.revision,body:`<section class="wrap section"><a href="/images">← Photographs &amp; credits</a><h1>${esc(photo.caption)}</h1>${renderPhoto(photo)}<p>${photo.width.toLocaleString()} × ${photo.height.toLocaleString()} pixels</p><p><a href="/admin/#/collections/photographs/entries/${esc(photo.id)}">Edit this photograph and its credits</a></p></section>`}).replace('</head>','<link rel="stylesheet" href="/image-library.css"></head>');
+const html=renderListing(content.shell,{title:photo.caption,description:photo.alt,revision:version.revision,body:`<section class="wrap section image-library-page"><a href="/images">← Photographs &amp; credits</a><h1>${esc(photo.caption)}</h1>${renderPhoto(photo)}<p>${photo.width.toLocaleString()} × ${photo.height.toLocaleString()} pixels</p><p><a href="/admin/#/collections/photographs/entries/${esc(photo.id)}">Edit this photograph and its credits</a></p></section>`}).replace('</head>','<link rel="stylesheet" href="/image-library.css"></head>');
 ---
 <Fragment set:html={html}/>
