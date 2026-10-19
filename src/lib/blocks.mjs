@@ -94,9 +94,10 @@ export function validateBlock(block){
 }
 export function validatePage(page){
  validateFields(page,pageFields,'Page');page.collections??=[];validateIdentifier(page.slug);
- const reserved=['admin','assets','pages','collections','publication','version','index'];
+ const reserved=['admin','assets','pages','collections','publication','version','index','templates','data','uploads'];
  if(reserved.includes(page.slug))throw Error('That page address is reserved.');
  const all=page.blocks.flatMap(b=>b.type==='section'?[b,...b.columns.flatMap(c=>c.blocks)]:[b]);
+ if(all.some(b=>b.type==='results-ledger')!==all.some(b=>b.type==='results-div-2'))throw Error('Keep the results ledger and its source-status section together.');
  const heroes=all.filter(b=>b.type==='intro'||patterns.find(p=>p.name===b.type)?.hero);
  if(heroes.length!==1||heroes[0]!==page.blocks[0])throw Error('Start each page with one introduction.');
  const anchors=all.filter(b=>b.anchor).map(b=>b.anchor);

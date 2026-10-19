@@ -20,3 +20,14 @@ test('editable quiz data round-trips safely through the built document',async()=
  const raw=html.match(/<script id="quiz-data" type="application\/json">([\s\S]*?)<\/script>/)[1];
  assert(!raw.includes('<'));assert.equal(JSON.parse(raw)[0].question,c.quiz.questions[0].question);
 });
+test('reused interactive sections retain their controls and page routes remain distinct',async()=>{
+ const c=await loadContent();
+ const result=c.pages.find(p=>p.slug==='results');
+ assert.throws(()=>validatePage({...result,blocks:result.blocks.filter(b=>b.type!=='results-div-2')}),/source-status section together/);
+ const home=c.pages.find(p=>p.slug==='home');const intro=c.pages.find(p=>p.slug==='songs').blocks[0];
+ const standalone={slug:'new-quiz',title:'New quiz',description:'A standalone quiz',collections:[],blocks:[intro,home.blocks.find(b=>b.type==='home-quiz')]};
+ const html=publicPage(c,standalone,'check');assert(html.includes('id="quiz-data"'));assert(html.includes('src="/app.js"'));
+ for(const slug of ['templates','data','uploads'])assert.throws(()=>validatePage({...standalone,slug}),/reserved/);
+ const story={...standalone,blocks:[intro,result.blocks.find(b=>b.type==='results-rival-villa')]};
+ assert(!publicPage(c,story,'check').includes('src="/results.js"'));
+});

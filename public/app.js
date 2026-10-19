@@ -1,6 +1,6 @@
 'use strict';
 const escapeQuiz = value => value.replace(/[&<>"']/g, char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-const questions = JSON.parse(document.querySelector('#quiz-data')?.textContent || '[]').map(q=>({...q,question:escapeQuiz(q.question),explanation:escapeQuiz(q.explanation),answers:q.answers.map(escapeQuiz)}));
+const questions = JSON.parse(document.querySelector('#quiz-data')?.textContent || '[]').map(q=>({...q,question:escapeQuiz(q.question),answers:q.answers.map(escapeQuiz)}));
 const quiz = document.querySelector('#quiz-box');
 let current = 0;
 let score = 0;
@@ -40,6 +40,8 @@ if(quiz && questions.length) renderQuiz();
   const more = document.querySelector('#show-more');
   const reading = document.querySelector('#reading');
   const collection = document.querySelector('#collection');
+  if (!grid || !reading || !chapters.length) return;
+  const pageTitle = document.title;
   let category = 'all';
   let limit = 12;
   let chapter = 0;
@@ -123,7 +125,7 @@ if(quiz && questions.length) renderQuiz();
         selected.querySelector('h2').focus({ preventScroll: true });
       }
     } else {
-      document.title = 'Albion, through the years — Marie’s interactive club museum';
+      document.title = pageTitle;
       if (wantsExhibit && focus) { reading.scrollIntoView({ behavior:'instant' }); document.querySelector('#missing-exhibit').focus({ preventScroll: true }); }
       else if (wasReading && focus && hash === 'collection') {
         collection.scrollIntoView({ behavior: 'instant' });
