@@ -44,7 +44,7 @@ collections:
       - name: blue-vinyl
         label: Baggie Bird — Albion on blue vinyl
         file: content/fact.json
-        preview_path: songs#terrace-facts
+        preview_path: songs
         fields:
           - {label: Heading, name: title, widget: string}
           - {label: Fact, name: text, widget: text}
