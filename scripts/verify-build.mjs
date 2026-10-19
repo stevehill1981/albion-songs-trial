@@ -11,4 +11,13 @@ for (const page of ['build/index.html','build/songs.html']) {
   const text = value => value.replace(/\s+/g,' ').trim();
   assert.equal(text(html),text(expected),`Rendered page diverged from retained Songs markup: ${page}`);
 }
+const preview=JSON.parse(await readFile('build/admin/preview-template.json','utf8')).html;
+assert.equal(preview.split('<!-- EDITABLE_FACT -->').length,2);
+assert(preview.includes('src="/assets/baggie-bird.webp"'));
+assert(!preview.includes('fact-controls'));
+assert(!preview.includes('<article'), 'Only the editable fact is included in the focused preview.');
+const previewWithFact=preview.replace('<!-- EDITABLE_FACT -->',renderFact(fact));
+assert(previewWithFact.includes(renderFact(fact)) && expected.includes(renderFact(fact)));
+assert.equal(await readFile('build/admin/fact.mjs','utf8'),await readFile('src/lib/fact.mjs','utf8'));
 console.log('PASS: both built routes preserve the retained Songs page and render the validated editorial fact.');
+console.log('PASS: the styled editor preview uses the public page’s exact fact renderer, template and image.');
