@@ -6,7 +6,7 @@
   "blocks": [
     {
       "type": "intro",
-      "heading": "Build a page with Marie.",
+      "heading": "Build your first Albion page.",
       "emphasiseLastLine": false,
       "text": "Try a heading, some text and a photograph. In the editor, these blocks preview using the same Astro components as this page.",
       "buttonLabel": "",
