@@ -1,0 +1,8 @@
+---
+import { loadContent,publicPage } from '../lib/content.mjs';
+import version from '../../public/version.json';
+export async function getStaticPaths(){const content=await loadContent();return content.pages.map(page=>({params:{slug:page.slug},props:{page,content}}));}
+const {page,content}=Astro.props;
+const html=publicPage(content,page,version.revision);
+---
+<Fragment set:html={html}/>

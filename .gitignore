@@ -11,3 +11,5 @@ public/admin/fact.mjs
 public/admin/preview-template.json
 public/version.json
 public/publication.html
+public/admin/blocks.mjs
+public/admin/preview-context.json

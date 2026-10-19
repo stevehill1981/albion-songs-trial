@@ -1,6 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { writeFile } from 'node:fs/promises';
 import { waitForRevision } from './served-revision.mjs';
+import { loadContent } from '../src/lib/content.mjs';
 const sha=process.env.GITHUB_SHA;
 const repo=process.env.GITHUB_REPOSITORY;
 const branch=process.env.GITHUB_REF_NAME;
@@ -19,7 +20,8 @@ try {
   const candidates=[...output.matchAll(/https:\/\/[a-zA-Z0-9.-]+\.workers\.dev/g)].map(x=>x[0]);
   const url=draft?candidates.find(x=>!x.includes('://albion-songs-trial.')):'https://albion-songs-trial.steve-e85.workers.dev';
   if(!url) throw Error('Cloudflare did not return a draft version URL.');
-  await waitForRevision(url,sha);
+  const content=await loadContent();
+  await waitForRevision(url,sha,{routes:['/pages',...content.pages.map(p=>`/${p.slug}`),...content.collections.map(c=>`/collections/${c.slug}`)]});
   await status('success',draft ? url : `${url}/songs#terrace-facts`,draft?'This exact draft is ready to preview.':'This revision is live.');
   await writeFile(process.env.GITHUB_STEP_SUMMARY||'/dev/null',`[${draft?'Preview this draft':'View the published Songs page'}](${url}/songs#terrace-facts)\n\nVerified served revision: ${sha}\n`);
 } catch(error) {

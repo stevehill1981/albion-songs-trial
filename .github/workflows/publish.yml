@@ -21,11 +21,9 @@ jobs:
       - uses: actions/setup-node@v7.1.0
         with:
           node-version: 24.22.0
-      - name: Limit CMS drafts to the editable fact
+      - name: Limit CMS drafts to page, collection and shared fact content
         if: startsWith(github.ref_name, 'cms/')
-        run: |
-          git diff --name-only origin/main...HEAD > changed-files.txt
-          node --input-type=module -e "import{readFileSync}from'node:fs';const files=readFileSync('changed-files.txt','utf8').trim().split('\n');if(files.length!==1||files[0]!=='content/fact.json')throw Error('CMS drafts may change only the trial fact.');"
+        run: node scripts/check-editorial-diff.mjs
       - run: npm ci --no-fund --no-audit
       - run: npm test
       - run: npm run build

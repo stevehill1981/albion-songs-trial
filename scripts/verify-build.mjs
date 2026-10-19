@@ -1,23 +1,24 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { renderFact } from '../src/lib/fact.mjs';
-const template = await readFile('legacy/songs.html','utf8');
-assert.equal(template.split('<!-- EDITABLE_FACT -->').length,2);
-const fact = JSON.parse(await readFile('content/fact.json','utf8'));
+import {loadContent,publicPage} from '../src/lib/content.mjs';
+const content=await loadContent();
 const version=JSON.parse(await readFile('public/version.json','utf8'));
-const expected = template.replace('<!-- EDITABLE_FACT -->',renderFact(fact)).replace('</head>',`<meta name="trial-revision" content="${version.revision}"></head>`);
-for (const page of ['build/index.html','build/songs.html']) {
-  const html = await readFile(page,'utf8');
-  const text = value => value.replace(/\s+/g,' ').trim();
-  assert.equal(text(html),text(expected),`Rendered page diverged from retained Songs markup: ${page}`);
+const norm=s=>s.replace(/\s+/g,' ').trim();
+for(const page of content.pages){
+ const actual=await readFile(`build/${page.slug}.html`,'utf8');
+ assert.equal(norm(actual),norm(publicPage(content,page,version.revision)),`Built ${page.slug} differs from its validated content.`);
+ assert(actual.includes(`<meta name="trial-revision" content="${version.revision}">`));
 }
-const preview=JSON.parse(await readFile('build/admin/preview-template.json','utf8')).html;
-assert.equal(preview.split('<!-- EDITABLE_FACT -->').length,2);
-assert(preview.includes('src="/assets/baggie-bird.webp"'));
-assert(!preview.includes('fact-controls'));
-assert(!preview.includes('<article'), 'Only the editable fact is included in the focused preview.');
-const previewWithFact=preview.replace('<!-- EDITABLE_FACT -->',renderFact(fact));
-assert(previewWithFact.includes(renderFact(fact)) && expected.includes(renderFact(fact)));
-assert.equal(await readFile('build/admin/fact.mjs','utf8'),await readFile('src/lib/fact.mjs','utf8'));
-console.log('PASS: both built routes preserve the retained Songs page and render the validated editorial fact.');
-console.log('PASS: the styled editor preview uses the public page’s exact fact renderer, template and image.');
+assert.equal(norm(await readFile('build/index.html','utf8')),norm(await readFile('build/songs.html','utf8')));
+const index=await readFile('build/pages.html','utf8');
+for(const c of content.collections){
+ const html=await readFile(`build/collections/${c.slug}.html`,'utf8');
+ assert(index.includes(`/collections/${c.slug}`));
+ for(const p of content.pages.filter(p=>p.collections.includes(c.slug)))assert(html.includes(`href="/${p.slug}"`));
+}
+for(const name of ['blocks','fact'])assert.equal(await readFile(`build/admin/${name}.mjs`,'utf8'),await readFile(`src/lib/${name}.mjs`,'utf8'));
+const config=JSON.parse(await readFile('build/admin/config.yml','utf8'));
+assert(config.collections.find(c=>c.name==='pages').create);
+assert(config.collections.find(c=>c.name==='pages').fields.find(f=>f.name==='blocks').types.length===7);
+assert(config.collections.every(c=>!JSON.stringify(c).includes('markdown')));
+console.log(`PASS: all ${content.pages.length} pages, collection membership, root alias and shared preview renderers verified from build output.`);
