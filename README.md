@@ -36,6 +36,35 @@ Competitive and wartime JSON/CSV, computed totals, evidence labels and saved res
 
 Marie needs her own GitHub account with repository write access, but no Cloudflare login. Her independent usability acceptance remains pending until she can complete editing, preview and publication herself.
 
+## Managing the museum from Claude
+
+The remote museum connector is implemented and tested locally; hosted setup and Claude acceptance are still pending. It shares the existing authentication Worker. After the owner setup below, its URL is **https://albion-songs-auth.steve-e85.workers.dev/mcp**.
+
+Claude currently supports custom remote MCP connectors on Free, Pro, Max, Team and Enterprise; Free has one custom connector slot. Normal Claude usage limits still apply. This connector calls no paid AI API. See [Claude’s connector documentation](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
+
+Owner setup, after this change merges:
+
+1. Sign into the project’s cf CLI: `mise exec node@24.9.0 -- cf auth login`. Do not share tokens or credentials in chat.
+2. From this checkout on clean, checked `main`, run `mise exec node@24.22.0 -- node scripts/setup-mcp.mjs`. It selects the existing repository’s Cloudflare account, reuses or creates the classic `albion-museum-oauth` KV namespace, packages the auth Worker and deploys with automatic provisioning disabled. Existing GitHub app secrets are retained by the pinned cf CLI. No new GitHub OAuth app is required.
+3. Retain `auth/mcp-config.json`, including after a failed setup. It contains resource identifiers, not secrets; commit its reference through a normal checked PR. The script verifies deployed discovery, rejected unauthenticated requests, exact revision and retained visual-editor sign-in. It does not verify an authorised Claude session.
+4. In Claude’s Connectors settings, add a custom connector named **Albion museum** with the URL above. Connect, review the museum consent page and sign into GitHub. Use Claude’s published OAuth identity when available, or automatic client registration. No API key belongs in the chat. Marie needs her own GitHub login with repository write access; no Cloudflare membership.
+5. Test a real owner-account read, draft, checked preview and publication in Claude before handing it to Marie. Her independent acceptance remains separate.
+
+Useful instructions for Marie:
+
+- “Show me the museum’s page templates and credited photographs.”
+- “Create a new page from the story-and-photograph template, keep its credits, and put it in this museum collection. Save a draft and show me its preview.”
+- “Read draft 17, including its content, and change the introduction. Keep the source links.”
+- “Publish the revision I just previewed.”
+
+The connector exposes eight narrow tools for guidance, reading content, listing drafts, saving, checking previews, publishing and confirming publication. Pages, saved templates and museum collections use the current validated JSON. Photographs are read-only through MCP initially; use the visual editor for credited uploads and record edits. Match records, archives, code, arbitrary repository paths and Cloudflare administration are outside its tools.
+
+MCP drafts have their own `cms/mcp/**` branches and PRs. They are listed by the connector; they do not appear as unpublished entries in Decap’s workflow. After publication their content is editable in either interface. A new draft must use the current published revision. Updates must name the current draft commit; concurrent changes are rejected. If main advances, prepare a fresh draft rather than force-pushing shared history. Source links, supported layout choices and photo references pass the same build checks as visual-editor changes.
+
+Before publication, Claude must show the checked preview and ask Marie to publish. The tool requires the exact previewed commit, passing build/deploy checks and a verified served preview; GitHub’s existing strict branch protection remains authoritative. Publication returns **publishing** until the production check and actually served revision agree. A connector prompt alone is not a security boundary: anyone already authorised to use the publish tool can invoke it; the commit and validation checks are enforced by the server.
+
+The OAuth provider issues resource-specific museum credentials and encrypts the upstream GitHub token in its grants; it never returns that token to Claude. Each content operation checks repository write access again. Browser-bound, expiring consent/state and PKCE protect sign-in. OAuth uses classic KV within [Free allowances](https://developers.cloudflare.com/kv/platform/pricing/); limits stop operations rather than upgrade a plan. Actual deployed CPU use and real Claude interoperability still require measurement and acceptance.
+
 ## Immediate Astro component preview
 
 Open **Pages → Build a page with Marie** to try the real component preview. Introductions, text panels, photographs and sections containing those blocks use the same `.astro` markup in the editor and on the published page. Changes are requested after a 400 ms pause, without saving or committing. Network and GitHub access checks add some delay. Incomplete fields keep the last successful preview visible; restore the required text to resume. Backgrounds, spacing and one to three columns remain the existing supported choices.
