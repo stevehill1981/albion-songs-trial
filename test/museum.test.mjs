@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtemp,cp,readFile,writeFile,rm,mkdir} from 'node:fs/promises';
+import {mkdtemp,cp,readFile,writeFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {pathToFileURL} from 'node:url';
@@ -10,7 +10,7 @@ test('museum edits reach rendered stories while missing evidence, eras and prese
  const dir=await mkdtemp(join(tmpdir(),'albion-museum-check-'));
  try{
   await Promise.all(['content','legacy','site.json'].map(name=>cp(name,join(dir,name),{recursive:true})));
-  await mkdir(join(dir,'public'),{recursive:true});await cp('public/assets',join(dir,'public/assets'),{recursive:true});
+  await cp('public',join(dir,'public'),{recursive:true});
   const root=pathToFileURL(dir+'/');
   const file=join(dir,'content/exhibits/jeff-astle.json');const original=JSON.parse(await readFile(file,'utf8'));
   const edited={...original,body:['A new sourced paragraph with <angle brackets>.',...original.body.slice(1)]};
