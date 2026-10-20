@@ -1,0 +1,145 @@
+{
+  "slug": "manager-steve-clarke",
+  "title": "Steve Clarke · Albion managers",
+  "description": "A sourced Albion profile of Steve Clarke, with separate spells and documented match boundaries.",
+  "collections": [
+    "managers"
+  ],
+  "blocks": [
+    {
+      "buttonLabel": "",
+      "caption": [
+        {
+          "text": "The Hawthorns, December 2013 · dom fellowes · ",
+          "type": "text"
+        },
+        {
+          "text": "CC BY 2.0",
+          "type": "link",
+          "url": "https://creativecommons.org/licenses/by/2.0/"
+        },
+        {
+          "text": ". Cropped. ",
+          "type": "text"
+        },
+        {
+          "text": "Image source",
+          "type": "link",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Hawthorns_2013-12-21.jpg"
+        },
+        {
+          "text": ".",
+          "type": "text"
+        }
+      ],
+      "emphasiseLastLine": false,
+      "heading": "Steve Clarke",
+      "imageAlt": "The Hawthorns under floodlights, with supporters around the pitch",
+      "text": "The people in Albion’s dugout. A sourced profile in our growing managers collection.",
+      "type": "intro"
+    },
+    {
+      "type": "manager-performance",
+      "anchor": "performance",
+      "navLabel": "Recorded results",
+      "heading": "Albion’s recorded results",
+      "manager": "steve-clarke"
+    },
+    {
+      "type": "text-panel",
+      "anchor": "chapter-1",
+      "navLabel": "",
+      "heading": "Before and at Albion",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "From Saltcoats in Ayrshire, Clarke played for St Mirren and Chelsea before a coaching career that included Chelsea and West Ham."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Chelsea: Steve Clarke",
+          "url": "https://www.chelseafc.com/en/steve-clarke"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "chapter-2",
+      "navLabel": "",
+      "heading": "The Albion story",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Albion appointed the former Liverpool assistant on 8 June 2012. His first season ended in eighth place with 49 Premier League points; the final match was the extraordinary 5–5 draw with Manchester United."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Sky Sports: appointment, 8 June 2012",
+          "url": "https://www.skysports.com/football/news/7800271/clarke-takes-baggies-job"
+        },
+        {
+          "label": "Albion: 5–5 Manchester United, 19 May 2013",
+          "url": "https://www.wba.co.uk/news/2013/may/albion-5-man-utd-5"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "chapter-3",
+      "navLabel": "",
+      "heading": "The next chapter",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "His spell ended on 14 December 2013, after the defeat at Cardiff. Keith Downing took interim charge."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "ITV: dismissal, 14 December 2013",
+          "url": "https://www.itv.com/news/update/2013-12-14/west-brom-manager-sacked-after-premier-league-losses/"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "scope",
+      "navLabel": "",
+      "heading": "About this profile",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "This is one of three researched profiles in a growing collection, not a complete history of Albion’s managers. Competitive results, wartime and recovery football, and annulled fixtures have separate ledgers. Recorded-match totals do not automatically establish a manager’s full career record."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Browse the match archive",
+          "url": "https://albion-songs-trial.steve-e85.workers.dev/results?season=all"
+        },
+        {
+          "label": "Explore the managers collection",
+          "url": "https://albion-songs-trial.steve-e85.workers.dev/collections/managers"
+        }
+      ]
+    }
+  ]
+}

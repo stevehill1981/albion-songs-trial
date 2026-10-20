@@ -38,6 +38,9 @@ const norm=html=>html.replace(/\s+/g,' ').trim();
  for(const columns of [1,2,3])for(const background of ['white','navy','pale-blue']){
   const p=structuredClone(page);const section=p.blocks[1];section.background=background;section.columns=Array.from({length:columns},(_,i)=>({blocks:[{type:'text-panel',anchor:`column-${i}`,navLabel:'',heading:`Column ${i+1}`,paragraphs:[{parts:[{type:'text',text:'A real Astro component.'}]}],sources:[]}]}));variants.push(p);
  }
+ for(const id of ['darren-moore','steve-clarke','tony-mowbray'])variants.push(JSON.parse(await readFile(`content/pages/manager-${id}.json`,'utf8')));
+ const switched=structuredClone(variants.at(-1));switched.blocks[1].manager='darren-moore';variants.push(switched);
+ const column=structuredClone(page);column.blocks[1].background='navy';column.blocks[1].columns=[{blocks:[{type:'manager-performance',anchor:'performance',navLabel:'',heading:'Recorded results',manager:'darren-moore'}]}];variants.push(column);
  const button=structuredClone(page);button.blocks[0].buttonLabel='Explore';variants.push(button);
  for(const draft of variants){
   const response=await send(draft);assert.equal(response.status,200,(await response.clone().text())+' '+JSON.stringify(seen));assert.equal(response.headers.get('X-Albion-Renderer'),'astro-components');assert.equal(response.headers.get('Cache-Control'),'no-store');
@@ -45,6 +48,8 @@ const norm=html=>html.replace(/\s+/g,' ').trim();
  }
  const unsafe=structuredClone(page);unsafe.blocks[0].heading='<script>alert(1)</script>';const escaped=await send(unsafe);assert.equal(escaped.status,200);const html=await escaped.text();assert(!html.includes('<script>'));assert(html.includes('&lt;script&gt;'));
  const missing=structuredClone(page);missing.blocks[1].columns[1].blocks[0].photograph='not-published';assert.equal((await send(missing)).status,422);
+ const unknown=structuredClone(switched);unknown.blocks[1].manager='missing';assert.equal((await send(unknown)).status,422);
+ const forged=structuredClone(switched);forged.blocks[1].summary={played:999};assert.equal((await send(forged)).status,422);
  allowed=false;assert.equal((await send(page)).status,403);
  console.log(`PASS: compiled Astro/workerd renders ${variants.length+1} draft variants with matching markup; authentication, missing images, colours, columns and escaping checked.`);
 }finally{await runtime?.dispose();await rm(temp,{recursive:true,force:true});}

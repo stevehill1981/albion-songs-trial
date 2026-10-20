@@ -1,0 +1,149 @@
+{
+  "slug": "manager-tony-mowbray",
+  "title": "Tony Mowbray · Albion managers",
+  "description": "A sourced Albion profile of Tony Mowbray, with separate spells and documented match boundaries.",
+  "collections": [
+    "managers"
+  ],
+  "blocks": [
+    {
+      "buttonLabel": "",
+      "caption": [
+        {
+          "text": "The Hawthorns, December 2013 · dom fellowes · ",
+          "type": "text"
+        },
+        {
+          "text": "CC BY 2.0",
+          "type": "link",
+          "url": "https://creativecommons.org/licenses/by/2.0/"
+        },
+        {
+          "text": ". Cropped. ",
+          "type": "text"
+        },
+        {
+          "text": "Image source",
+          "type": "link",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Hawthorns_2013-12-21.jpg"
+        },
+        {
+          "text": ".",
+          "type": "text"
+        }
+      ],
+      "emphasiseLastLine": false,
+      "heading": "Tony Mowbray",
+      "imageAlt": "The Hawthorns under floodlights, with supporters around the pitch",
+      "text": "The people in Albion’s dugout. A sourced profile in our growing managers collection.",
+      "type": "intro"
+    },
+    {
+      "type": "manager-performance",
+      "anchor": "performance",
+      "navLabel": "Recorded results",
+      "heading": "Albion’s recorded results",
+      "manager": "tony-mowbray"
+    },
+    {
+      "type": "text-panel",
+      "anchor": "chapter-1",
+      "navLabel": "",
+      "heading": "Before and at Albion",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Mowbray led Albion to the 2007/08 Championship title. His first spell began with a 3–0 home win over Wolves in October 2006 and ended with a goalless draw at Blackburn in May 2009."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Albion: first-spell match boundaries and retrospective totals",
+          "url": "https://www.wba.co.uk/news/tony-mowbrays-managerial-career-numbers"
+        },
+        {
+          "label": "Albion: appointment and Brunt handover, 17 January 2025",
+          "url": "https://www.wba.co.uk/news/tony-mowbray-appointed-albion-head-coach"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "chapter-2",
+      "navLabel": "",
+      "heading": "The Albion story",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Albion announced his return on 17 January 2025, but Chris Brunt still took the Stoke match the following day. Mowbray’s first match back was at Middlesbrough on 21 January."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Albion: appointment and Brunt handover, 17 January 2025",
+          "url": "https://www.wba.co.uk/news/tony-mowbray-appointed-albion-head-coach"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "chapter-3",
+      "navLabel": "",
+      "heading": "The next chapter",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "His second spell ended on 21 April 2025 after the home defeat by Derby. James Morrison took interim charge."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Albion: departure, 21 April 2025",
+          "url": "https://www.wba.co.uk/news/club-statement-tony-mowbray"
+        },
+        {
+          "label": "Albion: Derby match report, 21 April 2025",
+          "url": "https://www.wba.co.uk/news/albion-1-3-derby-county"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "scope",
+      "navLabel": "",
+      "heading": "About this profile",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "This is one of three researched profiles in a growing collection, not a complete history of Albion’s managers. Competitive results, wartime and recovery football, and annulled fixtures have separate ledgers. Recorded-match totals do not automatically establish a manager’s full career record."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Browse the match archive",
+          "url": "https://albion-songs-trial.steve-e85.workers.dev/results?season=all"
+        },
+        {
+          "label": "Explore the managers collection",
+          "url": "https://albion-songs-trial.steve-e85.workers.dev/collections/managers"
+        }
+      ]
+    }
+  ]
+}

@@ -20,7 +20,7 @@ export function createArchiveClient(fetcher=fetch){
   fail(LEDGERS.every(key=>manifest.ledgers?.[key]),'The archive manifest is incomplete.');return manifest;
  }
  const asset=ref=>{fail(ref&&/^files\/[a-f0-9]{64}\.json$/.test(ref.path)&&ref.path===`files/${ref.sha256}.json`&&Number.isSafeInteger(ref.bytes)&&ref.bytes>0&&ref.bytes<=192*1024,'Invalid archive asset reference.');return json(fetcher,root+ref.path,ref);};
- function provenance(manifest,ledger){const source=manifest.ledgers[ledger];return {revision:manifest.revision,ledger,sourcePath:source.sourcePath,sourceSha256:source.sourceSha256,coverageURL:site.origin+root+source.coverage.path,limitations:'Published snapshot, not live. Coverage and outstanding discrepancies are documented by archive_coverage. Keep competitive, wartime/recovery and annulled totals separate. Unclassified evidence does not mean corroborated.'};}
+ function provenance(manifest,ledger){const source=manifest.ledgers[ledger];return {revision:manifest.revision,ledger,sourcePath:source.sourcePath,sourceSha256:source.sourceSha256,checkedAt:source.checkedAt,currentSeason:source.currentSeason,coverageURL:site.origin+root+source.coverage.path,limitations:'Published snapshot, not live. Coverage and outstanding discrepancies are documented by archive_coverage. Keep competitive, wartime/recovery and annulled totals separate. Unclassified evidence does not mean corroborated.'};}
  async function query(input,includeMatches){
   const filters=validateQuery(input),manifest=await snapshot(),entry=manifest.ledgers[filters.ledger];
   const catalog=await asset(entry);fail(catalog.ledger===filters.ledger&&Array.isArray(catalog.groups),'Wrong archive catalog.');
@@ -34,7 +34,7 @@ export function createArchiveClient(fetcher=fetch){
    if(residual){fail(rows.length===group.count,'The archive group is incomplete; no partial totals returned.');rows=refineMatches(rows,filters);summary=matchSummary(rows);rows=rows.slice(offset,offset+PAGE_SIZE);}
   }
   const pages=Math.ceil(summary.played/PAGE_SIZE);fail(page===1||page<=pages,'This page is outside the matched results.');
-  return {...provenance(manifest,filters.ledger),filters,summary,...(includeMatches?{page,pageSize:PAGE_SIZE,totalPages:pages,nextPage:page<pages?page+1:null,matches:rows}:{})};
+  return {...provenance(manifest,filters.ledger),filters,summary,warnings:descriptor.warnings||[],...(includeMatches?{page,pageSize:PAGE_SIZE,totalPages:pages,nextPage:page<pages?page+1:null,matches:rows}:{})};
  }
  return {
   async coverage({ledger}={}){
@@ -43,6 +43,8 @@ export function createArchiveClient(fetcher=fetch){
    const entry=manifest.ledgers[ledger],[catalog,metadata]=await Promise.all([asset(entry),asset(entry.coverage)]);
    return {...provenance(manifest,ledger),summary:entry.summary,...metadata,scopes:catalog.groups.filter(g=>g.scope!=='all').map(({scope,value,count})=>({scope,value,count})),queryRules:'Exact scope names; aliases Wolves, Villa and Birmingham are accepted. 25 matches per page, newest first. Combined queries require at most 250 candidate records. Use one season or smaller scope when asked. A missing scope is unknown coverage, not a zero result.'};
   },
+  async managers(){const manifest=await snapshot();return {revision:manifest.revision,scope:'Three researched profiles only; not the complete manager history.',managers:(manifest.managers||[]).map(({id,name})=>({id,name}))};},
+  async manager({id}){const manifest=await snapshot();const entry=manifest.managers?.find(p=>p.id===id);fail(entry,'This manager has no researched profile in the trial register.');return {revision:manifest.revision,...await asset(entry.profile)};},
   matches:input=>query(input,true),summary:input=>query(input,false),
  };
 }

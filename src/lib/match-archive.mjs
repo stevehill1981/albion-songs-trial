@@ -1,6 +1,6 @@
 import {ALBION,perspective,summarize} from '../../public/results-core.mjs';
 export const LEDGERS=['competitive','wartime','annulled'];
-export const SCOPES=['season','opponent','competition'];
+export const SCOPES=['season','opponent','competition','manager','tenure'];
 export const MAX_CANDIDATES=250;
 export const PAGE_SIZE=25;
 export class ArchiveError extends Error {}
@@ -28,7 +28,7 @@ export function matchSummary(matches){
 }
 export function archiveGroups(archive){
  const groups=[{scope:'all',value:'all',matches:archive.matches}];
- for(const scope of SCOPES){const values=new Map();for(const match of archive.matches){const value=match[scope];if(!values.has(value))values.set(value,[]);values.get(value).push(match);}for(const [value,matches]of values)groups.push({scope,value,matches});}
+ for(const scope of SCOPES){const values=new Map();for(const match of archive.matches){const value=match[scope];if(value===undefined)continue;if(!values.has(value))values.set(value,[]);values.get(value).push(match);}for(const [value,matches]of values)groups.push({scope,value,matches});}
  return groups;
 }
 export function validateQuery(query){

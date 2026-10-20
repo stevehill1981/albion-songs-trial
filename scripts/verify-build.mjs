@@ -16,7 +16,7 @@ for(const c of content.collections){
  assert(index.includes(`/collections/${c.slug}`));
  for(const p of content.pages.filter(p=>p.collections.includes(c.slug)))assert(html.includes(`href="/${p.slug}"`));
 }
-for(const name of ['blocks','fact','layout-copy','image-paths','image-library','component-preview','live-preview'])assert.equal(await readFile(`build/admin/${name}.mjs`,'utf8'),await readFile(`src/lib/${name}.mjs`,'utf8'));
+for(const name of ['blocks','fact','layout-copy','image-paths','image-library','component-preview','live-preview','manager-performance'])assert.equal(await readFile(`build/admin/${name}.mjs`,'utf8'),await readFile(`src/lib/${name}.mjs`,'utf8'));
 const config=JSON.parse(await readFile('build/admin/config.yml','utf8'));
 assert(config.collections.find(c=>c.name==='pages').create);
 assert(config.collections.find(c=>c.name==='pages').fields.find(f=>f.name==='blocks').types.some(t=>t.name==='section'));
@@ -61,4 +61,16 @@ console.log('PASS: native Astro trial content, editor modules and runtime contex
   assert.equal(catalog.groups.find(g=>g.scope==='all').count,JSON.parse(source).matches.length);
  }
  console.log('PASS: built archive lookup assets have complete pagination, matching source digests and this publication revision.');
+}
+
+{
+ const {loadManagerContent}=await import('../src/lib/manager-content.mjs');
+ const {performance}=await loadManagerContent();
+ assert.deepEqual(generated.managerPerformance,performance);
+ assert.deepEqual(JSON.parse(await readFile('build/admin/preview-context.json','utf8')).managerPerformance,performance);
+ const selectors=[];const walk=value=>{if(!value||typeof value!=='object')return;if(value.name==='manager'&&value.widget==='select')selectors.push(value);for(const child of Object.values(value))if(Array.isArray(child))child.forEach(walk);else if(child&&typeof child==='object')walk(child);};walk(config);
+ assert(selectors.length>=2,'Pages and templates must both offer manager selection.');
+ for(const field of selectors)assert.deepEqual(field.options.map(o=>o.value).sort(),Object.keys(performance.profiles).sort());
+ for(const id of Object.keys(performance.profiles)){const html=await readFile(`build/manager-${id}.html`,'utf8');assert(html.includes(`data-archive-sha="${performance.sourceSha256}"`));assert(html.includes('Match boundaries and sources'));assert(html.includes('Recorded competitive matches only.'));}
+ console.log('PASS: manager choices, public components and both preview contexts use the same calculated archive snapshot.');
 }

@@ -1,7 +1,7 @@
 import {validateComponentPage} from './component-preview.mjs';
 export const MAX_PREVIEW_BYTES=64*1024;
 const fail=(text,status,extra={})=>({response:new Response(text,{status,headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...extra}})});
-export async function preparePreviewRequest(request,fetcher=fetch,photographs){
+export async function preparePreviewRequest(request,fetcher=fetch,photographs,managerPerformance){
  if(request.method!=='POST')return fail('Use the editor to request a preview.',405,{Allow:'POST'});
  if(request.headers.get('Origin')!==new URL(request.url).origin)return fail('Unrecognised editor origin.',403);
  if(request.headers.get('Content-Type')?.split(';')[0]!=='application/json')return fail('Send draft content as JSON.',415);
@@ -24,6 +24,8 @@ export async function preparePreviewRequest(request,fetcher=fetch,photographs){
   const data=JSON.parse(body);if(!data||Object.keys(data).length!==1||!Object.hasOwn(data,'page'))return fail('Send one page to preview.',400);
   const page=validateComponentPage(data.page);
   if(photographs){const all=page.blocks.flatMap(b=>b.type==='section'?b.columns.flatMap(c=>c.blocks):[b]);if(all.some(b=>b.type==='photograph'&&!Object.hasOwn(photographs,b.photograph)))return fail('Choose a published photograph from the credited library.',422);}
+  const blocks=page.blocks.flatMap(b=>b.type==='section'?b.columns.flatMap(c=>c.blocks):[b]);
+  if(blocks.some(b=>b.type==='manager-performance'&&(!managerPerformance?.profiles||!Object.hasOwn(managerPerformance.profiles,b.manager))))return fail('Choose a published manager from the researched register.',422);
   return{page};
  }catch{return fail('Complete the required fields to update the Astro preview.',422);}
  finally{reader.releaseLock();}

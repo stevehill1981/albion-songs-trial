@@ -1,6 +1,7 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { validatePage,validateCollection,renderDocument,validateLink } from './blocks.mjs';
 import { validateFact,escapeHTML as esc } from './fact.mjs';
+import {loadManagerContent} from './manager-content.mjs';
 import { loadMuseum } from './museum-content.mjs';
 import { pathToFileURL } from 'node:url';
 export async function loadContent({root=pathToFileURL(process.cwd()+'/')}={}){
@@ -21,7 +22,9 @@ export async function loadContent({root=pathToFileURL(process.cwd()+'/')}={}){
  if(navigation)for(const items of Object.values(navigation.menus)){if(!Array.isArray(items)||!items.length)throw Error('Navigation must contain links.');for(const item of items){if(typeof item.label!=='string'||!item.label.trim())throw Error('Navigation links need labels.');validateLink(item.href);}}
  const nativeShells={};
  for(const slug of ['home','hawthorns','results','wartime'])if(pages.some(p=>p.slug===slug))nativeShells[slug]=await readFile(new URL(`legacy/${slug}-shell.html`,root),'utf8');
- return {pages,collections,fact,shell,templates,nativeShells,navigation,...museum};
+ const {performance:managerPerformance}=await loadManagerContent(root);
+ for(const page of [...pages,...templates])for(const b of page.blocks.flatMap(b=>b.type==='section'?b.columns.flatMap(c=>c.blocks):[b]))if(b.type==='manager-performance'&&!Object.hasOwn(managerPerformance.profiles,b.manager))throw Error('Choose a researched manager for the performance block.');
+ return {pages,collections,fact,shell,templates,nativeShells,navigation,managerPerformance,...museum};
 }
 export function renderListing(shell,{title,description,items=[],revision,body}){
  const content=body??`<section class="wrap section"><h1>${esc(title)}</h1><p>${esc(description)}</p><ul>${items.map(i=>`<li><h2><a href="${esc(i.href)}">${esc(i.title)}</a></h2><p>${esc(i.description)}</p></li>`).join('')}</ul></section>`;

@@ -29,3 +29,5 @@ public/admin/live-preview.mjs
 
 auth/build/
 public/data/museum-query/
+
+public/admin/manager-performance.mjs

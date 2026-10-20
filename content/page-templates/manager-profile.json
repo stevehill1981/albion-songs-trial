@@ -1,0 +1,64 @@
+{
+  "slug": "manager-profile",
+  "title": "Manager profile layout",
+  "description": "Start a sourced manager profile with calculated results, biography and tenure notes.",
+  "collections": [],
+  "blocks": [
+    {
+      "buttonLabel": "",
+      "caption": [
+        {
+          "text": "The Hawthorns, December 2013 · dom fellowes · ",
+          "type": "text"
+        },
+        {
+          "text": "CC BY 2.0",
+          "type": "link",
+          "url": "https://creativecommons.org/licenses/by/2.0/"
+        },
+        {
+          "text": ". Cropped. ",
+          "type": "text"
+        },
+        {
+          "text": "Image source",
+          "type": "link",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Hawthorns_2013-12-21.jpg"
+        },
+        {
+          "text": ".",
+          "type": "text"
+        }
+      ],
+      "emphasiseLastLine": false,
+      "heading": "A manager’s Albion story.",
+      "imageAlt": "The Hawthorns under floodlights, with supporters around the pitch",
+      "text": "Choose the researched manager in the performance block, then add a sourced biography and history. Keep open questions visible.",
+      "type": "intro"
+    },
+    {
+      "type": "manager-performance",
+      "anchor": "performance",
+      "navLabel": "Recorded results",
+      "heading": "Albion’s recorded results",
+      "manager": "steve-clarke"
+    },
+    {
+      "type": "text-panel",
+      "anchor": "biography",
+      "navLabel": "Biography and sources",
+      "heading": "A sourced Albion story",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Replace this introduction with researched history and attach the sources below. Choose the researched manager in the performance block; its figures and boundary sources update automatically. Add separate chapters or columns as the story grows."
+            }
+          ]
+        }
+      ],
+      "sources": []
+    }
+  ]
+}
