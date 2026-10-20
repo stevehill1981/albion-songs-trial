@@ -10,7 +10,8 @@ await rm(root, {recursive:true, force:true});
 const worker = `${root}/workers/default`;
 await mkdir(worker, {recursive:true});
 await writeFile(`${root}/config.json`, JSON.stringify({buildContext:{isPreview:false}}));
-const config = {name:auth ? 'albion-songs-auth' : 'albion-songs-trial', compatibilityDate:'2026-10-19', workersDev:true, observability:{enabled:false}};
+const site=JSON.parse(await readFile('site.json','utf8'));
+const config = {name:auth ? 'albion-songs-auth' : new URL(site.origin).hostname.split('.')[0], compatibilityDate:'2026-10-19', workersDev:true, observability:{enabled:false}};
 if (auth) {
   await mkdir(`${worker}/bundle`, {recursive:true});
   await import('./build-auth.mjs');

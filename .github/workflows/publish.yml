@@ -1,4 +1,4 @@
-name: Songs trial
+name: Throstle & Stripes
 on:
   push:
     branches: [main, 'cms/**', 'trial/**']

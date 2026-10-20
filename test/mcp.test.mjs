@@ -7,7 +7,7 @@ const token='unit_test_github_credential_only';
 const fixture=JSON.parse(await readFile(new URL('../content/pages/component-preview-trial.json',import.meta.url),'utf8'));
 const basePage=structuredClone(fixture);basePage.slug='museum-test';basePage.blocks[0].heading='Museum draft';
 function harness(){
- const calls=[];let allowed=true,main=MAIN,head=HEAD,checked=true,published=MAIN,missingPreview=false,extraFile=false,merged=false,existing=null,managers=[{type:"file",name:"darren-moore.json"}];
+ const calls=[];let previewTarget="https://1234abcd-throstle-and-stripes.steve-e85.workers.dev",allowed=true,main=MAIN,head=HEAD,checked=true,published=MAIN,missingPreview=false,extraFile=false,merged=false,existing=null,managers=[{type:"file",name:"darren-moore.json"}];
  const pr=()=>({number:17,state:merged?'closed':'open',changed_files:extraFile?2:1,head:{sha:head,ref:'cms/mcp/pages/museum-test/1234abcd',repo:{full_name:REPOSITORY}},base:{ref:'main'}});
  const fetcher=async(url,init={})=>{
   calls.push({url,method:init.method||'GET',body:init.body?JSON.parse(init.body):null});
@@ -29,7 +29,7 @@ function harness(){
    if(path==='/pulls/17')return Response.json(pr());
    if(path==='/pulls/17/files')return Response.json([{filename:'content/pages/museum-test.json',status:'added'},...(extraFile?[{filename:'package.json',status:'modified'}]:[])]);
    if(path==='/pulls/17/commits')return Response.json([{parents:[{sha:MAIN}]}]);
-   if(path===`/commits/${HEAD}/status`)return Response.json({statuses:checked?[{context:'albion/deploy-preview',state:'success',target_url:'https://1234abcd-albion-songs-trial.steve-e85.workers.dev'}]:[]});
+   if(path===`/commits/${HEAD}/status`)return Response.json({statuses:checked?[{context:'albion/deploy-preview',state:'success',target_url:previewTarget}]:[]});
    if(path===`/commits/${HEAD}/check-runs`)return Response.json({check_runs:checked?[{name:'Validate Songs page',status:'completed',conclusion:'success'}]:[]});
    if(path===`/commits/${MERGED}/status`)return Response.json({statuses:[{context:'albion/production',state:'success'}]});
    if(path==='/pulls/17/merge'){merged=true;return Response.json({merged:true,sha:MERGED});}
@@ -39,7 +39,7 @@ function harness(){
   if(url.endsWith('/version.json'))return Response.json({revision:url.includes('1234abcd-')?HEAD:published});
   return missingPreview?new Response('missing',{status:404}):new Response(`<meta name="trial-revision" content="${HEAD}">`);
  };
- return{client:createMuseumClient(token,fetcher),calls,set(values){({allowed=allowed,main=main,head=head,checked=checked,published=published,missingPreview=missingPreview,extraFile=extraFile,existing=existing,managers=managers}=values);}};
+ return{client:createMuseumClient(token,fetcher),calls,set(values){({previewTarget=previewTarget,allowed=allowed,main=main,head=head,checked=checked,published=published,missingPreview=missingPreview,extraFile=extraFile,existing=existing,managers=managers}=values);}};
 }
 test('museum tools fail closed on missing push access and never accept arbitrary repository paths',async()=>{
  const h=harness();h.set({allowed:false});await assert.rejects(h.client.save({kind:'pages',id:'museum-test',document:basePage,baseRevision:MAIN}),/editor access/);assert.equal(h.calls.length,1);
@@ -154,4 +154,17 @@ test('lean protocol retains every exact-preview publication guard and served-rev
    }
   }finally{await client.close();await server.close();}
  }
+});
+
+// A passing status must never turn an arbitrary host into a trusted preview.
+test('publication accepts only the named museum version host',async()=>{
+ for(const previewTarget of [
+  'https://1234abcd-albion-songs-trial.steve-e85.workers.dev',
+  'https://1234abcd-throstle-and-stripes.steve-e85.workers.dev.evil.invalid',
+  'https://1234abcd-throstle-and-stripes.other.workers.dev',
+  'https://throstle-and-stripes.steve-e85.workers.dev',
+  'http://1234abcd-throstle-and-stripes.steve-e85.workers.dev',
+  'https://1234abcd-throstle-and-stripes.steve-e85.workers.dev/untrusted'
+ ]){const h=harness();h.set({previewTarget});const result=await h.client.status({draftNumber:17});assert.equal(result.canPublish,false,previewTarget);assert.equal(result.previewOrigin,null);}
+ const h=harness();assert.equal((await h.client.status({draftNumber:17})).canPublish,true);
 });

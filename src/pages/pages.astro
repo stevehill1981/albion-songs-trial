@@ -2,6 +2,6 @@
 import {loadContent,renderListing} from '../lib/content.mjs';
 import version from '../../public/version.json';
 const content=await loadContent();
-const html=renderListing(content.shell,{title:'Explore the museum pages',description:'Pages and collections from the Albion editing trial.',revision:version.revision,items:[{title:'Photographs & credits',description:'Browse the reusable image library.',href:'/images'},...content.collections.map(c=>({...c,href:`/collections/${c.slug}`})),...content.pages.map(p=>({...p,href:`/${p.slug}`}))]});
+const html=renderListing(content.shell,{title:'Explore the museum pages',description:'Explore the stories, photographs and collections in Throstle & Stripes.',revision:version.revision,items:[{title:'Photographs & credits',description:'Browse the reusable image library.',href:'/images'},...content.collections.map(c=>({...c,href:`/collections/${c.slug}`})),...content.pages.map(p=>({...p,href:`/${p.slug}`}))]});
 ---
 <Fragment set:html={html}/>
