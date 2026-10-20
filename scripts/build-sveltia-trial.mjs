@@ -14,7 +14,7 @@ export async function buildSveltiaTrial(){
  const collections=[pageCollection,...original.collections.filter(c=>['museum-collections','photographs'].includes(c.name)).map(c=>({...c,create:false,delete:false}))];
  const nativeImages=value=>{if(!value||typeof value!=='object')return;if(value.widget==='museum-image')value.widget='image';for(const child of Object.values(value))if(Array.isArray(child))child.forEach(nativeImages);else if(child&&typeof child==='object')nativeImages(child);};nativeImages(collections);
  const site=JSON.parse(await readFile('site.json','utf8'));
- const config={backend:{name:'test-repo'},site_url:site.origin+'/sveltia-trial/managers',display_url:site.origin+'/sveltia-trial/managers',publish_mode:'simple',media_folder:'public/uploads',public_folder:'/uploads',collections};
+ const config={backend:{name:'test-repo'},site_url:site.origin,display_url:site.origin+'/sveltia-trial/managers',publish_mode:'simple',media_folder:'public/uploads',public_folder:'/uploads',collections};
  await writeFile(root+'/config.json',JSON.stringify(config,null,2)+'\n');
  await cp('public/admin/preview-context.json',root+'/context.json');
  const files=pages.map(p=>p.file);

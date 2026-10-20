@@ -5,7 +5,7 @@ import {loadTrialPages} from '../src/lib/sveltia-trial.mjs';
 export async function verifySveltiaTrial(){
  const root='build/admin/sveltia';
  const config=JSON.parse(await readFile(root+'/config.json','utf8'));
- assert.deepEqual(config.backend,{name:'test-repo'});assert(['http:','https:'].includes(new URL(config.site_url).protocol));assert.equal(new Set(config.collections.map(c=>c.name)).size,config.collections.length);assert.equal(config.publish_mode,'simple');
+ assert.deepEqual(config.backend,{name:'test-repo'});assert(['http:','https:'].includes(new URL(config.site_url).protocol));assert.equal(new Set(config.collections.map(c=>c.name)).size,config.collections.length);assert.equal(config.publish_mode,'simple');assert.equal(new URL(config.collections[0].preview_path.replace('{{slug}}','managers/darren-moore'),config.site_url+'/').pathname,'/sveltia-trial/managers/darren-moore');
  assert(!JSON.stringify(config).includes('albion-songs-auth'));assert(!JSON.stringify(config).includes('public_repo'));
  const report=JSON.parse(await readFile('.cloudflare/sveltia-build.json','utf8'));
  assert(report.assets.length>5,'Require actual emitted assets, not an empty report.');

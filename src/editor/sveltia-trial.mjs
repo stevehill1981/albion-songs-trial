@@ -12,5 +12,5 @@ CMS.registerPreviewTemplate('trial-pages',({entry})=>{
  }catch(error){return h('p',{role:'status',style:{padding:'20px'}},'Complete the required fields to preview this page. '+error.message);}
 });
 const configResponse=await fetch('/admin/sveltia/config.json');if(!configResponse.ok)throw Error('Trial configuration unavailable.');
-const config=await configResponse.json();config.site_url=location.origin+'/sveltia-trial/managers';config.display_url=config.site_url;config.load_config_file=false;
+const config=await configResponse.json();config.site_url=location.origin;config.display_url=location.origin+'/sveltia-trial/managers';config.load_config_file=false;
 CMS.init({config});
