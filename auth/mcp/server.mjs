@@ -51,12 +51,12 @@ export function createMuseumServer({client}={}){
  for(const [name,description,schema,method,readOnly]of definitions)server.registerTool(name,{description,inputSchema:schema,annotations:annotations(readOnly)},args=>invokeMuseum(method,args,client));
  return server;
 }
-// The prototype shares public immutable metadata only. Fresh servers and operation
+// Share public immutable metadata only. Fresh servers and operation
 // callbacks retain request-local authentication; the official SDK owns transport.
 function immutable(value){if(value&&typeof value==='object'&&!Object.isFrozen(value)){for(const child of Object.values(value))immutable(child);Object.freeze(value);}return value;}
 function rejectParameterHeaders(value){
  if(value&&typeof value==='object')for(const [key,child]of Object.entries(value)){
-  if(key==='x-mcp-header')throw Error('The lean prototype does not implement parameter-bound MCP headers.');
+  if(key==='x-mcp-header')throw Error('The lean handler does not implement parameter-bound MCP headers.');
   rejectParameterHeaders(child);
  }
 }
@@ -80,5 +80,6 @@ export function createLeanMuseumServer({client}={}){
  });
  return server;
 }
-const factory=typeof __ALBION_MCP_LEAN__!=='undefined'&&__ALBION_MCP_LEAN__?createLeanMuseumServer:createMuseumServer;
+const factory=typeof __ALBION_MCP_LEAN__!=='undefined'&&!__ALBION_MCP_LEAN__?createMuseumServer:createLeanMuseumServer;
+export const museumHandler=factory===createLeanMuseumServer?'lean':'baseline';
 export const museumMcp=createMcpHandler(()=>factory(),{route:'/mcp',corsOptions:false,allowedHostnames:['albion-songs-auth.steve-e85.workers.dev'],allowedOriginHostnames:['albion-songs-auth.steve-e85.workers.dev','claude.ai']});
