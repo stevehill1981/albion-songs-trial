@@ -38,7 +38,7 @@ Marie needs her own GitHub account with repository write access, but no Cloudfla
 
 ## Managing the museum from Claude
 
-The remote museum connector is implemented and tested locally; hosted setup and Claude acceptance are still pending. It shares the existing authentication Worker. After the owner setup below, its URL is **https://albion-songs-auth.steve-e85.workers.dev/mcp**.
+The remote museum connector is deployed on the existing authentication Worker. Hosted discovery, unauthenticated rejection, the exact deployed revision and retained visual-editor sign-in passed on 20 October 2026. An authorised Claude edit, preview and publication test is still pending. Its URL is **https://albion-songs-auth.steve-e85.workers.dev/mcp**.
 
 Claude currently supports custom remote MCP connectors on Free, Pro, Max, Team and Enterprise; Free has one custom connector slot. Normal Claude usage limits still apply. This connector calls no paid AI API. See [Claude’s connector documentation](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
 

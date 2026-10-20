@@ -21,7 +21,7 @@ Support listing/reading pages, templates, collections and photographs; validated
 
 ## Boundaries and pending access
 
-Local cf CLI currently reports signed out. Existing CI credential deploys the static site but has only Workers Scripts Write; KV provisioning and auth Worker acceptance require an authorised signed-in cf session. The Mac was locked at the end of the earlier Safari task. Complete code and local verification before requesting any final account setup.
+Cloudflare owner sign-in succeeded on 20 October 2026. The setup script created the classic OAuth KV namespace, retained the existing secrets and deployed revision 2b7e05ce2d3ef175ffecbcb7c8ab168a5a021c27. Hosted discovery, unauthenticated rejection and visual-editor sign-in checks passed. The resource reference is retained in auth/mcp-config.json. Claude Personal is paused at updated Consumer Terms, which the account owner must review and accept before the live workflow test.
 
 ## Current primary sources
 
@@ -39,4 +39,4 @@ Pinned stable Agents 0.28.1, MCP server 2.3.1, Workers OAuth Provider 1.2.3 and 
 
 The initial OAuth endpoints were nested beneath protected `/mcp`; the runtime correctly rejected consent. They now sit at `/authorize`, `/token` and `/register`, outside the protected resource. The local simulator’s HTTP bridge rewrites Host to loopback, preventing an authorised end-to-end public-host MCP call. After inspecting and reducing the harness, no production hostname check was weakened: OAuth is checked in workerd, MCP protocol through the actual SDK in memory, and the full hosted Claude path remains a required acceptance gate. Do not present these separate tests as a completed live Claude workflow.
 
-Pending: checked PR, hosted setup after cf sign-in, real owner-account Claude authorisation and draft/preview/publication, actual Free CPU use, Marie’s GitHub access and her own acceptance. Existing unsaved Safari drafts remain intact.
+Pending: real owner-account Claude authorisation and draft/preview/publication, actual Free CPU use, Marie’s GitHub access and her own acceptance. Existing unsaved Safari drafts remain intact.
