@@ -23,6 +23,7 @@ try{
  const verifier='test_client_verifier_with_more_than_forty_three_characters_123';const challenge=Buffer.from(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(verifier))).toString('base64url');
  const query=new URLSearchParams({client_id:registration.client_id,redirect_uri:'https://claude.ai/api/mcp/auth_callback',response_type:'code',scope:'museum:manage',state:'unit_test_client_state',code_challenge:challenge,code_challenge_method:'S256',resource:origin+'/mcp'});
  const consent=await send('/authorize?'+query);const html=await consent.text();assert.equal(consent.status,200,html);assert(!html.includes('<script>'));assert(html.includes('&#60;script&#62;'));assert.equal(consent.headers.get('X-Frame-Options'),'DENY');assert.equal(consent.headers.get('Referrer-Policy'),'same-origin');
+ const formSources=consent.headers.get('Content-Security-Policy').match(/(?:^|;)\s*form-action\s+([^;]+)/)[1].split(/\s+/);assert(!formSources.includes('*'));assert(formSources.includes(new URL(query.get('redirect_uri')).origin));
  const handle=html.match(/name="handle" value="([^"]+)"/)?.[1];assert(handle);let cookies=consent.headers.getSetCookie().map(c=>c.split(';')[0]).join('; ');
  const form=new URLSearchParams({handle,decision:'approve'}).toString();
  const csrf=await send('/authorize',{method:'POST',headers:{Origin:'https://attacker.example','Content-Type':'application/x-www-form-urlencoded',Cookie:cookies},body:form});assert.equal(csrf.status,403);assert.equal(exchanges,0);
@@ -30,7 +31,7 @@ try{
  const unbound=await send('/authorize',{method:'POST',headers:{Origin:origin,'Content-Type':'application/x-www-form-urlencoded'},body:form});assert.equal(unbound.status,400,await unbound.clone().text());assert.equal(exchanges,0);
  const approved=await send('/authorize',{method:'POST',headers:{Origin:origin,'Content-Type':'application/x-www-form-urlencoded',Cookie:cookies},body:form});assert.equal(approved.status,302,await approved.clone().text());
  cookies=approved.headers.getSetCookie().filter(c=>!c.includes('Max-Age=0')).map(c=>c.split(';')[0]).join('; ');
- const github=new URL(approved.headers.get('Location'));assert.equal(github.hostname,'github.com');assert.equal(github.searchParams.get('code_challenge_method'),'S256');assert(github.searchParams.get('state').startsWith('mcp_'));
+ const github=new URL(approved.headers.get('Location'));assert.equal(github.hostname,'github.com');assert(formSources.includes(github.origin));assert.equal(github.searchParams.get('code_challenge_method'),'S256');assert(github.searchParams.get('state').startsWith('mcp_'));
  const callback='/callback?'+new URLSearchParams({state:github.searchParams.get('state'),code:'unit_test_code'});
  const wrong=await send(callback);assert.equal(wrong.status,400);assert.equal(exchanges,0);
  const completed=await send(callback,{headers:{Cookie:cookies}});assert.equal(completed.status,302,await completed.clone().text());assert.equal(exchanges,1);

@@ -18,7 +18,7 @@ export async function handleAuthorization(request,env,{fetcher=fetch}={}){
     const authRequest=await oauth.parseAuthRequest(request);
     if(authRequest.scope.some(s=>s!==MCP_SCOPE))return failure('Unsupported museum permission.');
     const details=await oauth.describeConsent(authRequest);const consent=await oauth.beginConsent(authRequest);
-    consent.headers.set('Content-Security-Policy',"default-src 'none'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'");consent.headers.set('Content-Type','text/html; charset=utf-8');consent.headers.set('Referrer-Policy','same-origin');consent.headers.set('X-Content-Type-Options','nosniff');
+    consent.headers.set('Content-Security-Policy',`default-src 'none'; form-action 'self' https://github.com ${new URL(details.redirectUri).origin}; base-uri 'none'; frame-ancestors 'none'`);consent.headers.set('Content-Type','text/html; charset=utf-8');consent.headers.set('Referrer-Policy','same-origin');consent.headers.set('X-Content-Type-Options','nosniff');
     return new Response(consentPage(details,consent.handle),{headers:consent.headers});
    }
    if(request.method!=='POST')return failure('Use the connection consent form.',405);
