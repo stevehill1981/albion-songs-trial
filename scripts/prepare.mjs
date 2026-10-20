@@ -59,3 +59,6 @@ await writeFile('public/publication.html',(await readFile('legacy/editing-guide.
 
 const {buildEditor}=await import('./build-editor.mjs');
 await buildEditor();
+
+const {buildSveltiaTrial}=await import('./build-sveltia-trial.mjs');
+await buildSveltiaTrial();

@@ -1,0 +1,142 @@
+{
+  "slug": "managers",
+  "title": "Managers & head coaches · Albion",
+  "description": "Explore Albion managers, their separate spells and the evidence behind their stories.",
+  "collections": [
+    "managers"
+  ],
+  "blocks": [
+    {
+      "buttonLabel": "",
+      "caption": [
+        {
+          "text": "The Hawthorns, December 2013 · dom fellowes · ",
+          "type": "text"
+        },
+        {
+          "text": "CC BY 2.0",
+          "type": "link",
+          "url": "https://creativecommons.org/licenses/by/2.0/"
+        },
+        {
+          "text": ". Cropped. ",
+          "type": "text"
+        },
+        {
+          "text": "Image source",
+          "type": "link",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Hawthorns_2013-12-21.jpg"
+        },
+        {
+          "text": ".",
+          "type": "text"
+        }
+      ],
+      "emphasiseLastLine": false,
+      "heading": "The people in the dugout.",
+      "imageAlt": "The Hawthorns under floodlights, with supporters around the pitch",
+      "text": "Managers, head coaches and caretaker spells: explore the people who have led Albion, with sources and the matches behind their stories.",
+      "type": "intro"
+    },
+    {
+      "type": "text-panel",
+      "anchor": "growing-collection",
+      "navLabel": "",
+      "heading": "Three profiles to start the story",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Steve Clarke, Darren Moore and Tony Mowbray begin this collection. Their careers let us explore a single appointment, a caretaker becoming permanent head coach, and a manager returning for a second spell. Earlier managers and other modern appointments are still to be researched."
+            }
+          ]
+        }
+      ],
+      "sources": []
+    },
+    {
+      "type": "text-panel",
+      "anchor": "darren-moore",
+      "navLabel": "",
+      "heading": "Darren Moore",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Birmingham-born Moore was a centre-back and Jamaica international. He joined Albion in September 2001 and helped win promotions in 2002 and 2004, before playing his part in the 2005 Great Escape."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Read Darren Moore’s profile",
+          "url": "https://throstle-and-stripes.steve-e85.workers.dev/manager-darren-moore"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "steve-clarke",
+      "navLabel": "",
+      "heading": "Steve Clarke",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "From Saltcoats in Ayrshire, Clarke played for St Mirren and Chelsea before a coaching career that included Chelsea and West Ham."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Read Steve Clarke’s profile",
+          "url": "https://throstle-and-stripes.steve-e85.workers.dev/manager-steve-clarke"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "tony-mowbray",
+      "navLabel": "",
+      "heading": "Tony Mowbray",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Mowbray led Albion to the 2007/08 Championship title. His first spell began with a 3–0 home win over Wolves in October 2006 and ended with a goalless draw at Blackburn in May 2009."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Read Tony Mowbray’s profile",
+          "url": "https://throstle-and-stripes.steve-e85.workers.dev/manager-tony-mowbray"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "evidence",
+      "navLabel": "",
+      "heading": "Dates and results need care",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "An appointment announcement does not always identify the first match in charge. We keep those dates separate, preserve caretaker roles, and flag results that have not yet been reconciled. Statistics belong to their recorded competition and period; a larger total is not necessarily a better comparison."
+            }
+          ]
+        }
+      ],
+      "sources": []
+    }
+  ]
+}

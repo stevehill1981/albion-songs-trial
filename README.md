@@ -130,3 +130,23 @@ and an entry pointing to the old candidate path. See
 UUID and sprintf-js still need separate evidence and compatible fixes. Keep
 lockfile exposure distinct from emitted browser code; do not run
 `npm audit fix --force` or dismiss alerts because a browser bundle omits a package.
+
+## Sveltia managers comparison
+
+The opt-in `/admin/sveltia` page embeds a pinned Sveltia 0.249.0 beta demo. Its
+`test-repo` backend stores changes only in the browser's private file storage;
+it has no GitHub backend or publishing access. Changes persist across reloads
+in that browser. The normal `/admin/` editor and its authentication are unchanged.
+
+Four copied, sourced pages live under `/sveltia-trial/managers`, with nested
+profile routes and breadcrumbs. Their full pages use the existing Astro
+components and calculated manager context. The custom preview is registered to
+use the existing styled block renderer, but the preview pane stayed blank during
+the in-app browser check. Immediate preview is unverified; it is not yet the
+authenticated live Astro preview. Native Sveltia controls replace the custom Decap wrappers only within
+this demo. Saved templates, live Astro preview, upload controls and the complete
+checked GitHub save/publish workflow remain migration acceptance gates.
+
+Use Start Demo, open the managers page tree, then try Parent Folder and the block
+fields. This comparison does not move the museum's canonical pages, archives or
+Claude connector. See [the trial plan](plans/2026-10-20-sveltia-managers-trial.md).
