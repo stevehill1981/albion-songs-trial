@@ -130,3 +130,25 @@ and an entry pointing to the old candidate path. See
 UUID and sprintf-js still need separate evidence and compatible fixes. Keep
 lockfile exposure distinct from emitted browser code; do not run
 `npm audit fix --force` or dismiss alerts because a browser bundle omits a package.
+
+## Isolated visual-editor prototype
+
+`/editor-lab` opens a practice copy of Darren Moore’s profile plus a sample
+two-column section, rendered with the actual Astro components. Select blocks in
+the page or outline to edit simple headings/text, choose a published credited
+photograph, or change supported section background/spacing. Undo, redo, reset and
+phone-width controls affect only this browser tab. There is no save or publish
+action, recovery storage or new dependency. Closing the tab loses these edits.
+
+Authenticated updates reuse `/editor-preview` and the existing GitHub popup
+contract. Sign-in is restricted to the configured production origin; a hosted
+version-preview address cannot connect. There, forms and the initial Astro view
+are available, but unsaved Astro rendering and direct typing are unavailable.
+No auth origin expansion, token relay or production replacement is included.
+The browser token stays in memory and is cleared on disconnect/page exit.
+
+Browser acceptance, same-origin sign-in and deployed preview CPU/latency remain
+open gates. The current environment cannot start browser automation because its
+configured `/Volumes/Data/Reference-PDFs` writable root is inaccessible. Do not
+infer working in-place interaction from the unit/build checks. See
+`plans/2026-10-20-marie-component-editor.md` for scope and subsequent gates.

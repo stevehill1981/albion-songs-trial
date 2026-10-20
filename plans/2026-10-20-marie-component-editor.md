@@ -204,3 +204,47 @@ trial. Retain current editor. Clean task servers/build caches and preserve evide
 - Dynamic free allowances: https://developers.cloudflare.com/workers/platform/pricing/
 
 No code, dependency, runtime contract or live content changes are part of this plan.
+
+## Approved first prototype
+
+On 20 October the user approved click-to-edit followed by simple in-place typing.
+The isolated route is `src/pages/editor-lab.astro`; its client lives in
+`src/editor/visual/{index,state,auth}.mjs`, with tests in `test/visual-editor.test.mjs`.
+Use plain browser modules bundled by Astro; no new dependency or separate build
+entry is necessary. Initial markup renders through the actual BlockList component.
+Editor-only selection markers are added inside the sandboxed preview document,
+so public component markup and the existing preview API remain unchanged.
+
+The existing popup origin contract accepts the configured production origin only.
+The client checks that origin before opening sign-in; it does not expand origins,
+read Decap storage or introduce a token relay. Tokens remain in memory. A version
+preview can demonstrate its seeded Astro page and local fields, but authenticated
+unsaved preview/typing needs an approved same-origin test deployment or a separate
+authentication design decision. Local compiled-runtime tests may mock only the
+fixed GitHub permission lookup, following the existing test convention.
+
+No draft persistence, save/publish controls, routing schema or production editor
+replacement is included in this first checkpoint.
+
+### First checkpoint verification and remaining gates
+
+- Local full suite: 79 tests passed. Four new tests exercise grouped undo/redo,
+  lossless citations and manager selection, draft/source isolation, invalid draft
+  recovery, nested fields and rejection of spoofed popup responses.
+- Full build passed, preserving 5,842 competitive and 266 wartime records. The
+  actual compiled Astro Worker rendered 20 draft variants, including visual draft
+  edits/undo, with matching public markup and retained auth rejection tests.
+- Built editor verifier checks the original sourced blocks, actual initial Astro
+  HTML, complete museum stylesheet stack and memory-only auth client. A corrupted
+  seed negative control failed as intended.
+- The UI detector reported its generic Arial warning. This is an operating UI
+  using familiar controls; no public typography or identity was changed.
+- Browser automation could not start: `failed to inspect Seatbelt writable root
+  /Volumes/Data/Reference-PDFs: Permission denied (os error 13)`. No screenshot,
+  measured editing latency, caret/IME/keyboard acceptance or hosted CPU claim is
+  available. Source inspection is not a substitute for this acceptance.
+- Keep this checkpoint in a draft PR. Do not promote it or call direct typing
+  verified. Next: restore browser access, test the initial UI at desktop/phone,
+  then obtain approval for a same-origin isolated lab deployment (or agree a
+  separate auth testing design) before the real sign-in/unsaved-render test.
+  Neither live editor replacement nor expanded auth origins is authorised here.
