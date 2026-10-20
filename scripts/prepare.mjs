@@ -5,7 +5,8 @@ import { loadContent } from '../src/lib/content.mjs';
 
 validateFact(JSON.parse(await readFile('content/fact.json', 'utf8')));
 await rm('.astro-server',{recursive:true,force:true});
-await copyFile('node_modules/decap-cms/dist/decap-cms.js', 'public/admin/decap-cms.js');
+// Remove obsolete generated editors before copying public assets into the site.
+for(const path of ['public/admin/decap-cms.js','public/admin/rebuild'])await rm(path,{recursive:true,force:true});
 await copyFile('src/lib/fact.mjs', 'public/admin/fact.mjs');
 const pageTemplate=await readFile('test/fixtures/songs-before-blocks.html','utf8');
 const marker=pageTemplate.indexOf('<!-- EDITABLE_FACT -->');
@@ -56,6 +57,5 @@ await writeFile('public/admin/layout-library.json',JSON.stringify([...content.te
 const origin = site.origin || '';
 await writeFile('public/publication.html',(await readFile('legacy/editing-guide.html','utf8')).replaceAll('{{ORIGIN}}',origin));
 
-// The established editor remains unchanged while the opt-in source build is tested.
 const {buildEditor}=await import('./build-editor.mjs');
 await buildEditor();

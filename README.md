@@ -111,23 +111,22 @@ The initial source-backed manager register contains Steve Clarke, Darren Moore a
 
 Five read-only tools expose archive coverage, paginated match search, full-scope calculated statistics, the researched manager list and sourced manager profiles. Coverage scopes return 50 at a time, match pages 25; broad combined filters fail instead of truncating totals. Every operation checks current repository editing access and retains evidence and unresolved warnings. The concise guide, on-demand block schemas and lean handler reduce repeated work. Available lean-trial readings had median/p95/max 7/19/36 ms; the owner accepted these limitations and closed the CPU investigation. The owner-account trial passed all five research reads through the direct SDK client and the sourced research → draft → exact checked preview → approved publication → served-revision workflow in Claude Free on 20 October 2026. Four published, editable pages introduce the [managers collection and three sourced profiles](https://throstle-and-stripes.steve-e85.workers.dev/managers). The Manager performance block and reusable Manager profile layout use actual Astro components in the page and authenticated immediate preview. Choose a researched manager to show chronological spells, separate caretaker roles, calculated W/D/L/goals/win percentage, source notes and visible unresolved discrepancies. Numeric fields are not editable. Both preview contexts and lookup assets use the same build-time calculations and archive digest. New registry entries still need source-backed engineering review; pages and saved layouts remain editable through the normal workflow. The published [practice page](https://throstle-and-stripes.steve-e85.workers.dev/component-preview-trial#research-trial) retains its source links, image credits and separately calculated manager spells. This functional acceptance does not establish dependable CPU compliance, and Marie’s own acceptance remains pending.
 
-## Source-built editor candidate
+## Source-built editor
 
-The opt-in candidate lives at `/admin/rebuild.html`. The normal `/admin/` editor
-stays on its checked Decap distribution until owner workflow acceptance and a
-separate promotion. Both use the existing GitHub sign-in, museum configuration,
-custom controls and preview modules. No extra service or paid plan is involved.
+The normal `/admin/` editor builds Decap core, the GitHub backend, English text
+and the controls used by this museum from pinned modules through Vite. It uses
+the existing GitHub sign-in, museum configuration, custom controls and Astro
+preview modules. No extra service or paid plan is involved. The owner tested the
+opt-in candidate through editing, preview and publication before promotion.
 
-The candidate builds Decap core, the GitHub backend, English text and the controls
-used by this museum from pinned modules through Vite. Its module report excludes
-trim, Plate, unused Markdown/rich-text widgets and unrelated backends. The build
-checks every emitted asset digest, licence inventory, both embedded image
-encoders and configured-widget coverage, with negative controls for tampering,
-missing chunks and a forbidden dependency. See
+The module report excludes trim, Plate, unused Markdown/rich-text widgets and
+unrelated backends. The umbrella Decap dependency and its precompiled browser
+bundle are removed. The build checks every emitted asset digest, licence
+inventory, both embedded image encoders and configured-widget coverage. Negative
+controls reject tampering, missing chunks, a forbidden module, an obsolete bundle
+and an entry pointing to the old candidate path. See
 [the security plan](plans/2026-10-20-dependency-security.md).
 
-The umbrella Decap dependency and its old browser file remain deliberately during
-this candidate phase. Their trim and Plate alerts therefore remain open; a safe
-candidate is not yet a fix for the main editor. UUID and sprintf-js also need
-separate evidence and compatible fixes. Do not run `npm audit fix --force` or
-dismiss alerts simply because candidate code does not contain a package.
+UUID and sprintf-js still need separate evidence and compatible fixes. Keep
+lockfile exposure distinct from emitted browser code; do not run
+`npm audit fix --force` or dismiss alerts because a browser bundle omits a package.

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {checkModules,checkWidgets} from '../scripts/build-editor.mjs';
-test('candidate rejects unsupported configured controls rather than a silent unknown widget',()=>{
+test('editor rejects unsupported configured controls rather than a silent unknown widget',()=>{
  assert.deepEqual(checkWidgets({collections:[{fields:[{widget:'layout-blocks',types:[{fields:[{widget:'relation'}]}]}]}]}),['layout-blocks','relation']);
  assert.throws(()=>checkWidgets({collections:[]}),/no widgets/);
  assert.throws(()=>checkWidgets({fields:[{widget:'layout-blocks',types:[{fields:[{widget:'markdown'}]}]}]}),/does not register/);
