@@ -34,3 +34,6 @@ public/admin/manager-performance.mjs
 
 # Local-only MCP performance prototype; never packaged for deployment.
 auth/prototype-build/
+
+# Generated opt-in editor candidate
+public/admin/rebuild/

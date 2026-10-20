@@ -55,3 +55,7 @@ await writeFile('public/admin/preview-context.json',JSON.stringify({fact:content
 await writeFile('public/admin/layout-library.json',JSON.stringify([...content.templates.map(p=>({key:`template:${p.slug}`,kind:'Template',title:p.title,blocks:p.blocks})),...content.pages.map(p=>({key:`page:${p.slug}`,kind:'Page',title:p.title,blocks:p.blocks}))]));
 const origin = site.origin || '';
 await writeFile('public/publication.html',(await readFile('legacy/editing-guide.html','utf8')).replaceAll('{{ORIGIN}}',origin));
+
+// The established editor remains unchanged while the opt-in source build is tested.
+const {buildEditor}=await import('./build-editor.mjs');
+await buildEditor();
