@@ -70,6 +70,7 @@ try{
   await command('Profiler.enable');await command('Profiler.setSamplingInterval',{interval:100});await command('Profiler.start');
  }
  const initialized=await rpc('initialize',{protocolVersion:'2025-03-26',capabilities:{},clientInfo:{name:'Direct museum acceptance',version:'1'}});assert.equal(initialized.result.serverInfo.name,'Albion museum');
+ const signature=await rpc('tools/call',{name:'constructor',arguments:{}},699,{'MCP-Protocol-Version':'2025-03-26'});assert.equal(signature.error.code,-32602);assert(signature.error.message.includes(handler==='lean'?'Tool constructor not found':'Tool constructor disabled'));
  const tools=await rpc('tools/list',{},2,{'MCP-Protocol-Version':'2025-03-26'});assert.equal(tools.result.tools.length,14);
  const guide=await rpc('tools/call',{name:'museum_guide',arguments:{}},3,{'MCP-Protocol-Version':'2025-03-26'});assert(!guide.result.isError,JSON.stringify(guide));assert(guide.result.structuredContent.instructions);
  allowed=false;

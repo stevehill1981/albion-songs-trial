@@ -80,8 +80,8 @@ test('lean prototype keeps errors bounded and concurrent clients isolated withou
 });
 
 test('the local prototype cannot be packaged for deployment and unknown build selectors fail',()=>{
- for(const [script,selector,args]of [['scripts/cloudflare-output.mjs','lean',['--auth']],['scripts/build-auth.mjs','unknown',[]]]){
+ for(const [script,selector,args]of [['scripts/cloudflare-output.mjs','lean',['--auth']],['scripts/build-auth.mjs','unknown',[]],['scripts/cloudflare-output.mjs','unknown',['--auth','--hosted-comparison']]]){
   const result=spawnSync(process.execPath,[script,...args],{encoding:'utf8',env:{...process.env,ALBION_MCP_HANDLER:selector}});
-  assert.equal(result.status,1);assert.match(result.stderr,selector==='lean'?/local-only and cannot be packaged/:/Choose baseline or lean/);
+  assert.equal(result.status,1);assert.match(result.stderr,script.includes('cloudflare-output')?/local-only and cannot be packaged/:/Choose baseline or lean/);
  }
 });
