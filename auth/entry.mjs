@@ -1,10 +1,22 @@
 import {OAuthProvider} from '@cloudflare/workers-oauth-provider';
-import {museumMcp} from './mcp/server.mjs';
+import {museumMcp,museumDiagnosticMcp} from './mcp/server.mjs';
+import {hostHeaderValidationResponse,originValidationResponse} from '@modelcontextprotocol/server';
 import {handleAuthorization,AUTH_ORIGIN,MCP_SCOPE} from './mcp/authorization.mjs';
 import {handle as decap} from './worker.mjs';
-import {boundedText} from './mcp/github.mjs';
+import {boundedText,createMuseumClient} from './mcp/github.mjs';
+async function protectedMuseum(request,env,ctx){
+ const path=new URL(request.url).pathname;
+ if(path==='/mcp/diagnostic/guide')return museumDiagnosticMcp(request,env,ctx);
+ if(path==='/mcp/diagnostic/auth'){
+  const rejected=hostHeaderValidationResponse(request,[new URL(AUTH_ORIGIN).host])||originValidationResponse(request,[new URL(AUTH_ORIGIN).host,'claude.ai']);if(rejected)return rejected;
+  if(request.method!=='POST')return new Response('Method not allowed.',{status:405});
+  try{await createMuseumClient(ctx?.props?.githubToken).guide();return Response.json({editor:true},{headers:{'Cache-Control':'no-store'}});}
+  catch{return new Response('Museum editor access is required.',{status:403,headers:{'Cache-Control':'no-store'}});}
+ }
+ return museumMcp(request,env,ctx);
+}
 export const museumOAuth=new OAuthProvider({
- apiRoute:'/mcp',apiHandler:{fetch: museumMcp},
+ apiRoute:'/mcp',apiHandler:{fetch: protectedMuseum},
  authorizeEndpoint:'/authorize',tokenEndpoint:'/token',clientRegistrationEndpoint:'/register',
  defaultHandler:{fetch:handleAuthorization},
  accessTokenTTL:3600,refreshTokenTTL:7*24*3600,clientRegistrationTTL:7*24*3600,
