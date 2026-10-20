@@ -124,3 +124,18 @@ and processes; retain only the necessary source, licences and evidence.
 - https://github.com/uuidjs/uuid/blob/main/README.md (CommonJS removed in 12)
 - https://github.com/jonschlinkert/gray-matter/pull/137 (YAML API migration)
 - Installed Decap package manifests and formatters; official npm registry metadata.
+
+## Agreement
+
+Owner approved “Prototype both fixes” on 20 October 2026. Implement as bounded
+candidate changes on this draft branch; keep production unchanged pending the
+checked preview and workflow acceptance. CMS alternatives are a separate
+read-only comparison, not an instruction to migrate the editor.
+
+UUID-only prototype: the bounds test failed against 8.3.2 with “Missing expected
+exception (RangeError)” while the independent hash and consumer tests passed.
+With the exact 11.1.1 override, clean installation, all 78 tests and the full build
+passed. The five declared Decap consumers resolve the same checked package; both
+CommonJS and ESM pass independent MD5/SHA-1 vectors, random IDs, parse/stringify
+round trips and output-buffer preservation/rejection checks. Audit no longer
+reports UUID; sprintf-js remains for the next independent repair.
