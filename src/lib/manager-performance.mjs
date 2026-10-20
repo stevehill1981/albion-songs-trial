@@ -7,7 +7,7 @@ export function performanceView(block,context={}){
  if(!profile)throw Error('Choose a published manager from the researched register.');
  const tenures=[...profile.tenures].sort((a,b)=>a.firstMatchDate.localeCompare(b.firstMatchDate));
  const rows=[...tenures.map(t=>({label:`${t.role==='caretaker'?'Caretaker':'Permanent'} · ${performanceDate(t.firstMatchDate)} – ${performanceDate(t.lastMatchDate)}`,summary:t.summary})),{label:'All recorded spells',summary:profile.summary}];
- return {profile,tenures,rows,sourceSha256:data.sourceSha256,checked:data.checkedAt?performanceDate(data.checkedAt):'Check date not supplied',evidence:`Result evidence: ${profile.summary.evidence.crosschecked} crosschecked, ${profile.summary.evidence['single-source']} single-source, ${profile.summary.evidence.unclassified} unclassified. Tenure-boundary evidence is recorded separately below.`};
+ return {profile,tenures,rows,sourceSha256:data.sourceSha256,checked:data.checkedAt?performanceDate(data.checkedAt):'Check date not supplied',evidence:`Result evidence: ${profile.summary.evidence.crosschecked} crosschecked, ${profile.summary.evidence['single-source']} single-source, ${profile.summary.evidence.unclassified} unclassified. Unclassified records retain source credits but have no individual corroboration label. Tenure-boundary evidence is recorded separately below.`};
 }
 export const performanceColumns=[['played','Matches'],['W','Won'],['D','Drawn'],['L','Lost'],['gf','Goals for'],['ga','Goals against'],['winPercent','Win %']];
 export const performanceValue=(summary,key)=>key==='winPercent'?(summary[key]===null?'—':`${summary[key].toFixed(2)}%`):String(summary[key]);
