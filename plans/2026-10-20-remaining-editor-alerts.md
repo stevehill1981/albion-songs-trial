@@ -139,3 +139,34 @@ passed. The five declared Decap consumers resolve the same checked package; both
 CommonJS and ESM pass independent MD5/SHA-1 vectors, random IDs, parse/stringify
 round trips and output-buffer preservation/rejection checks. Audit no longer
 reports UUID; sprintf-js remains for the next independent repair.
+
+Parser prototype stop: the official gray-matter archive and js-yaml 5.5.0 archive
+passed registry-integrity checks. A private local package preserved upstream
+sources/licence and changed only the two YAML API calls plus dependency metadata.
+The initial npm install retained the old generated resolution; an installed-
+version assertion caught it. Refreshing that one lock entry installed the intended
+local package and removed sprintf-js from the actual tree.
+
+The real Decap nine-case parse/serialization corpus and every configured JSON
+record then passed, but standalone default-engine compatibility failed:
+`assert(first.data.when instanceof Date)` was false. js-yaml 5's default schema
+keeps the timestamp as text. Do not weaken this assertion or silently change
+stored-data semantics. As required by the plan, stop before adding a larger
+schema adapter or selecting an older major. This is a compatibility finding, not
+a passing repair for sprintf-js.
+
+The parser changes were removed from the candidate, restoring the passing UUID-
+only state. The licensed source, baseline, test and replayable patch are retained
+outside the deployable repository at
+`/Users/stevehill/WBA/verification-evidence/parser-prototype-2026-10-20/` for the
+next design decision; this directory can be removed once that decision is resolved
+and the evidence is no longer needed. A narrower alternative is to evaluate the
+current stable 4.x YAML line (4.3.2) explicitly, or compare a different CMS before
+maintaining a local Decap parser backport. Neither a new dependency repair nor a CMS migration is authorised by the earlier prototype approval. The separate CMS comparison is read-only.
+
+After restoring the UUID-only candidate, clean installation and all 78 tests pass.
+Its hosted preview at https://ec87bcfe-throstle-and-stripes.steve-e85.workers.dev
+serves exact revision 42ad77eb42926d4bcd12daee21187185e26cdc8f. All five editor
+asset digests, preview permission boundaries and both match JSON archives passed
+independent checks. Leave this PR as a draft: owner browser acceptance and
+publication approval are still outstanding; production remains at 58f3246.
