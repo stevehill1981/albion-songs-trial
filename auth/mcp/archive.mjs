@@ -20,7 +20,7 @@ export function createArchiveClient(fetcher=fetch){
   fail(LEDGERS.every(key=>manifest.ledgers?.[key]),'The archive manifest is incomplete.');return manifest;
  }
  const asset=ref=>{fail(ref&&/^files\/[a-f0-9]{64}\.json$/.test(ref.path)&&ref.path===`files/${ref.sha256}.json`&&Number.isSafeInteger(ref.bytes)&&ref.bytes>0&&ref.bytes<=192*1024,'Invalid archive asset reference.');return json(fetcher,root+ref.path,ref);};
- function provenance(manifest,ledger){const source=manifest.ledgers[ledger];return {revision:manifest.revision,ledger,sourcePath:source.sourcePath,sourceSha256:source.sourceSha256,coverageURL:site.origin+root+source.coverage.path,limitations:'Published snapshot, not live. Coverage and outstanding discrepancies are documented by archive_coverage. Keep competitive, wartime/recovery and annulled totals separate. Unclassified evidence does not mean corroborated.'};}
+ function provenance(manifest,ledger){const source=manifest.ledgers[ledger];return {revision:manifest.revision,ledger,sourcePath:source.sourcePath,sourceSha256:source.sourceSha256,checkedAt:source.checkedAt,currentSeason:source.currentSeason,coverageURL:site.origin+root+source.coverage.path,limitations:'Published snapshot, not live. Coverage and outstanding discrepancies are documented by archive_coverage. Keep competitive, wartime/recovery and annulled totals separate. Unclassified evidence does not mean corroborated.'};}
  async function query(input,includeMatches){
   const filters=validateQuery(input),manifest=await snapshot(),entry=manifest.ledgers[filters.ledger];
   const catalog=await asset(entry);fail(catalog.ledger===filters.ledger&&Array.isArray(catalog.groups),'Wrong archive catalog.');

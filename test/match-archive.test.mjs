@@ -57,7 +57,7 @@ test('derived snapshot is bounded, content addressed, complete, and leaves canon
 test('remote pagination traverses an entire season without gaps, and calculations agree with searched rows',async()=>{
  const h=harness();const query={ledger:'competitive',season:'2025-26'};const expected=archives.competitive.matches.filter(m=>m.season===query.season),rows=[];
  let page=1;do{const result=await h.client.matches({...query,page});rows.push(...result.matches);page=result.nextPage;}while(page);
- assert.deepEqual(rows,expected);const result=await h.client.summary(query);assert.deepEqual(result.summary,matchSummary(rows));assert.equal(result.sourceSha256,sha256(originals.competitive));
+ assert.deepEqual(rows,expected);const result=await h.client.summary(query);assert.deepEqual(result.summary,matchSummary(rows));assert.equal(result.sourceSha256,sha256(originals.competitive));assert.equal(result.checkedAt,JSON.parse(originals.competitive).checkedAt);
  const restricted={...query,competition:'League',venue:'H',outcome:'W'};assert.deepEqual((await h.client.summary(restricted)).summary,matchSummary(refineMatches(expected,restricted)));
  const zero=await h.client.matches({...query,from:'1800-01-01',to:'1800-01-02'});assert.equal(zero.summary.played,0);assert.equal(zero.summary.winPercent,null);assert.deepEqual(zero.matches,[]);
  assert.equal((await h.client.summary({ledger:'competitive',season:'2018-19',opponent:'Villa',competition:'Play-offs / test matches'})).summary.W,1,'The extra-time play-off win remains a match win regardless of the lost shootout');

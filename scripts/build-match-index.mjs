@@ -25,7 +25,7 @@ export async function buildMatchIndex({revision,output='public/data/museum-query
   // Group descriptors are loaded only for the chosen scope; the small catalog lists exact names.
   const catalog={ledger,groups:groups.map(({scope,value,summary,...group})=>({scope,value,count:summary.played,descriptor:put({ledger,scope,value,summary,...group})}))};
   const {matches,...metadata}=archive;
-  manifest.ledgers[ledger]={...put(catalog),sourcePath:path,sourceSha256:sha256(raw),coverage:put(metadata),summary:matchSummary(matches)};
+  manifest.ledgers[ledger]={...put(catalog),sourcePath:path,sourceSha256:sha256(raw),checkedAt:archive.checkedAt,currentSeason:archive.currentSeason,coverage:put(metadata),summary:matchSummary(matches)};
  }
  const manifestText=JSON.stringify(manifest)+'\n';
  await rm(output,{recursive:true,force:true});await mkdir(`${output}/files`,{recursive:true});
