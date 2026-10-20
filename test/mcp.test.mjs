@@ -136,3 +136,22 @@ test('concise guide and on-demand schemas retain all editable fields without mut
  assert.deepEqual(blockSchema('intro').block,blockTypes[0]);
  const denied=harness();denied.set({allowed:false});await assert.rejects(denied.client.schema({type:'intro'}),/access/);
 });
+
+test('lean protocol retains every exact-preview publication guard and served-revision confirmation',async()=>{
+ const {createLeanMuseumServer}=await import('../auth/mcp/server.mjs');
+ const {Client}=await import('@modelcontextprotocol/client');const {InMemoryTransport}=await import('@modelcontextprotocol/server');
+ const publish={draftNumber:17,expectedCommit:HEAD,baseRevision:MAIN,confirmation:'Publish this previewed revision'};
+ for(const values of [{checked:false},{head:NEXT},{main:NEXT},{missingPreview:true},{extraFile:true},{allowed:false},{}]){
+  const h=harness();h.set(values);const server=createLeanMuseumServer({client:h.client}),client=new Client({name:'Lean publication acceptance',version:'1'}),[a,b]=InMemoryTransport.createLinkedPair();
+  try{
+   await server.connect(a);await client.connect(b);
+   const result=await client.callTool({name:'publish_draft',arguments:publish});
+   if(Object.keys(values).length){assert.equal(result.isError,true);assert(!h.calls.some(c=>c.url.endsWith('/merge')));}
+   else{
+    assert.equal(result.structuredContent.state,'publishing');assert.equal(result.structuredContent.revision,MERGED);
+    const queued=await client.callTool({name:'publication_status',arguments:{revision:MERGED}});assert.equal(queued.structuredContent.state,'publishing');
+    h.set({published:MERGED});const live=await client.callTool({name:'publication_status',arguments:{revision:MERGED}});assert.equal(live.structuredContent.state,'live');
+   }
+  }finally{await client.close();await server.close();}
+ }
+});

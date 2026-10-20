@@ -7,7 +7,7 @@ import {Client} from '@modelcontextprotocol/client';
 import {InMemoryTransport} from '@modelcontextprotocol/server';
 import {buildMatchIndex} from '../scripts/build-match-index.mjs';
 import {createMuseumClient,REPOSITORY} from '../auth/mcp/github.mjs';
-import {createMuseumServer} from '../auth/mcp/server.mjs';
+import {createMuseumServer,createLeanMuseumServer} from '../auth/mcp/server.mjs';
 const revision='a'.repeat(40),token='unit_test_research_credential_only';
 const directory=await mkdtemp(join(tmpdir(),'albion-research-tools-'));let built;
 try{built=await buildMatchIndex({revision,output:directory});}finally{await rm(directory,{recursive:true,force:true});}
@@ -24,8 +24,8 @@ function harness(){
  });
  return {museum,calls,set(values){({allowed=allowed,stale=stale}=values);}};
 }
-async function connect(h){
- const server=createMuseumServer({client:h.museum}),client=new Client({name:'Research acceptance',version:'1'}),[a,b]=InMemoryTransport.createLinkedPair();
+async function connect(h,factory=createMuseumServer){
+ const server=factory({client:h.museum}),client=new Client({name:'Research acceptance',version:'1'}),[a,b]=InMemoryTransport.createLinkedPair();
  await server.connect(a);await client.connect(b);return {client,close:async()=>{await client.close();await server.close();}};
 }
 test('all research tools require fresh editor access before any archive fetch',async()=>{
@@ -38,8 +38,8 @@ test('all research tools require fresh editor access before any archive fetch',a
  h.set({allowed:true});await h.museum.managerProfile({id:'darren-moore'});await h.museum.managerProfile({id:'darren-moore'});
  h.set({allowed:false});const warm=h.calls.length;await assert.rejects(h.museum.managerProfile({id:'darren-moore'}),/editor access/);assert.equal(h.calls.length,warm+1,'A warm public-file cache must not bypass authorization');
 });
-test('research protocol preserves ledger evidence, pagination and calculated manager results',async()=>{
- const h=harness(),connection=await connect(h),call=async(name,args={})=>{const response=await connection.client.callTool({name,arguments:args});assert(!response.isError,JSON.stringify(response));return response.structuredContent;};
+for(const factory of [createMuseumServer,createLeanMuseumServer])test('research protocol preserves ledger evidence, pagination and calculated manager results: '+factory.name,async()=>{
+ const h=harness(),connection=await connect(h,factory),call=async(name,args={})=>{const response=await connection.client.callTool({name,arguments:args});assert(!response.isError,JSON.stringify(response));return response.structuredContent;};
  try{
   const tools=(await connection.client.listTools()).tools;for(const name of ['archive_coverage','search_matches','match_statistics','list_managers','read_manager'])assert.equal(tools.find(t=>t.name===name).annotations.readOnlyHint,true);
   const coverage=await call('archive_coverage');assert.equal(coverage.ledgers.competitive.summary.played,5842);assert.equal(coverage.ledgers.wartime.summary.played,266);assert.equal(coverage.ledgers.annulled.summary.played,3);assert.equal(coverage.summary,undefined,'No combined all-ledger total');
@@ -51,8 +51,8 @@ test('research protocol preserves ledger evidence, pagination and calculated man
   const catalog=JSON.parse(built.files.get(built.manifest.ledgers.competitive.path));assert.deepEqual(rows.map(r=>r.value),catalog.groups.filter(g=>g.scope==='season').map(g=>g.value));assert.equal(new Set(rows.map(r=>r.value)).size,rows.length);
  }finally{await connection.close();}
 });
-test('research protocol rejects typo filters, merged ledgers, broad queries and stale assets explicitly',async()=>{
- const h=harness(),connection=await connect(h);
+for(const factory of [createMuseumServer,createLeanMuseumServer])test('research protocol rejects typo filters, merged ledgers, broad queries and stale assets explicitly: '+factory.name,async()=>{
+ const h=harness(),connection=await connect(h,factory);
  try{
   for(const args of [{ledger:'all'},{ledger:'competitive',competiton:'League'},{ledger:'competitive',page:0}]){const before=h.calls.length;const result=await connection.client.callTool({name:'search_matches',arguments:args});assert.equal(result.isError,true);assert.equal(h.calls.length,before,'Invalid protocol arguments must not reach the archive');}
   const broad=await connection.client.callTool({name:'match_statistics',arguments:{ledger:'competitive',from:'2000-01-01'}});assert.equal(broad.isError,true);assert(broad.content[0].text.includes('too broad'));assert(!broad.structuredContent);

@@ -1,0 +1,1326 @@
+{
+  "format": 1,
+  "limitations": "Local V8 sampling, including compiled OAuth acceptance and the selected bounded workload. Active samples exclude only idle and include unattributed program samples. Elapsed duration includes waits; neither sample counts nor elapsed time establish hosted per-request CPU limits. Missing function samples do not prove zero work.",
+  "profiles": [
+    {
+      "profile": "baseline-1.cpuprofile",
+      "elapsedMs": 1964.796,
+      "totalSamples": 5692,
+      "idleSamples": 289,
+      "activeSamples": 5403,
+      "gcSamples": 621,
+      "unattributedProgramSamples": 476,
+      "setupSelfSamples": {
+        "_createRegisteredTool": 44,
+        "setToolRequestHandlers": 6,
+        "registerTool": 2
+      },
+      "topSelfSamples": [
+        {
+          "functionName": "(garbage collector)",
+          "samples": 621
+        },
+        {
+          "functionName": "(program)",
+          "samples": 476
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 464
+        },
+        {
+          "functionName": "fetch",
+          "samples": 410
+        },
+        {
+          "functionName": "",
+          "samples": 299
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 289
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 167
+        },
+        {
+          "functionName": "read",
+          "samples": 152
+        },
+        {
+          "functionName": "r",
+          "samples": 144
+        },
+        {
+          "functionName": "yS",
+          "samples": 143
+        },
+        {
+          "functionName": "Request",
+          "samples": 142
+        },
+        {
+          "functionName": "get",
+          "samples": 127
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 123
+        },
+        {
+          "functionName": "Response",
+          "samples": 113
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 102
+        },
+        {
+          "functionName": "ew",
+          "samples": 90
+        },
+        {
+          "functionName": "AS",
+          "samples": 87
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 70
+        },
+        {
+          "functionName": "URL",
+          "samples": 58
+        },
+        {
+          "functionName": "clone",
+          "samples": 56
+        }
+      ]
+    },
+    {
+      "profile": "lean-1.cpuprofile",
+      "elapsedMs": 2068.765,
+      "totalSamples": 5143,
+      "idleSamples": 290,
+      "activeSamples": 4853,
+      "gcSamples": 334,
+      "unattributedProgramSamples": 463,
+      "setupSelfSamples": {},
+      "topSelfSamples": [
+        {
+          "functionName": "(program)",
+          "samples": 463
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 408
+        },
+        {
+          "functionName": "fetch",
+          "samples": 398
+        },
+        {
+          "functionName": "(garbage collector)",
+          "samples": 334
+        },
+        {
+          "functionName": "",
+          "samples": 311
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 290
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 199
+        },
+        {
+          "functionName": "read",
+          "samples": 171
+        },
+        {
+          "functionName": "Request",
+          "samples": 150
+        },
+        {
+          "functionName": "get",
+          "samples": 138
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 133
+        },
+        {
+          "functionName": "yS",
+          "samples": 130
+        },
+        {
+          "functionName": "ew",
+          "samples": 125
+        },
+        {
+          "functionName": "Response",
+          "samples": 108
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 95
+        },
+        {
+          "functionName": "AS",
+          "samples": 75
+        },
+        {
+          "functionName": "handleApiRequest",
+          "samples": 65
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 56
+        },
+        {
+          "functionName": "URL",
+          "samples": 54
+        },
+        {
+          "functionName": "J",
+          "samples": 47
+        }
+      ]
+    },
+    {
+      "profile": "lean-2.cpuprofile",
+      "elapsedMs": 2075.862,
+      "totalSamples": 5480,
+      "idleSamples": 316,
+      "activeSamples": 5164,
+      "gcSamples": 336,
+      "unattributedProgramSamples": 485,
+      "setupSelfSamples": {},
+      "topSelfSamples": [
+        {
+          "functionName": "(program)",
+          "samples": 485
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 465
+        },
+        {
+          "functionName": "fetch",
+          "samples": 424
+        },
+        {
+          "functionName": "(garbage collector)",
+          "samples": 336
+        },
+        {
+          "functionName": "",
+          "samples": 329
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 316
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 181
+        },
+        {
+          "functionName": "read",
+          "samples": 177
+        },
+        {
+          "functionName": "Request",
+          "samples": 149
+        },
+        {
+          "functionName": "yS",
+          "samples": 144
+        },
+        {
+          "functionName": "get",
+          "samples": 141
+        },
+        {
+          "functionName": "Response",
+          "samples": 129
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 128
+        },
+        {
+          "functionName": "ew",
+          "samples": 121
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 97
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 78
+        },
+        {
+          "functionName": "AS",
+          "samples": 72
+        },
+        {
+          "functionName": "handleApiRequest",
+          "samples": 65
+        },
+        {
+          "functionName": "importKey",
+          "samples": 55
+        },
+        {
+          "functionName": "Headers",
+          "samples": 51
+        }
+      ]
+    },
+    {
+      "profile": "baseline-2.cpuprofile",
+      "elapsedMs": 4267.573,
+      "totalSamples": 5924,
+      "idleSamples": 375,
+      "activeSamples": 5549,
+      "gcSamples": 458,
+      "unattributedProgramSamples": 488,
+      "setupSelfSamples": {
+        "registerTool": 6,
+        "_createRegisteredTool": 42,
+        "setToolRequestHandlers": 4
+      },
+      "topSelfSamples": [
+        {
+          "functionName": "(program)",
+          "samples": 488
+        },
+        {
+          "functionName": "(garbage collector)",
+          "samples": 458
+        },
+        {
+          "functionName": "",
+          "samples": 381
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 375
+        },
+        {
+          "functionName": "fetch",
+          "samples": 375
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 371
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 244
+        },
+        {
+          "functionName": "read",
+          "samples": 180
+        },
+        {
+          "functionName": "yS",
+          "samples": 147
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 139
+        },
+        {
+          "functionName": "get",
+          "samples": 133
+        },
+        {
+          "functionName": "Request",
+          "samples": 133
+        },
+        {
+          "functionName": "ew",
+          "samples": 130
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 106
+        },
+        {
+          "functionName": "Response",
+          "samples": 90
+        },
+        {
+          "functionName": "r",
+          "samples": 82
+        },
+        {
+          "functionName": "AS",
+          "samples": 74
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 69
+        },
+        {
+          "functionName": "importKey",
+          "samples": 67
+        },
+        {
+          "functionName": "URL",
+          "samples": 54
+        }
+      ]
+    },
+    {
+      "profile": "baseline-3.cpuprofile",
+      "elapsedMs": 2172.25,
+      "totalSamples": 6091,
+      "idleSamples": 326,
+      "activeSamples": 5765,
+      "gcSamples": 574,
+      "unattributedProgramSamples": 513,
+      "setupSelfSamples": {
+        "registerTool": 10,
+        "_createRegisteredTool": 54,
+        "setToolRequestHandlers": 1
+      },
+      "topSelfSamples": [
+        {
+          "functionName": "(garbage collector)",
+          "samples": 574
+        },
+        {
+          "functionName": "(program)",
+          "samples": 513
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 491
+        },
+        {
+          "functionName": "fetch",
+          "samples": 449
+        },
+        {
+          "functionName": "",
+          "samples": 332
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 326
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 219
+        },
+        {
+          "functionName": "read",
+          "samples": 186
+        },
+        {
+          "functionName": "yS",
+          "samples": 169
+        },
+        {
+          "functionName": "Request",
+          "samples": 163
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 143
+        },
+        {
+          "functionName": "get",
+          "samples": 137
+        },
+        {
+          "functionName": "Response",
+          "samples": 123
+        },
+        {
+          "functionName": "ew",
+          "samples": 110
+        },
+        {
+          "functionName": "r",
+          "samples": 85
+        },
+        {
+          "functionName": "AS",
+          "samples": 83
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 73
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 66
+        },
+        {
+          "functionName": "URL",
+          "samples": 66
+        },
+        {
+          "functionName": "handleApiRequest",
+          "samples": 60
+        }
+      ]
+    },
+    {
+      "profile": "lean-3.cpuprofile",
+      "elapsedMs": 2025.211,
+      "totalSamples": 5411,
+      "idleSamples": 310,
+      "activeSamples": 5101,
+      "gcSamples": 339,
+      "unattributedProgramSamples": 465,
+      "setupSelfSamples": {},
+      "topSelfSamples": [
+        {
+          "functionName": "(program)",
+          "samples": 465
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 437
+        },
+        {
+          "functionName": "fetch",
+          "samples": 434
+        },
+        {
+          "functionName": "(garbage collector)",
+          "samples": 339
+        },
+        {
+          "functionName": "",
+          "samples": 321
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 310
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 213
+        },
+        {
+          "functionName": "Request",
+          "samples": 164
+        },
+        {
+          "functionName": "read",
+          "samples": 159
+        },
+        {
+          "functionName": "yS",
+          "samples": 144
+        },
+        {
+          "functionName": "get",
+          "samples": 134
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 130
+        },
+        {
+          "functionName": "Response",
+          "samples": 126
+        },
+        {
+          "functionName": "ew",
+          "samples": 116
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 100
+        },
+        {
+          "functionName": "AS",
+          "samples": 80
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 74
+        },
+        {
+          "functionName": "URL",
+          "samples": 64
+        },
+        {
+          "functionName": "handleApiRequest",
+          "samples": 57
+        },
+        {
+          "functionName": "importKey",
+          "samples": 52
+        }
+      ]
+    },
+    {
+      "profile": "baseline-symbols.cpuprofile",
+      "elapsedMs": 2138.427,
+      "totalSamples": 6035,
+      "idleSamples": 337,
+      "activeSamples": 5698,
+      "gcSamples": 552,
+      "unattributedProgramSamples": 505,
+      "setupSelfSamples": {
+        "registerTool": 4,
+        "_createRegisteredTool": 56,
+        "convertListedInputSchema": 3,
+        "createMuseumServer": 12,
+        "createToolExecutor": 1,
+        "setToolRequestHandlers": 3
+      },
+      "topSelfSamples": [
+        {
+          "functionName": "(garbage collector)",
+          "samples": 552
+        },
+        {
+          "functionName": "(program)",
+          "samples": 505
+        },
+        {
+          "functionName": "fetch",
+          "samples": 446
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 442
+        },
+        {
+          "functionName": "",
+          "samples": 348
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 337
+        },
+        {
+          "functionName": "inst._zod.parse",
+          "samples": 213
+        },
+        {
+          "functionName": "read",
+          "samples": 192
+        },
+        {
+          "functionName": "Request",
+          "samples": 153
+        },
+        {
+          "functionName": "readRequestBody",
+          "samples": 151
+        },
+        {
+          "functionName": "get",
+          "samples": 125
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 125
+        },
+        {
+          "functionName": "visit",
+          "samples": 116
+        },
+        {
+          "functionName": "Response",
+          "samples": 115
+        },
+        {
+          "functionName": "boundedText",
+          "samples": 112
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 103
+        },
+        {
+          "functionName": "isLegacyRequest",
+          "samples": 86
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 64
+        },
+        {
+          "functionName": "generateTokenId",
+          "samples": 57
+        },
+        {
+          "functionName": "_createRegisteredTool",
+          "samples": 56
+        }
+      ]
+    },
+    {
+      "profile": "lean-symbols.cpuprofile",
+      "elapsedMs": 2065.185,
+      "totalSamples": 5648,
+      "idleSamples": 325,
+      "activeSamples": 5323,
+      "gcSamples": 547,
+      "unattributedProgramSamples": 493,
+      "setupSelfSamples": {
+        "createLeanMuseumServer": 3
+      },
+      "topSelfSamples": [
+        {
+          "functionName": "(garbage collector)",
+          "samples": 547
+        },
+        {
+          "functionName": "(program)",
+          "samples": 493
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 460
+        },
+        {
+          "functionName": "fetch",
+          "samples": 437
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 325
+        },
+        {
+          "functionName": "",
+          "samples": 303
+        },
+        {
+          "functionName": "inst._zod.parse",
+          "samples": 232
+        },
+        {
+          "functionName": "Request",
+          "samples": 161
+        },
+        {
+          "functionName": "read",
+          "samples": 161
+        },
+        {
+          "functionName": "readRequestBody",
+          "samples": 151
+        },
+        {
+          "functionName": "get",
+          "samples": 127
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 119
+        },
+        {
+          "functionName": "boundedText",
+          "samples": 119
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 101
+        },
+        {
+          "functionName": "Response",
+          "samples": 90
+        },
+        {
+          "functionName": "isLegacyRequest",
+          "samples": 76
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 67
+        },
+        {
+          "functionName": "clone",
+          "samples": 65
+        },
+        {
+          "functionName": "importKey",
+          "samples": 57
+        },
+        {
+          "functionName": "handleApiRequest",
+          "samples": 56
+        }
+      ]
+    },
+    {
+      "profile": "baseline-mixed-1.cpuprofile",
+      "elapsedMs": 1588.029,
+      "totalSamples": 3972,
+      "idleSamples": 202,
+      "activeSamples": 3770,
+      "gcSamples": 270,
+      "unattributedProgramSamples": 371,
+      "setupSelfSamples": {
+        "_createRegisteredTool": 39,
+        "registerTool": 4,
+        "setToolRequestHandlers": 2
+      },
+      "topSelfSamples": [
+        {
+          "functionName": "(program)",
+          "samples": 371
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 321
+        },
+        {
+          "functionName": "fetch",
+          "samples": 299
+        },
+        {
+          "functionName": "(garbage collector)",
+          "samples": 270
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 202
+        },
+        {
+          "functionName": "",
+          "samples": 200
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 168
+        },
+        {
+          "functionName": "KC",
+          "samples": 130
+        },
+        {
+          "functionName": "read",
+          "samples": 117
+        },
+        {
+          "functionName": "ew",
+          "samples": 84
+        },
+        {
+          "functionName": "Request",
+          "samples": 83
+        },
+        {
+          "functionName": "get",
+          "samples": 76
+        },
+        {
+          "functionName": "yS",
+          "samples": 75
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 75
+        },
+        {
+          "functionName": "Dw",
+          "samples": 62
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 58
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 56
+        },
+        {
+          "functionName": "Response",
+          "samples": 50
+        },
+        {
+          "functionName": "AS",
+          "samples": 45
+        },
+        {
+          "functionName": "_createRegisteredTool",
+          "samples": 39
+        }
+      ]
+    },
+    {
+      "profile": "lean-mixed-1.cpuprofile",
+      "elapsedMs": 1533.665,
+      "totalSamples": 3716,
+      "idleSamples": 203,
+      "activeSamples": 3513,
+      "gcSamples": 246,
+      "unattributedProgramSamples": 353,
+      "setupSelfSamples": {},
+      "topSelfSamples": [
+        {
+          "functionName": "(program)",
+          "samples": 353
+        },
+        {
+          "functionName": "fetch",
+          "samples": 297
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 295
+        },
+        {
+          "functionName": "(garbage collector)",
+          "samples": 246
+        },
+        {
+          "functionName": "",
+          "samples": 216
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 203
+        },
+        {
+          "functionName": "read",
+          "samples": 134
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 123
+        },
+        {
+          "functionName": "KC",
+          "samples": 103
+        },
+        {
+          "functionName": "yS",
+          "samples": 82
+        },
+        {
+          "functionName": "get",
+          "samples": 80
+        },
+        {
+          "functionName": "Request",
+          "samples": 73
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 67
+        },
+        {
+          "functionName": "ew",
+          "samples": 67
+        },
+        {
+          "functionName": "Dw",
+          "samples": 63
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 59
+        },
+        {
+          "functionName": "Response",
+          "samples": 53
+        },
+        {
+          "functionName": "AS",
+          "samples": 43
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 38
+        },
+        {
+          "functionName": "URL",
+          "samples": 35
+        }
+      ]
+    },
+    {
+      "profile": "lean-mixed-2.cpuprofile",
+      "elapsedMs": 1575.936,
+      "totalSamples": 3807,
+      "idleSamples": 197,
+      "activeSamples": 3610,
+      "gcSamples": 227,
+      "unattributedProgramSamples": 368,
+      "setupSelfSamples": {},
+      "topSelfSamples": [
+        {
+          "functionName": "(program)",
+          "samples": 368
+        },
+        {
+          "functionName": "fetch",
+          "samples": 311
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 297
+        },
+        {
+          "functionName": "(garbage collector)",
+          "samples": 227
+        },
+        {
+          "functionName": "",
+          "samples": 205
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 197
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 147
+        },
+        {
+          "functionName": "read",
+          "samples": 126
+        },
+        {
+          "functionName": "KC",
+          "samples": 117
+        },
+        {
+          "functionName": "Request",
+          "samples": 89
+        },
+        {
+          "functionName": "ew",
+          "samples": 83
+        },
+        {
+          "functionName": "yS",
+          "samples": 78
+        },
+        {
+          "functionName": "get",
+          "samples": 67
+        },
+        {
+          "functionName": "Dw",
+          "samples": 64
+        },
+        {
+          "functionName": "Response",
+          "samples": 63
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 61
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 60
+        },
+        {
+          "functionName": "handleApiRequest",
+          "samples": 48
+        },
+        {
+          "functionName": "importKey",
+          "samples": 38
+        },
+        {
+          "functionName": "AS",
+          "samples": 36
+        }
+      ]
+    },
+    {
+      "profile": "baseline-mixed-2.cpuprofile",
+      "elapsedMs": 1571.909,
+      "totalSamples": 3934,
+      "idleSamples": 203,
+      "activeSamples": 3731,
+      "gcSamples": 274,
+      "unattributedProgramSamples": 320,
+      "setupSelfSamples": {
+        "setToolRequestHandlers": 3,
+        "_createRegisteredTool": 25,
+        "registerTool": 5
+      },
+      "topSelfSamples": [
+        {
+          "functionName": "(program)",
+          "samples": 320
+        },
+        {
+          "functionName": "fetch",
+          "samples": 310
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 291
+        },
+        {
+          "functionName": "(garbage collector)",
+          "samples": 274
+        },
+        {
+          "functionName": "",
+          "samples": 212
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 203
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 153
+        },
+        {
+          "functionName": "read",
+          "samples": 112
+        },
+        {
+          "functionName": "KC",
+          "samples": 102
+        },
+        {
+          "functionName": "ew",
+          "samples": 94
+        },
+        {
+          "functionName": "yS",
+          "samples": 93
+        },
+        {
+          "functionName": "get",
+          "samples": 84
+        },
+        {
+          "functionName": "Dw",
+          "samples": 74
+        },
+        {
+          "functionName": "Request",
+          "samples": 74
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 70
+        },
+        {
+          "functionName": "Response",
+          "samples": 61
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 55
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 49
+        },
+        {
+          "functionName": "clone",
+          "samples": 40
+        },
+        {
+          "functionName": "AS",
+          "samples": 37
+        }
+      ]
+    },
+    {
+      "profile": "baseline-mixed-3.cpuprofile",
+      "elapsedMs": 3698.068,
+      "totalSamples": 3851,
+      "idleSamples": 205,
+      "activeSamples": 3646,
+      "gcSamples": 218,
+      "unattributedProgramSamples": 321,
+      "setupSelfSamples": {
+        "registerTool": 3,
+        "_createRegisteredTool": 21
+      },
+      "topSelfSamples": [
+        {
+          "functionName": "(program)",
+          "samples": 321
+        },
+        {
+          "functionName": "fetch",
+          "samples": 299
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 255
+        },
+        {
+          "functionName": "",
+          "samples": 233
+        },
+        {
+          "functionName": "(garbage collector)",
+          "samples": 218
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 205
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 146
+        },
+        {
+          "functionName": "KC",
+          "samples": 144
+        },
+        {
+          "functionName": "read",
+          "samples": 113
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 87
+        },
+        {
+          "functionName": "get",
+          "samples": 86
+        },
+        {
+          "functionName": "yS",
+          "samples": 82
+        },
+        {
+          "functionName": "ew",
+          "samples": 78
+        },
+        {
+          "functionName": "Request",
+          "samples": 67
+        },
+        {
+          "functionName": "Response",
+          "samples": 60
+        },
+        {
+          "functionName": "Dw",
+          "samples": 56
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 51
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 50
+        },
+        {
+          "functionName": "handleApiRequest",
+          "samples": 42
+        },
+        {
+          "functionName": "getReader",
+          "samples": 42
+        }
+      ]
+    },
+    {
+      "profile": "lean-mixed-3.cpuprofile",
+      "elapsedMs": 1724.913,
+      "totalSamples": 3861,
+      "idleSamples": 191,
+      "activeSamples": 3670,
+      "gcSamples": 243,
+      "unattributedProgramSamples": 357,
+      "setupSelfSamples": {},
+      "topSelfSamples": [
+        {
+          "functionName": "(program)",
+          "samples": 357
+        },
+        {
+          "functionName": "fetch",
+          "samples": 322
+        },
+        {
+          "functionName": "writeSSEEvent",
+          "samples": 303
+        },
+        {
+          "functionName": "(garbage collector)",
+          "samples": 243
+        },
+        {
+          "functionName": "",
+          "samples": 239
+        },
+        {
+          "functionName": "(idle)",
+          "samples": 191
+        },
+        {
+          "functionName": "e._zod.parse",
+          "samples": 148
+        },
+        {
+          "functionName": "read",
+          "samples": 137
+        },
+        {
+          "functionName": "KC",
+          "samples": 116
+        },
+        {
+          "functionName": "Request",
+          "samples": 94
+        },
+        {
+          "functionName": "_onclose",
+          "samples": 83
+        },
+        {
+          "functionName": "ew",
+          "samples": 80
+        },
+        {
+          "functionName": "yS",
+          "samples": 79
+        },
+        {
+          "functionName": "get",
+          "samples": 78
+        },
+        {
+          "functionName": "Response",
+          "samples": 63
+        },
+        {
+          "functionName": "Dw",
+          "samples": 54
+        },
+        {
+          "functionName": "ReadableStream",
+          "samples": 53
+        },
+        {
+          "functionName": "AS",
+          "samples": 52
+        },
+        {
+          "functionName": "handlePostRequest",
+          "samples": 43
+        },
+        {
+          "functionName": "handleApiRequest",
+          "samples": 41
+        }
+      ]
+    }
+  ]
+}

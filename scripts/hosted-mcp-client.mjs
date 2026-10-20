@@ -10,6 +10,7 @@ assert(process.stdin.isTTY,'Run the diagnostic in an interactive terminal so inp
 const origin='https://albion-songs-auth.steve-e85.workers.dev';
 const verifier=randomBytes(32).toString('base64url'),state=randomBytes(32).toString('base64url');
 let acceptCode,rejectCode,client,terminal,accessToken,refreshToken,registeredClient,cleanup;
+const laneClients=new Map();
 const callback=new Promise((resolve,reject)=>{acceptCode=resolve;rejectCode=reject;});
 // Keep an unattended run bounded, including when browser consent is abandoned.
 const timeout=setTimeout(()=>{rejectCode(Error('Browser consent timed out.'));terminal?.close();void finish();},45*60*1000);
@@ -21,7 +22,7 @@ const listener=createServer((request,response)=>{
  response.writeHead(200,{'Content-Type':'text/plain','Cache-Control':'no-store','Referrer-Policy':'no-referrer'}).end('Albion connector test is connected. You can close this tab.');acceptCode(code);
 });
 function finish(){return cleanup??=(async()=>{
- clearTimeout(timeout);await client?.close();listener.close();
+ clearTimeout(timeout);for(const laneClient of laneClients.values())await laneClient.close();await client?.close();listener.close();
  if(accessToken&&registeredClient){
   try{const response=await fetch(origin+'/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({client_id:registeredClient,token:refreshToken||accessToken,token_type_hint:refreshToken?'refresh_token':'access_token'}),signal:AbortSignal.timeout(10000)});console.log(JSON.stringify({testCredentialRevocation:response.ok?'confirmed':'unconfirmed'}));}
   catch{console.log(JSON.stringify({testCredentialRevocation:'unconfirmed; memory discarded'}));}
@@ -48,7 +49,21 @@ try{
  console.log('Send JSON {"tool":"museum_guide","arguments":{}}; {"repeat":10,"tool":"museum_guide","arguments":{}}; or {"quit":true}.');
  for await(const line of terminal){
   try{
-   const input=JSON.parse(line);if(input.quit)break;if(input.refresh){tools=await client.listTools();console.log(JSON.stringify({tools:tools.tools.map(t=>t.name)}));continue;}
+   const input=JSON.parse(line);if(input.quit)break;
+   const lane=input.lane||'default';assert(['default','legacy','modern'].includes(lane),'Choose a fixed protocol lane.');
+   if(lane!=='default'&&!laneClients.has(lane)){
+    const laneClient=new Client({name:'Albion bounded comparison',version:'1'},{versionNegotiation:{mode:lane==='modern'?{pin:'2026-07-28'}:'legacy'}});
+    laneClients.set(lane,laneClient);
+    await laneClient.connect(new StreamableHTTPClientTransport(new URL(origin+'/mcp'),{authProvider:{token:async()=>accessToken}}));
+    assert.equal((await laneClient.listTools()).tools.length,14);
+   }
+   const selected=lane==='default'?client:laneClients.get(lane);
+   if(input.expectHandler){
+    assert(['baseline','lean'].includes(input.expectHandler));
+    await assert.rejects(selected.callTool({name:'constructor',arguments:{}}),error=>error.code===-32602&&error.message.includes(input.expectHandler==='lean'?'Tool constructor not found':'Tool constructor disabled'));
+    console.log(JSON.stringify({at:new Date().toISOString(),lane,handlerSignature:input.expectHandler,ok:true}));continue;
+   }
+   if(input.refresh){tools=await client.listTools();console.log(JSON.stringify({tools:tools.tools.map(t=>t.name)}));continue;}
    if(input.probe){
     assert(['auth','guide','full'].includes(input.probe),'Choose a fixed read-only diagnostic route.');
     const repeat=input.repeat??5;assert(Number.isInteger(repeat)&&repeat>=1&&repeat<=20);
@@ -66,11 +81,13 @@ try{
    }
    assert(tools.tools.some(t=>t.name===input.tool),'Choose a discovered tool.');
    const repeat=input.repeat??1;assert(Number.isInteger(repeat)&&repeat>=1&&repeat<=100);
+   assert(input.phase===undefined||/^(baseline|lean|restored)-(warm|paused|check)$/.test(input.phase),'Choose a comparison phase label.');
    assert(repeat===1||tools.tools.find(t=>t.name===input.tool).annotations?.readOnlyHint===true,'Only read operations can repeat.');
    for(let index=0;index<repeat;index++){
-    const result=await client.callTool({name:input.tool,arguments:input.arguments??{}});
+    const startedAt=new Date().toISOString();
+    const result=await selected.callTool({name:input.tool,arguments:input.arguments??{}});
     const output=input.summary?{isError:!!result.isError,bytes:Buffer.byteLength(JSON.stringify(result)),keys:Object.keys(result.structuredContent||{})}:result;
-    console.log(JSON.stringify({at:new Date().toISOString(),tool:input.tool,index,result:output}));
+    console.log(JSON.stringify({startedAt,at:new Date().toISOString(),lane,...input.phase?{phase:input.phase}:{},tool:input.tool,index,result:output}));
    }
   }catch(error){console.log(JSON.stringify({failed:true,message:error.message}));}
  }
