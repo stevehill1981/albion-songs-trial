@@ -1,0 +1,2316 @@
+{
+  "events": [
+    {
+      "at": "2026-10-20T11:48:11.826Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:11.525Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:11.190Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:10.863Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:10.556Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:09.935Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:09.580Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:09.258Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:08.945Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:08.612Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:08.294Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:07.952Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:07.623Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:07.291Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:06.979Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:06.645Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:06.315Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:05.991Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:48:05.616Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:33.493Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 10,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:33.149Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:32.815Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:32.466Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 41,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:32.060Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:31.751Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:31.428Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:31.114Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:30.773Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:30.381Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:30.056Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:30.011Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "GET",
+      "status": 405,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:29.927Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 202,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:29.859Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 23,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:29.827Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 1,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:29.481Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:29.140Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:28.834Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:44:28.277Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:43:01.286Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:43:00.992Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:43:00.640Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:43:00.289Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:59.878Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:59.576Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:58.909Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:58.584Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:58.241Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:57.922Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:57.808Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 202,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:57.764Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:57.673Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:57.377Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:57.049Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:56.716Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:42:56.264Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:30.377Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:30.044Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 1,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:29.730Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:29.349Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:29.072Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:28.772Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:28.472Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:28.157Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:27.872Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:27.502Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:27.199Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:26.908Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:26.532Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:26.236Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:25.651Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:25.349Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:25.020Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:24.737Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:24.454Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:24.137Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:24.071Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "GET",
+      "status": 405,
+      "cpuMs": 1,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:23.960Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:23.923Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:23.587Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:23.290Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:22.961Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:22.645Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:22.321Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:21.992Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:21.705Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:21.099Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:20.792Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:20.418Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:20.121Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:19.809Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:19.476Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:19.166Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:18.491Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:18.172Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 29,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:17.734Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:17.344Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:17.012Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:16.694Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:16.074Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:15.743Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:15.468Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:15.137Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:14.831Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:14.500Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:14.160Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:13.851Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:13.776Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "GET",
+      "status": 405,
+      "cpuMs": 1,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:13.732Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 202,
+      "cpuMs": 10,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:13.672Z",
+      "path": "/mcp/diagnostic/guide",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 11,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:13.625Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:13.282Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:12.931Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:12.648Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:12.339Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:11.727Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 2,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:11.435Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    },
+    {
+      "at": "2026-10-20T11:41:11.096Z",
+      "path": "/mcp/diagnostic/auth",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "da1623f2-dc1e-4970-9bc2-4ab7e551af7d"
+    }
+  ],
+  "matched": [
+    {
+      "at": "2026-10-20T11:41:10.610Z",
+      "probe": "auth",
+      "index": 0,
+      "ok": true,
+      "bytes": 15,
+      "unmatched": true
+    },
+    {
+      "at": "2026-10-20T11:41:11.116Z",
+      "probe": "auth",
+      "index": 1,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 7,
+      "serverAt": "2026-10-20T11:41:11.096Z",
+      "gapMs": 20,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:11.450Z",
+      "probe": "auth",
+      "index": 2,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 3,
+      "serverAt": "2026-10-20T11:41:11.435Z",
+      "gapMs": 15,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:11.738Z",
+      "probe": "auth",
+      "index": 3,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:41:11.727Z",
+      "gapMs": 11,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:12.071Z",
+      "probe": "auth",
+      "index": 4,
+      "ok": true,
+      "bytes": 15,
+      "unmatched": true
+    },
+    {
+      "at": "2026-10-20T11:41:12.354Z",
+      "probe": "auth",
+      "index": 5,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 3,
+      "serverAt": "2026-10-20T11:41:12.339Z",
+      "gapMs": 15,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:12.660Z",
+      "probe": "auth",
+      "index": 6,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:41:12.648Z",
+      "gapMs": 12,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:12.944Z",
+      "probe": "auth",
+      "index": 7,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:41:12.931Z",
+      "gapMs": 13,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:13.296Z",
+      "probe": "auth",
+      "index": 8,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:41:13.282Z",
+      "gapMs": 14,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:13.636Z",
+      "probe": "auth",
+      "index": 9,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:41:13.625Z",
+      "gapMs": 11,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:14.181Z",
+      "probe": "guide",
+      "index": 0,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 7,
+      "serverAt": "2026-10-20T11:41:14.160Z",
+      "gapMs": 21,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:14.524Z",
+      "probe": "guide",
+      "index": 1,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 9,
+      "serverAt": "2026-10-20T11:41:14.500Z",
+      "gapMs": 24,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:14.855Z",
+      "probe": "guide",
+      "index": 2,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 8,
+      "serverAt": "2026-10-20T11:41:14.831Z",
+      "gapMs": 24,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:15.157Z",
+      "probe": "guide",
+      "index": 3,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 8,
+      "serverAt": "2026-10-20T11:41:15.137Z",
+      "gapMs": 20,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:15.484Z",
+      "probe": "guide",
+      "index": 4,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:15.468Z",
+      "gapMs": 16,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:15.762Z",
+      "probe": "guide",
+      "index": 5,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:41:15.743Z",
+      "gapMs": 19,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:16.396Z",
+      "probe": "guide",
+      "index": 6,
+      "ok": true,
+      "bytes": 13312,
+      "unmatched": true
+    },
+    {
+      "at": "2026-10-20T11:41:16.716Z",
+      "probe": "guide",
+      "index": 7,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:16.694Z",
+      "gapMs": 22,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:17.034Z",
+      "probe": "guide",
+      "index": 8,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:17.012Z",
+      "gapMs": 22,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:17.383Z",
+      "probe": "guide",
+      "index": 9,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:17.344Z",
+      "gapMs": 39,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:17.795Z",
+      "probe": "full",
+      "index": 0,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 7,
+      "serverAt": "2026-10-20T11:41:17.734Z",
+      "gapMs": 61,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:18.209Z",
+      "probe": "full",
+      "index": 1,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 29,
+      "serverAt": "2026-10-20T11:41:18.172Z",
+      "gapMs": 37,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:18.515Z",
+      "probe": "full",
+      "index": 2,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 8,
+      "serverAt": "2026-10-20T11:41:18.491Z",
+      "gapMs": 24,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:18.887Z",
+      "probe": "full",
+      "index": 3,
+      "ok": true,
+      "bytes": 13312,
+      "unmatched": true
+    },
+    {
+      "at": "2026-10-20T11:41:19.195Z",
+      "probe": "full",
+      "index": 4,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 6,
+      "serverAt": "2026-10-20T11:41:19.166Z",
+      "gapMs": 29,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:19.491Z",
+      "probe": "full",
+      "index": 5,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:19.476Z",
+      "gapMs": 15,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:19.840Z",
+      "probe": "full",
+      "index": 6,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:41:19.809Z",
+      "gapMs": 31,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:20.136Z",
+      "probe": "full",
+      "index": 7,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:20.121Z",
+      "gapMs": 15,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:20.455Z",
+      "probe": "full",
+      "index": 8,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 8,
+      "serverAt": "2026-10-20T11:41:20.418Z",
+      "gapMs": 37,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:20.808Z",
+      "probe": "full",
+      "index": 9,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:41:20.792Z",
+      "gapMs": 16,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:21.119Z",
+      "probe": "full",
+      "index": 0,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:41:21.099Z",
+      "gapMs": 20,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:21.433Z",
+      "probe": "full",
+      "index": 1,
+      "ok": true,
+      "bytes": 13312,
+      "unmatched": true
+    },
+    {
+      "at": "2026-10-20T11:41:21.721Z",
+      "probe": "full",
+      "index": 2,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:21.705Z",
+      "gapMs": 16,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:22.010Z",
+      "probe": "full",
+      "index": 3,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:21.992Z",
+      "gapMs": 18,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:22.335Z",
+      "probe": "full",
+      "index": 4,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 3,
+      "serverAt": "2026-10-20T11:41:22.321Z",
+      "gapMs": 14,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:22.667Z",
+      "probe": "full",
+      "index": 5,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 6,
+      "serverAt": "2026-10-20T11:41:22.645Z",
+      "gapMs": 22,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:23.015Z",
+      "probe": "full",
+      "index": 6,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:22.961Z",
+      "gapMs": 54,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:23.309Z",
+      "probe": "full",
+      "index": 7,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:41:23.290Z",
+      "gapMs": 19,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:23.634Z",
+      "probe": "full",
+      "index": 8,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:41:23.587Z",
+      "gapMs": 47,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:23.940Z",
+      "probe": "full",
+      "index": 9,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:23.923Z",
+      "gapMs": 17,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:24.473Z",
+      "probe": "guide",
+      "index": 0,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 7,
+      "serverAt": "2026-10-20T11:41:24.454Z",
+      "gapMs": 19,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:24.755Z",
+      "probe": "guide",
+      "index": 1,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 3,
+      "serverAt": "2026-10-20T11:41:24.737Z",
+      "gapMs": 18,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:25.038Z",
+      "probe": "guide",
+      "index": 2,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 3,
+      "serverAt": "2026-10-20T11:41:25.020Z",
+      "gapMs": 18,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:25.369Z",
+      "probe": "guide",
+      "index": 3,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:41:25.349Z",
+      "gapMs": 20,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:25.665Z",
+      "probe": "guide",
+      "index": 4,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 3,
+      "serverAt": "2026-10-20T11:41:25.651Z",
+      "gapMs": 14,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:25.983Z",
+      "probe": "guide",
+      "index": 5,
+      "ok": true,
+      "bytes": 13312,
+      "unmatched": true
+    },
+    {
+      "at": "2026-10-20T11:41:26.254Z",
+      "probe": "guide",
+      "index": 6,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:26.236Z",
+      "gapMs": 18,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:26.577Z",
+      "probe": "guide",
+      "index": 7,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:26.532Z",
+      "gapMs": 45,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:26.926Z",
+      "probe": "guide",
+      "index": 8,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:26.908Z",
+      "gapMs": 18,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:27.214Z",
+      "probe": "guide",
+      "index": 9,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:27.199Z",
+      "gapMs": 15,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:27.517Z",
+      "probe": "auth",
+      "index": 0,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:27.502Z",
+      "gapMs": 15,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:27.890Z",
+      "probe": "auth",
+      "index": 1,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:41:27.872Z",
+      "gapMs": 18,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:28.170Z",
+      "probe": "auth",
+      "index": 2,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:41:28.157Z",
+      "gapMs": 13,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:28.490Z",
+      "probe": "auth",
+      "index": 3,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:41:28.472Z",
+      "gapMs": 18,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:28.784Z",
+      "probe": "auth",
+      "index": 4,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:41:28.772Z",
+      "gapMs": 12,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:29.083Z",
+      "probe": "auth",
+      "index": 5,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:41:29.072Z",
+      "gapMs": 11,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:29.362Z",
+      "probe": "auth",
+      "index": 6,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:41:29.349Z",
+      "gapMs": 13,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:29.753Z",
+      "probe": "auth",
+      "index": 7,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:41:29.730Z",
+      "gapMs": 23,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:30.056Z",
+      "probe": "auth",
+      "index": 8,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 1,
+      "serverAt": "2026-10-20T11:41:30.044Z",
+      "gapMs": 12,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:41:30.394Z",
+      "probe": "auth",
+      "index": 9,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 9,
+      "serverAt": "2026-10-20T11:41:30.377Z",
+      "gapMs": 17,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:42:56.284Z",
+      "probe": "full",
+      "index": 0,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 9,
+      "serverAt": "2026-10-20T11:42:56.264Z",
+      "gapMs": 20,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:42:56.740Z",
+      "probe": "full",
+      "index": 1,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:42:56.716Z",
+      "gapMs": 24,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:42:57.062Z",
+      "probe": "full",
+      "index": 2,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:42:57.049Z",
+      "gapMs": 13,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:42:57.397Z",
+      "probe": "full",
+      "index": 3,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 7,
+      "serverAt": "2026-10-20T11:42:57.377Z",
+      "gapMs": 20,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:42:57.722Z",
+      "probe": "full",
+      "index": 4,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:42:57.673Z",
+      "gapMs": 49,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:42:58.262Z",
+      "probe": "guide",
+      "index": 0,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:42:58.241Z",
+      "gapMs": 21,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:42:58.605Z",
+      "probe": "guide",
+      "index": 1,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:42:58.584Z",
+      "gapMs": 21,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:42:58.953Z",
+      "probe": "guide",
+      "index": 2,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:42:58.909Z",
+      "gapMs": 44,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:42:59.257Z",
+      "probe": "guide",
+      "index": 3,
+      "ok": true,
+      "bytes": 13312,
+      "unmatched": true
+    },
+    {
+      "at": "2026-10-20T11:42:59.592Z",
+      "probe": "guide",
+      "index": 4,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 3,
+      "serverAt": "2026-10-20T11:42:59.576Z",
+      "gapMs": 16,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:42:59.890Z",
+      "probe": "auth",
+      "index": 0,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:42:59.878Z",
+      "gapMs": 12,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:43:00.304Z",
+      "probe": "auth",
+      "index": 1,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:43:00.289Z",
+      "gapMs": 15,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:43:00.656Z",
+      "probe": "auth",
+      "index": 2,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 3,
+      "serverAt": "2026-10-20T11:43:00.640Z",
+      "gapMs": 16,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:43:01.014Z",
+      "probe": "auth",
+      "index": 3,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:43:00.992Z",
+      "gapMs": 22,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:43:01.298Z",
+      "probe": "auth",
+      "index": 4,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:43:01.286Z",
+      "gapMs": 12,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:28.290Z",
+      "probe": "auth",
+      "index": 0,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 3,
+      "serverAt": "2026-10-20T11:44:28.277Z",
+      "gapMs": 13,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:28.854Z",
+      "probe": "auth",
+      "index": 1,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 8,
+      "serverAt": "2026-10-20T11:44:28.834Z",
+      "gapMs": 20,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:29.174Z",
+      "probe": "auth",
+      "index": 2,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 2,
+      "serverAt": "2026-10-20T11:44:29.140Z",
+      "gapMs": 34,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:29.497Z",
+      "probe": "auth",
+      "index": 3,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:44:29.481Z",
+      "gapMs": 16,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:29.838Z",
+      "probe": "auth",
+      "index": 4,
+      "ok": true,
+      "bytes": 15,
+      "cpuMs": 1,
+      "serverAt": "2026-10-20T11:44:29.827Z",
+      "gapMs": 11,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:30.399Z",
+      "probe": "guide",
+      "index": 0,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 7,
+      "serverAt": "2026-10-20T11:44:30.381Z",
+      "gapMs": 18,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:30.802Z",
+      "probe": "guide",
+      "index": 1,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 12,
+      "serverAt": "2026-10-20T11:44:30.773Z",
+      "gapMs": 29,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:31.129Z",
+      "probe": "guide",
+      "index": 2,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:44:31.114Z",
+      "gapMs": 15,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:31.448Z",
+      "probe": "guide",
+      "index": 3,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 8,
+      "serverAt": "2026-10-20T11:44:31.428Z",
+      "gapMs": 20,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:31.767Z",
+      "probe": "guide",
+      "index": 4,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 6,
+      "serverAt": "2026-10-20T11:44:31.751Z",
+      "gapMs": 16,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:32.080Z",
+      "probe": "full",
+      "index": 0,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 9,
+      "serverAt": "2026-10-20T11:44:32.060Z",
+      "gapMs": 20,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:32.512Z",
+      "probe": "full",
+      "index": 1,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 41,
+      "serverAt": "2026-10-20T11:44:32.466Z",
+      "gapMs": 46,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:32.834Z",
+      "probe": "full",
+      "index": 2,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 6,
+      "serverAt": "2026-10-20T11:44:32.815Z",
+      "gapMs": 19,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:33.166Z",
+      "probe": "full",
+      "index": 3,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:44:33.149Z",
+      "gapMs": 17,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:44:33.515Z",
+      "probe": "full",
+      "index": 4,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 10,
+      "serverAt": "2026-10-20T11:44:33.493Z",
+      "gapMs": 22,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:05.631Z",
+      "probe": "full",
+      "index": 0,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:48:05.616Z",
+      "gapMs": 15,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:06.007Z",
+      "probe": "full",
+      "index": 1,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:48:05.991Z",
+      "gapMs": 16,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:06.370Z",
+      "probe": "full",
+      "index": 2,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:48:06.315Z",
+      "gapMs": 55,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:06.664Z",
+      "probe": "full",
+      "index": 3,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 6,
+      "serverAt": "2026-10-20T11:48:06.645Z",
+      "gapMs": 19,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:06.999Z",
+      "probe": "full",
+      "index": 4,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 6,
+      "serverAt": "2026-10-20T11:48:06.979Z",
+      "gapMs": 20,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:07.308Z",
+      "probe": "full",
+      "index": 5,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:48:07.291Z",
+      "gapMs": 17,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:07.643Z",
+      "probe": "full",
+      "index": 6,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:48:07.623Z",
+      "gapMs": 20,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:07.976Z",
+      "probe": "full",
+      "index": 7,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 3,
+      "serverAt": "2026-10-20T11:48:07.952Z",
+      "gapMs": 24,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:08.310Z",
+      "probe": "full",
+      "index": 8,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:48:08.294Z",
+      "gapMs": 16,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:08.626Z",
+      "probe": "full",
+      "index": 9,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 3,
+      "serverAt": "2026-10-20T11:48:08.612Z",
+      "gapMs": 14,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:08.961Z",
+      "probe": "full",
+      "index": 10,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 6,
+      "serverAt": "2026-10-20T11:48:08.945Z",
+      "gapMs": 16,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:09.276Z",
+      "probe": "full",
+      "index": 11,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 9,
+      "serverAt": "2026-10-20T11:48:09.258Z",
+      "gapMs": 18,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:09.597Z",
+      "probe": "full",
+      "index": 12,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:48:09.580Z",
+      "gapMs": 17,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:10.260Z",
+      "probe": "full",
+      "index": 13,
+      "ok": true,
+      "bytes": 13312,
+      "unmatched": true
+    },
+    {
+      "at": "2026-10-20T11:48:10.571Z",
+      "probe": "full",
+      "index": 14,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:48:10.556Z",
+      "gapMs": 15,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:10.879Z",
+      "probe": "full",
+      "index": 15,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:48:10.863Z",
+      "gapMs": 16,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:11.209Z",
+      "probe": "full",
+      "index": 16,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 4,
+      "serverAt": "2026-10-20T11:48:11.190Z",
+      "gapMs": 19,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:11.540Z",
+      "probe": "full",
+      "index": 17,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 6,
+      "serverAt": "2026-10-20T11:48:11.525Z",
+      "gapMs": 15,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:11.844Z",
+      "probe": "full",
+      "index": 18,
+      "ok": true,
+      "bytes": 13312,
+      "cpuMs": 5,
+      "serverAt": "2026-10-20T11:48:11.826Z",
+      "gapMs": 18,
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-10-20T11:48:12.130Z",
+      "probe": "full",
+      "index": 19,
+      "ok": true,
+      "bytes": 13312,
+      "unmatched": true
+    }
+  ],
+  "summary": {
+    "auth": {
+      "calls": 30,
+      "timed": 28,
+      "min": 1,
+      "median": 2,
+      "p95": 8,
+      "max": 9,
+      "mean": 3.0357142857142856
+    },
+    "guide": {
+      "calls": 30,
+      "timed": 27,
+      "min": 3,
+      "median": 4,
+      "p95": 9,
+      "max": 12,
+      "mean": 5.296296296296297
+    },
+    "full": {
+      "calls": 50,
+      "timed": 46,
+      "min": 3,
+      "median": 5,
+      "p95": 10,
+      "max": 41,
+      "mean": 6.586956521739131
+    }
+  },
+  "traces": [
+    {
+      "at": "2026-10-20T11:41:28.215Z",
+      "name": "fetch",
+      "start": 1792496488215,
+      "end": 1792496488472,
+      "durationMs": 257
+    },
+    {
+      "at": "2026-10-20T11:41:28.211Z",
+      "name": "kv_get",
+      "start": 1792496488211,
+      "end": 1792496488215,
+      "durationMs": 3
+    },
+    {
+      "at": "2026-10-20T11:41:28.211Z",
+      "name": "POST",
+      "start": 1792496488211,
+      "end": 1792496488472,
+      "durationMs": 261
+    },
+    {
+      "at": "2026-10-20T11:41:26.595Z",
+      "name": "fetch",
+      "start": 1792496486595,
+      "end": 1792496486908,
+      "durationMs": 313
+    },
+    {
+      "at": "2026-10-20T11:41:26.590Z",
+      "name": "kv_get",
+      "start": 1792496486590,
+      "end": 1792496486595,
+      "durationMs": 4
+    },
+    {
+      "at": "2026-10-20T11:41:26.590Z",
+      "name": "POST",
+      "start": 1792496486590,
+      "end": 1792496486908,
+      "durationMs": 318
+    }
+  ],
+  "correlation": "Same path and POST method; closest preceding server event within 100 ms of client completion, matched at most once. Missing events remain unmatched."
+}
