@@ -1,0 +1,267 @@
+{
+  "slug": "manager-tony-mowbray",
+  "title": "Tony Mowbray · Albion managers",
+  "description": "A sourced Albion profile of Tony Mowbray, with separate spells and documented match boundaries.",
+  "collections": [
+    "managers"
+  ],
+  "blocks": [
+    {
+      "buttonLabel": "",
+      "caption": [
+        {
+          "text": "The Hawthorns, December 2013 · dom fellowes · ",
+          "type": "text"
+        },
+        {
+          "text": "CC BY 2.0",
+          "type": "link",
+          "url": "https://creativecommons.org/licenses/by/2.0/"
+        },
+        {
+          "text": ". Cropped. ",
+          "type": "text"
+        },
+        {
+          "text": "Image source",
+          "type": "link",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Hawthorns_2013-12-21.jpg"
+        },
+        {
+          "text": ".",
+          "type": "text"
+        }
+      ],
+      "emphasiseLastLine": false,
+      "heading": "Tony Mowbray",
+      "imageAlt": "The Hawthorns under floodlights, with supporters around the pitch",
+      "text": "The people in Albion’s dugout. A sourced profile in our growing managers collection.",
+      "type": "intro"
+    },
+    {
+      "type": "text-panel",
+      "anchor": "chapter-1",
+      "navLabel": "",
+      "heading": "Before and at Albion",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Mowbray led Albion to the 2007/08 Championship title. His first spell began with a 3–0 home win over Wolves in October 2006 and ended with a goalless draw at Blackburn in May 2009."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Albion: first-spell match boundaries and retrospective totals",
+          "url": "https://www.wba.co.uk/news/tony-mowbrays-managerial-career-numbers"
+        },
+        {
+          "label": "Albion: appointment and Brunt handover, 17 January 2025",
+          "url": "https://www.wba.co.uk/news/tony-mowbray-appointed-albion-head-coach"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "chapter-2",
+      "navLabel": "",
+      "heading": "The Albion story",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Albion announced his return on 17 January 2025, but Chris Brunt still took the Stoke match the following day. Mowbray’s first match back was at Middlesbrough on 21 January."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Albion: appointment and Brunt handover, 17 January 2025",
+          "url": "https://www.wba.co.uk/news/tony-mowbray-appointed-albion-head-coach"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "chapter-3",
+      "navLabel": "",
+      "heading": "The next chapter",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "His second spell ended on 21 April 2025 after the home defeat by Derby. James Morrison took interim charge."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Albion: departure, 21 April 2025",
+          "url": "https://www.wba.co.uk/news/club-statement-tony-mowbray"
+        },
+        {
+          "label": "Albion: Derby match report, 21 April 2025",
+          "url": "https://www.wba.co.uk/news/albion-1-3-derby-county"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "tony-mowbray-2006",
+      "navLabel": "",
+      "heading": "Permanent spell · 2006",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Recorded competitive match boundaries: 2006-10-22 to 2009-05-24."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Match boundaries supplied by Albion’s retrospective. Exact administrative appointment/departure dates are not asserted in this trial. Recorded totals remain under reconciliation."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Boundary evidence: source-listed; not every date independently corroborated. Match-result evidence is recorded separately in the archive."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Albion: first-spell match boundaries and retrospective totals",
+          "url": "https://www.wba.co.uk/news/tony-mowbrays-managerial-career-numbers"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "tony-mowbray-2025",
+      "navLabel": "",
+      "heading": "Permanent spell · 2025",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Recorded competitive match boundaries: 2025-01-21 to 2025-04-21."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Appointment announced: 2025-01-17."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Departure: 2025-04-21."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Exclude Stoke on 18 January: the appointment notice explicitly leaves Chris Brunt in charge. Include the Derby match before the departure statement on 21 April."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Boundary evidence: source-listed; not every date independently corroborated. Match-result evidence is recorded separately in the archive."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Albion: appointment and Brunt handover, 17 January 2025",
+          "url": "https://www.wba.co.uk/news/tony-mowbray-appointed-albion-head-coach"
+        },
+        {
+          "label": "Albion: departure, 21 April 2025",
+          "url": "https://www.wba.co.uk/news/club-statement-tony-mowbray"
+        },
+        {
+          "label": "Albion: Derby match report, 21 April 2025",
+          "url": "https://www.wba.co.uk/news/albion-1-3-derby-county"
+        }
+      ]
+    },
+    {
+      "type": "text-panel",
+      "anchor": "open-questions",
+      "navLabel": "",
+      "heading": "Recorded totals: an open question",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "First-spell totals are unresolved: this saved archive contains 139 matches (56 wins, 33 draws, 50 defeats; goals 223–191), while Albion’s 17 January 2025 retrospective reports 140 (58 wins, 30 draws, 52 defeats; 232 goals scored). Use recorded-match totals with this warning, not an unqualified career total."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "A missing Peterborough FA Cup replay on 13 January 2009 and the Hartlepool extra-time score on 26 August 2008 have been identified for a separate source-backed archive correction. The retrospective’s remaining differences are not yet reconciled."
+            }
+          ]
+        }
+      ],
+      "sources": []
+    },
+    {
+      "type": "text-panel",
+      "anchor": "scope",
+      "navLabel": "",
+      "heading": "About this profile",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "This is one of three researched profiles in a growing collection, not a complete history of Albion’s managers. Competitive results, wartime and recovery football, and annulled fixtures have separate ledgers. Recorded-match totals do not automatically establish a manager’s full career record."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Browse the match archive",
+          "url": "https://albion-songs-trial.steve-e85.workers.dev/results?season=all"
+        },
+        {
+          "label": "Explore the managers collection",
+          "url": "https://albion-songs-trial.steve-e85.workers.dev/collections/managers"
+        }
+      ]
+    }
+  ]
+}
