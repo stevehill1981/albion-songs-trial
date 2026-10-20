@@ -1,0 +1,17 @@
+---
+import {loadContent,publicPage} from '../../lib/content.mjs';
+import {loadTrialPages,trialBreadcrumbs} from '../../lib/sveltia-trial.mjs';
+import BlockList from '../../components/blocks/BlockList.astro';
+import version from '../../../public/version.json';
+export async function getStaticPaths(){const [content,pages]=await Promise.all([loadContent(),loadTrialPages()]);return pages.map(entry=>({params:{path:entry.path},props:{entry,content,pages}}));}
+const {entry,content,pages}=Astro.props;
+const marker='<!-- SVELTIA_TRIAL_BODY -->';
+const parts=publicPage(content,entry.page,version.revision,marker).replace('</head>','<meta name="robots" content="noindex"></head>').split(marker);
+if(parts.length!==2)throw Error('Trial body slot missing.');
+const crumbs=trialBreadcrumbs(entry.path,pages);
+const children=pages.filter(p=>p.path.startsWith(entry.path+'/')&&p.path.split('/').length===entry.path.split('/').length+1);
+---
+<Fragment set:html={parts[0]}/>
+<aside class="wrap" style="padding-block:20px"><strong>Sveltia comparison · copied content</strong><p><a href="/admin/sveltia">Try the browser-only editor</a> · <a href="/managers">Published managers section</a></p><nav aria-label="Trial breadcrumbs">{crumbs.map((c,i)=><Fragment>{i>0?' / ':''}<a href={c.href}>{c.label}</a></Fragment>)}</nav>{children.length>0&&<ul>{children.map(c=><li><a href={'/sveltia-trial/'+c.path}>{c.page.title}</a></li>)}</ul>}</aside>
+<BlockList page={entry.page} context={content}/>
+<Fragment set:html={parts[1]}/>

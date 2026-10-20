@@ -39,3 +39,5 @@ auth/prototype-build/
 public/admin/rebuild/
 # Generated source-built editor
 public/admin/editor/
+# Generated isolated Sveltia comparison
+public/admin/sveltia/
