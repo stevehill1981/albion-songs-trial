@@ -1,0 +1,191 @@
+[
+  {
+    "at": "2026-10-20T11:20:23.469Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 3,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:23.181Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 7,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:22.879Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 4,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:22.585Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 8,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:22.270Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 5,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:20.617Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 14,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:19.305Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 20,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:17.828Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 7,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:17.170Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 6,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:16.814Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 17,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:16.391Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 15,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:16.012Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 10,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:15.665Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 7,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:15.356Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 8,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:15.001Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 12,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:14.638Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 15,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:14.224Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 6,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:13.872Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 12,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:13.520Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 6,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:13.096Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 40,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  },
+  {
+    "at": "2026-10-20T11:20:12.541Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 28,
+    "outcome": "ok",
+    "version": "34166e20-5809-435e-86fa-4f7881660d31"
+  }
+]
