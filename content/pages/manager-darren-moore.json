@@ -39,6 +39,13 @@
       "type": "intro"
     },
     {
+      "type": "manager-performance",
+      "anchor": "performance",
+      "navLabel": "Recorded results",
+      "heading": "Albion’s recorded results",
+      "manager": "darren-moore"
+    },
+    {
       "type": "text-panel",
       "anchor": "chapter-1",
       "navLabel": "",
@@ -105,118 +112,6 @@
         {
           "label": "Sky Sports: Ipswich draw and Moore departure, 9 March 2019",
           "url": "https://www.skysports.com/football/west-bromwich-albion-vs-ipswich-town/392974"
-        }
-      ]
-    },
-    {
-      "type": "text-panel",
-      "anchor": "darren-moore-2018",
-      "navLabel": "",
-      "heading": "Permanent spell · 2018",
-      "paragraphs": [
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Recorded competitive match boundaries: 2018-08-04 to 2019-03-09."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Appointment announced: 2018-05-18."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Departure: 2019-03-09."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "First recorded competitive match after the permanent appointment was Bolton at home; departure followed the Ipswich draw."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Boundary evidence: source-listed; not every date independently corroborated. Match-result evidence is recorded separately in the archive."
-            }
-          ]
-        }
-      ],
-      "sources": [
-        {
-          "label": "Albion: permanent appointment, 18 May 2018",
-          "url": "https://www.wba.co.uk/news/2018/may/moore-appointed-head-coach"
-        },
-        {
-          "label": "Sky Sports: Ipswich draw and Moore departure, 9 March 2019",
-          "url": "https://www.skysports.com/football/west-bromwich-albion-vs-ipswich-town/392974"
-        }
-      ]
-    },
-    {
-      "type": "text-panel",
-      "anchor": "darren-moore-caretaker-2018",
-      "navLabel": "",
-      "heading": "Caretaker spell · 2018",
-      "paragraphs": [
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Recorded competitive match boundaries: 2018-04-07 to 2018-05-13."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Appointment announced: 2018-04-02."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Final six matches of 2017/18; the permanent appointment followed on 18 May. No separate administrative departure date is asserted for the caretaker role."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Boundary evidence: source-listed; not every date independently corroborated. Match-result evidence is recorded separately in the archive."
-            }
-          ]
-        }
-      ],
-      "sources": [
-        {
-          "label": "Contemporary report quoting the 2 April 2018 club statement",
-          "url": "https://www.shoot.co.uk/relegation-threatened-west-bromwich-albion-part-company-with-manager-alan-pardew/"
-        },
-        {
-          "label": "Albion: Darren Moore in profile, 18 May 2018",
-          "url": "https://www.wba.co.uk/news/2018/may/darren-moore-in-profile"
-        },
-        {
-          "label": "Albion: permanent appointment, 18 May 2018",
-          "url": "https://www.wba.co.uk/news/2018/may/moore-appointed-head-coach"
         }
       ]
     },

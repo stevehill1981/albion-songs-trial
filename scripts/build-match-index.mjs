@@ -1,20 +1,19 @@
-import {readFile,writeFile,mkdir,rm,readdir} from 'node:fs/promises';
-import {attributeManagers} from '../src/lib/manager-history.mjs';
+import {readFile,writeFile,mkdir,rm} from 'node:fs/promises';
+import {loadManagerContent} from '../src/lib/manager-content.mjs';
 import {createHash} from 'node:crypto';
 import {adaptArchive,archiveGroups,matchSummary,PAGE_SIZE} from '../src/lib/match-archive.mjs';
 export const ARCHIVE_FILES={competitive:'public/data/results.json',wartime:'public/data/wartime-results.json',annulled:'protected/historical-results.json'};
 export const sha256=text=>createHash('sha256').update(text).digest('hex');
 export async function buildMatchIndex({revision,output='public/data/museum-query'}={}){
  if(!/^(?:[a-f0-9]{40}|local-build)$/.test(revision||''))throw Error('A source revision is required for the archive index.');
- const records=async folder=>Promise.all((await readdir(folder)).filter(f=>f.endsWith('.json')).sort().map(async file=>JSON.parse(await readFile(`${folder}/${file}`,'utf8'))));
- const register={managers:await records('content/managers'),tenures:await records('content/manager-tenures')};
+ const managerContent=await loadManagerContent(),register=managerContent.register;
  const files=new Map();
  const put=value=>{const text=JSON.stringify(value)+'\n',hash=sha256(text),path=`files/${hash}.json`;if(Buffer.byteLength(text)>192*1024)throw Error('Archive index payload exceeds 192 KB.');files.set(path,text);return {path,sha256:hash,bytes:Buffer.byteLength(text)};};
  const manifest={schemaVersion:1,revision,pageSize:PAGE_SIZE,ledgers:{}};
  for(const [ledger,path]of Object.entries(ARCHIVE_FILES)){
-  const raw=await readFile(path,'utf8'),data=JSON.parse(raw);
+  const raw=ledger==='competitive'?managerContent.source:await readFile(path,'utf8'),data=JSON.parse(raw);
   let archive=adaptArchive(ledger,data);
-  if(ledger==='competitive')archive=attributeManagers(archive,register);
+  if(ledger==='competitive')archive=managerContent.archive;
   if(archive.managerProfiles){manifest.managers=archive.managerProfiles.map(profile=>({id:profile.id,name:profile.name,profile:put(profile)}));delete archive.managerProfiles;}
   const groups=archiveGroups(archive).map(({scope,value,matches})=>{
    const owner=scope==='manager'?value:scope==='tenure'?register.tenures.find(t=>t.id===value)?.manager:null;

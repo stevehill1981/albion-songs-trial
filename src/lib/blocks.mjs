@@ -1,3 +1,4 @@
+import {renderManagerPerformance} from './manager-performance.mjs';
 import {photoURL} from './image-paths.mjs';
 import patterns from './museum-patterns.json' with {type:'json'};
 import { escapeHTML as esc, renderFact, validateFact } from './fact.mjs';
@@ -22,8 +23,9 @@ export const blockTypes=[
  {name:'facts',label:'Baggie Bird facts',fields:[...anchor,heading,text('imageAlt','Mascot description'),bool('includeBlueVinyl','Include the shared blue-vinyl fact first'),list('facts','Facts',factFields,{max:100})]},
  {name:'closing',label:'Closing and source notes',fields:[...anchor,heading,text('text','Closing paragraph'),text('linkLabel','Related page link label'),url('linkURL','Related page link'),text('notesHeading','Source notes heading'),paragraphs('notes','Source and artwork notes')]}
 ];
-const simpleTypes=['text-panel','photograph','link-cards','facts','story'];
+const simpleTypes=['manager-performance','text-panel','photograph','link-cards','facts','story'];
 blockTypes.push(
+ {name:'manager-performance',label:'Manager performance',fields:[...anchor,heading,{name:'manager',label:'Manager',kind:'manager'}]},
  {name:'text-panel',label:'Text and sources',fields:[...anchor,heading,paragraphs(),sources()]},
  {name:'photograph',label:'Credited photograph',fields:[...anchor,heading,{name:'photograph',label:'Photograph',kind:'reference',collection:'photographs',valueField:'id',searchField:'caption'}]},
  {name:'link-cards',label:'Related page cards',fields:[...anchor,heading,list('cards','Related pages',[text('title','Title'),text('text','Description'),{name:'href',label:'Page address or HTTPS link',kind:'link'}],{min:1,max:30})]},
@@ -55,11 +57,11 @@ function validateFields(value,fields,path) {
   if(f.kind==='list'&&f.min===0&&value[f.name]===undefined&&!f.optional)value[f.name]=[];
   const v=value[f.name],p=`${path}.${f.name}`;
   if(f.optional&&(v===undefined||v===''||(Array.isArray(v)&&v.length===0)))continue;
-  if(f.kind==='text'||f.kind==='url'||f.kind==='select'||f.kind==='link'||f.kind==='reference'){
+  if(f.kind==='text'||f.kind==='url'||f.kind==='select'||f.kind==='link'||f.kind==='reference'||f.kind==='manager'){
    if(typeof v!=='string'||(!f.optional&&!v.trim())||v.length>(f.kind==='text'?12000:2000))throw Error(`${p}: complete this field within its length limit.`);
    if(f.kind==='url')validateURL(v);
    if(f.kind==='link')validateLink(v);
-   if(f.kind==='reference')validateIdentifier(v);
+   if(f.kind==='reference'||f.kind==='manager')validateIdentifier(v);
    if(f.kind==='select'&&!f.options.includes(v))throw Error(`${p}: choose a listed option.`);
   } else if(f.kind==='boolean'){if(typeof v!=='boolean')throw Error(`${p}: choose yes or no.`);}
   else if(f.kind==='list'){
@@ -125,6 +127,7 @@ export function renderBlock(b,context={}){
  const pattern=patterns.find(p=>p.name===b.type);
  if(pattern)return pattern.template.replace(/\{\{(field[0-9]+)\}\}/g,(_,key)=>esc(b[key]||'')).replace('<!-- PHOTO_CREDITS -->',()=>`<ul class="collection-credits">${photoCredits}</ul>`);
  if(b.type==='museum'){if(!museumMarkup)throw Error('The exhibit collection is unavailable.');return museumMarkup;}
+ if(b.type==='manager-performance')return renderManagerPerformance(b,context);
  if(b.type==='text-panel')return `<section class="wrap section" id="${a}"><h2>${h}</h2>${ps(b.paragraphs)}${links(b.sources)}</section>`;
  if(b.type==='photograph'){const image=Object.hasOwn(photographs,b.photograph)?photographs[b.photograph]:null;if(!image)throw Error('Choose a photograph from the credited library.');return `<figure class="wrap section" id="${a}"><h2>${h}</h2><img src="${esc(photoURL(image.file))}" width="${image.width}" height="${image.height}" alt="${esc(image.alt)}" loading="lazy"><figcaption>${esc(image.caption)} ${esc(image.author)} · <a href="${esc(image.url)}">Image source</a> · ${esc(image.licence)}</figcaption></figure>`;}
  if(b.type==='link-cards')return `<section class="wrap section" id="${a}"><h2>${h}</h2><div class="layout-cards">${b.cards.map(c=>`<article><h3><a href="${esc(c.href)}">${esc(c.title)}</a></h3><p>${esc(c.text)}</p></article>`).join('')}</div></section>`;
@@ -158,6 +161,7 @@ export function renderDocument(shell,page,context,suppliedBody){
 export function cmsField(f){
  const base={name:f.name,label:f.label,required:!f.optional,...(f.hint?{hint:f.hint}:{})};
  if(f.kind==='text')return {...base,widget:f.lines?'text':f.name==='text'||f.name==='deck'||f.name==='scope'||f.name==='conclusion'?'text':'string'};
+ if(f.kind==='manager')return {...base,widget:'select',options:[],hint:'Choose a researched manager. Figures are calculated from the archive.'};
  if(f.kind==='reference')return {...base,widget:'relation',collection:f.collection,value_field:f.valueField,search_fields:[f.searchField],display_fields:[f.searchField]};
  if(f.kind==='link')return {...base,widget:'string',pattern:['^(https://|/($|[^/])|#[a-zA-Z0-9_-]+$)','Use an HTTPS link or a site-relative address.']};
  if(f.kind==='url')return {...base,widget:'string',pattern:['^https://','Use an HTTPS source link.']};

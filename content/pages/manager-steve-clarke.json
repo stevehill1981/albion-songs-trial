@@ -39,6 +39,13 @@
       "type": "intro"
     },
     {
+      "type": "manager-performance",
+      "anchor": "performance",
+      "navLabel": "Recorded results",
+      "heading": "Albion’s recorded results",
+      "manager": "steve-clarke"
+    },
+    {
       "type": "text-panel",
       "anchor": "chapter-1",
       "navLabel": "",
@@ -105,68 +112,6 @@
         {
           "label": "ITV: dismissal, 14 December 2013",
           "url": "https://www.itv.com/news/update/2013-12-14/west-brom-manager-sacked-after-premier-league-losses/"
-        }
-      ]
-    },
-    {
-      "type": "text-panel",
-      "anchor": "steve-clarke-2012",
-      "navLabel": "",
-      "heading": "Permanent spell · 2012",
-      "paragraphs": [
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Recorded competitive match boundaries: 2012-08-18 to 2013-12-14."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Appointment announced: 2012-06-08."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Departure: 2013-12-14."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Appointment and first competitive match are distinct. First/last match dates are explicitly listed by Albion Till We Die and agree with the saved archive."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Boundary evidence: source-listed; not every date independently corroborated. Match-result evidence is recorded separately in the archive."
-            }
-          ]
-        }
-      ],
-      "sources": [
-        {
-          "label": "Sky Sports: appointment, 8 June 2012",
-          "url": "https://www.skysports.com/football/news/7800271/clarke-takes-baggies-job"
-        },
-        {
-          "label": "ITV: dismissal, 14 December 2013",
-          "url": "https://www.itv.com/news/update/2013-12-14/west-brom-manager-sacked-after-premier-league-losses/"
-        },
-        {
-          "label": "Albion Till We Die: Steve Clarke profile and match boundaries",
-          "url": "https://www.albiontillwedie.co.uk/history/managers/steveclarke.html"
         }
       ]
     },

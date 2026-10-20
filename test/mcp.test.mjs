@@ -7,7 +7,7 @@ const token='unit_test_github_credential_only';
 const fixture=JSON.parse(await readFile(new URL('../content/pages/component-preview-trial.json',import.meta.url),'utf8'));
 const basePage=structuredClone(fixture);basePage.slug='museum-test';basePage.blocks[0].heading='Museum draft';
 function harness(){
- const calls=[];let allowed=true,main=MAIN,head=HEAD,checked=true,published=MAIN,missingPreview=false,extraFile=false,merged=false,existing=null;
+ const calls=[];let allowed=true,main=MAIN,head=HEAD,checked=true,published=MAIN,missingPreview=false,extraFile=false,merged=false,existing=null,managers=[{type:"file",name:"darren-moore.json"}];
  const pr=()=>({number:17,state:merged?'closed':'open',changed_files:extraFile?2:1,head:{sha:head,ref:'cms/mcp/pages/museum-test/1234abcd',repo:{full_name:REPOSITORY}},base:{ref:'main'}});
  const fetcher=async(url,init={})=>{
   calls.push({url,method:init.method||'GET',body:init.body?JSON.parse(init.body):null});
@@ -17,6 +17,7 @@ function harness(){
    if(path==='')return Response.json({permissions:{push:allowed}});
    if(path==='/git/ref/heads/main')return Response.json({object:{sha:main}});
    if(path.startsWith('/git/ref/heads/cms/'))return Response.json({object:{sha:head}});
+   if(path==='/contents/content/managers')return Response.json(managers);
    if(path==='/contents/content/collections')return Response.json([]);
    if(path==='/contents/content/photographs')return Response.json([{type:'file',name:'team-1888.json'}]);
    if(path==='/contents/content/pages/museum-test.json'){
@@ -38,7 +39,7 @@ function harness(){
   if(url.endsWith('/version.json'))return Response.json({revision:url.includes('1234abcd-')?HEAD:published});
   return missingPreview?new Response('missing',{status:404}):new Response(`<meta name="trial-revision" content="${HEAD}">`);
  };
- return{client:createMuseumClient(token,fetcher),calls,set(values){({allowed=allowed,main=main,head=head,checked=checked,published=published,missingPreview=missingPreview,extraFile=extraFile,existing=existing}=values);}};
+ return{client:createMuseumClient(token,fetcher),calls,set(values){({allowed=allowed,main=main,head=head,checked=checked,published=published,missingPreview=missingPreview,extraFile=extraFile,existing=existing,managers=managers}=values);}};
 }
 test('museum tools fail closed on missing push access and never accept arbitrary repository paths',async()=>{
  const h=harness();h.set({allowed:false});await assert.rejects(h.client.save({kind:'pages',id:'museum-test',document:basePage,baseRevision:MAIN}),/editor access/);assert.equal(h.calls.length,1);
@@ -111,4 +112,12 @@ test('reused schema metadata preserves defaults and keeps concurrent museum clie
    assert.equal((await client.callTool({name:'list_content',arguments:{kind:'pages'}})).isError,undefined);
   }
  }finally{for(const {client,server}of connections){await client.close();await server.close();}}
+});
+
+
+test('performance drafts require a published manager and reject editable numbers before writes',async()=>{
+ const document=structuredClone(basePage);document.blocks.push({type:'manager-performance',anchor:'performance',navLabel:'',heading:'Recorded results',manager:'darren-moore'});
+ const allowed=harness();assert.equal((await allowed.client.save({kind:'pages',id:'museum-test',document,baseRevision:MAIN})).state,'draft');
+ for(const managers of [[],{},[{type:'file',name:'different-person.json'}]]){const denied=harness();denied.set({managers});await assert.rejects(denied.client.save({kind:'pages',id:'museum-test',document,baseRevision:MAIN}),/manager/);assert(!denied.calls.some(c=>c.method!=='GET'));}
+ const forged=structuredClone(document);forged.blocks.at(-1).played=999;const denied=harness();await assert.rejects(denied.client.save({kind:'pages',id:'museum-test',document:forged,baseRevision:MAIN}),/unexpected field/);assert(!denied.calls.some(c=>c.method!=='GET'));
 });

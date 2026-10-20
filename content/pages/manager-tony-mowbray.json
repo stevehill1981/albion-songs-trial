@@ -39,6 +39,13 @@
       "type": "intro"
     },
     {
+      "type": "manager-performance",
+      "anchor": "performance",
+      "navLabel": "Recorded results",
+      "heading": "Albion’s recorded results",
+      "manager": "tony-mowbray"
+    },
+    {
       "type": "text-panel",
       "anchor": "chapter-1",
       "navLabel": "",
@@ -111,131 +118,6 @@
           "url": "https://www.wba.co.uk/news/albion-1-3-derby-county"
         }
       ]
-    },
-    {
-      "type": "text-panel",
-      "anchor": "tony-mowbray-2006",
-      "navLabel": "",
-      "heading": "Permanent spell · 2006",
-      "paragraphs": [
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Recorded competitive match boundaries: 2006-10-22 to 2009-05-24."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Match boundaries supplied by Albion’s retrospective. Exact administrative appointment/departure dates are not asserted in this trial. Recorded totals remain under reconciliation."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Boundary evidence: source-listed; not every date independently corroborated. Match-result evidence is recorded separately in the archive."
-            }
-          ]
-        }
-      ],
-      "sources": [
-        {
-          "label": "Albion: first-spell match boundaries and retrospective totals",
-          "url": "https://www.wba.co.uk/news/tony-mowbrays-managerial-career-numbers"
-        }
-      ]
-    },
-    {
-      "type": "text-panel",
-      "anchor": "tony-mowbray-2025",
-      "navLabel": "",
-      "heading": "Permanent spell · 2025",
-      "paragraphs": [
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Recorded competitive match boundaries: 2025-01-21 to 2025-04-21."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Appointment announced: 2025-01-17."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Departure: 2025-04-21."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Exclude Stoke on 18 January: the appointment notice explicitly leaves Chris Brunt in charge. Include the Derby match before the departure statement on 21 April."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "Boundary evidence: source-listed; not every date independently corroborated. Match-result evidence is recorded separately in the archive."
-            }
-          ]
-        }
-      ],
-      "sources": [
-        {
-          "label": "Albion: appointment and Brunt handover, 17 January 2025",
-          "url": "https://www.wba.co.uk/news/tony-mowbray-appointed-albion-head-coach"
-        },
-        {
-          "label": "Albion: departure, 21 April 2025",
-          "url": "https://www.wba.co.uk/news/club-statement-tony-mowbray"
-        },
-        {
-          "label": "Albion: Derby match report, 21 April 2025",
-          "url": "https://www.wba.co.uk/news/albion-1-3-derby-county"
-        }
-      ]
-    },
-    {
-      "type": "text-panel",
-      "anchor": "open-questions",
-      "navLabel": "",
-      "heading": "Recorded totals: an open question",
-      "paragraphs": [
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "First-spell totals are unresolved: this saved archive contains 139 matches (56 wins, 33 draws, 50 defeats; goals 223–191), while Albion’s 17 January 2025 retrospective reports 140 (58 wins, 30 draws, 52 defeats; 232 goals scored). Use recorded-match totals with this warning, not an unqualified career total."
-            }
-          ]
-        },
-        {
-          "parts": [
-            {
-              "type": "text",
-              "text": "A missing Peterborough FA Cup replay on 13 January 2009 and the Hartlepool extra-time score on 26 August 2008 have been identified for a separate source-backed archive correction. The retrospective’s remaining differences are not yet reconciled."
-            }
-          ]
-        }
-      ],
-      "sources": []
     },
     {
       "type": "text-panel",
