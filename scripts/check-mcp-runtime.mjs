@@ -4,8 +4,8 @@ import {resolve,join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
 import {Client,StreamableHTTPClientTransport} from '@modelcontextprotocol/client';
-const handler=process.env.ALBION_MCP_HANDLER||'baseline';assert(['baseline','lean'].includes(handler),'Choose baseline or lean for the runtime check.');
-const buildDirectory=handler==='lean'?'auth/prototype-build':'auth/build';
+const handler=process.env.ALBION_MCP_HANDLER||'lean';assert(['baseline','lean'].includes(handler),'Choose baseline or lean for the runtime check.');
+const buildDirectory='auth/build';
 const origin='https://albion-songs-auth.steve-e85.workers.dev';
 const upstreamToken='unit_test_github_credential_only';
 const temp=await mkdtemp(join(tmpdir(),'albion-mcp-runtime-'));let runtime,inspector,modern,allowed=true,exchanges=0;
@@ -30,6 +30,7 @@ try{
  }}));
  const send=(path,options={})=>runtime.dispatchFetch(origin+path,{redirect:'manual',...options});
  const readJSON=async response=>{const text=await response.text();assert(response.ok,`HTTP ${response.status}: ${text}`);return JSON.parse(text);};
+ const health=await readJSON(await send('/mcp-health'));assert.equal(health.handler,handler);assert(/^[a-f0-9]{40}$/.test(health.revision));
  const unauthorised=await send('/mcp',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});assert.equal(unauthorised.status,401);assert(unauthorised.headers.get('WWW-Authenticate').includes('oauth-protected-resource/mcp'));
  const metadata=await readJSON(await send('/.well-known/oauth-protected-resource/mcp'));assert.equal(metadata.resource,origin+'/mcp');
  const discovery=await readJSON(await send('/.well-known/oauth-authorization-server'));assert.equal(discovery.authorization_endpoint,origin+'/authorize');assert(discovery.code_challenge_methods_supported.includes('S256'));

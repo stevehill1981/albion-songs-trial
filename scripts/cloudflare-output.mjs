@@ -3,8 +3,8 @@ import { mkdir, cp, writeFile, rm, readFile, readdir } from 'node:fs/promises';
 // Pinned cf 1.0.0-beta.14 prebuilt contract. No automatic framework setup,
 // The Astro preview runtime is packaged separately from static public assets.
 const auth = process.argv.includes('--auth');
-const handler=process.env.ALBION_MCP_HANDLER||'baseline';
-if(auth&&handler!=='baseline'&&!(handler==='lean'&&process.argv.includes('--hosted-comparison')))throw Error('The lean MCP prototype is local-only and cannot be packaged for deployment without --hosted-comparison.');
+const handler=process.env.ALBION_MCP_HANDLER||'lean';
+if(auth&&handler!=='lean'&&!(handler==='baseline'&&process.argv.includes('--hosted-comparison')))throw Error('The baseline handler needs --hosted-comparison; normal deployments use lean.');
 const root = auth ? 'auth/.cloudflare/output/v0' : '.cloudflare/output/v0';
 await rm(root, {recursive:true, force:true});
 const worker = `${root}/workers/default`;
@@ -14,7 +14,7 @@ const config = {name:auth ? 'albion-songs-auth' : 'albion-songs-trial', compatib
 if (auth) {
   await mkdir(`${worker}/bundle`, {recursive:true});
   await import('./build-auth.mjs');
-  await cp(handler==='lean'?'auth/prototype-build/index.mjs':'auth/build/index.mjs', `${worker}/bundle/index.mjs`);
+  await cp('auth/build/index.mjs', `${worker}/bundle/index.mjs`);
   config.compatibilityFlags=['nodejs_compat','global_fetch_strictly_public'];
   config.observability={enabled:true,redactQueryString:true,logs:{enabled:true,headSamplingRate:1},traces:{enabled:true,headSamplingRate:0.01}};
   const mcp=await readFile('auth/mcp-config.json','utf8').then(JSON.parse).catch(error=>{if(error.code==='ENOENT')return null;throw error;});

@@ -49,12 +49,12 @@ for(let attempt=0;attempt<6;attempt++){
   ]);
   if(health.ok&&metadata.ok&&protectedRoute.status===401&&editorHealth.ok&&editorLogin.status===302){
    const h=await health.json(),m=await metadata.json(),e=await editorHealth.json();
-   if(h.configured&&h.revision===revision&&m.resource===origin+'/mcp'&&e.configured&&new URL(editorLogin.headers.get('Location')).hostname==='github.com'){ready=true;break;}
+   if(h.configured&&h.handler==='lean'&&h.revision===revision&&m.resource===origin+'/mcp'&&e.configured&&new URL(editorLogin.headers.get('Location')).hostname==='github.com'){ready=true;break;}
   }
  }catch{/* Bounded propagation retry; no credentials or response bodies are logged. */}
  if(attempt<5)await new Promise(resolve=>setTimeout(resolve,1000));
 }
 if(!ready)throw Error('Deployment is not verified. Keep auth/mcp-config.json and check the existing editor sign-in before retrying.');
-console.log(`Verified museum MCP discovery, unauthenticated rejection, retained editor sign-in and deployed revision ${revision}.`);
+console.log(`Verified lean museum MCP discovery, unauthenticated rejection, retained editor sign-in and deployed revision ${revision}.`);
 console.log(`Add this custom connector in Claude: ${origin}/mcp`);
 console.log('Hosted owner-account connection, tool use, preview and publication still need testing. Commit the namespace reference through the normal checked PR process.');
