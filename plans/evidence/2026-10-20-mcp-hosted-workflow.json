@@ -1,0 +1,362 @@
+[
+  {
+    "at": "2026-10-20T10:33:08.331Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 9,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:33:07.943Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 13,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:33:07.169Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 13,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:33:06.686Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 33,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:30:20.482Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 42,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:30:05.535Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 13,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:30:03.884Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 15,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:29:34.650Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 36,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:29:33.947Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 17,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:29:26.145Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 30,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:29:11.022Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 16,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:29:01.080Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 23,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:28:50.499Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 15,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:28:39.878Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 9,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:28:39.407Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 14,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:28:26.975Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 18,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:25:35.365Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 31,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:25:34.912Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 11,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:25:33.362Z",
+    "path": "/callback",
+    "method": "GET",
+    "status": 302,
+    "cpuMs": 8,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:25:31.630Z",
+    "path": "/authorize",
+    "method": "POST",
+    "status": 302,
+    "cpuMs": 3,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:25:21.160Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 24,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:25:10.875Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 28,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:24:09.683Z",
+    "path": "/authorize",
+    "method": "GET",
+    "status": 200,
+    "cpuMs": 3,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:24:09.351Z",
+    "path": "/register",
+    "method": "POST",
+    "status": 201,
+    "cpuMs": 6,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:24:08.760Z",
+    "path": "/.well-known/oauth-protected-resource/mcp",
+    "method": "GET",
+    "status": 200,
+    "cpuMs": 1,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:24:08.564Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 401,
+    "cpuMs": 2,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:22:50.912Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 9,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:22:50.103Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 18,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:22:49.388Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 35,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:22:22.420Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 11,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:22:21.896Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 10,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:22:21.099Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 10,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:21:58.953Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 16,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:21:58.820Z",
+    "path": "/mcp",
+    "method": "GET",
+    "status": 405,
+    "cpuMs": 1,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:21:58.782Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 202,
+    "cpuMs": 5,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:21:58.702Z",
+    "path": "/mcp",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 13,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:21:58.618Z",
+    "path": "/token",
+    "method": "POST",
+    "status": 200,
+    "cpuMs": 5,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:21:58.373Z",
+    "path": "/callback",
+    "method": "GET",
+    "status": 302,
+    "cpuMs": 13,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:21:56.578Z",
+    "path": "/authorize",
+    "method": "POST",
+    "status": 302,
+    "cpuMs": 3,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  },
+  {
+    "at": "2026-10-20T10:21:54.545Z",
+    "path": "/authorize",
+    "method": "GET",
+    "status": 200,
+    "cpuMs": 6,
+    "outcome": "ok",
+    "version": "a1eca403-40d5-4e07-9150-9c6716dcf944"
+  }
+]
