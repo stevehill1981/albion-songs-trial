@@ -1,0 +1,407 @@
+[
+  {
+    "at": "2026-10-20T11:16:33.368Z",
+    "tool": "read_manager",
+    "index": 0,
+    "result": {
+      "isError": false,
+      "bytes": 9096
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:33.920Z",
+    "tool": "read_manager",
+    "index": 1,
+    "result": {
+      "isError": false,
+      "bytes": 9096,
+      "keys": [
+        "revision",
+        "id",
+        "name",
+        "biography",
+        "researchNotes",
+        "tenures",
+        "summary",
+        "scope"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:34.287Z",
+    "tool": "read_manager",
+    "index": 2,
+    "result": {
+      "isError": false,
+      "bytes": 9096,
+      "keys": [
+        "revision",
+        "id",
+        "name",
+        "biography",
+        "researchNotes",
+        "tenures",
+        "summary",
+        "scope"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:34.659Z",
+    "tool": "read_manager",
+    "index": 3,
+    "result": {
+      "isError": false,
+      "bytes": 9096,
+      "keys": [
+        "revision",
+        "id",
+        "name",
+        "biography",
+        "researchNotes",
+        "tenures",
+        "summary",
+        "scope"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:35.060Z",
+    "tool": "read_manager",
+    "index": 4,
+    "result": {
+      "isError": false,
+      "bytes": 9096,
+      "keys": [
+        "revision",
+        "id",
+        "name",
+        "biography",
+        "researchNotes",
+        "tenures",
+        "summary",
+        "scope"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:35.478Z",
+    "tool": "match_statistics",
+    "index": 0,
+    "result": {
+      "isError": false,
+      "bytes": 2420,
+      "keys": [
+        "revision",
+        "ledger",
+        "sourcePath",
+        "sourceSha256",
+        "checkedAt",
+        "currentSeason",
+        "coverageURL",
+        "limitations",
+        "filters",
+        "summary",
+        "warnings"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:35.939Z",
+    "tool": "match_statistics",
+    "index": 1,
+    "result": {
+      "isError": false,
+      "bytes": 2420,
+      "keys": [
+        "revision",
+        "ledger",
+        "sourcePath",
+        "sourceSha256",
+        "checkedAt",
+        "currentSeason",
+        "coverageURL",
+        "limitations",
+        "filters",
+        "summary",
+        "warnings"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:36.334Z",
+    "tool": "match_statistics",
+    "index": 2,
+    "result": {
+      "isError": false,
+      "bytes": 2420,
+      "keys": [
+        "revision",
+        "ledger",
+        "sourcePath",
+        "sourceSha256",
+        "checkedAt",
+        "currentSeason",
+        "coverageURL",
+        "limitations",
+        "filters",
+        "summary",
+        "warnings"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:36.700Z",
+    "tool": "match_statistics",
+    "index": 3,
+    "result": {
+      "isError": false,
+      "bytes": 2420,
+      "keys": [
+        "revision",
+        "ledger",
+        "sourcePath",
+        "sourceSha256",
+        "checkedAt",
+        "currentSeason",
+        "coverageURL",
+        "limitations",
+        "filters",
+        "summary",
+        "warnings"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:37.065Z",
+    "tool": "match_statistics",
+    "index": 4,
+    "result": {
+      "isError": false,
+      "bytes": 2420,
+      "keys": [
+        "revision",
+        "ledger",
+        "sourcePath",
+        "sourceSha256",
+        "checkedAt",
+        "currentSeason",
+        "coverageURL",
+        "limitations",
+        "filters",
+        "summary",
+        "warnings"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:37.466Z",
+    "tool": "search_matches",
+    "index": 0,
+    "result": {
+      "isError": false,
+      "bytes": 51438,
+      "keys": [
+        "revision",
+        "ledger",
+        "sourcePath",
+        "sourceSha256",
+        "checkedAt",
+        "currentSeason",
+        "coverageURL",
+        "limitations",
+        "filters",
+        "summary",
+        "warnings",
+        "page",
+        "pageSize",
+        "totalPages",
+        "nextPage",
+        "matches"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:37.847Z",
+    "tool": "search_matches",
+    "index": 1,
+    "result": {
+      "isError": false,
+      "bytes": 51438,
+      "keys": [
+        "revision",
+        "ledger",
+        "sourcePath",
+        "sourceSha256",
+        "checkedAt",
+        "currentSeason",
+        "coverageURL",
+        "limitations",
+        "filters",
+        "summary",
+        "warnings",
+        "page",
+        "pageSize",
+        "totalPages",
+        "nextPage",
+        "matches"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:38.209Z",
+    "tool": "search_matches",
+    "index": 2,
+    "result": {
+      "isError": false,
+      "bytes": 51438,
+      "keys": [
+        "revision",
+        "ledger",
+        "sourcePath",
+        "sourceSha256",
+        "checkedAt",
+        "currentSeason",
+        "coverageURL",
+        "limitations",
+        "filters",
+        "summary",
+        "warnings",
+        "page",
+        "pageSize",
+        "totalPages",
+        "nextPage",
+        "matches"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:38.603Z",
+    "tool": "search_matches",
+    "index": 3,
+    "result": {
+      "isError": false,
+      "bytes": 51438,
+      "keys": [
+        "revision",
+        "ledger",
+        "sourcePath",
+        "sourceSha256",
+        "checkedAt",
+        "currentSeason",
+        "coverageURL",
+        "limitations",
+        "filters",
+        "summary",
+        "warnings",
+        "page",
+        "pageSize",
+        "totalPages",
+        "nextPage",
+        "matches"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:39.059Z",
+    "tool": "search_matches",
+    "index": 4,
+    "result": {
+      "isError": false,
+      "bytes": 51438,
+      "keys": [
+        "revision",
+        "ledger",
+        "sourcePath",
+        "sourceSha256",
+        "checkedAt",
+        "currentSeason",
+        "coverageURL",
+        "limitations",
+        "filters",
+        "summary",
+        "warnings",
+        "page",
+        "pageSize",
+        "totalPages",
+        "nextPage",
+        "matches"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:40.517Z",
+    "tool": "get_draft_status",
+    "index": 0,
+    "result": {
+      "isError": false,
+      "bytes": 1226,
+      "keys": [
+        "draftNumber",
+        "kind",
+        "id",
+        "state",
+        "commit",
+        "baseRevision",
+        "checksPassed",
+        "previewOrigin",
+        "validation",
+        "deployment",
+        "previewVerified",
+        "previewUrl",
+        "publicUrl",
+        "canPublish"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:41.776Z",
+    "tool": "get_draft_status",
+    "index": 1,
+    "result": {
+      "isError": false,
+      "bytes": 1226,
+      "keys": [
+        "draftNumber",
+        "kind",
+        "id",
+        "state",
+        "commit",
+        "baseRevision",
+        "checksPassed",
+        "previewOrigin",
+        "validation",
+        "deployment",
+        "previewVerified",
+        "previewUrl",
+        "publicUrl",
+        "canPublish"
+      ]
+    }
+  },
+  {
+    "at": "2026-10-20T11:16:43.198Z",
+    "tool": "get_draft_status",
+    "index": 2,
+    "result": {
+      "isError": false,
+      "bytes": 1226,
+      "keys": [
+        "draftNumber",
+        "kind",
+        "id",
+        "state",
+        "commit",
+        "baseRevision",
+        "checksPassed",
+        "previewOrigin",
+        "validation",
+        "deployment",
+        "previewVerified",
+        "previewUrl",
+        "publicUrl",
+        "canPublish"
+      ]
+    }
+  }
+]
