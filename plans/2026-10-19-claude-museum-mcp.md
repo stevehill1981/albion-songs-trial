@@ -40,3 +40,11 @@ Pinned stable Agents 0.28.1, MCP server 2.3.1, Workers OAuth Provider 1.2.3 and 
 The initial OAuth endpoints were nested beneath protected `/mcp`; the runtime correctly rejected consent. They now sit at `/authorize`, `/token` and `/register`, outside the protected resource. The local simulator’s HTTP bridge rewrites Host to loopback, preventing an authorised end-to-end public-host MCP call. After inspecting and reducing the harness, no production hostname check was weakened: OAuth is checked in workerd, MCP protocol through the actual SDK in memory, and the full hosted Claude path remains a required acceptance gate. Do not present these separate tests as a completed live Claude workflow.
 
 Pending: real owner-account Claude authorisation and draft/preview/publication, actual Free CPU use, Marie’s GitHub access and her own acceptance. Existing unsaved Safari drafts remain intact.
+
+## Safari consent repair — 20 October 2026
+
+The hosted native form fails with “The consent form origin could not be verified.” The consent document sends Referrer-Policy: no-referrer, which makes native form POST requests carry Origin: null. The handler correctly requires the exact auth origin. Use same-origin on the consent document only, keeping cross-origin referrers suppressed and retaining exact-origin, browser cookie, one-use handle and PKCE checks. Source: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referrer-Policy
+
+1. In scripts/check-mcp-runtime.mjs assert the consent document policy and reject missing/null/foreign origins even with its valid cookie and handle; first run against the old response to verify failure.
+2. Change only the consent document header in auth/mcp/authorization.mjs. Run the compiled OAuth check, all tests and the build.
+3. Merge a checked PR normally, redeploy using scripts/setup-mcp.mjs, and start fresh consent from Claude. Verify native Safari consent before continuing the authorised draft/preview/publish test.
