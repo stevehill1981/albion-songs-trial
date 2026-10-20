@@ -1,90 +1,90 @@
 {
-  "slug": "component-preview-trial",
-  "title": "Build a page with Marie",
-  "description": "Try arranging a page with Astro components, using museum text and a credited photograph.",
-  "collections": [],
   "blocks": [
     {
-      "type": "intro",
-      "heading": "Build your first Albion page.",
-      "emphasiseLastLine": false,
-      "text": "Try a heading, some text and a photograph. In the editor, these blocks preview using the same Astro components as this page.",
       "buttonLabel": "",
-      "imageAlt": "The Hawthorns under floodlights, with supporters around the pitch",
       "caption": [
         {
-          "type": "text",
-          "text": "The Hawthorns, December 2013 · dom fellowes · "
+          "text": "The Hawthorns, December 2013 · dom fellowes · ",
+          "type": "text"
         },
         {
-          "type": "link",
           "text": "CC BY 2.0",
+          "type": "link",
           "url": "https://creativecommons.org/licenses/by/2.0/"
         },
         {
-          "type": "text",
-          "text": ". Cropped. "
+          "text": ". Cropped. ",
+          "type": "text"
         },
         {
-          "type": "link",
           "text": "Image source",
+          "type": "link",
           "url": "https://commons.wikimedia.org/wiki/File:The_Hawthorns_2013-12-21.jpg"
         },
         {
-          "type": "text",
-          "text": "."
+          "text": ".",
+          "type": "text"
         }
-      ]
+      ],
+      "emphasiseLastLine": false,
+      "heading": "Build your first Albion page.",
+      "imageAlt": "The Hawthorns under floodlights, with supporters around the pitch",
+      "text": "Try a heading, some text and a photograph. In the editor, these blocks preview using the same Astro components as this page.",
+      "type": "intro"
     },
     {
-      "type": "section",
       "anchor": "story-section",
-      "navLabel": "",
-      "heading": "",
       "background": "white",
-      "spacing": "standard",
       "columns": [
         {
           "blocks": [
             {
-              "type": "text-panel",
               "anchor": "story-copy",
-              "navLabel": "",
               "heading": "Make this page your own",
+              "navLabel": "",
               "paragraphs": [
                 {
                   "parts": [
                     {
-                      "type": "text",
-                      "text": "Open this page in the editor, change a heading, and choose another photograph from the credited library. Try one, two or three columns, then a navy or pale blue background. Your changes appear in the preview before you save."
+                      "text": "Open this page in the editor, change a heading, and choose another photograph from the credited library. Try one, two or three columns, then a navy or pale blue background. Your changes appear in the preview before you save.",
+                      "type": "text"
                     }
                   ]
                 },
                 {
                   "parts": [
                     {
-                      "type": "text",
-                      "text": "Save a draft when you are ready. Use the full-page preview to check it, then publish. You can also copy your layout and save it as a template for a future page."
+                      "text": "Save a draft when you are ready. Use the full-page preview to check it, then publish. You can also copy your layout and save it as a template for a future page. You can also ask Claude to save a draft, open its checked preview and publish it after you approve.",
+                      "type": "text"
                     }
                   ]
                 }
               ],
-              "sources": []
+              "sources": [],
+              "type": "text-panel"
             }
           ]
         },
         {
           "blocks": [
             {
-              "type": "photograph",
               "anchor": "story-photo",
-              "navLabel": "",
               "heading": "Choose a credited photograph",
-              "photograph": "team-1888"
+              "navLabel": "",
+              "photograph": "team-1888",
+              "type": "photograph"
             }
           ]
         }
-      ]
+      ],
+      "heading": "",
+      "navLabel": "",
+      "spacing": "standard",
+      "type": "section"
     }
-  ]
+  ],
+  "collections": [],
+  "description": "Try arranging a page with Astro components, using museum text and a credited photograph.",
+  "slug": "component-preview-trial",
+  "title": "Build a page with Marie"
 }
