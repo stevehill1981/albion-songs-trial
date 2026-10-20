@@ -3,6 +3,7 @@ import { mkdir, cp, writeFile, rm, readFile, readdir } from 'node:fs/promises';
 // Pinned cf 1.0.0-beta.14 prebuilt contract. No automatic framework setup,
 // The Astro preview runtime is packaged separately from static public assets.
 const auth = process.argv.includes('--auth');
+if(auth&&process.env.ALBION_MCP_HANDLER&&process.env.ALBION_MCP_HANDLER!=='baseline')throw Error('The lean MCP prototype is local-only and cannot be packaged for deployment.');
 const root = auth ? 'auth/.cloudflare/output/v0' : '.cloudflare/output/v0';
 await rm(root, {recursive:true, force:true});
 const worker = `${root}/workers/default`;

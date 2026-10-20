@@ -31,3 +31,6 @@ auth/build/
 public/data/museum-query/
 
 public/admin/manager-performance.mjs
+
+# Local-only MCP performance prototype; never packaged for deployment.
+auth/prototype-build/

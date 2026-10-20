@@ -4,6 +4,8 @@ import {resolve,join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
 import {Client,StreamableHTTPClientTransport} from '@modelcontextprotocol/client';
+const handler=process.env.ALBION_MCP_HANDLER||'baseline';assert(['baseline','lean'].includes(handler),'Choose baseline or lean for the runtime check.');
+const buildDirectory=handler==='lean'?'auth/prototype-build':'auth/build';
 const origin='https://albion-songs-auth.steve-e85.workers.dev';
 const upstreamToken='unit_test_github_credential_only';
 const temp=await mkdtemp(join(tmpdir(),'albion-mcp-runtime-'));let runtime,inspector,modern,allowed=true,exchanges=0;
@@ -13,7 +15,7 @@ try{
  // The override is test-wrapper-only: Miniflare otherwise rewrites even hostile
  // Host inputs. It is removed before the unchanged compiled production handler.
  const boundary=`import worker from './index.mjs';export default{fetch(request,env,ctx){const headers=new Headers(request.headers);const testHost=headers.get('X-Albion-Test-Host');headers.delete('X-Albion-Test-Host');if(testHost)headers.set('Host',testHost);else if(headers.get('Host')?.startsWith('127.0.0.1'))headers.set('Host',new URL(request.url).host);return worker.fetch(new Request(request,{headers}),env,ctx)}};`;
- runtime=new Miniflare(convertV4MiniflareOptions({...process.env.ALBION_CPU_PROFILE?{inspectorPort:0}:{},modules:[{type:'ESModule',path:resolve('auth/build/test-boundary.mjs'),contents:boundary},{type:'ESModule',path:resolve('auth/build/index.mjs'),contents:await readFile('auth/build/index.mjs','utf8')}],compatibilityDate:'2026-10-19',compatibilityFlags:['nodejs_compat','global_fetch_strictly_public'],kvNamespaces:['OAUTH_KV'],defaultPersistRoot:temp,bindings:{GITHUB_CLIENT_ID:'unit_test_id',GITHUB_CLIENT_SECRET:'unit_test_secret',EDITOR_ORIGIN:'https://albion-songs-trial.steve-e85.workers.dev'},outboundService:async request=>{
+ runtime=new Miniflare(convertV4MiniflareOptions({...process.env.ALBION_CPU_PROFILE?{inspectorPort:0}:{},modules:[{type:'ESModule',path:resolve(buildDirectory+'/test-boundary.mjs'),contents:boundary},{type:'ESModule',path:resolve(buildDirectory+'/index.mjs'),contents:await readFile(buildDirectory+'/index.mjs','utf8')}],compatibilityDate:'2026-10-19',compatibilityFlags:['nodejs_compat','global_fetch_strictly_public'],kvNamespaces:['OAUTH_KV'],defaultPersistRoot:temp,bindings:{GITHUB_CLIENT_ID:'unit_test_id',GITHUB_CLIENT_SECRET:'unit_test_secret',EDITOR_ORIGIN:'https://albion-songs-trial.steve-e85.workers.dev'},outboundService:async request=>{
   const url=new URL(request.url);
   if(url.origin==='https://albion-songs-trial.steve-e85.workers.dev'){
    assert.equal(request.headers.get('Authorization'),null,'GitHub credentials must not reach archive assets');
@@ -93,7 +95,8 @@ try{
  const badHost=await send('/mcp',{method:'POST',headers:{'X-Albion-Test-Host':'attacker.example',Authorization:`Bearer ${exchanged.access_token}`,Accept:'application/json, text/event-stream','Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:8,method:'tools/list',params:{}})});assert.equal(badHost.status,403);
  if(command){
   const workloads=process.env.ALBION_CPU_WORKLOAD==='research'?[{name:'museum_guide',arguments:{}},{name:'read_manager',arguments:{id:'darren-moore'}},{name:'match_statistics',arguments:{ledger:'competitive',tenure:'darren-moore-caretaker-2018'}},{name:'search_matches',arguments:{ledger:'wartime',season:'1942-43'}}]:[{name:'museum_guide',arguments:{}}];
-  const repetitions=workloads.length===1?100:25;
+  const repetitions=Number(process.env.ALBION_CPU_ROUNDS??(workloads.length===1?100:25));
+  assert(Number.isInteger(repetitions)&&repetitions>=1&&repetitions<=1000,'CPU workload rounds must be between 1 and 1000');
   for(let i=0;i<repetitions;i++){
    await rpc('tools/list',{},100+i,{'MCP-Protocol-Version':'2025-03-26'});
    for(const workload of workloads){const response=await rpc('tools/call',workload,300+i,{'MCP-Protocol-Version':'2025-03-26'});assert(!response.result.isError,JSON.stringify(response));}
