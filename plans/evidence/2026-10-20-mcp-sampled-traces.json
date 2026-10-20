@@ -1,0 +1,249 @@
+{
+  "events": [
+    {
+      "at": "2026-10-20T11:28:24.301Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 26,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:28:23.742Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 17,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:28:21.724Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 18,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:28:21.291Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 11,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:31.077Z",
+      "path": "/",
+      "method": "GET",
+      "status": 404,
+      "cpuMs": 1,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:25.693Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 10,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:25.327Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 15,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:24.889Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 25,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:24.363Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:24.042Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:23.723Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:23.435Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:22.786Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 19,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:21.434Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 11,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:18.521Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:18.197Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:17.851Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:17.091Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 22,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:16.224Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:15.868Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:15.487Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 10,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:15.083Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 15,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:14.686Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:14.356Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:14.006Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:13.624Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 38,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    },
+    {
+      "at": "2026-10-20T11:26:12.949Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 25,
+      "outcome": "ok",
+      "version": "e428d7d7-4c68-4582-92d7-d9a4eb620d62"
+    }
+  ],
+  "totalReturned": 34,
+  "traceSpans": 7
+}

@@ -49,6 +49,21 @@ try{
  for await(const line of terminal){
   try{
    const input=JSON.parse(line);if(input.quit)break;if(input.refresh){tools=await client.listTools();console.log(JSON.stringify({tools:tools.tools.map(t=>t.name)}));continue;}
+   if(input.probe){
+    assert(['auth','guide','full'].includes(input.probe),'Choose a fixed read-only diagnostic route.');
+    const repeat=input.repeat??5;assert(Number.isInteger(repeat)&&repeat>=1&&repeat<=20);
+    const probeClient=input.probe==='guide'?new Client({name:'Albion guide-only diagnostic',version:'1'}):client;
+    try{
+     if(input.probe==='guide'){await probeClient.connect(new StreamableHTTPClientTransport(new URL(origin+'/mcp/diagnostic/guide'),{authProvider:{token:async()=>accessToken}}));assert.deepEqual((await probeClient.listTools()).tools.map(t=>t.name),['museum_guide']);}
+     for(let index=0;index<repeat;index++){
+      let result;
+      if(input.probe==='auth'){const response=await fetch(origin+'/mcp/diagnostic/auth',{method:'POST',headers:{Authorization:`Bearer ${accessToken}`,'Content-Type':'application/json'},body:'{}',signal:AbortSignal.timeout(15000)});assert.equal(response.status,200);result=await response.json();assert.equal(result.editor,true);}
+      else{result=await probeClient.callTool({name:'museum_guide',arguments:{}});assert(!result.isError,'Diagnostic guide failed.');}
+      console.log(JSON.stringify({at:new Date().toISOString(),probe:input.probe,index,ok:true,bytes:Buffer.byteLength(JSON.stringify(result))}));
+     }
+    }finally{if(probeClient!==client)await probeClient.close();}
+    continue;
+   }
    assert(tools.tools.some(t=>t.name===input.tool),'Choose a discovered tool.');
    const repeat=input.repeat??1;assert(Number.isInteger(repeat)&&repeat>=1&&repeat<=100);
    assert(repeat===1||tools.tools.find(t=>t.name===input.tool).annotations?.readOnlyHint===true,'Only read operations can repeat.');
