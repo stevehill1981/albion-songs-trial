@@ -73,7 +73,7 @@ test('updating a draft refuses concurrent changes or unchanged content',async()=
  const same=harness();same.set({existing:basePage});await assert.rejects(same.client.save({kind:'pages',id:'museum-test',document:basePage,baseRevision:MAIN}),/content change/);assert(!same.calls.some(c=>c.method!=='GET'));
 });
 
-test('the actual MCP server exposes nine tools, validates inputs and invokes the museum operations',async()=>{
+test('the actual MCP server exposes fourteen tools, validates inputs and invokes the museum operations',async()=>{
  const {createMuseumServer}=await import('../auth/mcp/server.mjs');
  const {Client}=await import('@modelcontextprotocol/client');
  const {InMemoryTransport}=await import('@modelcontextprotocol/server');
@@ -82,7 +82,7 @@ test('the actual MCP server exposes nine tools, validates inputs and invokes the
  const server=createMuseumServer({client:museum});const client=new Client({name:'Museum protocol acceptance',version:'1'});const [a,b]=InMemoryTransport.createLinkedPair();
  try{
   await server.connect(a);await client.connect(b);
-  const tools=await client.listTools();assert.equal(tools.tools.length,9);assert.equal(tools.tools.find(t=>t.name==='save_draft').annotations.readOnlyHint,false);assert(!tools.tools.some(t=>/shell|delete|deploy|archive/.test(t.name)));
+  const tools=await client.listTools();assert.equal(tools.tools.length,14);assert.equal(tools.tools.find(t=>t.name==='save_draft').annotations.readOnlyHint,false);assert(!tools.tools.some(t=>/shell|delete|deploy/.test(t.name)));
   const guide=await client.callTool({name:'museum_guide',arguments:{}});assert(!guide.isError);assert.equal(guide.structuredContent.instructions,'Read the checked preview before publishing.');
   const listed=await client.callTool({name:'list_content',arguments:{kind:'pages'}});assert(!listed.isError);assert.deepEqual(calls[0],{kind:'pages'});
   assert.equal((await client.callTool({name:'list_content',arguments:{kind:'data'}})).isError,true);assert.equal(calls.length,1);

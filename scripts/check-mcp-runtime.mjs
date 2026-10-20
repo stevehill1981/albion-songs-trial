@@ -12,6 +12,12 @@ try{
  // the original URL host at the test boundary; the compiled production checks stay intact.
  const boundary=`import worker from './index.mjs';export default{fetch(request,env,ctx){const headers=new Headers(request.headers);if(headers.get('Host')?.startsWith('127.0.0.1'))headers.set('Host',new URL(request.url).host);return worker.fetch(new Request(request,{headers}),env,ctx)}};`;
  runtime=new Miniflare(convertV4MiniflareOptions({...process.env.ALBION_CPU_PROFILE?{inspectorPort:0}:{},modules:[{type:'ESModule',path:resolve('auth/build/test-boundary.mjs'),contents:boundary},{type:'ESModule',path:resolve('auth/build/index.mjs'),contents:await readFile('auth/build/index.mjs','utf8')}],compatibilityDate:'2026-10-19',compatibilityFlags:['nodejs_compat','global_fetch_strictly_public'],kvNamespaces:['OAUTH_KV'],defaultPersistRoot:temp,bindings:{GITHUB_CLIENT_ID:'unit_test_id',GITHUB_CLIENT_SECRET:'unit_test_secret',EDITOR_ORIGIN:'https://albion-songs-trial.steve-e85.workers.dev'},outboundService:async request=>{
+  const url=new URL(request.url);
+  if(url.origin==='https://albion-songs-trial.steve-e85.workers.dev'){
+   assert.equal(request.headers.get('Authorization'),null,'GitHub credentials must not reach archive assets');
+   assert(url.pathname==='/version.json'||url.pathname==='/data/museum-query/manifest.json'||/^\/data\/museum-query\/files\/[a-f0-9]{64}\.json$/.test(url.pathname));
+   try{return new Response(await readFile('public'+url.pathname),{headers:{'Content-Type':'application/json'}});}catch{return new Response('',{status:404});}
+  }
   if(request.url==='https://github.com/login/oauth/access_token'){exchanges++;const body=await request.json();assert.equal(body.redirect_uri,origin+'/callback');assert.equal(typeof body.code_verifier,'string');return Response.json({access_token:upstreamToken});}
   assert.equal(request.headers.get('Authorization'),`Bearer ${upstreamToken}`);
   if(request.url==='https://api.github.com/repos/stevehill1981/albion-songs-trial')return Response.json({permissions:{push:allowed}});
@@ -60,7 +66,7 @@ try{
   await command('Profiler.enable');await command('Profiler.setSamplingInterval',{interval:100});await command('Profiler.start');
  }
  const initialized=await rpc('initialize',{protocolVersion:'2025-03-26',capabilities:{},clientInfo:{name:'Direct museum acceptance',version:'1'}});assert.equal(initialized.result.serverInfo.name,'Albion museum');
- const tools=await rpc('tools/list',{},2,{'MCP-Protocol-Version':'2025-03-26'});assert.equal(tools.result.tools.length,9);
+ const tools=await rpc('tools/list',{},2,{'MCP-Protocol-Version':'2025-03-26'});assert.equal(tools.result.tools.length,14);
  const guide=await rpc('tools/call',{name:'museum_guide',arguments:{}},3,{'MCP-Protocol-Version':'2025-03-26'});assert(!guide.result.isError,JSON.stringify(guide));assert(guide.result.structuredContent.instructions);
  allowed=false;
  const denied=await rpc('tools/call',{name:'museum_guide',arguments:{}},4,{'MCP-Protocol-Version':'2025-03-26'});assert.equal(denied.result.isError,true);allowed=true;
@@ -73,8 +79,11 @@ try{
   return send(url.pathname+url.search,{method:request.method,headers:request.headers,...request.body?{body:await request.text()}:{}});
  }});
  await modern.connect(modernTransport);assert.equal(modernTransport.protocolVersion,'2026-07-28');
- assert.equal((await modern.listTools()).tools.length,9);
+ assert.equal((await modern.listTools()).tools.length,14);
  const modernGuide=await modern.callTool({name:'museum_guide',arguments:{}});assert(!modernGuide.isError);assert.deepEqual(modernGuide.structuredContent,JSON.parse(modernGuide.content[0].text));
+ const statistics=await modern.callTool({name:'match_statistics',arguments:{ledger:'competitive',tenure:'darren-moore-caretaker-2018'}});assert(!statistics.isError,JSON.stringify(statistics));assert.equal(statistics.structuredContent.summary.played,6);assert.equal(statistics.structuredContent.summary.W,3);
+ const wartime=await modern.callTool({name:'search_matches',arguments:{ledger:'wartime',season:'1942-43'}});assert(!wartime.isError);assert.equal(wartime.structuredContent.summary.played,38);assert(wartime.structuredContent.matches.every(row=>row.ledger==='wartime'));
+ allowed=false;const deniedResearch=await modern.callTool({name:'list_managers',arguments:{}});assert.equal(deniedResearch.isError,true);allowed=true;
  if(command){
   for(let i=0;i<100;i++){
    await rpc('tools/list',{},100+i,{'MCP-Protocol-Version':'2025-03-26'});
@@ -86,5 +95,5 @@ try{
  const passthrough=await send('/mcp',{method:'POST',headers:{Authorization:`Bearer ${upstreamToken}`,'Content-Type':'application/json'},body:'{}'});assert.equal(passthrough.status,401);
  const replay=await send(callback,{headers:{Cookie:cookies}});assert.equal(replay.status,400);assert.equal(exchanges,1);
  const old=await send('/auth?provider=github');assert.equal(old.status,302);assert(new URL(old.headers.get('Location')).searchParams.get('state').match(/^[a-f0-9]{64}$/));
- console.log('PASS: compiled OAuth Worker completes consent, GitHub PKCE, token exchange and authenticated legacy and modern MCP discovery/guide calls; rejects hostile Origin, revoked editor access, invalid tool input, forged consent, unbound/replayed callbacks and upstream token passthrough. Existing Decap sign-in remains available.');
+ console.log('PASS: compiled OAuth Worker completes consent, GitHub PKCE, token exchange and authenticated legacy and modern MCP discovery/guide calls and sourced research queries; rejects hostile Origin, revoked editor access, invalid tool input, forged consent, unbound/replayed callbacks and upstream token passthrough. Existing Decap sign-in remains available.');
 }finally{inspector?.close();await modern?.close();await runtime?.dispose();await rm(temp,{recursive:true,force:true});}
