@@ -1,0 +1,6140 @@
+{
+  "format": 1,
+  "versions": {
+    "original": "8c878c9d-800e-48dc-8c11-44317a0fe440",
+    "baseline": "395fa292-bdd8-48c1-832e-271696fae0a3",
+    "restored": "395fa292-bdd8-48c1-832e-271696fae0a3",
+    "lean": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+  },
+  "calls": [
+    {
+      "startedAt": "2026-10-20T13:24:41.705Z",
+      "at": "2026-10-20T13:24:42.491Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "museum_guide",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:24:42.491Z",
+      "at": "2026-10-20T13:24:43.031Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "museum_guide",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:24:43.031Z",
+      "at": "2026-10-20T13:24:43.420Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "museum_guide",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:43.408Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:43.420Z",
+      "at": "2026-10-20T13:24:43.790Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "museum_guide",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:43.776Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:43.790Z",
+      "at": "2026-10-20T13:24:44.185Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "museum_guide",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:44.172Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:44.186Z",
+      "at": "2026-10-20T13:24:44.844Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "read_manager",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:44.817Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 9,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:44.844Z",
+      "at": "2026-10-20T13:24:45.329Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "read_manager",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:45.312Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 8,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:45.329Z",
+      "at": "2026-10-20T13:24:45.719Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "read_manager",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:45.703Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:45.719Z",
+      "at": "2026-10-20T13:24:46.158Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "read_manager",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:46.139Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:46.158Z",
+      "at": "2026-10-20T13:24:46.552Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "read_manager",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:46.536Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 8,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:46.552Z",
+      "at": "2026-10-20T13:24:46.967Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "match_statistics",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:46.944Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:46.967Z",
+      "at": "2026-10-20T13:24:47.442Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "match_statistics",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:47.421Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:47.442Z",
+      "at": "2026-10-20T13:24:47.769Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "match_statistics",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:47.756Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:47.769Z",
+      "at": "2026-10-20T13:24:48.202Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "match_statistics",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:48.189Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:48.202Z",
+      "at": "2026-10-20T13:24:48.619Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "match_statistics",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:48.596Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 11,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:48.619Z",
+      "at": "2026-10-20T13:24:49.046Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "search_matches",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:24:49.046Z",
+      "at": "2026-10-20T13:24:49.507Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "search_matches",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:49.485Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 11,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:49.507Z",
+      "at": "2026-10-20T13:24:49.837Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "search_matches",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:49.814Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:49.837Z",
+      "at": "2026-10-20T13:24:50.293Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "search_matches",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:50.273Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:50.293Z",
+      "at": "2026-10-20T13:24:50.664Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "search_matches",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:24:50.664Z",
+      "at": "2026-10-20T13:24:51.652Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "read_content",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:51.623Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 15,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:51.652Z",
+      "at": "2026-10-20T13:24:52.568Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "read_content",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:52.535Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 17,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:52.568Z",
+      "at": "2026-10-20T13:24:53.624Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "read_content",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:53.595Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 11,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:53.624Z",
+      "at": "2026-10-20T13:24:54.479Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "read_content",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:54.456Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:24:54.479Z",
+      "at": "2026-10-20T13:24:55.475Z",
+      "lane": "default",
+      "phase": "baseline-warm",
+      "tool": "read_content",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:24:55.446Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 13,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:06.871Z",
+      "at": "2026-10-20T13:25:07.529Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "museum_guide",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:07.490Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 29,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:07.529Z",
+      "at": "2026-10-20T13:25:07.933Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "museum_guide",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:07.914Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 8,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:07.933Z",
+      "at": "2026-10-20T13:25:08.321Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "museum_guide",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:08.301Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:08.321Z",
+      "at": "2026-10-20T13:25:08.711Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "museum_guide",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:08.689Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 8,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:08.711Z",
+      "at": "2026-10-20T13:25:09.163Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "museum_guide",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:09.077Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 13,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:09.163Z",
+      "at": "2026-10-20T13:25:09.702Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "read_manager",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:09.655Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 15,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:09.702Z",
+      "at": "2026-10-20T13:25:10.172Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "read_manager",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:10.150Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:10.172Z",
+      "at": "2026-10-20T13:25:10.529Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "read_manager",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:10.511Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:10.529Z",
+      "at": "2026-10-20T13:25:10.898Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "read_manager",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:10.875Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 11,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:10.898Z",
+      "at": "2026-10-20T13:25:11.493Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "read_manager",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:11.469Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 16,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:11.493Z",
+      "at": "2026-10-20T13:25:11.890Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "match_statistics",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:11.864Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 16,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:11.890Z",
+      "at": "2026-10-20T13:25:12.258Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "match_statistics",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:12.239Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 9,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:12.258Z",
+      "at": "2026-10-20T13:25:12.652Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "match_statistics",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:25:12.652Z",
+      "at": "2026-10-20T13:25:13.048Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "match_statistics",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:13.029Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 9,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:13.048Z",
+      "at": "2026-10-20T13:25:13.483Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "match_statistics",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:13.469Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:13.483Z",
+      "at": "2026-10-20T13:25:13.952Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "search_matches",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:13.921Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 18,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:13.952Z",
+      "at": "2026-10-20T13:25:14.387Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "search_matches",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:14.360Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:14.387Z",
+      "at": "2026-10-20T13:25:14.832Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "search_matches",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:25:14.832Z",
+      "at": "2026-10-20T13:25:15.233Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "search_matches",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:15.207Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:15.234Z",
+      "at": "2026-10-20T13:25:15.604Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "search_matches",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:15.576Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 13,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:15.604Z",
+      "at": "2026-10-20T13:25:16.541Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "read_content",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:16.503Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 26,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:16.541Z",
+      "at": "2026-10-20T13:25:17.505Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "read_content",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:17.475Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 17,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:17.505Z",
+      "at": "2026-10-20T13:25:18.455Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "read_content",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:18.417Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 19,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:18.455Z",
+      "at": "2026-10-20T13:25:19.339Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "read_content",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:19.303Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 22,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:25:19.339Z",
+      "at": "2026-10-20T13:25:20.196Z",
+      "lane": "modern",
+      "phase": "baseline-warm",
+      "tool": "read_content",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:25:20.163Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 20,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:07.890Z",
+      "at": "2026-10-20T13:27:08.444Z",
+      "lane": "default",
+      "phase": "baseline-paused",
+      "tool": "museum_guide",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:27:08.444Z",
+      "at": "2026-10-20T13:27:08.940Z",
+      "lane": "default",
+      "phase": "baseline-paused",
+      "tool": "museum_guide",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:08.910Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 16,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:08.940Z",
+      "at": "2026-10-20T13:27:09.384Z",
+      "lane": "default",
+      "phase": "baseline-paused",
+      "tool": "read_manager",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:09.364Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:09.384Z",
+      "at": "2026-10-20T13:27:09.796Z",
+      "lane": "default",
+      "phase": "baseline-paused",
+      "tool": "read_manager",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:27:09.796Z",
+      "at": "2026-10-20T13:27:10.217Z",
+      "lane": "default",
+      "phase": "baseline-paused",
+      "tool": "match_statistics",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:10.200Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:10.217Z",
+      "at": "2026-10-20T13:27:10.656Z",
+      "lane": "default",
+      "phase": "baseline-paused",
+      "tool": "match_statistics",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:10.639Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 8,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:10.656Z",
+      "at": "2026-10-20T13:27:11.036Z",
+      "lane": "default",
+      "phase": "baseline-paused",
+      "tool": "search_matches",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:11.011Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 10,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:11.036Z",
+      "at": "2026-10-20T13:27:11.486Z",
+      "lane": "default",
+      "phase": "baseline-paused",
+      "tool": "search_matches",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:11.455Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 14,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:11.486Z",
+      "at": "2026-10-20T13:27:12.303Z",
+      "lane": "default",
+      "phase": "baseline-paused",
+      "tool": "read_content",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:12.230Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 16,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:12.303Z",
+      "at": "2026-10-20T13:27:13.124Z",
+      "lane": "default",
+      "phase": "baseline-paused",
+      "tool": "read_content",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:13.084Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 28,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:13.124Z",
+      "at": "2026-10-20T13:27:13.443Z",
+      "lane": "modern",
+      "phase": "baseline-paused",
+      "tool": "museum_guide",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:13.427Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 8,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:13.443Z",
+      "at": "2026-10-20T13:27:13.765Z",
+      "lane": "modern",
+      "phase": "baseline-paused",
+      "tool": "museum_guide",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:13.751Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:13.765Z",
+      "at": "2026-10-20T13:27:14.144Z",
+      "lane": "modern",
+      "phase": "baseline-paused",
+      "tool": "read_manager",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:14.096Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:14.144Z",
+      "at": "2026-10-20T13:27:14.528Z",
+      "lane": "modern",
+      "phase": "baseline-paused",
+      "tool": "read_manager",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:14.511Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 8,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:14.528Z",
+      "at": "2026-10-20T13:27:14.841Z",
+      "lane": "modern",
+      "phase": "baseline-paused",
+      "tool": "match_statistics",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:14.825Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:14.841Z",
+      "at": "2026-10-20T13:27:15.163Z",
+      "lane": "modern",
+      "phase": "baseline-paused",
+      "tool": "match_statistics",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:15.151Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:15.163Z",
+      "at": "2026-10-20T13:27:15.488Z",
+      "lane": "modern",
+      "phase": "baseline-paused",
+      "tool": "search_matches",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:15.472Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:15.488Z",
+      "at": "2026-10-20T13:27:15.872Z",
+      "lane": "modern",
+      "phase": "baseline-paused",
+      "tool": "search_matches",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:15.857Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:15.872Z",
+      "at": "2026-10-20T13:27:16.648Z",
+      "lane": "modern",
+      "phase": "baseline-paused",
+      "tool": "read_content",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:16.626Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:27:16.648Z",
+      "at": "2026-10-20T13:27:17.592Z",
+      "lane": "modern",
+      "phase": "baseline-paused",
+      "tool": "read_content",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:27:17.571Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:53.122Z",
+      "at": "2026-10-20T13:28:53.549Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "museum_guide",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:53.532Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 9,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:53.549Z",
+      "at": "2026-10-20T13:28:53.904Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "museum_guide",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:53.886Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:53.904Z",
+      "at": "2026-10-20T13:28:54.240Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "museum_guide",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:54.222Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:54.240Z",
+      "at": "2026-10-20T13:28:54.631Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "museum_guide",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:54.618Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:54.631Z",
+      "at": "2026-10-20T13:28:54.969Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "museum_guide",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:54.954Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:54.969Z",
+      "at": "2026-10-20T13:28:55.399Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "read_manager",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:55.386Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:55.399Z",
+      "at": "2026-10-20T13:28:55.770Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "read_manager",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:55.752Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 13,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:55.770Z",
+      "at": "2026-10-20T13:28:56.130Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "read_manager",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:56.119Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:56.130Z",
+      "at": "2026-10-20T13:28:56.494Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "read_manager",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:56.480Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:56.494Z",
+      "at": "2026-10-20T13:28:56.841Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "read_manager",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:56.829Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:56.841Z",
+      "at": "2026-10-20T13:28:57.220Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "match_statistics",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:57.201Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:57.220Z",
+      "at": "2026-10-20T13:28:57.568Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "match_statistics",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:57.547Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 8,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:57.568Z",
+      "at": "2026-10-20T13:28:57.978Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "match_statistics",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:57.919Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 9,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:57.978Z",
+      "at": "2026-10-20T13:28:58.322Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "match_statistics",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:58.313Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 4,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:58.322Z",
+      "at": "2026-10-20T13:28:58.638Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "match_statistics",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:28:58.638Z",
+      "at": "2026-10-20T13:28:59.009Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "search_matches",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:28:59.009Z",
+      "at": "2026-10-20T13:28:59.348Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "search_matches",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:28:59.348Z",
+      "at": "2026-10-20T13:28:59.686Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "search_matches",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:59.665Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:59.686Z",
+      "at": "2026-10-20T13:28:59.987Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "search_matches",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:28:59.971Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:28:59.987Z",
+      "at": "2026-10-20T13:29:00.326Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "search_matches",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:00.308Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:00.326Z",
+      "at": "2026-10-20T13:29:01.036Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "read_content",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:01.009Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 14,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:01.036Z",
+      "at": "2026-10-20T13:29:01.801Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "read_content",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:01.778Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 10,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:01.802Z",
+      "at": "2026-10-20T13:29:02.507Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "read_content",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:29:02.507Z",
+      "at": "2026-10-20T13:29:03.224Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "read_content",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:29:03.224Z",
+      "at": "2026-10-20T13:29:04.010Z",
+      "lane": "default",
+      "phase": "lean-warm",
+      "tool": "read_content",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:29:04.010Z",
+      "at": "2026-10-20T13:29:04.348Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "museum_guide",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:29:04.348Z",
+      "at": "2026-10-20T13:29:04.631Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "museum_guide",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:29:04.631Z",
+      "at": "2026-10-20T13:29:04.938Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "museum_guide",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:04.921Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 3,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:04.938Z",
+      "at": "2026-10-20T13:29:05.250Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "museum_guide",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:05.230Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 4,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:05.250Z",
+      "at": "2026-10-20T13:29:05.523Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "museum_guide",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:05.510Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 4,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:05.523Z",
+      "at": "2026-10-20T13:29:05.904Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "read_manager",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:05.891Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:05.904Z",
+      "at": "2026-10-20T13:29:06.206Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "read_manager",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:29:06.206Z",
+      "at": "2026-10-20T13:29:06.547Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "read_manager",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:06.534Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 4,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:06.547Z",
+      "at": "2026-10-20T13:29:06.912Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "read_manager",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:06.900Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 4,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:06.913Z",
+      "at": "2026-10-20T13:29:07.493Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "read_manager",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:07.478Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:07.493Z",
+      "at": "2026-10-20T13:29:07.793Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "match_statistics",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:29:07.793Z",
+      "at": "2026-10-20T13:29:08.126Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "match_statistics",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:08.114Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 4,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:08.126Z",
+      "at": "2026-10-20T13:29:08.417Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "match_statistics",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:08.404Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 4,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:08.418Z",
+      "at": "2026-10-20T13:29:08.746Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "match_statistics",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:08.734Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 4,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:08.746Z",
+      "at": "2026-10-20T13:29:09.052Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "match_statistics",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:09.041Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 4,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:09.052Z",
+      "at": "2026-10-20T13:29:09.365Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "search_matches",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:09.350Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 4,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:09.365Z",
+      "at": "2026-10-20T13:29:09.703Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "search_matches",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:09.687Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:09.703Z",
+      "at": "2026-10-20T13:29:10.030Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "search_matches",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:10.010Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:10.030Z",
+      "at": "2026-10-20T13:29:10.372Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "search_matches",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:10.331Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:10.372Z",
+      "at": "2026-10-20T13:29:10.692Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "search_matches",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:10.668Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:10.692Z",
+      "at": "2026-10-20T13:29:11.731Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "read_content",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:11.394Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 16,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:11.731Z",
+      "at": "2026-10-20T13:29:12.444Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "read_content",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:12.416Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 11,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:12.444Z",
+      "at": "2026-10-20T13:29:13.214Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "read_content",
+      "index": 2,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:13.178Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 23,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:13.214Z",
+      "at": "2026-10-20T13:29:14.001Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "read_content",
+      "index": 3,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:13.979Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 11,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:29:14.001Z",
+      "at": "2026-10-20T13:29:14.733Z",
+      "lane": "modern",
+      "phase": "lean-warm",
+      "tool": "read_content",
+      "index": 4,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:29:14.705Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 11,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:08.498Z",
+      "at": "2026-10-20T13:31:09.142Z",
+      "lane": "default",
+      "phase": "lean-paused",
+      "tool": "museum_guide",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:09.119Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 18,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:09.142Z",
+      "at": "2026-10-20T13:31:09.699Z",
+      "lane": "default",
+      "phase": "lean-paused",
+      "tool": "museum_guide",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:09.656Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 36,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:09.699Z",
+      "at": "2026-10-20T13:31:10.160Z",
+      "lane": "default",
+      "phase": "lean-paused",
+      "tool": "read_manager",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:10.142Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 8,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:10.160Z",
+      "at": "2026-10-20T13:31:10.613Z",
+      "lane": "default",
+      "phase": "lean-paused",
+      "tool": "read_manager",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:10.598Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:10.613Z",
+      "at": "2026-10-20T13:31:10.995Z",
+      "lane": "default",
+      "phase": "lean-paused",
+      "tool": "match_statistics",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:10.978Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:10.995Z",
+      "at": "2026-10-20T13:31:11.365Z",
+      "lane": "default",
+      "phase": "lean-paused",
+      "tool": "match_statistics",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:11.346Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:11.365Z",
+      "at": "2026-10-20T13:31:11.821Z",
+      "lane": "default",
+      "phase": "lean-paused",
+      "tool": "search_matches",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:31:11.821Z",
+      "at": "2026-10-20T13:31:12.271Z",
+      "lane": "default",
+      "phase": "lean-paused",
+      "tool": "search_matches",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:12.233Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 12,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:12.271Z",
+      "at": "2026-10-20T13:31:13.073Z",
+      "lane": "default",
+      "phase": "lean-paused",
+      "tool": "read_content",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:13.044Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 15,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:13.073Z",
+      "at": "2026-10-20T13:31:13.869Z",
+      "lane": "default",
+      "phase": "lean-paused",
+      "tool": "read_content",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:13.837Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 19,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:13.869Z",
+      "at": "2026-10-20T13:31:14.197Z",
+      "lane": "modern",
+      "phase": "lean-paused",
+      "tool": "museum_guide",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:14.179Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:14.197Z",
+      "at": "2026-10-20T13:31:14.535Z",
+      "lane": "modern",
+      "phase": "lean-paused",
+      "tool": "museum_guide",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:14.518Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:14.535Z",
+      "at": "2026-10-20T13:31:14.915Z",
+      "lane": "modern",
+      "phase": "lean-paused",
+      "tool": "read_manager",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:31:14.915Z",
+      "at": "2026-10-20T13:31:15.251Z",
+      "lane": "modern",
+      "phase": "lean-paused",
+      "tool": "read_manager",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:15.234Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 8,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:15.251Z",
+      "at": "2026-10-20T13:31:15.636Z",
+      "lane": "modern",
+      "phase": "lean-paused",
+      "tool": "match_statistics",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:31:15.636Z",
+      "at": "2026-10-20T13:31:15.959Z",
+      "lane": "modern",
+      "phase": "lean-paused",
+      "tool": "match_statistics",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:15.947Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:15.959Z",
+      "at": "2026-10-20T13:31:16.347Z",
+      "lane": "modern",
+      "phase": "lean-paused",
+      "tool": "search_matches",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:16.323Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 10,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:16.347Z",
+      "at": "2026-10-20T13:31:16.724Z",
+      "lane": "modern",
+      "phase": "lean-paused",
+      "tool": "search_matches",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:16.706Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 6,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:16.724Z",
+      "at": "2026-10-20T13:31:17.551Z",
+      "lane": "modern",
+      "phase": "lean-paused",
+      "tool": "read_content",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:31:17.527Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 13,
+        "outcome": "ok",
+        "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:31:17.551Z",
+      "at": "2026-10-20T13:31:18.426Z",
+      "lane": "modern",
+      "phase": "lean-paused",
+      "tool": "read_content",
+      "index": 1,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:32:24.858Z",
+      "at": "2026-10-20T13:32:25.341Z",
+      "lane": "default",
+      "phase": "restored-check",
+      "tool": "museum_guide",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 13312,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:32:25.319Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 4,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:32:25.341Z",
+      "at": "2026-10-20T13:32:25.787Z",
+      "lane": "default",
+      "phase": "restored-check",
+      "tool": "read_manager",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 9096,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "unmatched": true
+    },
+    {
+      "startedAt": "2026-10-20T13:32:25.787Z",
+      "at": "2026-10-20T13:32:26.171Z",
+      "lane": "default",
+      "phase": "restored-check",
+      "tool": "match_statistics",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 2420,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:32:26.158Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:32:26.171Z",
+      "at": "2026-10-20T13:32:26.584Z",
+      "lane": "default",
+      "phase": "restored-check",
+      "tool": "search_matches",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 51438,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:32:26.565Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:32:26.584Z",
+      "at": "2026-10-20T13:32:27.572Z",
+      "lane": "default",
+      "phase": "restored-check",
+      "tool": "read_content",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 62231,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:32:27.546Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 16,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:32:27.572Z",
+      "at": "2026-10-20T13:32:27.938Z",
+      "lane": "modern",
+      "phase": "restored-check",
+      "tool": "museum_guide",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 13402,
+        "keys": [
+          "instructions",
+          "research",
+          "pageFields",
+          "collectionFields",
+          "blockTypes",
+          "editor",
+          "imageLibrary"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:32:27.908Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 15,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:32:27.939Z",
+      "at": "2026-10-20T13:32:28.328Z",
+      "lane": "modern",
+      "phase": "restored-check",
+      "tool": "read_manager",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 9186,
+        "keys": [
+          "revision",
+          "id",
+          "name",
+          "biography",
+          "researchNotes",
+          "tenures",
+          "summary",
+          "scope"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:32:28.309Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 11,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:32:28.328Z",
+      "at": "2026-10-20T13:32:28.687Z",
+      "lane": "modern",
+      "phase": "restored-check",
+      "tool": "match_statistics",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 2510,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:32:28.674Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 5,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:32:28.688Z",
+      "at": "2026-10-20T13:32:29.047Z",
+      "lane": "modern",
+      "phase": "restored-check",
+      "tool": "search_matches",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 51528,
+        "keys": [
+          "revision",
+          "ledger",
+          "sourcePath",
+          "sourceSha256",
+          "checkedAt",
+          "currentSeason",
+          "coverageURL",
+          "limitations",
+          "filters",
+          "summary",
+          "warnings",
+          "page",
+          "pageSize",
+          "totalPages",
+          "nextPage",
+          "matches"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:32:29.031Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 7,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    },
+    {
+      "startedAt": "2026-10-20T13:32:29.048Z",
+      "at": "2026-10-20T13:32:30.003Z",
+      "lane": "modern",
+      "phase": "restored-check",
+      "tool": "read_content",
+      "index": 0,
+      "result": {
+        "isError": false,
+        "bytes": 62321,
+        "keys": [
+          "kind",
+          "id",
+          "revision",
+          "document",
+          "fileVersion"
+        ]
+      },
+      "invocation": {
+        "at": "2026-10-20T13:32:29.978Z",
+        "path": "/mcp",
+        "method": "POST",
+        "status": 200,
+        "cpuMs": 14,
+        "outcome": "ok",
+        "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+      }
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-10-20T13:32:29.978Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 14,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:32:29.031Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:32:28.674Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:32:28.309Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 11,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:32:27.908Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 15,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:32:27.546Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 16,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:32:26.565Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:32:26.158Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:32:25.319Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:32:01.026Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 14,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:32:00.829Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:31:44.895Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:44.424Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:17.527Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 13,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:16.706Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:16.323Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 10,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:15.947Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:15.234Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:14.518Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:14.179Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:13.837Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 19,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:13.044Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 15,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:12.233Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:11.346Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:10.978Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:10.598Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:10.142Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:09.656Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 36,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:31:09.119Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 18,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:14.705Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 11,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:13.979Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 11,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:13.178Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 23,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:12.416Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 11,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:11.394Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 16,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:10.668Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:10.331Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:10.010Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:09.687Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:09.350Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:09.041Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:08.734Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:08.404Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:08.114Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:07.478Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:06.900Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:06.534Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:05.891Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:05.510Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:05.230Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:04.921Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:01.778Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 10,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:01.009Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 14,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:29:00.308Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:59.971Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:59.665Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:58.313Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:57.919Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:57.547Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:57.201Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:56.829Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:56.480Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:56.119Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:55.752Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 13,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:55.386Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:54.954Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:54.618Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:54.222Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:53.886Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:53.532Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:45.247Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:28:45.041Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 25,
+      "outcome": "ok",
+      "version": "b67b0d6d-5ff1-4d9c-b0da-ee344425f0b8"
+    },
+    {
+      "at": "2026-10-20T13:27:40.329Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 4,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:39.623Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 3,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:17.571Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:16.626Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:15.857Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:15.472Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:15.151Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:14.825Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:14.511Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:14.096Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:13.751Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:13.427Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:13.084Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 28,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:12.230Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 16,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:11.455Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 14,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:11.011Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 10,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:10.639Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:10.200Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:09.364Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:27:08.910Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 16,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:20.163Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 20,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:19.303Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 22,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:18.417Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 19,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:17.475Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 17,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:16.503Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 26,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:15.576Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 13,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:15.207Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:14.360Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:13.921Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 18,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:13.469Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:13.029Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:12.239Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:11.864Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 16,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:11.469Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 16,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:10.875Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 11,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:10.511Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:10.150Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:09.655Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 15,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:09.077Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 13,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:08.689Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:08.301Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:07.914Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:25:07.490Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 29,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:55.446Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 13,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:54.456Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:53.595Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 11,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:52.535Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 17,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:51.623Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 15,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:50.273Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:49.814Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:49.485Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 11,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:48.596Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 11,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:48.189Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:47.756Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:47.421Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:46.944Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 12,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:46.536Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:46.139Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:45.703Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 7,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:45.312Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 8,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:44.817Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 9,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:44.172Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:43.776Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 6,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    },
+    {
+      "at": "2026-10-20T13:24:43.408Z",
+      "path": "/mcp",
+      "method": "POST",
+      "status": 200,
+      "cpuMs": 5,
+      "outcome": "ok",
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3"
+    }
+  ],
+  "summary": {
+    "baseline": {
+      "calls": 70,
+      "succeeded": 70,
+      "timed": 62,
+      "min": 5,
+      "median": 11,
+      "p95": 22,
+      "max": 29,
+      "over10": 33,
+      "over10Rate": 0.532258064516129,
+      "badInvocations": 0,
+      "lanes": {
+        "default": {
+          "calls": 35,
+          "succeeded": 35,
+          "timed": 29,
+          "min": 5,
+          "median": 11,
+          "p95": 17,
+          "max": 28,
+          "over10": 15,
+          "over10Rate": 0.5172413793103449,
+          "badInvocations": 0
+        },
+        "modern": {
+          "calls": 35,
+          "succeeded": 35,
+          "timed": 33,
+          "min": 5,
+          "median": 12,
+          "p95": 26,
+          "max": 29,
+          "over10": 18,
+          "over10Rate": 0.5454545454545454,
+          "badInvocations": 0
+        }
+      },
+      "pausedAndHeavy": {
+        "calls": 30,
+        "succeeded": 30,
+        "timed": 28,
+        "min": 5,
+        "median": 12,
+        "p95": 26,
+        "max": 28,
+        "over10": 18,
+        "over10Rate": 0.6428571428571429,
+        "badInvocations": 0
+      }
+    },
+    "lean": {
+      "calls": 70,
+      "succeeded": 70,
+      "timed": 56,
+      "min": 3,
+      "median": 7,
+      "p95": 19,
+      "max": 36,
+      "over10": 16,
+      "over10Rate": 0.2857142857142857,
+      "badInvocations": 0,
+      "lanes": {
+        "default": {
+          "calls": 35,
+          "succeeded": 35,
+          "timed": 28,
+          "min": 4,
+          "median": 8,
+          "p95": 19,
+          "max": 36,
+          "over10": 10,
+          "over10Rate": 0.35714285714285715,
+          "badInvocations": 0
+        },
+        "modern": {
+          "calls": 35,
+          "succeeded": 35,
+          "timed": 28,
+          "min": 3,
+          "median": 6,
+          "p95": 16,
+          "max": 23,
+          "over10": 6,
+          "over10Rate": 0.21428571428571427,
+          "badInvocations": 0
+        }
+      },
+      "pausedAndHeavy": {
+        "calls": 30,
+        "succeeded": 30,
+        "timed": 23,
+        "min": 5,
+        "median": 11,
+        "p95": 23,
+        "max": 36,
+        "over10": 14,
+        "over10Rate": 0.6086956521739131,
+        "badInvocations": 0
+      }
+    },
+    "restored": {
+      "calls": 10,
+      "succeeded": 10,
+      "timed": 9,
+      "min": 4,
+      "median": 7,
+      "p95": 16,
+      "max": 16,
+      "over10": 4,
+      "over10Rate": 0.4444444444444444,
+      "badInvocations": 0,
+      "lanes": {
+        "default": {
+          "calls": 5,
+          "succeeded": 5,
+          "timed": 4,
+          "min": 4,
+          "median": 5,
+          "p95": 16,
+          "max": 16,
+          "over10": 1,
+          "over10Rate": 0.25,
+          "badInvocations": 0
+        },
+        "modern": {
+          "calls": 5,
+          "succeeded": 5,
+          "timed": 5,
+          "min": 5,
+          "median": 11,
+          "p95": 15,
+          "max": 15,
+          "over10": 3,
+          "over10Rate": 0.6,
+          "badInvocations": 0
+        }
+      },
+      "pausedAndHeavy": {
+        "calls": 2,
+        "succeeded": 2,
+        "timed": 2,
+        "min": 14,
+        "median": 14,
+        "p95": 16,
+        "max": 16,
+        "over10": 2,
+        "over10Rate": 1,
+        "badInvocations": 0
+      }
+    }
+  },
+  "correlation": "Same expected version, POST /mcp, request interval with 5 ms start/100 ms completion tolerance, nearest completion; candidates within 20 ms are ambiguous. Missing/ambiguous telemetry is unknown. Default client is the installed SDK legacy lane. Only explicitly recorded primary reads are summarized.",
+  "decision": {
+    "criteria": {
+      "allReadsSucceeded": true,
+      "coverageAtLeast85Percent": false,
+      "atLeast20TimedPerLane": true,
+      "p95ImprovesAtLeast20Percent": false,
+      "over10RateDoesNotIncrease": true,
+      "allPausedHeavyReadingsAvailable": false,
+      "pausedHeavyWithin10ms": false
+    },
+    "retainLean": false,
+    "action": "Rolled back to the checked baseline; keep normal source default baseline. Do not promote lean from this experiment.",
+    "limitations": "Sequential comparison, partial timing coverage and no proof of the remaining spike mechanism. All reads succeeded; successful responses do not establish Free CPU compliance."
+  },
+  "rollback": {
+    "startedAt": "2026-10-20T13:27:53.215Z",
+    "finishedAt": "2026-10-20T13:31:50.331Z",
+    "restored": {
+      "version": "395fa292-bdd8-48c1-832e-271696fae0a3",
+      "revision": "425d60bba3da33423d41b559690535e9b05124b7"
+    },
+    "failures": []
+  },
+  "semanticChecks": [
+    {
+      "candidate": "lean",
+      "revision": "425d60bba3da33423d41b559690535e9b05124b7",
+      "summary": {
+        "played": 6,
+        "W": 3,
+        "D": 2,
+        "L": 1,
+        "gf": 6,
+        "ga": 5,
+        "winPercent": 50,
+        "evidence": {
+          "crosschecked": 0,
+          "single-source": 0,
+          "unclassified": 6
+        },
+        "firstDate": "2018-04-07",
+        "lastDate": "2018-05-13",
+        "semantics": "W/D/L uses the score after extra time where recorded. Shootouts decide progression separately. Win percentage = wins / counted matches × 100. No league points, positions or honours inferred."
+      }
+    },
+    {
+      "candidate": "restored",
+      "revision": "425d60bba3da33423d41b559690535e9b05124b7",
+      "summary": {
+        "played": 6,
+        "W": 3,
+        "D": 2,
+        "L": 1,
+        "gf": 6,
+        "ga": 5,
+        "winPercent": 50,
+        "evidence": {
+          "crosschecked": 0,
+          "single-source": 0,
+          "unclassified": 6
+        },
+        "firstDate": "2018-04-07",
+        "lastDate": "2018-05-13",
+        "semantics": "W/D/L uses the score after extra time where recorded. Shootouts decide progression separately. Win percentage = wins / counted matches × 100. No league points, positions or honours inferred."
+      }
+    }
+  ],
+  "securityChecks": {
+    "all14ToolsDiscovered": true,
+    "baselineAndLeanSignaturesBothLanes": true,
+    "restoredBaselineSignaturesBothLanes": true,
+    "compiledAuthorizationAndPublicationGuardsPassed": true
+  },
+  "cleanup": {
+    "testCredentialRevocation": "confirmed",
+    "diagnosticClientExited": true,
+    "watchdogExited": true
+  },
+  "freeAccount": {
+    "subscriptions": [],
+    "billingSettingsChanged": false,
+    "newResourcesCreated": false
+  }
+}
