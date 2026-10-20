@@ -89,3 +89,26 @@ test('the actual MCP server exposes eight tools, validates inputs and invokes th
   const published=await client.callTool({name:'publish_draft',arguments:{draftNumber:17,expectedCommit:HEAD,baseRevision:MAIN,confirmation:'Publish this previewed revision'}});assert.equal(published.structuredContent.state,'publishing');assert.equal(calls.length,2);
  }finally{await client.close();await server.close();}
 });
+
+test('reused schema metadata preserves defaults and keeps concurrent museum clients separate',async()=>{
+ const {createMuseumServer}=await import('../auth/mcp/server.mjs');
+ const {Client}=await import('@modelcontextprotocol/client');
+ const {InMemoryTransport}=await import('@modelcontextprotocol/server');
+ const connections=[];
+ try{
+  for(const owner of ['user_a','user_b']){
+   const server=createMuseumServer({client:{drafts:async({page})=>({owner,page}),list:async({kind})=>({owner,kind})}});
+   const client=new Client({name:owner,version:'1'});const [a,b]=InMemoryTransport.createLinkedPair();
+   connections.push({server,client});await server.connect(a);await client.connect(b);
+  }
+  const lists=await Promise.all(connections.map(({client})=>client.listTools()));
+  assert.deepEqual(lists[0].tools,lists[1].tools,'Discovery contracts must stay identical across fresh servers');
+  const results=await Promise.all(connections.map(({client})=>client.callTool({name:'list_drafts',arguments:{}})));
+  assert.deepEqual(results.map(r=>r.structuredContent),[{owner:'user_a',page:1},{owner:'user_b',page:1}]);
+  for(const {client}of connections){
+   assert.equal((await client.callTool({name:'list_drafts',arguments:{page:0}})).isError,true);
+   assert.equal((await client.callTool({name:'list_content',arguments:{kind:'unknown'}})).isError,true);
+   assert.equal((await client.callTool({name:'list_content',arguments:{kind:'pages'}})).isError,undefined);
+  }
+ }finally{for(const {client,server}of connections){await client.close();await server.close();}}
+});
