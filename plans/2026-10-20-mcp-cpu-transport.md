@@ -1,0 +1,19 @@
+# MCP CPU and authenticated transport continuation
+
+The existing research foundation is approved, but exposing its tools remains gated on reliable Free-plan CPU use. Earlier empty hosted profiles do not establish a cause or a fix. Preserve fresh request servers, OAuth, per-operation repository access and preview/publication guards. Add no dependencies or paid services.
+
+1. Extend the working compiled OAuth harness in `scripts/check-mcp-runtime.mjs` to exercise authenticated MCP initialization, discovery and calls using its own consent-issued test credential. Diagnose its local Host mismatch at the harness boundary without relaxing production validation. Add negative controls for revoked access and invalid input. This provides direct connector testing independent of Claude.
+2. Profile that reproducible workload in the existing workerd runtime, using installed inspector support where available. Compare initialization, discovery and actual calls. Retain a small sanitized evidence record in `plans/evidence/`; never retain credentials. Confirm the current deployed revision and compare hosted telemetry around real authenticated traffic.
+3. Make the smallest measured CPU fix in `auth/mcp/server.mjs`, `auth/entry.mjs` or `scripts/build-auth.mjs` only where evidence supports it. Preserve protocol behavior and isolation; run the SDK tests, full suite and compiled build. Push through required PR checks and deploy through the existing cf workflow, then verify hosted CPU rather than inferring it from local timing.
+4. Once the CPU gate passes, expose the existing bounded clients in `auth/mcp/archive.mjs` as read-only tools through `auth/mcp/server.mjs`, retaining fresh repository authorization on each operation. Extend `test/mcp.test.mjs` and the compiled authenticated harness to verify tools, evidence and ledger separation, bounds, bad assets and denied access.
+5. Use direct authenticated testing and Claude to exercise research, draft, exact checked preview, approved publication and served revision. Preserve the existing manager block and source notes. Record any human-only approval or actual blocker precisely. Remove task-owned diagnostic outputs and stop runtimes before reporting completion.
+
+## Reproduction and first measured change
+
+The compiled OAuth harness now completes authenticated legacy initialization, eight-tool discovery and guide calls, and proves revoked repository access and invalid tool arguments fail. Miniflare replaces the incoming Host with its loopback listener; a test-only boundary restores the URL host before calling the unchanged compiled worker. Production Host and Origin restrictions are unchanged.
+
+The working harness's installed inspector captured 100 authenticated discovery/guide pairs. Both minified and symbol-readable builds identify `writeSSEEvent` (outer JSON serialization) and the tool callback (inner JSON serialization) as the largest self-sampled JavaScript frames. The guide has 74,838 UTF-8 bytes. Caching its immutable text representation removes the callback serialization hotspot while preserving all fields and both response representations. Sanitized local results are in `plans/evidence/2026-10-20-mcp-cpu.json`; these samples do not prove hosted CPU compliance.
+
+`scripts/hosted-mcp-client.mjs --interactive` provides direct SDK testing, independent of Claude. It registers a public PKCE client, requires the owner's browser consent, binds a random loopback port, holds its own access token only in memory, accepts discovered tool calls through stdin and expires the test process after 15 minutes. Repeated calls are restricted to read-only tools. No browser credentials are inspected. The consent URL is ephemeral; no token or callback code is recorded.
+
+All 57 unit tests and the full compiled Astro/OAuth build pass. Hosted baseline and post-deployment measurements remain pending owner consent to the diagnostic client. Research tools remain disabled.
