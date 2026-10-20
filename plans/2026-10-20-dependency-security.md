@@ -3,7 +3,7 @@
 Keep the public museum, content formats, GitHub sign-in, checked previews,
 publishing checks, Claude connector and free hosting intact. Build Decap from
 its modules rather than modifying or copying its precompiled distribution.
-This is a plan; no dependency or editor implementation change is approved yet.
+The opt-in candidate and listed dependency declarations were approved on 20 October 2026. Promotion remains gated on workflow acceptance.
 
 ## Chosen direction and recommended scope
 
@@ -34,13 +34,16 @@ and Plate. Prefer the selective module build for the full existing experience.
 
 ### Dependency declaration proposed for approval
 
-Replace the umbrella decap-cms dependency with these explicitly pinned modules,
-all already present locally. Registry checks on 20 October 2026 confirm these
+Add these explicitly pinned modules for the candidate; remove the umbrella
+decap-cms dependency only at promotion so clean installs can still build the
+unchanged main editor.
+All are already present locally. Registry checks on 20 October 2026 confirm these
 installed versions are the current stable tags:
 
 | Package | Version |
 | --- | --- |
 | decap-cms-core | 3.20.1 |
+| decap-cms-locales (separately approved) | 3.9.0 |
 | decap-cms-backend-github | 3.9.1 |
 | decap-cms-widget-string | 3.3.4 |
 | decap-cms-widget-text | 3.3.4 |

@@ -74,3 +74,8 @@ console.log('PASS: native Astro trial content, editor modules and runtime contex
  for(const id of Object.keys(performance.profiles)){const html=await readFile(`build/manager-${id}.html`,'utf8');assert(html.includes(`data-archive-sha="${performance.sourceSha256}"`));assert(html.includes('Match boundaries and sources'));assert(html.includes('Recorded competitive matches only.'));}
  console.log('PASS: manager choices, public components and both preview contexts use the same calculated archive snapshot.');
 }
+
+const {verifyEditorBuild,verifyEditorNegativeControls}=await import('./verify-editor-build.mjs');
+const editor=await verifyEditorBuild();
+const rejected=await verifyEditorNegativeControls();
+console.log(`PASS: opt-in source editor has ${editor.assets} exact assets, licence notices and both image encoders; current editor retained; ${rejected} negative controls rejected.`);
