@@ -81,6 +81,47 @@
       "navLabel": "",
       "spacing": "standard",
       "type": "section"
+    },
+    {
+      "type": "text-panel",
+      "anchor": "research-trial",
+      "navLabel": "Research example",
+      "heading": "Darren Moore: a sourced example",
+      "paragraphs": [
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "Moore’s Albion story includes promotion-winning player, academy coach and head coach. The club confirmed his permanent appointment on 18 May 2018 after his interim spell. These biographical details come from Albion’s published accounts and retain a single-source label."
+            }
+          ]
+        },
+        {
+          "parts": [
+            {
+              "type": "text",
+              "text": "The table below calculates recorded competitive results from the museum archive. Caretaker and permanent spells stay separate, and the source and coverage notes remain part of the record."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Albion: Darren Moore in profile · 18 May 2018 (single-source account)",
+          "url": "https://www.wba.co.uk/news/2018/may/darren-moore-in-profile"
+        },
+        {
+          "label": "Albion: permanent appointment · 18 May 2018",
+          "url": "https://www.wba.co.uk/news/2018/may/moore-appointed-head-coach"
+        }
+      ]
+    },
+    {
+      "type": "manager-performance",
+      "anchor": "moore-performance",
+      "navLabel": "Moore results",
+      "heading": "Recorded results under Darren Moore",
+      "manager": "darren-moore"
     }
   ],
   "collections": [],
