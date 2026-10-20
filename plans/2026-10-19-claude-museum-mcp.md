@@ -56,3 +56,19 @@ Fresh consent submission consumes the transaction but stays on the form. Safari�
 1. Extend scripts/check-mcp-runtime.mjs to compare the consent form policy against the actual upstream redirect origin and the validated client callback origin, with no wildcard. Confirm failure on the current bundle.
 2. In auth/mcp/authorization.mjs allow self, the fixed GitHub origin and the provider-validated callback origin in form-action. Retain default-src none, frame protection, exact POST origin, cookie binding, one-use consent and PKCE. Run the full build and tests, merge a checked trial PR and redeploy.
 3. Start a fresh Safari/Claude connection, inspect the actual redirect chain, then continue the authorised content draft, checked preview and publication acceptance test. Do not call the live workflow complete from unit checks alone.
+
+## Hosted owner-account acceptance — 20 October 2026
+
+The complete workflow passed in Safari using the personal Claude Free workspace and GitHub sign-in. All eight tools were discovered. Tool calls were approved once; blanket permission preferences were not changed.
+
+- Deployed auth revision: e02347cff150994119272324cb268b2f68399128. The browser completed consent and returned to Claude with the connector connected.
+- Claude read the guide and component-preview-trial, saved draft PR #22, and returned its checked full-page preview after the required checks passed: https://github.com/stevehill1981/albion-songs-trial/pull/22
+- Exact draft commit: 61b31e7f18c5a2a191dc9891ac1f39afd8072685; base: e02347cff150994119272324cb268b2f68399128. A semantic JSON comparison confirmed only the requested instructional sentence changed; existing content, source links, credits and layouts matched. JSON key ordering also changed without changing content.
+- Inspected the served full-page preview in Safari, including the new paragraph, both photographs, credits and columns: https://5b30d1cf-albion-songs-trial.steve-e85.workers.dev/component-preview-trial
+- Asked Claude to publish that exact previewed commit. Its publish tool merged normally and publication_status progressed from publishing to live. Production revision: a8bbdaba6409b9cd4947317520192020544478d5. Independently fetched version.json and the public HTML; both matched, with the sentence and existing image credit/license present.
+- Public result: https://albion-songs-trial.steve-e85.workers.dev/component-preview-trial
+- Claude acceptance chat: https://claude.ai/chat/b3542a7d-b943-4f2d-bdc2-6b4576c4588d (owner access required).
+
+No paid upgrade, paid AI API or paid resource was introduced. Actual authenticated /mcp invocation samples used 14–23 ms CPU and returned outcome ok. This exceeds the documented 10 ms Free allowance; Cloudflare allows occasional overruns but can terminate consistent overruns. Do not equate this successful trial with reliable Free CPU compliance. Optimisation and renewed measurement remain required before routine use, along with Marie’s own GitHub access and independent acceptance. Source: https://developers.cloudflare.com/workers/platform/limits/#cpu-time
+
+A Python urllib fetch of the preview returned HTTP Error 403: Forbidden; Safari served the page successfully, and independent curl verification of production passed. The browser result and served HTML, rather than deployment status alone, are the acceptance evidence. Task-owned caches and build outputs were removed; original museum sources and unsaved visual-editor drafts were preserved.
