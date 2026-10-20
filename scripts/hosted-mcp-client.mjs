@@ -42,7 +42,9 @@ try{
  client=new Client({name:'Albion direct diagnostic client',version:'1'});
  await client.connect(new StreamableHTTPClientTransport(new URL(origin+'/mcp'),{authProvider:{token:async()=>accessToken}}));
  let tools=await client.listTools();console.log(JSON.stringify({connected:true,tools:tools.tools.map(t=>t.name)}));
- terminal=createInterface({input:process.stdin,output:process.stdout,terminal:false});
+ // Readline must manage raw terminal input: canonical PTY buffers truncate full page drafts.
+ terminal=createInterface({input:process.stdin,output:process.stdout,terminal:true});
+ terminal.on('SIGINT',()=>terminal.close());
  console.log('Send JSON {"tool":"museum_guide","arguments":{}}; {"repeat":10,"tool":"museum_guide","arguments":{}}; or {"quit":true}.');
  for await(const line of terminal){
   try{
