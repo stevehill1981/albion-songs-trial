@@ -2,6 +2,11 @@ import site from '../../site.json' with {type:'json'};
 import {ArchiveError,LEDGERS,PAGE_SIZE,planQuery,refineMatches,matchSummary,validateQuery} from '../../src/lib/match-archive.mjs';
 const fail=(ok,message)=>{if(!ok)throw new ArchiveError(message);};
 const root='/data/museum-query/';
+// Only verified public immutable assets are shared. Never retain request promises,
+// manifests, authorization, credentials or calculated query results here.
+const assetCaches=new WeakMap();
+const CACHE_ENTRIES=16,CACHE_BYTES=512*1024;
+function freezeAsset(value){if(value&&typeof value==='object'){for(const child of Object.values(value))freezeAsset(child);Object.freeze(value);}return value;}
 const hash=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),b=>b.toString(16).padStart(2,'0')).join('');
 async function json(fetcher,path,{maximum=192*1024,sha256,bytes}={}){
  fail(path==='/version.json'||path===root+'manifest.json'||/^\/data\/museum-query\/files\/[a-f0-9]{64}\.json$/.test(path),'Invalid archive asset path.');
@@ -14,12 +19,24 @@ async function json(fetcher,path,{maximum=192*1024,sha256,bytes}={}){
  try{return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(data));}catch{throw new ArchiveError('Invalid archive JSON.');}
 }
 export function createArchiveClient(fetcher=fetch){
+ let cache=assetCaches.get(fetcher);if(!cache){cache={entries:new Map(),bytes:0};assetCaches.set(fetcher,cache);}
  async function snapshot(){
   const [version,manifest]=await Promise.all([json(fetcher,'/version.json',{maximum:4096}),json(fetcher,root+'manifest.json',{maximum:16384})]);
   fail(manifest.schemaVersion===1&&/^[a-f0-9]{40}$/.test(manifest.revision)&&manifest.revision===version.revision,'The archive manifest and published site are out of sync. Retry after publication finishes.');
   fail(LEDGERS.every(key=>manifest.ledgers?.[key]),'The archive manifest is incomplete.');return manifest;
  }
- const asset=ref=>{fail(ref&&/^files\/[a-f0-9]{64}\.json$/.test(ref.path)&&ref.path===`files/${ref.sha256}.json`&&Number.isSafeInteger(ref.bytes)&&ref.bytes>0&&ref.bytes<=192*1024,'Invalid archive asset reference.');return json(fetcher,root+ref.path,ref);};
+ const asset=async ref=>{
+  fail(ref&&/^files\/[a-f0-9]{64}\.json$/.test(ref.path)&&ref.path===`files/${ref.sha256}.json`&&Number.isSafeInteger(ref.bytes)&&ref.bytes>0&&ref.bytes<=192*1024,'Invalid archive asset reference.');
+  const cached=cache.entries.get(ref.sha256);
+  if(cached){fail(cached.bytes===ref.bytes,'The archive snapshot changed or failed its integrity check. Retry the complete query.');return cached.value;}
+  const value=freezeAsset(await json(fetcher,root+ref.path,ref));
+  // Another request may have completed this same asset while ours was in flight.
+  if(!cache.entries.has(ref.sha256)){
+   while(cache.entries.size>=CACHE_ENTRIES||cache.bytes+ref.bytes>CACHE_BYTES){const [key,old]=cache.entries.entries().next().value;cache.entries.delete(key);cache.bytes-=old.bytes;}
+   cache.entries.set(ref.sha256,{value,bytes:ref.bytes});cache.bytes+=ref.bytes;
+  }
+  return value;
+ };
  function provenance(manifest,ledger){const source=manifest.ledgers[ledger];return {revision:manifest.revision,ledger,sourcePath:source.sourcePath,sourceSha256:source.sourceSha256,checkedAt:source.checkedAt,currentSeason:source.currentSeason,coverageURL:site.origin+root+source.coverage.path,limitations:'Published snapshot, not live. Coverage and outstanding discrepancies are documented by archive_coverage. Keep competitive, wartime/recovery and annulled totals separate. Unclassified evidence does not mean corroborated.'};}
  async function query(input,includeMatches){
   const filters=validateQuery(input),manifest=await snapshot(),entry=manifest.ledgers[filters.ledger];

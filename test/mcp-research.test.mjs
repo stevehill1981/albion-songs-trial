@@ -35,6 +35,8 @@ test('all research tools require fresh editor access before any archive fetch',a
  assert.equal(h.calls.length,5);assert(h.calls.every(url=>url.startsWith('https://api.github.com/')));
  h.set({allowed:true});assert.equal((await h.museum.managerList()).managers.length,3);
  h.set({allowed:false});const before=h.calls.length;await assert.rejects(h.museum.managerList(),/editor access/);assert.equal(h.calls.length,before+1);
+ h.set({allowed:true});await h.museum.managerProfile({id:'darren-moore'});await h.museum.managerProfile({id:'darren-moore'});
+ h.set({allowed:false});const warm=h.calls.length;await assert.rejects(h.museum.managerProfile({id:'darren-moore'}),/editor access/);assert.equal(h.calls.length,warm+1,'A warm public-file cache must not bypass authorization');
 });
 test('research protocol preserves ledger evidence, pagination and calculated manager results',async()=>{
  const h=harness(),connection=await connect(h),call=async(name,args={})=>{const response=await connection.client.callTool({name,arguments:args});assert(!response.isError,JSON.stringify(response));return response.structuredContent;};

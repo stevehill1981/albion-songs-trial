@@ -1,0 +1,250 @@
+{
+  "runtime": "Installed Miniflare/workerd; 100 microsecond inspector sampling",
+  "workload": "25 authenticated legacy discovery rounds and 100 guide/manager/statistics/wartime-search calls, after compiled OAuth consent and both protocol acceptance checks",
+  "limitation": "Local self samples and elapsed duration are not hosted per-request CPU or a Free budget acceptance result",
+  "profiles": {
+    "baseline": {
+      "durationMs": 774.374,
+      "samples": 1492,
+      "top": [
+        {
+          "function": "(program)",
+          "line": 0,
+          "samples": 136
+        },
+        {
+          "function": "(garbage collector)",
+          "line": 0,
+          "samples": 109
+        },
+        {
+          "function": "HC",
+          "line": 63,
+          "samples": 100
+        },
+        {
+          "function": "(idle)",
+          "line": 0,
+          "samples": 88
+        },
+        {
+          "function": "writeSSEEvent",
+          "line": 62,
+          "samples": 72
+        },
+        {
+          "function": "",
+          "line": 0,
+          "samples": 50
+        },
+        {
+          "function": "fetch",
+          "line": 1,
+          "samples": 31
+        },
+        {
+          "function": "read",
+          "line": 0,
+          "samples": 24
+        },
+        {
+          "function": "_onclose",
+          "line": 55,
+          "samples": 24
+        },
+        {
+          "function": "digest",
+          "line": 0,
+          "samples": 20
+        },
+        {
+          "function": "",
+          "line": 64,
+          "samples": 18
+        },
+        {
+          "function": "get",
+          "line": 0,
+          "samples": 15
+        },
+        {
+          "function": "yS",
+          "line": 60,
+          "samples": 14
+        },
+        {
+          "function": "Request",
+          "line": 0,
+          "samples": 14
+        },
+        {
+          "function": "fetch",
+          "line": 0,
+          "samples": 13
+        }
+      ]
+    },
+    "symbols": {
+      "durationMs": 605.788,
+      "samples": 1427,
+      "top": [
+        {
+          "function": "json",
+          "line": 25607,
+          "samples": 109
+        },
+        {
+          "function": "(program)",
+          "line": 0,
+          "samples": 103
+        },
+        {
+          "function": "(garbage collector)",
+          "line": 0,
+          "samples": 95
+        },
+        {
+          "function": "writeSSEEvent",
+          "line": 23687,
+          "samples": 72
+        },
+        {
+          "function": "(idle)",
+          "line": 0,
+          "samples": 70
+        },
+        {
+          "function": "",
+          "line": 0,
+          "samples": 38
+        },
+        {
+          "function": "fetch",
+          "line": 1,
+          "samples": 28
+        },
+        {
+          "function": "read",
+          "line": 0,
+          "samples": 25
+        },
+        {
+          "function": "Request",
+          "line": 0,
+          "samples": 17
+        },
+        {
+          "function": "_onclose",
+          "line": 19316,
+          "samples": 16
+        },
+        {
+          "function": "handleApiRequest",
+          "line": 4104,
+          "samples": 16
+        },
+        {
+          "function": "get",
+          "line": 0,
+          "samples": 16
+        },
+        {
+          "function": "fetch",
+          "line": 0,
+          "samples": 14
+        },
+        {
+          "function": "digest",
+          "line": 0,
+          "samples": 14
+        },
+        {
+          "function": "",
+          "line": 26297,
+          "samples": 13
+        }
+      ]
+    },
+    "cache-symbols": {
+      "durationMs": 484.953,
+      "samples": 1273,
+      "top": [
+        {
+          "function": "(program)",
+          "line": 0,
+          "samples": 97
+        },
+        {
+          "function": "(garbage collector)",
+          "line": 0,
+          "samples": 91
+        },
+        {
+          "function": "writeSSEEvent",
+          "line": 23687,
+          "samples": 74
+        },
+        {
+          "function": "(idle)",
+          "line": 0,
+          "samples": 59
+        },
+        {
+          "function": "json",
+          "line": 25617,
+          "samples": 31
+        },
+        {
+          "function": "fetch",
+          "line": 1,
+          "samples": 26
+        },
+        {
+          "function": "_onclose",
+          "line": 19316,
+          "samples": 24
+        },
+        {
+          "function": "",
+          "line": 0,
+          "samples": 23
+        },
+        {
+          "function": "",
+          "line": 26333,
+          "samples": 21
+        },
+        {
+          "function": "Request",
+          "line": 0,
+          "samples": 14
+        },
+        {
+          "function": "fetch",
+          "line": 24759,
+          "samples": 13
+        },
+        {
+          "function": "Response",
+          "line": 0,
+          "samples": 11
+        },
+        {
+          "function": "fetch",
+          "line": 26630,
+          "samples": 11
+        },
+        {
+          "function": "boundedText",
+          "line": 25810,
+          "samples": 11
+        },
+        {
+          "function": "readRequestBody",
+          "line": 23296,
+          "samples": 10
+        }
+      ]
+    }
+  }
+}

@@ -85,12 +85,14 @@ try{
  const wartime=await modern.callTool({name:'search_matches',arguments:{ledger:'wartime',season:'1942-43'}});assert(!wartime.isError);assert.equal(wartime.structuredContent.summary.played,38);assert(wartime.structuredContent.matches.every(row=>row.ledger==='wartime'));
  allowed=false;const deniedResearch=await modern.callTool({name:'list_managers',arguments:{}});assert.equal(deniedResearch.isError,true);allowed=true;
  if(command){
-  for(let i=0;i<100;i++){
+  const workloads=process.env.ALBION_CPU_WORKLOAD==='research'?[{name:'museum_guide',arguments:{}},{name:'read_manager',arguments:{id:'darren-moore'}},{name:'match_statistics',arguments:{ledger:'competitive',tenure:'darren-moore-caretaker-2018'}},{name:'search_matches',arguments:{ledger:'wartime',season:'1942-43'}}]:[{name:'museum_guide',arguments:{}}];
+  const repetitions=workloads.length===1?100:25;
+  for(let i=0;i<repetitions;i++){
    await rpc('tools/list',{},100+i,{'MCP-Protocol-Version':'2025-03-26'});
-   await rpc('tools/call',{name:'museum_guide',arguments:{}},300+i,{'MCP-Protocol-Version':'2025-03-26'});
+   for(const workload of workloads){const response=await rpc('tools/call',workload,300+i,{'MCP-Protocol-Version':'2025-03-26'});assert(!response.result.isError,JSON.stringify(response));}
   }
   const {profile}=await command('Profiler.stop');await writeFile(process.env.ALBION_CPU_PROFILE,JSON.stringify(profile));
-  console.log('Captured workerd CPU profile for 100 authenticated discovery/guide pairs.');
+  console.log(`Captured workerd CPU profile: ${repetitions} authenticated discovery rounds with ${workloads.map(w=>w.name).join(', ')}.`);
  }
  const passthrough=await send('/mcp',{method:'POST',headers:{Authorization:`Bearer ${upstreamToken}`,'Content-Type':'application/json'},body:'{}'});assert.equal(passthrough.status,401);
  const replay=await send(callback,{headers:{Cookie:cookies}});assert.equal(replay.status,400);assert.equal(exchanges,1);
