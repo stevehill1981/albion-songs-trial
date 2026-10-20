@@ -6,7 +6,7 @@ import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
 import {Client,StreamableHTTPClientTransport} from '@modelcontextprotocol/client';
 const origin='https://albion-songs-auth.steve-e85.workers.dev';
 const upstreamToken='unit_test_github_credential_only';
-const temp=await mkdtemp(join(tmpdir(),'albion-mcp-runtime-'));let runtime,inspector,modern,diagnosticModern,allowed=true,exchanges=0;
+const temp=await mkdtemp(join(tmpdir(),'albion-mcp-runtime-'));let runtime,inspector,modern,allowed=true,exchanges=0;
 try{
  // Miniflare's HTTP dispatcher rewrites Host to its loopback listener. Restore
  // the original URL host at the test boundary; the compiled production checks stay intact.
@@ -86,19 +86,11 @@ try{
  const statistics=await modern.callTool({name:'match_statistics',arguments:{ledger:'competitive',tenure:'darren-moore-caretaker-2018'}});assert(!statistics.isError,JSON.stringify(statistics));assert.equal(statistics.structuredContent.summary.played,6);assert.equal(statistics.structuredContent.summary.W,3);
  const wartime=await modern.callTool({name:'search_matches',arguments:{ledger:'wartime',season:'1942-43'}});assert(!wartime.isError);assert.equal(wartime.structuredContent.summary.played,38);assert(wartime.structuredContent.matches.every(row=>row.ledger==='wartime'));
  allowed=false;const deniedResearch=await modern.callTool({name:'list_managers',arguments:{}});assert.equal(deniedResearch.isError,true);allowed=true;
- const authProbe='/mcp/diagnostic/auth',guideProbe='/mcp/diagnostic/guide';
- for(const path of [authProbe,guideProbe])assert.equal((await send(path,{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'})).status,401);
- const probeHeaders={Authorization:`Bearer ${exchanged.access_token}`,'Content-Type':'application/json'};
- assert.equal((await readJSON(await send(authProbe,{method:'POST',headers:probeHeaders,body:'{}'}))).editor,true);
- for(const extra of [{Origin:'https://attacker.example'},{'X-Albion-Test-Host':'attacker.example'}])assert.equal((await send(authProbe,{method:'POST',headers:{...probeHeaders,...extra},body:'{}'})).status,403,JSON.stringify(extra));
- allowed=false;assert.equal((await send(authProbe,{method:'POST',headers:probeHeaders,body:'{}'})).status,403);allowed=true;
- const probeTools=await rpc('tools/list',{},700,{'MCP-Protocol-Version':'2025-03-26'},guideProbe);assert.deepEqual(probeTools.result.tools.map(t=>t.name),['museum_guide']);
- const probeGuide=await rpc('tools/call',{name:'museum_guide',arguments:{}},701,{'MCP-Protocol-Version':'2025-03-26'},guideProbe);assert.deepEqual(probeGuide.result,guide.result);
- const blockedWrite=await rpc('tools/call',{name:'publish_draft',arguments:{}},702,{'MCP-Protocol-Version':'2025-03-26'},guideProbe);assert(blockedWrite.error||blockedWrite.result?.isError,'Diagnostic endpoint must reject editing tools');
- diagnosticModern=new Client({name:'Modern guide-only acceptance',version:'1'},{versionNegotiation:{mode:{pin:'2026-07-28'}}});
- await diagnosticModern.connect(new StreamableHTTPClientTransport(new URL(origin+guideProbe),{authProvider:{token:async()=>exchanged.access_token},fetch:async(input,init)=>{const request=new Request(input,init);return send(new URL(request.url).pathname,{method:request.method,headers:request.headers,...request.body?{body:await request.text()}:{}});}}));
- assert.deepEqual((await diagnosticModern.listTools()).tools.map(t=>t.name),['museum_guide']);assert.deepEqual(await diagnosticModern.callTool({name:'museum_guide',arguments:{}}),modernGuide);
- allowed=false;assert.equal((await diagnosticModern.callTool({name:'museum_guide',arguments:{}})).isError,true);allowed=true;
+ for(const path of ['/mcp/diagnostic/auth','/mcp/diagnostic/guide']){
+  assert.equal((await send(path,{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'})).status,401);
+  assert.equal((await send(path,{method:'POST',headers:{Authorization:`Bearer ${exchanged.access_token}`,'Content-Type':'application/json',Accept:'application/json, text/event-stream'},body:'{}'})).status,404,'Temporary diagnostic routes must be removed');
+ }
+ const badHost=await send('/mcp',{method:'POST',headers:{'X-Albion-Test-Host':'attacker.example',Authorization:`Bearer ${exchanged.access_token}`,Accept:'application/json, text/event-stream','Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:8,method:'tools/list',params:{}})});assert.equal(badHost.status,403);
  if(command){
   const workloads=process.env.ALBION_CPU_WORKLOAD==='research'?[{name:'museum_guide',arguments:{}},{name:'read_manager',arguments:{id:'darren-moore'}},{name:'match_statistics',arguments:{ledger:'competitive',tenure:'darren-moore-caretaker-2018'}},{name:'search_matches',arguments:{ledger:'wartime',season:'1942-43'}}]:[{name:'museum_guide',arguments:{}}];
   const repetitions=workloads.length===1?100:25;
@@ -113,4 +105,4 @@ try{
  const replay=await send(callback,{headers:{Cookie:cookies}});assert.equal(replay.status,400);assert.equal(exchanges,1);
  const old=await send('/auth?provider=github');assert.equal(old.status,302);assert(new URL(old.headers.get('Location')).searchParams.get('state').match(/^[a-f0-9]{64}$/));
  console.log('PASS: compiled OAuth Worker completes consent, GitHub PKCE, token exchange and authenticated legacy and modern MCP discovery/guide calls and sourced research queries; rejects hostile Origin, revoked editor access, invalid tool input, forged consent, unbound/replayed callbacks and upstream token passthrough. Existing Decap sign-in remains available.');
-}finally{inspector?.close();await diagnosticModern?.close();await modern?.close();await runtime?.dispose();await rm(temp,{recursive:true,force:true});}
+}finally{inspector?.close();await modern?.close();await runtime?.dispose();await rm(temp,{recursive:true,force:true});}
