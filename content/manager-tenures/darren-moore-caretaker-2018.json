@@ -1,0 +1,27 @@
+{
+  "id": "darren-moore-caretaker-2018",
+  "manager": "darren-moore",
+  "role": "caretaker",
+  "appointmentDate": "2018-04-02",
+  "departureDate": null,
+  "firstMatchDate": "2018-04-07",
+  "lastMatchDate": "2018-05-13",
+  "sources": [
+    {
+      "label": "Contemporary report quoting the 2 April 2018 club statement",
+      "url": "https://www.shoot.co.uk/relegation-threatened-west-bromwich-albion-part-company-with-manager-alan-pardew/"
+    },
+    {
+      "label": "Albion: Darren Moore in profile, 18 May 2018",
+      "url": "https://www.wba.co.uk/news/2018/may/darren-moore-in-profile"
+    },
+    {
+      "label": "Albion: permanent appointment, 18 May 2018",
+      "url": "https://www.wba.co.uk/news/2018/may/moore-appointed-head-coach"
+    }
+  ],
+  "note": "Final six matches of 2017/18; the permanent appointment followed on 18 May. No separate administrative departure date is asserted for the caretaker role.",
+  "evidenceStatus": "single-source",
+  "ledger": "competitive",
+  "excludedMatchIds": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "darren-moore-2018",
+  "manager": "darren-moore",
+  "role": "permanent",
+  "appointmentDate": "2018-05-18",
+  "departureDate": "2019-03-09",
+  "firstMatchDate": "2018-08-04",
+  "lastMatchDate": "2019-03-09",
+  "sources": [
+    {
+      "label": "Albion: permanent appointment, 18 May 2018",
+      "url": "https://www.wba.co.uk/news/2018/may/moore-appointed-head-coach"
+    },
+    {
+      "label": "Sky Sports: Ipswich draw and Moore departure, 9 March 2019",
+      "url": "https://www.skysports.com/football/west-bromwich-albion-vs-ipswich-town/392974"
+    }
+  ],
+  "note": "First recorded competitive match after the permanent appointment was Bolton at home; departure followed the Ipswich draw.",
+  "evidenceStatus": "single-source",
+  "ledger": "competitive",
+  "excludedMatchIds": []
+}

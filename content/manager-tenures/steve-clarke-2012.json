@@ -1,0 +1,27 @@
+{
+  "id": "steve-clarke-2012",
+  "manager": "steve-clarke",
+  "role": "permanent",
+  "appointmentDate": "2012-06-08",
+  "departureDate": "2013-12-14",
+  "firstMatchDate": "2012-08-18",
+  "lastMatchDate": "2013-12-14",
+  "sources": [
+    {
+      "label": "Sky Sports: appointment, 8 June 2012",
+      "url": "https://www.skysports.com/football/news/7800271/clarke-takes-baggies-job"
+    },
+    {
+      "label": "ITV: dismissal, 14 December 2013",
+      "url": "https://www.itv.com/news/update/2013-12-14/west-brom-manager-sacked-after-premier-league-losses/"
+    },
+    {
+      "label": "Albion Till We Die: Steve Clarke profile and match boundaries",
+      "url": "https://www.albiontillwedie.co.uk/history/managers/steveclarke.html"
+    }
+  ],
+  "note": "Appointment and first competitive match are distinct. First/last match dates are explicitly listed by Albion Till We Die and agree with the saved archive.",
+  "evidenceStatus": "single-source",
+  "ledger": "competitive",
+  "excludedMatchIds": []
+}

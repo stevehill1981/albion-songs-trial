@@ -1,0 +1,48 @@
+{
+  "id": "tony-mowbray",
+  "name": "Tony Mowbray",
+  "biography": [
+    {
+      "text": "Mowbray led Albion to the 2007/08 Championship title. His first spell began with a 3–0 home win over Wolves in October 2006 and ended with a goalless draw at Blackburn in May 2009.",
+      "sources": [
+        {
+          "label": "Albion: first-spell match boundaries and retrospective totals",
+          "url": "https://www.wba.co.uk/news/tony-mowbrays-managerial-career-numbers"
+        },
+        {
+          "label": "Albion: appointment and Brunt handover, 17 January 2025",
+          "url": "https://www.wba.co.uk/news/tony-mowbray-appointed-albion-head-coach"
+        }
+      ],
+      "evidenceStatus": "single-source"
+    },
+    {
+      "text": "Albion announced his return on 17 January 2025, but Chris Brunt still took the Stoke match the following day. Mowbray’s first match back was at Middlesbrough on 21 January.",
+      "sources": [
+        {
+          "label": "Albion: appointment and Brunt handover, 17 January 2025",
+          "url": "https://www.wba.co.uk/news/tony-mowbray-appointed-albion-head-coach"
+        }
+      ],
+      "evidenceStatus": "single-source"
+    },
+    {
+      "text": "His second spell ended on 21 April 2025 after the home defeat by Derby. James Morrison took interim charge.",
+      "sources": [
+        {
+          "label": "Albion: departure, 21 April 2025",
+          "url": "https://www.wba.co.uk/news/club-statement-tony-mowbray"
+        },
+        {
+          "label": "Albion: Derby match report, 21 April 2025",
+          "url": "https://www.wba.co.uk/news/albion-1-3-derby-county"
+        }
+      ],
+      "evidenceStatus": "single-source"
+    }
+  ],
+  "researchNotes": [
+    "First-spell totals are unresolved: this saved archive contains 139 matches (56 wins, 33 draws, 50 defeats; goals 223–191), while Albion’s 17 January 2025 retrospective reports 140 (58 wins, 30 draws, 52 defeats; 232 goals scored). Use recorded-match totals with this warning, not an unqualified career total.",
+    "A missing Peterborough FA Cup replay on 13 January 2009 and the Hartlepool extra-time score on 26 August 2008 have been identified for a separate source-backed archive correction. The retrospective’s remaining differences are not yet reconciled."
+  ]
+}

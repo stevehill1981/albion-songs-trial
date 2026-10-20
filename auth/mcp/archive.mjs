@@ -34,7 +34,7 @@ export function createArchiveClient(fetcher=fetch){
    if(residual){fail(rows.length===group.count,'The archive group is incomplete; no partial totals returned.');rows=refineMatches(rows,filters);summary=matchSummary(rows);rows=rows.slice(offset,offset+PAGE_SIZE);}
   }
   const pages=Math.ceil(summary.played/PAGE_SIZE);fail(page===1||page<=pages,'This page is outside the matched results.');
-  return {...provenance(manifest,filters.ledger),filters,summary,...(includeMatches?{page,pageSize:PAGE_SIZE,totalPages:pages,nextPage:page<pages?page+1:null,matches:rows}:{})};
+  return {...provenance(manifest,filters.ledger),filters,summary,warnings:descriptor.warnings||[],...(includeMatches?{page,pageSize:PAGE_SIZE,totalPages:pages,nextPage:page<pages?page+1:null,matches:rows}:{})};
  }
  return {
   async coverage({ledger}={}){
@@ -43,6 +43,8 @@ export function createArchiveClient(fetcher=fetch){
    const entry=manifest.ledgers[ledger],[catalog,metadata]=await Promise.all([asset(entry),asset(entry.coverage)]);
    return {...provenance(manifest,ledger),summary:entry.summary,...metadata,scopes:catalog.groups.filter(g=>g.scope!=='all').map(({scope,value,count})=>({scope,value,count})),queryRules:'Exact scope names; aliases Wolves, Villa and Birmingham are accepted. 25 matches per page, newest first. Combined queries require at most 250 candidate records. Use one season or smaller scope when asked. A missing scope is unknown coverage, not a zero result.'};
   },
+  async managers(){const manifest=await snapshot();return {revision:manifest.revision,scope:'Three researched profiles only; not the complete manager history.',managers:(manifest.managers||[]).map(({id,name})=>({id,name}))};},
+  async manager({id}){const manifest=await snapshot();const entry=manifest.managers?.find(p=>p.id===id);fail(entry,'This manager has no researched profile in the trial register.');return {revision:manifest.revision,...await asset(entry.profile)};},
   matches:input=>query(input,true),summary:input=>query(input,false),
  };
 }

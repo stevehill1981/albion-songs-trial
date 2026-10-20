@@ -1,0 +1,41 @@
+{
+  "id": "steve-clarke",
+  "name": "Steve Clarke",
+  "biography": [
+    {
+      "text": "From Saltcoats in Ayrshire, Clarke played for St Mirren and Chelsea before a coaching career that included Chelsea and West Ham.",
+      "sources": [
+        {
+          "label": "Chelsea: Steve Clarke",
+          "url": "https://www.chelseafc.com/en/steve-clarke"
+        }
+      ],
+      "evidenceStatus": "single-source"
+    },
+    {
+      "text": "Albion appointed the former Liverpool assistant on 8 June 2012. His first season ended in eighth place with 49 Premier League points; the final match was the extraordinary 5–5 draw with Manchester United.",
+      "sources": [
+        {
+          "label": "Sky Sports: appointment, 8 June 2012",
+          "url": "https://www.skysports.com/football/news/7800271/clarke-takes-baggies-job"
+        },
+        {
+          "label": "Albion: 5–5 Manchester United, 19 May 2013",
+          "url": "https://www.wba.co.uk/news/2013/may/albion-5-man-utd-5"
+        }
+      ],
+      "evidenceStatus": "single-source"
+    },
+    {
+      "text": "His spell ended on 14 December 2013, after the defeat at Cardiff. Keith Downing took interim charge.",
+      "sources": [
+        {
+          "label": "ITV: dismissal, 14 December 2013",
+          "url": "https://www.itv.com/news/update/2013-12-14/west-brom-manager-sacked-after-premier-league-losses/"
+        }
+      ],
+      "evidenceStatus": "single-source"
+    }
+  ],
+  "researchNotes": []
+}

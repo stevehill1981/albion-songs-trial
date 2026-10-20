@@ -1,0 +1,27 @@
+{
+  "id": "tony-mowbray-2025",
+  "manager": "tony-mowbray",
+  "role": "permanent",
+  "appointmentDate": "2025-01-17",
+  "departureDate": "2025-04-21",
+  "firstMatchDate": "2025-01-21",
+  "lastMatchDate": "2025-04-21",
+  "sources": [
+    {
+      "label": "Albion: appointment and Brunt handover, 17 January 2025",
+      "url": "https://www.wba.co.uk/news/tony-mowbray-appointed-albion-head-coach"
+    },
+    {
+      "label": "Albion: departure, 21 April 2025",
+      "url": "https://www.wba.co.uk/news/club-statement-tony-mowbray"
+    },
+    {
+      "label": "Albion: Derby match report, 21 April 2025",
+      "url": "https://www.wba.co.uk/news/albion-1-3-derby-county"
+    }
+  ],
+  "note": "Exclude Stoke on 18 January: the appointment notice explicitly leaves Chris Brunt in charge. Include the Derby match before the departure statement on 21 April.",
+  "evidenceStatus": "single-source",
+  "ledger": "competitive",
+  "excludedMatchIds": []
+}

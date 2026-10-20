@@ -1,15 +1,18 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile,mkdtemp,rm} from 'node:fs/promises';
+import {readFile,mkdtemp,rm,readdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {adaptArchive,archiveGroups,matchSummary,validateQuery,planQuery,refineMatches,PAGE_SIZE} from '../src/lib/match-archive.mjs';
 import {buildMatchIndex,ARCHIVE_FILES,sha256} from '../scripts/build-match-index.mjs';
 import {createArchiveClient} from '../auth/mcp/archive.mjs';
+import {attributeManagers} from '../src/lib/manager-history.mjs';
 import {summarize} from '../public/results-core.mjs';
 const revision='a'.repeat(40);
 const originals=Object.fromEntries(await Promise.all(Object.entries(ARCHIVE_FILES).map(async([ledger,path])=>[ledger,await readFile(new URL('../'+path,import.meta.url),'utf8')])));
 const archives=Object.fromEntries(Object.entries(originals).map(([k,v])=>[k,adaptArchive(k,JSON.parse(v))]));
+const records=async folder=>Promise.all((await readdir(folder)).filter(f=>f.endsWith('.json')).map(async f=>JSON.parse(await readFile(`${folder}/${f}`,'utf8'))));
+archives.competitive=attributeManagers(archives.competitive,{managers:await records('content/managers'),tenures:await records('content/manager-tenures')});
 const output=await mkdtemp(join(tmpdir(),'albion-index-test-'));
 let built;
 try{built=await buildMatchIndex({revision,output});}finally{await rm(output,{recursive:true,force:true});}
@@ -67,4 +70,16 @@ test('source notes and discrepancies are available; stale, missing, corrupt and 
  for(const options of [{stale:true},{corrupt:true},{missing:true}])await assert.rejects(harness(options).client.summary({ledger:'wartime'}));
  await assert.rejects(harness().client.matches({ledger:'annulled',page:2}),/outside/);
  const h=harness();await assert.rejects(h.client.summary({ledger:'competitive',from:'2000-01-01'}),/too broad/);assert(h.calls.length<=4);
+});
+
+test('manager queries reconcile with profiles and carry unresolved total warnings',async()=>{
+ const h=harness();const people=await h.client.managers();assert.equal(people.managers.length,3);
+ const profile=await h.client.manager({id:'darren-moore'}),summary=await h.client.summary({ledger:'competitive',manager:'darren-moore'});
+ assert.deepEqual(summary.summary,profile.summary);
+ const caretaker=await h.client.matches({ledger:'competitive',tenure:'darren-moore-caretaker-2018'});assert.equal(caretaker.matches.length,6);assert.equal(caretaker.summary.W,3);
+ const second=await h.client.matches({ledger:'competitive',manager:'tony-mowbray',from:'2025-01-01'});assert.equal(second.summary.played,17);assert(second.matches.every(m=>m.date!=='2025-01-18'));
+ assert((await h.client.summary({ledger:'competitive',manager:'tony-mowbray'})).warnings.some(n=>n.includes('139')&&n.includes('140')));
+ assert((await h.client.summary({ledger:'competitive',manager:'unassigned'})).warnings.some(n=>n.includes('Do not invent')));
+ await assert.rejects(h.client.manager({id:'missing'}),/no researched/);
+ await assert.rejects(h.client.summary({ledger:'wartime',manager:'darren-moore'}),/Unknown/);
 });

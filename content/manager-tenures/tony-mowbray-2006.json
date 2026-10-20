@@ -1,0 +1,19 @@
+{
+  "id": "tony-mowbray-2006",
+  "manager": "tony-mowbray",
+  "role": "permanent",
+  "appointmentDate": null,
+  "departureDate": null,
+  "firstMatchDate": "2006-10-22",
+  "lastMatchDate": "2009-05-24",
+  "sources": [
+    {
+      "label": "Albion: first-spell match boundaries and retrospective totals",
+      "url": "https://www.wba.co.uk/news/tony-mowbrays-managerial-career-numbers"
+    }
+  ],
+  "note": "Match boundaries supplied by Albion’s retrospective. Exact administrative appointment/departure dates are not asserted in this trial. Recorded totals remain under reconciliation.",
+  "evidenceStatus": "single-source",
+  "ledger": "competitive",
+  "excludedMatchIds": []
+}
