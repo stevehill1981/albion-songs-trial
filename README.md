@@ -38,11 +38,11 @@ Marie needs her own GitHub account with repository write access, but no Cloudfla
 
 ## Managing the museum from Claude
 
-The remote museum connector is deployed on the existing authentication Worker. Hosted discovery, unauthenticated rejection, the exact deployed revision and retained visual-editor sign-in passed on 20 October 2026. An authorised Claude edit, preview and publication test is still pending. Its URL is **https://albion-songs-auth.steve-e85.workers.dev/mcp**.
+The remote museum connector is deployed on the existing authentication Worker. Hosted discovery, unauthenticated rejection, the exact deployed revision and retained visual-editor sign-in passed on 20 October 2026. The owner-account workflow passed in Claude Free and Safari on 20 October 2026: read, save a draft, inspect its checked full-page preview, publish that exact commit and confirm the production revision is live. See the acceptance record in plans/2026-10-19-claude-museum-mcp.md. Its URL is **https://albion-songs-auth.steve-e85.workers.dev/mcp**.
 
 Claude currently supports custom remote MCP connectors on Free, Pro, Max, Team and Enterprise; Free has one custom connector slot. Normal Claude usage limits still apply. This connector calls no paid AI API. See [Claude’s connector documentation](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
 
-Owner setup, after this change merges:
+Owner setup (already completed for this deployment):
 
 1. Sign into the project’s cf CLI: `mise exec node@24.9.0 -- cf auth login`. Do not share tokens or credentials in chat.
 2. From this checkout on clean, checked `main`, run `mise exec node@24.22.0 -- node scripts/setup-mcp.mjs`. It selects the existing repository’s Cloudflare account, reuses or creates the classic `albion-museum-oauth` KV namespace, packages the auth Worker and deploys with automatic provisioning disabled. Existing GitHub app secrets are retained by the pinned cf CLI. No new GitHub OAuth app is required.
@@ -63,7 +63,7 @@ MCP drafts have their own `cms/mcp/**` branches and PRs. They are listed by the 
 
 Before publication, Claude must show the checked preview and ask Marie to publish. The tool requires the exact previewed commit, passing build/deploy checks and a verified served preview; GitHub’s existing strict branch protection remains authoritative. Publication returns **publishing** until the production check and actually served revision agree. A connector prompt alone is not a security boundary: anyone already authorised to use the publish tool can invoke it; the commit and validation checks are enforced by the server.
 
-The OAuth provider issues resource-specific museum credentials and encrypts the upstream GitHub token in its grants; it never returns that token to Claude. Each content operation checks repository write access again. Browser-bound, expiring consent/state and PKCE protect sign-in. OAuth uses classic KV within [Free allowances](https://developers.cloudflare.com/kv/platform/pricing/); limits stop operations rather than upgrade a plan. Actual deployed CPU use and real Claude interoperability still require measurement and acceptance.
+The OAuth provider issues resource-specific museum credentials and encrypts the upstream GitHub token in its grants; it never returns that token to Claude. Each content operation checks repository write access again. Browser-bound, expiring consent/state and PKCE protect sign-in. OAuth uses classic KV within [Free allowances](https://developers.cloudflare.com/kv/platform/pricing/); limits stop operations rather than upgrade a plan. The live owner-account workflow passed without a paid upgrade. Some authenticated MCP requests used 14–23 ms of CPU despite completing successfully, above the documented 10 ms Free allowance. Cloudflare permits occasional overruns but can terminate requests that exceed it consistently. CPU optimisation remains a reliability requirement before routine use; this trial does not establish dependable operation within the Free CPU budget. See [Workers CPU limits](https://developers.cloudflare.com/workers/platform/limits/#cpu-time). Marie still needs her own GitHub access and an independent acceptance test.
 
 ## Immediate Astro component preview
 
