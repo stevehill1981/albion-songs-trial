@@ -47,3 +47,18 @@ assert.equal(config.backend.name,'albion-github');
 const previewScript=await readFile('build/admin/astro-preview.mjs','utf8');assert(previewScript.includes("fetch('/editor-preview'"));
 const generated=JSON.parse(await readFile('src/generated/component-context.json','utf8'));assert.equal(generated.revision,version.revision);
 console.log('PASS: native Astro trial content, editor modules and runtime context share this build revision.');
+
+// Verify every generated lookup asset from the actual deploy output, including its source bytes.
+{
+ const {sha256,ARCHIVE_FILES}=await import('./build-match-index.mjs');
+ const manifest=JSON.parse(await readFile('build/data/museum-query/manifest.json','utf8'));
+ assert.equal(manifest.revision,version.revision);
+ const asset=async ref=>{const raw=await readFile(`build/data/museum-query/${ref.path}`,'utf8');assert.equal(Buffer.byteLength(raw),ref.bytes);assert.equal(sha256(raw),ref.sha256);return JSON.parse(raw);};
+ for(const [ledger,path]of Object.entries(ARCHIVE_FILES)){
+  const source=await readFile(path,'utf8'),entry=manifest.ledgers[ledger];assert.equal(entry.sourceSha256,sha256(source));
+  const catalog=await asset(entry);await asset(entry.coverage);
+  for(const group of catalog.groups){const descriptor=await asset(group.descriptor);let count=0;const ids=new Set();for(const part of descriptor.parts){const payload=await asset(part);assert.equal(payload.ledger,ledger);assert.equal(payload.matches.length,part.count);for(const match of payload.matches){assert(!ids.has(match.id));ids.add(match.id);}count+=part.count;}assert.equal(count,group.count);}
+  assert.equal(catalog.groups.find(g=>g.scope==='all').count,JSON.parse(source).matches.length);
+ }
+ console.log('PASS: built archive lookup assets have complete pagination, matching source digests and this publication revision.');
+}
