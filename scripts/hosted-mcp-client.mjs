@@ -12,7 +12,7 @@ const verifier=randomBytes(32).toString('base64url'),state=randomBytes(32).toStr
 let acceptCode,rejectCode,client,terminal,accessToken,refreshToken,registeredClient,cleanup;
 const callback=new Promise((resolve,reject)=>{acceptCode=resolve;rejectCode=reject;});
 // Keep an unattended run bounded, including when browser consent is abandoned.
-const timeout=setTimeout(()=>{rejectCode(Error('Browser consent timed out.'));terminal?.close();void finish();},15*60*1000);
+const timeout=setTimeout(()=>{rejectCode(Error('Browser consent timed out.'));terminal?.close();void finish();},45*60*1000);
 const listener=createServer((request,response)=>{
  const url=new URL(request.url,'http://127.0.0.1');
  if(request.method!=='GET'||url.pathname!=='/callback'||url.searchParams.get('state')!==state){response.writeHead(400).end('Invalid test callback.');return;}
@@ -41,12 +41,12 @@ try{
  assert(exchanged.ok,'Diagnostic token exchange failed.');const issued=await exchanged.json();accessToken=issued.access_token;refreshToken=issued.refresh_token;assert(accessToken);
  client=new Client({name:'Albion direct diagnostic client',version:'1'});
  await client.connect(new StreamableHTTPClientTransport(new URL(origin+'/mcp'),{authProvider:{token:async()=>accessToken}}));
- const tools=await client.listTools();console.log(JSON.stringify({connected:true,tools:tools.tools.map(t=>t.name)}));
+ let tools=await client.listTools();console.log(JSON.stringify({connected:true,tools:tools.tools.map(t=>t.name)}));
  terminal=createInterface({input:process.stdin,output:process.stdout,terminal:false});
  console.log('Send JSON {"tool":"museum_guide","arguments":{}}; {"repeat":10,"tool":"museum_guide","arguments":{}}; or {"quit":true}.');
  for await(const line of terminal){
   try{
-   const input=JSON.parse(line);if(input.quit)break;
+   const input=JSON.parse(line);if(input.quit)break;if(input.refresh){tools=await client.listTools();console.log(JSON.stringify({tools:tools.tools.map(t=>t.name)}));continue;}
    assert(tools.tools.some(t=>t.name===input.tool),'Choose a discovered tool.');
    const repeat=input.repeat??1;assert(Number.isInteger(repeat)&&repeat>=1&&repeat<=100);
    assert(repeat===1||tools.tools.find(t=>t.name===input.tool).annotations?.readOnlyHint===true,'Only read operations can repeat.');
