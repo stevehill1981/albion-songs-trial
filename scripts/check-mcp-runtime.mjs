@@ -3,9 +3,10 @@ import {readFile,mkdtemp,rm,writeFile} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
+import {Client,StreamableHTTPClientTransport} from '@modelcontextprotocol/client';
 const origin='https://albion-songs-auth.steve-e85.workers.dev';
 const upstreamToken='unit_test_github_credential_only';
-const temp=await mkdtemp(join(tmpdir(),'albion-mcp-runtime-'));let runtime,inspector,allowed=true,exchanges=0;
+const temp=await mkdtemp(join(tmpdir(),'albion-mcp-runtime-'));let runtime,inspector,modern,allowed=true,exchanges=0;
 try{
  // Miniflare's HTTP dispatcher rewrites Host to its loopback listener. Restore
  // the original URL host at the test boundary; the compiled production checks stay intact.
@@ -59,11 +60,21 @@ try{
   await command('Profiler.enable');await command('Profiler.setSamplingInterval',{interval:100});await command('Profiler.start');
  }
  const initialized=await rpc('initialize',{protocolVersion:'2025-03-26',capabilities:{},clientInfo:{name:'Direct museum acceptance',version:'1'}});assert.equal(initialized.result.serverInfo.name,'Albion museum');
- const tools=await rpc('tools/list',{},2,{'MCP-Protocol-Version':'2025-03-26'});assert.equal(tools.result.tools.length,8);
+ const tools=await rpc('tools/list',{},2,{'MCP-Protocol-Version':'2025-03-26'});assert.equal(tools.result.tools.length,9);
  const guide=await rpc('tools/call',{name:'museum_guide',arguments:{}},3,{'MCP-Protocol-Version':'2025-03-26'});assert(!guide.result.isError,JSON.stringify(guide));assert(guide.result.structuredContent.instructions);
  allowed=false;
  const denied=await rpc('tools/call',{name:'museum_guide',arguments:{}},4,{'MCP-Protocol-Version':'2025-03-26'});assert.equal(denied.result.isError,true);allowed=true;
  const invalid=await rpc('tools/call',{name:'list_content',arguments:{kind:'data'}},5,{'MCP-Protocol-Version':'2025-03-26'});assert.equal(invalid.result.isError,true);
+ const schema=await rpc('tools/call',{name:'read_block_schema',arguments:{type:'manager-performance'}},7,{'MCP-Protocol-Version':'2025-03-26'});assert(!schema.result.isError);assert(schema.result.structuredContent.block.fields.some(f=>f.name==='manager'));
+ const badOrigin=await send('/mcp',{method:'POST',headers:{Origin:'https://attacker.example',Authorization:`Bearer ${exchanged.access_token}`,Accept:'application/json, text/event-stream','Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:6,method:'tools/list',params:{}})});assert.equal(badOrigin.status,403);
+ modern=new Client({name:'Direct modern transport acceptance',version:'1'},{versionNegotiation:{mode:{pin:'2026-07-28'}}});
+ const modernTransport=new StreamableHTTPClientTransport(new URL(origin+'/mcp'),{authProvider:{token:async()=>exchanged.access_token},fetch:async(input,init)=>{
+  const request=new Request(input,init),url=new URL(request.url);
+  return send(url.pathname+url.search,{method:request.method,headers:request.headers,...request.body?{body:await request.text()}:{}});
+ }});
+ await modern.connect(modernTransport);assert.equal(modernTransport.protocolVersion,'2026-07-28');
+ assert.equal((await modern.listTools()).tools.length,9);
+ const modernGuide=await modern.callTool({name:'museum_guide',arguments:{}});assert(!modernGuide.isError);assert.deepEqual(modernGuide.structuredContent,JSON.parse(modernGuide.content[0].text));
  if(command){
   for(let i=0;i<100;i++){
    await rpc('tools/list',{},100+i,{'MCP-Protocol-Version':'2025-03-26'});
@@ -75,5 +86,5 @@ try{
  const passthrough=await send('/mcp',{method:'POST',headers:{Authorization:`Bearer ${upstreamToken}`,'Content-Type':'application/json'},body:'{}'});assert.equal(passthrough.status,401);
  const replay=await send(callback,{headers:{Cookie:cookies}});assert.equal(replay.status,400);assert.equal(exchanges,1);
  const old=await send('/auth?provider=github');assert.equal(old.status,302);assert(new URL(old.headers.get('Location')).searchParams.get('state').match(/^[a-f0-9]{64}$/));
- console.log('PASS: compiled OAuth Worker completes consent, GitHub PKCE, token exchange and authenticated MCP initialization, discovery and guide calls; rejects revoked editor access, invalid tool input, forged consent, unbound/replayed callbacks and upstream token passthrough. Existing Decap sign-in remains available.');
-}finally{inspector?.close();await runtime?.dispose();await rm(temp,{recursive:true,force:true});}
+ console.log('PASS: compiled OAuth Worker completes consent, GitHub PKCE, token exchange and authenticated legacy and modern MCP discovery/guide calls; rejects hostile Origin, revoked editor access, invalid tool input, forged consent, unbound/replayed callbacks and upstream token passthrough. Existing Decap sign-in remains available.');
+}finally{inspector?.close();await modern?.close();await runtime?.dispose();await rm(temp,{recursive:true,force:true});}

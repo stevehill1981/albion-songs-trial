@@ -73,7 +73,7 @@ test('updating a draft refuses concurrent changes or unchanged content',async()=
  const same=harness();same.set({existing:basePage});await assert.rejects(same.client.save({kind:'pages',id:'museum-test',document:basePage,baseRevision:MAIN}),/content change/);assert(!same.calls.some(c=>c.method!=='GET'));
 });
 
-test('the actual MCP server exposes eight tools, validates inputs and invokes the museum operations',async()=>{
+test('the actual MCP server exposes nine tools, validates inputs and invokes the museum operations',async()=>{
  const {createMuseumServer}=await import('../auth/mcp/server.mjs');
  const {Client}=await import('@modelcontextprotocol/client');
  const {InMemoryTransport}=await import('@modelcontextprotocol/server');
@@ -82,7 +82,7 @@ test('the actual MCP server exposes eight tools, validates inputs and invokes th
  const server=createMuseumServer({client:museum});const client=new Client({name:'Museum protocol acceptance',version:'1'});const [a,b]=InMemoryTransport.createLinkedPair();
  try{
   await server.connect(a);await client.connect(b);
-  const tools=await client.listTools();assert.equal(tools.tools.length,8);assert.equal(tools.tools.find(t=>t.name==='save_draft').annotations.readOnlyHint,false);assert(!tools.tools.some(t=>/shell|delete|deploy|archive/.test(t.name)));
+  const tools=await client.listTools();assert.equal(tools.tools.length,9);assert.equal(tools.tools.find(t=>t.name==='save_draft').annotations.readOnlyHint,false);assert(!tools.tools.some(t=>/shell|delete|deploy|archive/.test(t.name)));
   const guide=await client.callTool({name:'museum_guide',arguments:{}});assert(!guide.isError);assert.equal(guide.structuredContent.instructions,'Read the checked preview before publishing.');
   const listed=await client.callTool({name:'list_content',arguments:{kind:'pages'}});assert(!listed.isError);assert.deepEqual(calls[0],{kind:'pages'});
   assert.equal((await client.callTool({name:'list_content',arguments:{kind:'data'}})).isError,true);assert.equal(calls.length,1);
@@ -122,12 +122,17 @@ test('performance drafts require a published manager and reject editable numbers
  const forged=structuredClone(document);forged.blocks.at(-1).played=999;const denied=harness();await assert.rejects(denied.client.save({kind:'pages',id:'museum-test',document:forged,baseRevision:MAIN}),/unexpected field/);assert(!denied.calls.some(c=>c.method!=='GET'));
 });
 
-test('cached guide retains every editable field and cannot be changed by another caller',async()=>{
- const {authoringGuide}=await import('../auth/mcp/github.mjs');
+test('concise guide and on-demand schemas retain all editable fields without mutable shared data',async()=>{
+ const {authoringGuide,blockSchema}=await import('../auth/mcp/github.mjs');
  const {pageFields,collectionFields,blockTypes}=await import('../src/lib/blocks.mjs');
  const guide=authoringGuide();
- assert.deepEqual(guide.pageFields,pageFields);assert.deepEqual(guide.collectionFields,collectionFields);assert.deepEqual(guide.blockTypes,blockTypes);
- assert.throws(()=>{guide.blockTypes[0].fields[0].name='changed';},TypeError);
+ assert.deepEqual(guide.pageFields,pageFields);assert.deepEqual(guide.collectionFields,collectionFields);
+ assert.deepEqual(guide.blockTypes.map(b=>b.name),blockTypes.map(b=>b.name));
+ assert(Buffer.byteLength(JSON.stringify(guide))<8192,'Routine guidance must remain bounded');
+ for(const original of blockTypes){const schema=blockSchema(original.name);assert.deepEqual(schema.block,original);assert(Buffer.byteLength(JSON.stringify(schema))<16384,'Fetch one bounded schema at a time');}
+ assert.throws(()=>{blockSchema('intro').block.fields[0].name='changed';},TypeError);
  assert.throws(()=>{guide.blockTypes.push({name:'injected'});},TypeError);
- assert.deepEqual(authoringGuide().blockTypes,blockTypes);
+ assert.throws(()=>blockSchema('missing'),/Choose a block/);
+ assert.deepEqual(blockSchema('intro').block,blockTypes[0]);
+ const denied=harness();denied.set({allowed:false});await assert.rejects(denied.client.schema({type:'intro'}),/access/);
 });
