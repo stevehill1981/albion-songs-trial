@@ -48,3 +48,11 @@ The hosted native form fails with “The consent form origin could not be verifi
 1. In scripts/check-mcp-runtime.mjs assert the consent document policy and reject missing/null/foreign origins even with its valid cookie and handle; first run against the old response to verify failure.
 2. Change only the consent document header in auth/mcp/authorization.mjs. Run the compiled OAuth check, all tests and the build.
 3. Merge a checked PR normally, redeploy using scripts/setup-mcp.mjs, and start fresh consent from Claude. Verify native Safari consent before continuing the authorised draft/preview/publish test.
+
+## Safari redirect repair — 20 October 2026
+
+Fresh consent submission consumes the transaction but stays on the form. Safari’s console confirms: GitHub’s OAuth URL was refused because it does not appear in the form-action directive. A second click therefore correctly rejects the already-used handle. This is independent of the earlier Origin defect.
+
+1. Extend scripts/check-mcp-runtime.mjs to compare the consent form policy against the actual upstream redirect origin and the validated client callback origin, with no wildcard. Confirm failure on the current bundle.
+2. In auth/mcp/authorization.mjs allow self, the fixed GitHub origin and the provider-validated callback origin in form-action. Retain default-src none, frame protection, exact POST origin, cookie binding, one-use consent and PKCE. Run the full build and tests, merge a checked trial PR and redeploy.
+3. Start a fresh Safari/Claude connection, inspect the actual redirect chain, then continue the authorised content draft, checked preview and publication acceptance test. Do not call the live workflow complete from unit checks alone.
