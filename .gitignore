@@ -28,3 +28,4 @@ public/admin/live-preview.mjs
 .wrangler/
 
 auth/build/
+public/data/museum-query/

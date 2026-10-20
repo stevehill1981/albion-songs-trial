@@ -24,6 +24,8 @@ if (!revision) {
   catch { revision = 'local-build'; }
 }
 await writeFile('public/version.json', JSON.stringify({revision}) + '\n');
+const {buildMatchIndex}=await import('./build-match-index.mjs');
+await buildMatchIndex({revision});
 const site = JSON.parse(await readFile('site.json', 'utf8'));
 const backend={name:'albion-github',repo:'stevehill1981/albion-songs-trial',branch:'main',auth_scope:'public_repo',base_url:site.authOrigin||'https://authentication-not-configured.invalid',auth_endpoint:'auth',preview_context:'albion/deploy-preview'};
 const {pageFields,collectionFields,cmsField}=await import('../src/lib/blocks.mjs');
