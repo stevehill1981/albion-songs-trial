@@ -185,3 +185,50 @@ https://github.com/advisories/GHSA-hp3w-g68c-fv3c.
 
 No dependency or production-code change has been made. The guarded repair was
 declined in favour of planning the source-built editor described above.
+
+## Approved promotion: 20 October 2026
+
+Owner acceptance passed on the production-origin candidate: existing sign-in,
+page edit and immediate Astro preview, nested columns/backgrounds, photograph
+relations and credits, template copy/paste, collection choices and image upload
+with dimensions. Unsaved template and image tests were discarded. PR #44 changed
+only the practice-page heading; the owner approved its checked preview and the
+candidate published it through the normal workflow. Live revision
+`1b8b7a8730f781f05e0e148497bee8b1abbaf66a` passed production checks, exact-revision
+and preview-authorisation checks; both match JSON archives were byte-identical.
+The owner then explicitly approved making this editor the default and removing
+the old umbrella dependency. Encoder WASM was build-validated; not every image
+codec was separately exercised in Safari.
+
+Promotion tasks:
+
+1. Switch `public/admin/index.html` to the checked module entry, remove
+   `public/admin/rebuild.html`, and generate assets at `/admin/editor/` in
+   `scripts/build-editor.mjs`. In `scripts/prepare.mjs`, remove the old copy step
+   and remove obsolete generated bundle/candidate files so incremental builds
+   cannot ship them.
+2. Remove only `decap-cms` from `package.json`/`package-lock.json`; preserve the
+   approved pinned modules. Verify a clean install and audit. Update
+   `scripts/verify-editor-build.mjs`, `scripts/verify-build.mjs`, relevant tests,
+   `.gitignore` and README for the promoted entry and positive rejection of old
+   bundles. Preserve asset hashes, module coverage, licences and image encoders.
+3. Run tests and full build, including negative controls; compare archive files
+   and content against the accepted main revision. Push a small protected PR,
+   inspect its exact preview assets and revision, and merge only after checks.
+4. Verify the live editor entry and all emitted asset digests, absence of the old
+   bundle, preview permission boundaries and unchanged archive hashes. Recheck
+   GitHub's alerts after its dependency scan. Retain the pre-promotion source
+   revision above for rollback; if workflow behaviour regresses, revert this
+   promotion through the protected process and report the restored exposure.
+5. Record outcomes and remaining alerts, and remove task-owned build/cache files
+   and processes. No paid plan, new service or new package is authorised/needed.
+
+Local promotion verification passed: clean `npm ci`, all 75 tests and the full
+build, including 18 Astro draft variants, authenticated MCP/OAuth checks and five
+editor negative controls. The lockfile loses 281 entries with no new packages or
+version changes. The editor still has 1,252 audited modules and five exact assets;
+trim, Plate, UUID and sprintf-js are absent from its emitted module inventory.
+Both embedded image encoders validate. The audit reports zero high/critical
+vulnerabilities and two underlying moderate advisories (UUID and sprintf-js),
+propagated through 12 package entries. Existing upstream peer-range, deprecation
+and direct-eval warnings remain visible; no forced overrides were used.

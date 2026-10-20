@@ -78,4 +78,4 @@ console.log('PASS: native Astro trial content, editor modules and runtime contex
 const {verifyEditorBuild,verifyEditorNegativeControls}=await import('./verify-editor-build.mjs');
 const editor=await verifyEditorBuild();
 const rejected=await verifyEditorNegativeControls();
-console.log(`PASS: opt-in source editor has ${editor.assets} exact assets, licence notices and both image encoders; current editor retained; ${rejected} negative controls rejected.`);
+console.log(`PASS: source-built main editor has ${editor.assets} exact assets, licence notices and both image encoders; obsolete editor absent; ${rejected} negative controls rejected.`);
