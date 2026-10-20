@@ -1,0 +1,207 @@
+{
+  "runtime": "Installed Miniflare/workerd; inspector sampling interval 100 microseconds",
+  "workload": "Compiled OAuth worker, own test consent/PKCE token, initial legacy initialization/discovery/guide plus 100 discovery/guide pairs; GitHub outbound stub only",
+  "scope": "Local sampling evidence; elapsed duration is not hosted per-request CPU. Samples and elapsed durations vary.",
+  "guideBytes": 74838,
+  "change": "Cache immutable guide and its text representation; keep identical structured response and check repository access per call.",
+  "profiles": {
+    "baseline": {
+      "durationMs": 860.041,
+      "samples": 2799,
+      "top": [
+        {
+          "function": "writeSSEEvent",
+          "line": 62,
+          "samples": 896
+        },
+        {
+          "function": "",
+          "line": 64,
+          "samples": 329
+        },
+        {
+          "function": "(garbage collector)",
+          "line": 0,
+          "samples": 119
+        },
+        {
+          "function": "(idle)",
+          "line": 0,
+          "samples": 102
+        },
+        {
+          "function": "(program)",
+          "line": 0,
+          "samples": 96
+        },
+        {
+          "function": "encode",
+          "line": 0,
+          "samples": 60
+        },
+        {
+          "function": "",
+          "line": 0,
+          "samples": 52
+        },
+        {
+          "function": "fetch",
+          "line": 1,
+          "samples": 44
+        },
+        {
+          "function": "_onclose",
+          "line": 55,
+          "samples": 40
+        },
+        {
+          "function": "get",
+          "line": 0,
+          "samples": 35
+        },
+        {
+          "function": "vS",
+          "line": 60,
+          "samples": 25
+        },
+        {
+          "function": "e._zod.parse",
+          "line": 3,
+          "samples": 23
+        }
+      ]
+    },
+    "symbols": {
+      "durationMs": 741.132,
+      "samples": 2624,
+      "top": [
+        {
+          "function": "writeSSEEvent",
+          "line": 23679,
+          "samples": 881
+        },
+        {
+          "function": "",
+          "line": 25855,
+          "samples": 323
+        },
+        {
+          "function": "(garbage collector)",
+          "line": 0,
+          "samples": 111
+        },
+        {
+          "function": "(program)",
+          "line": 0,
+          "samples": 86
+        },
+        {
+          "function": "(idle)",
+          "line": 0,
+          "samples": 79
+        },
+        {
+          "function": "encode",
+          "line": 0,
+          "samples": 59
+        },
+        {
+          "function": "",
+          "line": 0,
+          "samples": 46
+        },
+        {
+          "function": "fetch",
+          "line": 1,
+          "samples": 39
+        },
+        {
+          "function": "_onclose",
+          "line": 19308,
+          "samples": 37
+        },
+        {
+          "function": "boundedText",
+          "line": 25469,
+          "samples": 24
+        },
+        {
+          "function": "handlePostRequest",
+          "line": 23714,
+          "samples": 24
+        },
+        {
+          "function": "get",
+          "line": 0,
+          "samples": 19
+        }
+      ]
+    },
+    "cached": {
+      "durationMs": 728.21,
+      "samples": 2281,
+      "top": [
+        {
+          "function": "writeSSEEvent",
+          "line": 62,
+          "samples": 770
+        },
+        {
+          "function": "(garbage collector)",
+          "line": 0,
+          "samples": 123
+        },
+        {
+          "function": "(program)",
+          "line": 0,
+          "samples": 94
+        },
+        {
+          "function": "(idle)",
+          "line": 0,
+          "samples": 79
+        },
+        {
+          "function": "encode",
+          "line": 0,
+          "samples": 75
+        },
+        {
+          "function": "fetch",
+          "line": 1,
+          "samples": 41
+        },
+        {
+          "function": "",
+          "line": 0,
+          "samples": 32
+        },
+        {
+          "function": "_onclose",
+          "line": 55,
+          "samples": 27
+        },
+        {
+          "function": "get",
+          "line": 0,
+          "samples": 27
+        },
+        {
+          "function": "vS",
+          "line": 60,
+          "samples": 25
+        },
+        {
+          "function": "handlePostRequest",
+          "line": 63,
+          "samples": 24
+        },
+        {
+          "function": "Request",
+          "line": 0,
+          "samples": 24
+        }
+      ]
+    }
+  }
+}

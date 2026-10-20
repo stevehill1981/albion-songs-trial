@@ -121,3 +121,13 @@ test('performance drafts require a published manager and reject editable numbers
  for(const managers of [[],{},[{type:'file',name:'different-person.json'}]]){const denied=harness();denied.set({managers});await assert.rejects(denied.client.save({kind:'pages',id:'museum-test',document,baseRevision:MAIN}),/manager/);assert(!denied.calls.some(c=>c.method!=='GET'));}
  const forged=structuredClone(document);forged.blocks.at(-1).played=999;const denied=harness();await assert.rejects(denied.client.save({kind:'pages',id:'museum-test',document:forged,baseRevision:MAIN}),/unexpected field/);assert(!denied.calls.some(c=>c.method!=='GET'));
 });
+
+test('cached guide retains every editable field and cannot be changed by another caller',async()=>{
+ const {authoringGuide}=await import('../auth/mcp/github.mjs');
+ const {pageFields,collectionFields,blockTypes}=await import('../src/lib/blocks.mjs');
+ const guide=authoringGuide();
+ assert.deepEqual(guide.pageFields,pageFields);assert.deepEqual(guide.collectionFields,collectionFields);assert.deepEqual(guide.blockTypes,blockTypes);
+ assert.throws(()=>{guide.blockTypes[0].fields[0].name='changed';},TypeError);
+ assert.throws(()=>{guide.blockTypes.push({name:'injected'});},TypeError);
+ assert.deepEqual(authoringGuide().blockTypes,blockTypes);
+});
