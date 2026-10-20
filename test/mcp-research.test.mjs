@@ -17,7 +17,7 @@ function harness(){
   calls.push(url);assert.equal(init.method||'GET','GET','Research must never write');
   if(url===`https://api.github.com/repos/${REPOSITORY}`){assert.equal(init.headers.Authorization,`Bearer ${token}`);return Response.json({permissions:{push:allowed}});}
   assert.equal(init.headers?.Authorization,undefined,'Archive reads must not forward GitHub credentials');
-  const parsed=new URL(url);assert.equal(parsed.origin,'https://albion-songs-trial.steve-e85.workers.dev');
+  const parsed=new URL(url);assert.equal(parsed.origin,'https://throstle-and-stripes.steve-e85.workers.dev');
   if(parsed.pathname==='/version.json')return Response.json({revision:stale?'b'.repeat(40):revision});
   if(parsed.pathname==='/data/museum-query/manifest.json')return Response.json(built.manifest);
   const content=built.files.get(parsed.pathname.replace('/data/museum-query/',''));assert(content,'Only published snapshot assets may be fetched');return new Response(content);

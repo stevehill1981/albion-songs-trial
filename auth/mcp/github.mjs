@@ -75,7 +75,7 @@ export function createMuseumClient(token,fetcher=fetch){
   const build=runs.check_runs?.find(r=>r.name==='Validate Songs page');
   let previewOrigin=null;
   if(deploy?.state==='success'){
-   try{const u=new URL(deploy.target_url);if(u.protocol==='https:'&&/^[a-f0-9]{8}-albion-songs-trial\.steve-e85\.workers\.dev$/.test(u.hostname)&&u.pathname==='/')previewOrigin=u.origin;}catch{/* Missing preview stays unpublishable. */}
+   try{const u=new URL(deploy.target_url);if(u.protocol==='https:'&&/^[a-f0-9]{8}$/.test(u.hostname.slice(0,8))&&u.hostname.slice(8)==='-'+new URL(site.origin).hostname&&u.pathname==='/')previewOrigin=u.origin;}catch{/* Missing preview stays unpublishable. */}
   }
   return{checksPassed:build?.status==='completed'&&build.conclusion==='success'&&!!previewOrigin,previewOrigin,validation:build?.conclusion||build?.status||'missing',deployment:deploy?.state||'missing'};
  }

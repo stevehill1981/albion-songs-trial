@@ -42,11 +42,11 @@ export async function handle(request,env,fetcher=fetch,now=Date.now) {
     const data = await exchanged.json();
     if (typeof data.access_token!=='string' || data.error) throw Error();
     token = data.access_token;
-    const headers = {'Authorization':`Bearer ${token}`,'Accept':'application/vnd.github+json','User-Agent':'Albion Songs trial'};
+    const headers = {'Authorization':`Bearer ${token}`,'Accept':'application/vnd.github+json','User-Agent':'Throstle and Stripes'};
     const identity = await fetcher('https://api.github.com/user',{headers});
     if (!identity.ok || !(await identity.json()).login) throw Error();
     const access = await fetcher('https://api.github.com/repos/stevehill1981/albion-songs-trial',{headers});
-    if (!access.ok || (await access.json()).permissions?.push !== true) return response('This GitHub login does not have editor access to the trial repository.',403,clear);
+    if (!access.ok || (await access.json()).permissions?.push !== true) return response('This GitHub login does not have editor access to the museum repository.',403,clear);
   } catch { return response('GitHub sign-in could not be completed. Close this window and try again.',502,clear); }
   const nonce = random();
   const payload = JSON.stringify(`authorization:github:success:${JSON.stringify({token,provider:'github'})}`).replace(/</g,'\\u003c');

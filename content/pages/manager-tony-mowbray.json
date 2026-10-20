@@ -137,11 +137,11 @@
       "sources": [
         {
           "label": "Browse the match archive",
-          "url": "https://albion-songs-trial.steve-e85.workers.dev/results?season=all"
+          "url": "https://throstle-and-stripes.steve-e85.workers.dev/results?season=all"
         },
         {
           "label": "Explore the managers collection",
-          "url": "https://albion-songs-trial.steve-e85.workers.dev/collections/managers"
+          "url": "https://throstle-and-stripes.steve-e85.workers.dev/collections/managers"
         }
       ]
     }

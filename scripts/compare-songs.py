@@ -1,4 +1,4 @@
-"""Compare parsed page markup, allowing only declared trial navigation changes."""
+"""Compare parsed page markup, allowing only declared museum branding and navigation changes."""
 
 import json
 import re
@@ -69,6 +69,13 @@ if __name__ == "__main__":
     baseline = Path("test/fixtures/songs-before-blocks.html").read_text()
     original = json.loads(Path("plans/origins.json").read_text())["firstFactOriginal"]
     baseline = baseline.replace("<!-- EDITABLE_FACT -->", original)
+    # Explicitly authorised identity/navigation changes; historical body stays exact.
+    baseline = baseline.replace("THE ALBION<br><small>THROUGH THE YEARS</small>",
+                                "THROSTLE<br><small>&amp; STRIPES</small>")
+    baseline = baseline.replace('<a href="#">Back to the top ↑</a>',
+        '<div><a href="/pages">Pages &amp; collections</a><br>'
+        '<a href="/publication.html">Marie’s editing guide</a> · '
+        '<a href="/admin/">Editor</a><br><a href="#">Back to the top ↑</a></div>')
     expected = tokens(baseline)
     actual = tokens(Path(sys.argv[1]).read_text())
     if actual != expected:
