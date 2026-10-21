@@ -1,0 +1,437 @@
+{
+  "revision": "a80f035d4123ee097b7ae6f758d1ba55541fb36f",
+  "bundleDigest": "6071b3f59cd15fcf78dc092c9a5e968b8742c900d2ea3af8b7e6874048ca462f",
+  "successfulRuntimes": 12,
+  "usableProfiles": 54,
+  "rows": [
+    {
+      "workload": "read",
+      "condition": "fresh",
+      "phase": "first-pre-upstream",
+      "samples": [
+        28,
+        110,
+        22
+      ],
+      "medianActiveSamples": 28,
+      "range": [
+        22,
+        110
+      ],
+      "combinedSelfSamples": {
+        "framework": 40,
+        "module-initialization": 13,
+        "authoring-metadata": 11,
+        "gc": 22,
+        "unattributed": 12,
+        "editor-boundary": 6,
+        "native-runtime": 42,
+        "stream-decoding": 6,
+        "other-code": 3,
+        "validation": 2,
+        "github-client": 3
+      }
+    },
+    {
+      "workload": "read",
+      "condition": "fresh",
+      "phase": "first-post-upstream",
+      "samples": [
+        5,
+        23,
+        3
+      ],
+      "medianActiveSamples": 5,
+      "range": [
+        3,
+        23
+      ],
+      "combinedSelfSamples": {
+        "editor-boundary": 7,
+        "native-runtime": 6,
+        "framework": 6,
+        "github-client": 10,
+        "validation": 1,
+        "stream-decoding": 1
+      }
+    },
+    {
+      "workload": "read",
+      "condition": "fresh",
+      "phase": "repeat-pre-upstream",
+      "samples": [
+        4,
+        4,
+        1
+      ],
+      "medianActiveSamples": 4,
+      "range": [
+        1,
+        4
+      ],
+      "combinedSelfSamples": {
+        "framework": 5,
+        "stream-decoding": 1,
+        "native-runtime": 1,
+        "github-client": 1,
+        "other-code": 1
+      }
+    },
+    {
+      "workload": "read",
+      "condition": "fresh",
+      "phase": "repeat-post-upstream",
+      "samples": [
+        7,
+        3,
+        1
+      ],
+      "medianActiveSamples": 3,
+      "range": [
+        1,
+        7
+      ],
+      "combinedSelfSamples": {
+        "native-runtime": 6,
+        "unattributed": 3,
+        "github-client": 1,
+        "stream-decoding": 1
+      }
+    },
+    {
+      "workload": "read",
+      "condition": "preloaded",
+      "phase": "unsigned-startup",
+      "samples": [
+        58,
+        41,
+        42
+      ],
+      "medianActiveSamples": 42,
+      "range": [
+        41,
+        58
+      ],
+      "combinedSelfSamples": {
+        "unattributed": 7,
+        "framework": 68,
+        "native-runtime": 2,
+        "module-initialization": 19,
+        "authoring-metadata": 12,
+        "gc": 21,
+        "editor-boundary": 10,
+        "github-client": 1,
+        "other-code": 1
+      }
+    },
+    {
+      "workload": "read",
+      "condition": "preloaded",
+      "phase": "first-pre-upstream",
+      "samples": [
+        29,
+        6,
+        8
+      ],
+      "medianActiveSamples": 8,
+      "range": [
+        6,
+        29
+      ],
+      "combinedSelfSamples": {
+        "other-code": 1,
+        "editor-boundary": 6,
+        "stream-decoding": 7,
+        "native-runtime": 16,
+        "unattributed": 6,
+        "github-client": 5,
+        "framework": 2
+      }
+    },
+    {
+      "workload": "read",
+      "condition": "preloaded",
+      "phase": "first-post-upstream",
+      "samples": [
+        13,
+        5,
+        7
+      ],
+      "medianActiveSamples": 7,
+      "range": [
+        5,
+        13
+      ],
+      "combinedSelfSamples": {
+        "native-runtime": 10,
+        "github-client": 9,
+        "stream-decoding": 4,
+        "editor-boundary": 1,
+        "validation": 1
+      }
+    },
+    {
+      "workload": "read",
+      "condition": "preloaded",
+      "phase": "repeat-pre-upstream",
+      "samples": [
+        5,
+        2,
+        3
+      ],
+      "medianActiveSamples": 3,
+      "range": [
+        2,
+        5
+      ],
+      "combinedSelfSamples": {
+        "other-code": 4,
+        "framework": 2,
+        "unattributed": 2,
+        "native-runtime": 2
+      }
+    },
+    {
+      "workload": "read",
+      "condition": "preloaded",
+      "phase": "repeat-post-upstream",
+      "samples": [
+        4,
+        5,
+        3
+      ],
+      "medianActiveSamples": 4,
+      "range": [
+        3,
+        5
+      ],
+      "combinedSelfSamples": {
+        "github-client": 4,
+        "unattributed": 2,
+        "editor-boundary": 1,
+        "native-runtime": 3,
+        "stream-decoding": 1,
+        "framework": 1
+      }
+    },
+    {
+      "workload": "save",
+      "condition": "fresh",
+      "phase": "first-pre-upstream",
+      "samples": [
+        45,
+        53,
+        45
+      ],
+      "medianActiveSamples": 45,
+      "range": [
+        45,
+        53
+      ],
+      "combinedSelfSamples": {
+        "unattributed": 5,
+        "framework": 48,
+        "other-code": 2,
+        "gc": 21,
+        "validation": 14,
+        "authoring-metadata": 12,
+        "module-initialization": 15,
+        "editor-boundary": 15,
+        "native-runtime": 7,
+        "stream-decoding": 1,
+        "github-client": 3
+      }
+    },
+    {
+      "workload": "save",
+      "condition": "fresh",
+      "phase": "first-post-upstream",
+      "samples": [
+        32,
+        29,
+        34
+      ],
+      "medianActiveSamples": 32,
+      "range": [
+        29,
+        34
+      ],
+      "combinedSelfSamples": {
+        "native-runtime": 20,
+        "github-client": 35,
+        "stream-decoding": 3,
+        "validation": 5,
+        "unattributed": 4,
+        "gc": 17,
+        "editor-boundary": 3,
+        "framework": 8
+      }
+    },
+    {
+      "workload": "save",
+      "condition": "fresh",
+      "phase": "repeat-pre-upstream",
+      "samples": [
+        3,
+        6,
+        7
+      ],
+      "medianActiveSamples": 6,
+      "range": [
+        3,
+        7
+      ],
+      "combinedSelfSamples": {
+        "framework": 3,
+        "stream-decoding": 1,
+        "validation": 3,
+        "other-code": 2,
+        "unattributed": 1,
+        "native-runtime": 4,
+        "github-client": 1,
+        "editor-boundary": 1
+      }
+    },
+    {
+      "workload": "save",
+      "condition": "fresh",
+      "phase": "repeat-post-upstream",
+      "samples": [
+        9,
+        11,
+        16
+      ],
+      "medianActiveSamples": 11,
+      "range": [
+        9,
+        16
+      ],
+      "combinedSelfSamples": {
+        "native-runtime": 11,
+        "validation": 3,
+        "github-client": 9,
+        "unattributed": 6,
+        "stream-decoding": 2,
+        "gc": 4,
+        "framework": 1
+      }
+    },
+    {
+      "workload": "save",
+      "condition": "preloaded",
+      "phase": "unsigned-startup",
+      "samples": [
+        44,
+        22,
+        5
+      ],
+      "medianActiveSamples": 22,
+      "range": [
+        5,
+        44
+      ],
+      "combinedSelfSamples": {
+        "unattributed": 5,
+        "framework": 31,
+        "other-code": 1,
+        "module-initialization": 7,
+        "github-client": 1,
+        "authoring-metadata": 5,
+        "gc": 17,
+        "editor-boundary": 4
+      }
+    },
+    {
+      "workload": "save",
+      "condition": "preloaded",
+      "phase": "first-pre-upstream",
+      "samples": [
+        13,
+        17,
+        12
+      ],
+      "medianActiveSamples": 13,
+      "range": [
+        12,
+        17
+      ],
+      "combinedSelfSamples": {
+        "framework": 5,
+        "editor-boundary": 14,
+        "stream-decoding": 2,
+        "validation": 15,
+        "github-client": 4,
+        "native-runtime": 2
+      }
+    },
+    {
+      "workload": "save",
+      "condition": "preloaded",
+      "phase": "first-post-upstream",
+      "samples": [
+        17,
+        19,
+        14
+      ],
+      "medianActiveSamples": 17,
+      "range": [
+        14,
+        19
+      ],
+      "combinedSelfSamples": {
+        "github-client": 26,
+        "validation": 2,
+        "native-runtime": 11,
+        "unattributed": 5,
+        "stream-decoding": 5,
+        "framework": 1
+      }
+    },
+    {
+      "workload": "save",
+      "condition": "preloaded",
+      "phase": "repeat-pre-upstream",
+      "samples": [
+        5,
+        4,
+        6
+      ],
+      "medianActiveSamples": 5,
+      "range": [
+        4,
+        6
+      ],
+      "combinedSelfSamples": {
+        "framework": 7,
+        "native-runtime": 2,
+        "validation": 4,
+        "github-client": 2
+      }
+    },
+    {
+      "workload": "save",
+      "condition": "preloaded",
+      "phase": "repeat-post-upstream",
+      "samples": [
+        22,
+        31,
+        11
+      ],
+      "medianActiveSamples": 22,
+      "range": [
+        11,
+        31
+      ],
+      "combinedSelfSamples": {
+        "stream-decoding": 4,
+        "native-runtime": 12,
+        "unattributed": 8,
+        "validation": 6,
+        "github-client": 15,
+        "gc": 18,
+        "framework": 1
+      }
+    }
+  ],
+  "limitations": "Three observations per condition/phase, local V8 samples only. Split boundaries omit inspector work while sampling is stopped. Isolate construction/eager bootstrap precede attachment. Group names locate self samples, not pure causal costs; stream decoding is shared by incoming and upstream bodies. Do not subtract independent captures or convert to hosted CPU milliseconds."
+}
