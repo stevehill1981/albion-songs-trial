@@ -33,8 +33,18 @@ function select(path,{focus=false}={}){
 function outline(){
  const current=draft.page;$('outline').replaceChildren();
  for(const row of blockEntries(current)){
-  const button=document.createElement('button');button.type='button';button.dataset.path=row.path;if(row.parent)button.dataset.child='';button.textContent=label(row.block);button.setAttribute('aria-current',String(row.path===selected));button.addEventListener('click',()=>{select(row.path);nodeFor(row.path)?.scrollIntoView({block:'center',behavior:'instant'});});$('outline').append(button);
+  const button=document.createElement('button');button.type='button';button.dataset.path=row.path;if(row.parent)button.dataset.child='';button.textContent=label(row.block);button.setAttribute('aria-current',String(row.path===selected));button.addEventListener('click',()=>{select(row.path);scrollToBlock(row.path);});$('outline').append(button);
  }
+}
+function refreshLabels(){
+ const page=draft.page;
+ for(const button of $('outline').querySelectorAll('button'))button.textContent=label(atPath(page,button.dataset.path));
+ $('selected-title').textContent=label(atPath(page,selected));
+}
+function scrollToBlock(path){
+ const node=nodeFor(path);if(!node)return;
+ const view=frame.contentWindow;
+ view.scrollTo({top:Math.max(0,view.scrollY+node.getBoundingClientRect().top-24),behavior:'instant'});
 }
 function nodeFor(path){return frame.contentDocument?.querySelector(`[data-editor-block="${path}"]`);}
 function markSelection(){for(const node of frame.contentDocument?.querySelectorAll('[data-editor-block]')||[])node.dataset.selected=String(node.dataset.editorBlock===selected);}
@@ -68,7 +78,7 @@ const live=createLivePreview({request:async(page,signal)=>{
  status.textContent=update.message+(update.status==='error'?' The last successful Astro preview remains visible.':'');
  if(update.html!==undefined)putHtml(update.html);
 }});
-function changed(){pendingHtml=null;buttons();live.update(draft.page);}
+function changed(){pendingHtml=null;refreshLabels();buttons();live.update(draft.page);}
 function inlineNode(path,field){
  const node=nodeFor(path);if(!node)return null;
  if(field.inline==='heading')return node.querySelector('h1,h2');

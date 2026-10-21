@@ -248,3 +248,40 @@ replacement is included in this first checkpoint.
   then obtain approval for a same-origin isolated lab deployment (or agree a
   separate auth testing design) before the real sign-in/unsaved-render test.
   Neither live editor replacement nor expanded auth origins is authorised here.
+
+### Browser resumed on 21 October
+
+The user restored macOS volume access and restarted Codex. Browser automation now
+starts. Hosted initial-copy checks passed direct block selection, form edits,
+undo/redo/reset, nested section controls and photograph choices; the 390 px editor
+had document width 390 px. The phone preview fitted the available canvas.
+
+Two reproduced UI bugs are being repaired before the same-origin trial:
+changing a heading left its outline label stale (`changed()` never refreshed it);
+outline selection used DOM `scrollIntoView`, moving the outer editor from scrollY
+0 to 190 as well as scrolling the preview. Update labels without rebuilding active
+fields, and scroll only the iframe's window. Verify both through actual browser
+interactions before committing. No authentication contract change is involved.
+
+Browser regression checks on the rebuilt page passed: editing the heading updated
+the outline and inspector title while `field-heading` kept focus. Keyboard
+activation of an already-focused outline control moved the preview with outer
+scrollY remaining 0. Automation may scroll the outer page to focus an offscreen
+control; that is separate from the removed recursive `scrollIntoView` behaviour.
+Desktop (1440 px) and phone (390 px) screenshots are retained under
+`/Users/stevehill/WBA/verification-evidence/visual-editor-2026-10-21/`. At 390 px
+the document width was exactly 390 px. The changed-client UI detector returned no
+findings. Existing public visual rules remain unchanged; no design-system rewrite
+or independent review is claimed.
+
+The Astro development server exited before readiness with `Dev server process
+exited before becoming ready.` Rather than change unrelated dev infrastructure,
+the UI regression checks used the full checked static build and a disposable local
+HTTP server. All 79 tests and the full build passed, including 20 compiled preview
+variants and authentication rejection. No live unsaved preview bypass was added.
+
+The in-app browser logged a MutationObserver target error without a source URL on
+the earlier hosted page; this is not attributed to museum code and did not prevent
+the verified interactions. Keep cross-browser and authenticated typing acceptance
+open. The next gate is approval to publish only this isolated lab route on the
+existing production origin, enabling normal GitHub sign-in without widening origins.
