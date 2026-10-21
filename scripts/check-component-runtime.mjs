@@ -90,6 +90,12 @@ const norm=html=>html.replace(/\s+/g,' ').trim();
  const queued=await operation({action:'publication',revision:MERGED});assert.equal((await queued.json()).state,'publishing');
  editorHarness=harness({live:true});const live=await operation({action:'publication',revision:MERGED});assert.equal((await live.json()).state,'live');
  editorHarness=harness({unchecked:true});const refused=await operation({action:'publish',draftNumber:17,baseRevision:MAIN,expectedCommit:HEAD,confirmation:'Publish this previewed revision'});assert.equal(refused.status,409);assert(!editorHarness.calls.some(c=>c.path.endsWith('/merge')));
+ const manager=JSON.parse(await readFile('content/pages/manager-darren-moore.json','utf8'));
+ editorHarness=harness({fixture:manager});
+ const managerRead=await operation({action:'read',pageId:manager.slug});assert.equal(managerRead.status,200,await managerRead.clone().text());assert.deepEqual((await managerRead.json()).document,manager);
+ const managerSave=await operation({action:'save',pageId:manager.slug,document:editorHarness.page,baseRevision:MAIN});assert.equal(managerSave.status,200,await managerSave.clone().text());
+ assert.equal((await operation({action:'status',pageId:'managers',draftNumber:17})).status,403);
+ assert.equal((await operation({action:'read',pageId:'songs'})).status,403);
  if(profilePath){
   const endpoint=await runtime.getInspectorURL();endpoint.protocol='http:';endpoint.pathname='/json';
   const targets=await fetch(endpoint).then(r=>r.json());assert(targets.length>0,'The runtime inspector target is missing.');

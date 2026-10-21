@@ -29,3 +29,18 @@ test('disconnect ignores delayed reads and incomplete input never reaches saving
  const draft=createDraft(page);let resolve;const workflow=createWorkflow({draft,call:()=>new Promise(r=>resolve=r)});const loading=workflow.load();workflow.disconnect();resolve({document:page,revision:A});await loading;assert.equal(workflow.state.ready,false);
  const h=harness();await h.workflow.load();h.edit('');assert.equal(await h.workflow.save(),false);assert.equal(h.calls.filter(c=>c.action==='save').length,0);assert(h.draft.changed);
 });
+
+test('switching pages clears review and undo; failed switches cannot save or publish the previous page',async()=>{
+ const other={...structuredClone(page),slug:'managers',title:'Managers'};
+ const draft=createDraft(page),calls=[];let fail=false;
+ const workflow=createWorkflow({draft,call:async input=>{calls.push(input);if(fail)throw Error('Read unavailable');if(input.action==='read')return {document:input.pageId==='managers'?other:page,revision:A};if(input.action==='drafts')return{drafts:[]};}});
+ await workflow.load();draft.set('blocks.0','heading','Old unsaved words');workflow.changed();
+ await workflow.load(undefined,'managers');assert.equal(draft.page.slug,'managers');assert.equal(draft.canUndo,false);assert.equal(workflow.state.checked,null);assert.equal(workflow.state.reviewed,null);
+ await workflow.list();assert.equal(calls.at(-1).pageId,'managers');
+ fail=true;assert.equal(await workflow.load(undefined,page.slug),false);assert.equal(workflow.state.ready,false);assert.equal(await workflow.save(),false);assert.equal(await workflow.publish(),false);assert.equal(draft.page.slug,'managers');
+ fail=false;await workflow.load(undefined,page.slug);assert.equal(workflow.state.ready,true);assert.equal(draft.page.slug,page.slug);
+});
+test('a load returning the wrong page never enables editing',async()=>{
+ const draft=createDraft(page),workflow=createWorkflow({draft,call:async()=>({document:page,revision:A})});
+ assert.equal(await workflow.load(undefined,'managers'),false);assert.equal(workflow.state.ready,false);
+});
