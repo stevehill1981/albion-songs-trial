@@ -39,3 +39,7 @@ auth/prototype-build/
 public/admin/rebuild/
 # Generated source-built editor
 public/admin/editor/
+
+public/admin/block-schema.mjs
+public/admin/inline-parts.mjs
+public/admin/pattern-metadata.json

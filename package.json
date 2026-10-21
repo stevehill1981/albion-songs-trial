@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "build": "node scripts/prepare.mjs && astro build && node scripts/verify-build.mjs && node scripts/cloudflare-output.mjs && node scripts/check-component-runtime.mjs && node scripts/cloudflare-output.mjs --auth && node scripts/check-mcp-runtime.mjs",
-    "test": "node --test",
+    "test": "node scripts/pattern-metadata.mjs --check && node --test",
     "preview": "astro preview --host 127.0.0.1"
   },
   "dependencies": {

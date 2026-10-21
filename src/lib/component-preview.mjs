@@ -1,4 +1,4 @@
-import {validatePage} from './blocks.mjs';
+import {validatePage} from './block-schema.mjs';
 import {escapeHTML} from './fact.mjs';
 export const componentTypes=['manager-performance','intro','text-panel','photograph','section'];
 export function isComponentDraft(page){return Array.isArray(page?.blocks)&&page.blocks.every(block=>componentTypes.includes(block?.type)&&(block.type!=='section'||!Array.isArray(block.columns)||block.columns.every(column=>!Array.isArray(column?.blocks)||column.blocks.every(child=>['text-panel','photograph','manager-performance'].includes(child?.type)))));}
