@@ -30,7 +30,7 @@ if (auth) {
   await mkdir(`${worker}/bundle`,{recursive:true});await collect('');
   if(!modules[adapter.main])throw Error('The Astro adapter entrypoint is missing.');
   config.manifest={type:'complete',mainModule:adapter.main,modules};
-  config.compatibilityFlags=adapter.compatibility_flags;
+  config.compatibilityFlags=[...new Set([...adapter.compatibility_flags,'global_fetch_strictly_public'])];
   config.env={ASSETS:{type:'assets'}};
   config.assets = {htmlHandling:'drop-trailing-slash',notFoundHandling:'none',runWorkerFirst:['/editor-preview','/editor-api']};
   config.observability={enabled:true,redactQueryString:true,logs:{enabled:true,headSamplingRate:1},traces:{enabled:true,headSamplingRate:1}};

@@ -133,3 +133,37 @@ not merely reproduce a green transport result.
 - GitHub browser API support:
   https://docs.github.com/en/rest/using-the-rest-api/using-cors-and-jsonp-to-make-cross-origin-requests
 - Existing binding plan: `plans/2026-10-20-marie-component-editor.md`.
+
+## Live acceptance, 21 October
+
+PR #50 was approved and merged as `7d0254d42e622fd4de915887661666af1ab082a4`.
+The live site serves that revision. Browser sign-in, direct heading input, saving
+while continuing to type, resetting to the saved snapshot, and reopening after
+reload passed. Draft #51 contains exactly one heading change; its other text,
+sources, image credits and calculated performance selection are identical. It is
+not approved for publication.
+
+The hosted full-preview guard stays closed even though GitHub's checks, the
+public version JSON and the served page metadata all agree on draft commit
+`ccd869ad4dbae0170da33545d8820e2dfda7fc92`. The site deployment has no compatibility
+flags; the auth Worker already uses `global_fetch_strictly_public`. Cloudflare
+documents that Worker-to-Worker public fetches need this flag or service bindings.
+The simulator's mocked outbound fetch did not expose that routing restriction.
+
+Narrow repair: add the existing auth Worker's public-fetch compatibility setting
+to the site build, retaining fixed public preview origins and every exact-revision
+check. Do not use local assets or remove served-preview verification. Add a build
+assertion and run the compiled runtime with the actual generated flags; a missing
+flag must fail. Build, preview and request approval before deploying the repair,
+then repeat the saved-preview browser check. No dependency, resource, schema,
+permission or paid service changes.
+
+Available production telemetry for version `ebe58988-a04f-4d3e-ad7e-1deb37d28754`
+shows successful authenticated editor operations at 9–24 ms CPU and previews at
+9–22 ms. Missing readings remain unknown; a canceled request coincides with the
+intentional browser reload. These observations do not establish reliable Free-plan
+headroom. Keep this a one-page trial; do not widen or call it ready for general
+Marie use. Sanitized evidence is retained in the workspace verification folder.
+
+Sources: https://developers.cloudflare.com/workers/runtime-apis/fetch/ and
+https://developers.cloudflare.com/workers/configuration/compatibility-flags/ .

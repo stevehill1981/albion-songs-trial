@@ -11,6 +11,7 @@ import {harness,MAIN,HEAD,MERGED} from './test-support/editor-harness.mjs';
 import {createDraft} from '../src/editor/visual/state.mjs';
 const directory=resolve('.cloudflare/output/v0/workers/default');
 const config=JSON.parse(await readFile(join(directory,'worker.config.json'),'utf8'));
+assert(config.compatibilityFlags.includes('global_fetch_strictly_public'),'Public saved-preview checks require the same public-fetch setting as the auth Worker.');
 const context=JSON.parse(await readFile('src/generated/component-context.json','utf8'));
 const page=JSON.parse(await readFile('content/pages/component-preview-trial.json','utf8'));
 const fixture=JSON.parse(await readFile('test/fixtures/layout-initial.json','utf8'));
@@ -22,6 +23,7 @@ runtime=new Miniflare(convertV4MiniflareOptions({
  modulesRoot:join(directory,'bundle'),
  modules:[config.manifest.mainModule,...Object.keys(config.manifest.modules).filter(name=>name!==config.manifest.mainModule)].map(path=>({type:'ESModule',path:join(directory,'bundle',path)})),
  compatibilityDate:config.compatibilityDate,
+ compatibilityFlags:config.compatibilityFlags,
  // Static routing is checked through Astro's preview server and hosted URLs.
  // This isolated test invokes only the compiled dynamic route.
  serviceBindings:{ASSETS:()=>new Response('Not a static asset.',{status:404})},
