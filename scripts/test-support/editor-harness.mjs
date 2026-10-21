@@ -1,3 +1,4 @@
+import {draftSnapshot} from './draft-snapshot.mjs';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {editorOperation,EDITOR_PAGE} from '../../src/lib/editor-operations.mjs';
@@ -11,7 +12,12 @@ export function harness(options={}){
   assert(init.signal);assert.equal(init.redirect,'manual');
   if(url.startsWith('https://api.github.com/')){
    assert.equal(init.headers.Authorization,`Bearer ${token}`);
-   if(method!=='GET'&&options.lost)throw Error(token);
+   if(method!=='GET'&&path!=='/graphql'&&options.lost)throw Error(token);
+   if(path==='/graphql'){
+    assert.equal(method,'POST');const body=JSON.parse(init.body);assert.match(body.query,/^query MuseumDraft/);assert.deepEqual(body.variables,{number:17});
+    const id=options.foreign?'songs':EDITOR_PAGE;
+    return Response.json(draftSnapshot({repository:{permissions:options.missing?{}:{push:!options.denied}},main:options.stale?HEAD:MAIN,head:HEAD,pr:{state:'open',changed_files:1,head:{ref:`cms/mcp/pages/${id}/1234abcd`,repo:{full_name:REPOSITORY}},base:{ref:'main'}},files:[{filename:`content/pages/${id}.json`,status:'modified'}],checked:!options.unchecked,previewTarget:'https://1234abcd-throstle-and-stripes.steve-e85.workers.dev/'}));
+   }
    if(path==='')return Response.json({permissions:options.missing?{}:{push:!options.denied}});
    if(path==='/git/ref/heads/main')return Response.json({object:{sha:options.stale?HEAD:MAIN}});
    if(path==='/contents/content/pages/'+EDITOR_PAGE+'.json')return method==='PUT'?Response.json({commit:{sha:HEAD}}):Response.json({encoding:'base64',size:5000,sha:MAIN,content:Buffer.from(JSON.stringify(fixture)).toString('base64')});

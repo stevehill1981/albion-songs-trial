@@ -65,7 +65,7 @@ for cold spikes. They support two bounded repairs before changing architecture:
 This does not change API/data shapes, caching, dependencies, deployments or
 permission checks. A larger routing or storage change would require agreement.
 
-## Proposed next step — owner agreement pending
+## Combined lookup prototype — owner approved
 
 The first repair reduced the targeted local samples (preview validation 200 to 30;
 record decoding 67 to 12), but status work stayed similar (315 versus 314 active
@@ -76,8 +76,7 @@ A read-only prototype through the existing GitHub CLI returned the published
 practice draft's exact permission, main/head revisions, one changed file, commit
 ancestry and current check rollup in one 1,337-byte GraphQL response. The current
 status path obtains those facts through seven GitHub responses, plus two public
-preview reads that must remain. Before implementation, ask under AGENTS.md's rule
-for new architectural patterns. Proposed scope if approved:
+preview reads that must remain. The owner approved this new GraphQL pattern on 21 October 2026. Agreed scope:
 
 - `auth/mcp/github.mjs`: one fixed, bounded repository/draft metadata query for
   `status` and `publish`; preserve public outputs and REST content writes. Normalize
@@ -101,3 +100,31 @@ for new architectural patterns. Proposed scope if approved:
   additional scope; CLI-owner success alone does not establish this. No new
   dependency or paid service. Profile locally first; a checked preview and explicit
   approval gate the bounded hosted before/after comparison.
+
+## Prototype verification
+
+The combined lookup is implemented for draft status and publishing only. REST
+content saving and conditional merge writes remain. Each invocation independently
+reads permission, main/head, scoped files, ancestry and checks. Missing/partial
+GraphQL data, truncation and ambiguous reruns fail closed. Public version/page
+verification is unchanged. GraphQL's fixed read-only POST does not mark a failed
+read as an uncertain content write.
+
+All 120 tests and the full build pass, including actual compiled Astro/Workers
+acceptance, normal-editor assets, archives and OAuth/MCP checks. The implemented
+query also reads merged practice PR 53 correctly using the existing owner CLI;
+its 1,337-byte response identifies the exact checked head and publication revision.
+This does not yet verify the editor's OAuth credential or hosted CPU use.
+
+The same 60-status local workload produced 208 active samples, compared with
+315 before the first repair and 314 after the small read/preview repairs. This
+short local capture supports a bounded hosted comparison; it is not a percentage
+CPU guarantee or evidence of Free-plan headroom. Raw captures, sanitized real-query
+proof and verification logs are retained in the evidence folder above.
+
+Production remains at the recorded baseline. Before promotion, obtain approval
+for the checked version. Then verify the existing editor sign-in without broader
+scopes, repeat read/preview/status calls early, warm and after idle, and inspect
+sanitised per-request CPU readings for the actual deployed version. Restore the
+baseline if the candidate breaks access or does not improve reliability. No new
+content publication is part of this comparison.

@@ -11,7 +11,7 @@ test('editor endpoint rejects origin, missing credentials, unknown fields, scope
 });
 test('missing permission fails closed; foreign drafts and stale main never write',async()=>{
  for(const options of [{denied:true},{missing:true},{foreign:true},{stale:true}]){
-  const h=harness(options);const response=await h.call({action:'save',document:h.page,baseRevision:MAIN,...(options.foreign?{draftNumber:17,expectedCommit:HEAD}:{})});assert(response.status>=400);assert(!h.calls.some(c=>c.method!=='GET'));
+  const h=harness(options);const response=await h.call({action:'save',document:h.page,baseRevision:MAIN,...(options.foreign?{draftNumber:17,expectedCommit:HEAD}:{})});assert(response.status>=400);assert(!h.calls.some(c=>c.method!=='GET'&&c.path!=='/graphql'));
  }
 });
 test('real shared client reads only the practice page, filters draft list and saves exact sources unchanged',async()=>{
@@ -21,11 +21,19 @@ test('real shared client reads only the practice page, filters draft list and sa
  const write=h.calls.find(c=>c.method==='PUT');assert.equal(write.path,`/contents/content/pages/${EDITOR_PAGE}.json`);assert.deepEqual(JSON.parse(Buffer.from(write.body.content,'base64')),h.page);
 });
 test('uncertain writes are explicit, sanitized and never repeated automatically',async()=>{
- const h=harness({lost:true});const response=await h.call({action:'save',document:h.page,baseRevision:MAIN});const text=await response.text();assert.equal(response.status,503);assert.equal(JSON.parse(text).error.uncertain,true);assert(!text.includes(token));assert.equal(h.calls.filter(c=>c.method!=='GET').length,1);
+ const h=harness({lost:true});const response=await h.call({action:'save',document:h.page,baseRevision:MAIN});const text=await response.text();assert.equal(response.status,503);assert.equal(JSON.parse(text).error.uncertain,true);assert(!text.includes(token));assert.equal(h.calls.filter(c=>c.method!=='GET'&&c.path!=='/graphql').length,1);
 });
 test('publication keeps exact preview guards and confirms the actually served revision',async()=>{
  const args={action:'publish',draftNumber:17,baseRevision:MAIN,expectedCommit:HEAD,confirmation:'Publish this previewed revision'};
  const bad=harness({unchecked:true});assert.equal((await bad.call(args)).status,409);assert(!bad.calls.some(c=>c.path.endsWith('/merge')));
  const h=harness();assert.equal((await (await h.call(args)).json()).state,'publishing');assert.equal((await (await h.call({action:'publication',revision:MERGED})).json()).state,'publishing');
  const live=harness({live:true});assert.equal((await (await live.call({action:'publication',revision:MERGED})).json()).state,'live');
+});
+
+test('a failed read-only GraphQL POST is never reported as an uncertain content write',async()=>{
+ const {editorOperation}=await import('../src/lib/editor-operations.mjs');
+ let calls=0;
+ const request=new Request('https://museum.example/editor-api',{method:'POST',headers:{Origin:'https://museum.example','Content-Type':'application/json',Authorization:`Bearer ${token}`},body:JSON.stringify({action:'status',draftNumber:17})});
+ const response=await editorOperation(request,async url=>{calls++;assert.equal(url,'https://api.github.com/graphql');throw Error(token);});
+ assert.equal(calls,1);assert.equal(response.status,503);const data=await response.json();assert.equal(data.error.uncertain,false);assert(!JSON.stringify(data).includes(token));
 });

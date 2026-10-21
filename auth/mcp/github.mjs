@@ -6,6 +6,17 @@ export const MAX_DOCUMENT_BYTES=256*1024;
 const kinds=['pages','page-templates','collections','photographs'];
 const shaPattern=/^[a-f0-9]{40}$/;
 const encoder=new TextEncoder();
+const draftQuery=`query MuseumDraft($number:Int!){repository(owner:"stevehill1981",name:"albion-songs-trial"){
+ viewerPermission ref(qualifiedName:"refs/heads/main"){target{oid}}
+ pullRequest(number:$number){state merged mergeCommit{oid} headRefName headRefOid baseRefName headRepository{nameWithOwner} changedFiles
+ files(first:2){nodes{path changeType} pageInfo{hasNextPage}}
+ history:commits(first:100){nodes{commit{oid parents(first:2){nodes{oid} pageInfo{hasNextPage}}}} pageInfo{hasNextPage}}
+ latest:commits(last:1){nodes{commit{oid statusCheckRollup{contexts(first:100){nodes{__typename
+ ... on StatusContext{context state targetUrl createdAt}
+ ... on CheckRun{name status conclusion startedAt completedAt}
+ } pageInfo{hasNextPage}}}}}}
+ }}}`;
+
 export class MuseumError extends Error {}
 const requireValue=(condition,message)=>{if(!condition)throw new MuseumError(message);};
 export async function boundedText(response,maximum=2*1024*1024){
@@ -31,8 +42,8 @@ export function blockSchema(type){
 }
 export function createMuseumClient(token,fetcher=fetch){
  requireValue(typeof token==='string'&&/^[A-Za-z0-9_]{20,256}$/.test(token),'Reconnect the museum with GitHub.');
- async function api(path,{method='GET',body,missing=false}={}){
-  const response=await fetcher(`https://api.github.com/repos/${REPOSITORY}${path}`,{method,headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','Content-Type':'application/json','User-Agent':'Albion museum MCP','X-GitHub-Api-Version':'2022-11-28'},...(body===undefined?{}:{body:JSON.stringify(body)}),redirect:'manual',signal:AbortSignal.timeout(10000)});
+ async function api(path,{method='GET',body,missing=false,graphql=false}={}){
+  const response=await fetcher(graphql?'https://api.github.com/graphql':`https://api.github.com/repos/${REPOSITORY}${path}`,{method,headers:{Authorization:`Bearer ${token}`,Accept:'application/vnd.github+json','Content-Type':'application/json','User-Agent':'Albion museum MCP','X-GitHub-Api-Version':'2022-11-28'},...(body===undefined?{}:{body:JSON.stringify(body)}),redirect:'manual',signal:AbortSignal.timeout(10000)});
   if(missing&&response.status===404)return null;
   requireValue(response.ok,response.status===401||response.status===403?'GitHub access was denied. Reconnect, or check repository write access.':response.status===409||response.status===422?'The draft changed or could not be saved. Read its latest revision before trying again.':'GitHub could not complete this operation. Try again shortly.');
   return response.status===204?null:JSON.parse(await boundedText(response));
@@ -61,23 +72,62 @@ export function createMuseumClient(token,fetcher=fetch){
   requireValue(match&&pr.head.repo?.full_name===REPOSITORY&&pr.base?.ref==='main','Choose a museum connector draft in this repository.');
   return{kind:match[1],id:match[2],path:recordPath(match[1],match[2])};
  }
- async function inspect(number){
-  requireValue(Number.isSafeInteger(number)&&number>0,'Choose a valid draft number.');
-  const pr=await api(`/pulls/${number}`);const identity=draftIdentity(pr);
-  const [files,commits]=await Promise.all([api(`/pulls/${number}/files?per_page=100`),api(`/pulls/${number}/commits?per_page=100`)]);
+ function inspectFacts(pr,files,commits){
+  const identity=draftIdentity(pr);
+  requireValue(shaPattern.test(pr.head?.sha),'The draft revision is unavailable.');
   requireValue(pr.changed_files===1&&Array.isArray(files)&&files.length===1&&files[0].filename===identity.path&&['added','modified'].includes(files[0].status),'This draft must change exactly its museum content record.');
-  requireValue(Array.isArray(commits)&&commits.length>0&&commits.length<100&&commits[0].parents?.length===1,'The draft base could not be verified.');
+  requireValue(Array.isArray(commits)&&commits.length>0&&commits.length<100&&commits[0].parents?.length===1&&shaPattern.test(commits[0].parents[0].sha),'The draft base could not be verified.');
   return{pr,...identity,baseRevision:commits[0].parents[0].sha};
  }
- async function checks(head){
-  const [statuses,runs]=await Promise.all([api(`/commits/${head}/status?per_page=100`),api(`/commits/${head}/check-runs?per_page=100`)]);
-  const deploy=statuses.statuses?.find(s=>s.context==='albion/deploy-preview');
-  const build=runs.check_runs?.find(r=>r.name==='Validate Songs page');
+ async function inspect(number){
+  requireValue(Number.isSafeInteger(number)&&number>0,'Choose a valid draft number.');
+  const pr=await api(`/pulls/${number}`);
+  const [files,commits]=await Promise.all([api(`/pulls/${number}/files?per_page=100`),api(`/pulls/${number}/commits?per_page=100`)]);
+  return inspectFacts(pr,files,commits);
+ }
+ function checkFacts(statuses,runs){
+  const deploy=statuses?.find(s=>s.context==='albion/deploy-preview');
+  const build=runs?.find(r=>r.name==='Validate Songs page');
   let previewOrigin=null;
   if(deploy?.state==='success'){
    try{const u=new URL(deploy.target_url);if(u.protocol==='https:'&&/^[a-f0-9]{8}$/.test(u.hostname.slice(0,8))&&u.hostname.slice(8)==='-'+new URL(site.origin).hostname&&u.pathname==='/')previewOrigin=u.origin;}catch{/* Missing preview stays unpublishable. */}
   }
   return{checksPassed:build?.status==='completed'&&build.conclusion==='success'&&!!previewOrigin,previewOrigin,validation:build?.conclusion||build?.status||'missing',deployment:deploy?.state||'missing'};
+ }
+ // Each operation fetches fresh permission and head facts. Nothing from this
+ // response is shared across calls, including the editor's pre-publish check.
+ async function snapshot(number){
+  requireValue(Number.isSafeInteger(number)&&number>0,'Choose a valid draft number.');
+  const result=await api('',{graphql:true,method:'POST',body:{query:draftQuery,variables:{number}}});
+  requireValue(result&& !('errors' in result),'GitHub could not verify the complete draft. Try again shortly.');
+  const repository=result.data?.repository;
+  requireValue(['WRITE','MAINTAIN','ADMIN'].includes(repository?.viewerPermission),'This GitHub account does not have museum editor access.');
+  const mainRevision=repository.ref?.target?.oid;
+  requireValue(shaPattern.test(mainRevision),'The published branch revision is unavailable.');
+  const pr=repository.pullRequest;
+  requireValue(pr&&['OPEN','CLOSED','MERGED'].includes(pr.state)&&typeof pr.merged==='boolean'&&pr.merged===(pr.state==='MERGED')&&(!pr.merged||shaPattern.test(pr.mergeCommit?.oid)),'The draft is unavailable.');
+  const complete=(connection)=>connection?.pageInfo?.hasNextPage===false&&Array.isArray(connection.nodes);
+  requireValue(complete(pr.files)&&complete(pr.history),'The complete draft scope could not be verified.');
+  requireValue(pr.history.nodes.every(row=>shaPattern.test(row?.commit?.oid)&&complete(row.commit.parents)),'The draft ancestry could not be verified.');
+  const draft=inspectFacts({state:pr.state==='OPEN'?'open':'closed',merged:pr.merged===true,merge_commit_sha:pr.mergeCommit?.oid,changed_files:pr.changedFiles,head:{sha:pr.headRefOid,ref:pr.headRefName,repo:{full_name:pr.headRepository?.nameWithOwner}},base:{ref:pr.baseRefName}},pr.files.nodes.map(row=>({filename:row?.path,status:row?.changeType?.toLowerCase()})),pr.history.nodes.map(row=>({parents:row.commit.parents.nodes.map(parent=>({sha:parent?.oid}))})));
+  const latest=pr.latest?.nodes;
+  requireValue(Array.isArray(latest)&&latest.length===1&&latest[0]?.commit?.oid===draft.pr.head.sha&&pr.history.nodes.at(-1)?.commit.oid===draft.pr.head.sha,'The draft head and checks could not be verified.');
+  const rollup=latest[0].commit.statusCheckRollup;
+  requireValue(rollup===null||complete(rollup?.contexts),'The complete draft checks could not be verified.');
+  const contexts=rollup?.contexts.nodes||[];
+  // A rerun must supersede an older success. Ambiguous timestamps fail closed.
+  function newest(type,key,name){
+   const matches=contexts.filter(row=>row?.__typename===type&&row[key]===name);
+   if(matches.length<=1)return matches[0];
+   const timed=matches.map(row=>({row,time:Date.parse(type==='StatusContext'?row.createdAt:row.startedAt)}));
+   requireValue(timed.every(item=>Number.isFinite(item.time)),'The latest draft check could not be verified.');
+   timed.sort((a,b)=>b.time-a.time);
+   requireValue(timed[0].time!==timed[1].time,'The latest draft check could not be verified.');
+   return timed[0].row;
+  }
+  const deploy=newest('StatusContext','context','albion/deploy-preview'),build=newest('CheckRun','name','Validate Songs page');
+  const checked=checkFacts(deploy?[{context:deploy.context,state:deploy.state?.toLowerCase(),target_url:deploy.targetUrl}]:[],build?[{name:build.name,status:build.status?.toLowerCase(),conclusion:build.conclusion?.toLowerCase()}]:[]);
+  return{draft,checked,mainRevision};
  }
  async function previewMatches(origin,revision,path){
   if(!origin)return false;
@@ -128,14 +178,14 @@ export function createMuseumClient(token,fetcher=fetch){
    return{draftNumber:pr.number,commit:saved.commit.sha,baseRevision,url:pr.html_url,state:'draft',next:'Wait for get_draft_status to return a checked preview. Show Marie the preview, then ask whether she wants to publish this exact revision.'};
   },
   async status({draftNumber,includeContent=false}){
-   await access();const draft=await inspect(draftNumber);const checked=await checks(draft.pr.head.sha);const path=route(draft);
+   const {draft,checked,mainRevision}=await snapshot(draftNumber);const path=route(draft);
    const previewVerified=checked.checksPassed&&await previewMatches(checked.previewOrigin,draft.pr.head.sha,path);
-   return{draftNumber,kind:draft.kind,id:draft.id,state:draft.pr.state,...(draft.pr.merged===true&&shaPattern.test(draft.pr.merge_commit_sha)?{publicationRevision:draft.pr.merge_commit_sha}:{}),commit:draft.pr.head.sha,baseRevision:draft.baseRevision,...(includeContent?await record(draft.kind,draft.id,draft.pr.head.sha):{}),...checked,previewVerified,previewUrl:checked.previewOrigin?checked.previewOrigin+path:null,publicUrl:site.origin+path,canPublish:draft.pr.state==='open'&&previewVerified&&await main()===draft.baseRevision};
+   return{draftNumber,kind:draft.kind,id:draft.id,state:draft.pr.state,...(draft.pr.merged===true&&shaPattern.test(draft.pr.merge_commit_sha)?{publicationRevision:draft.pr.merge_commit_sha}:{}),commit:draft.pr.head.sha,baseRevision:draft.baseRevision,...(includeContent?await record(draft.kind,draft.id,draft.pr.head.sha):{}),...checked,previewVerified,previewUrl:checked.previewOrigin?checked.previewOrigin+path:null,publicUrl:site.origin+path,canPublish:draft.pr.state==='open'&&previewVerified&&mainRevision===draft.baseRevision};
   },
   async publish({draftNumber,expectedCommit,baseRevision,confirmation}){
-   await access();requireValue(confirmation==='Publish this previewed revision','Ask Marie to approve the preview, then pass the exact publication confirmation.');
-   const draft=await inspect(draftNumber);requireValue(draft.pr.state==='open'&&draft.pr.head.sha===expectedCommit&&draft.baseRevision===baseRevision&&await main()===baseRevision,'The draft or published content has changed. Prepare and preview a fresh draft before publishing.');
-   const checked=await checks(expectedCommit);requireValue(checked.checksPassed&&await previewMatches(checked.previewOrigin,expectedCommit,route(draft)),'This exact revision has not passed validation and the served preview check.');
+   requireValue(confirmation==='Publish this previewed revision','Ask Marie to approve the preview, then pass the exact publication confirmation.');
+   const {draft,checked,mainRevision}=await snapshot(draftNumber);requireValue(draft.pr.state==='open'&&draft.pr.head.sha===expectedCommit&&draft.baseRevision===baseRevision&&mainRevision===baseRevision,'The draft or published content has changed. Prepare and preview a fresh draft before publishing.');
+   requireValue(checked.checksPassed&&await previewMatches(checked.previewOrigin,expectedCommit,route(draft)),'This exact revision has not passed validation and the served preview check.');
    const merged=await api(`/pulls/${draftNumber}/merge`,{method:'PUT',body:{sha:expectedCommit,merge_method:'merge'}});
    requireValue(merged.merged===true&&shaPattern.test(merged.sha),'GitHub did not confirm publication. Read the draft status before retrying.');
    return{state:'publishing',revision:merged.sha,publicUrl:site.origin+route(draft),next:'Publication is queued. Call publication_status with this revision; do not say it is live yet.'};
