@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 import {renderPageContent} from '../src/lib/blocks.mjs';
-export async function verifyVisualEditor({html,context,source,readAsset}={}){
+export async function verifyVisualEditor({html,context,source,readAsset,workflow=false}={}){
  const data=JSON.parse(html.match(/<script id="visual-data" type="application\/json">([\s\S]*?)<\/script>/)?.[1]||'null');
  assert(data?.page,'The editor practice seed is missing.');
  assert.deepEqual(data.page.blocks.slice(0,source.blocks.length),source.blocks,'The practice seed changed historical content or credits.');
@@ -16,17 +16,27 @@ export async function verifyVisualEditor({html,context,source,readAsset}={}){
  assert(client.includes('/editor-preview'),'The actual Astro preview route is missing.');
  assert(!client.includes('localStorage')&&!client.includes('sessionStorage'),'Do not persist the sign-in credential.');
  assert(html.includes('sandbox="allow-same-origin"')&&!html.includes('allow-scripts'));
- assert(html.includes('Nothing here saves or publishes'));
+ assert.equal(data.workflow,workflow);
+ if(workflow){
+  assert.deepEqual(data.page,source,'The saving editor must seed the real practice page losslessly.');
+  for(const id of ['save-draft','open-drafts','check-draft','saved-preview','publish-draft'])assert(html.includes(`id="${id}"`),'Missing workflow control: '+id);
+  assert(html.includes('id="fields" onsubmit="return false" inert'),'Editing must wait for a fresh authenticated read.');
+  assert(client.includes('/editor-api'),'The bounded publishing adapter is missing.');
+ }else{assert(html.includes('Nothing here saves or publishes'));assert(!html.includes('id="save-draft"'));}
  assert(!html.includes('data-editor-block='),'Editor markers must be added only to the isolated preview document.');
  return{page:data.page,script};
 }
 export async function verifyVisualEditorBuild(){
  const options={html:await readFile('build/editor-lab.html','utf8'),context:JSON.parse(await readFile('src/generated/component-context.json','utf8')),source:JSON.parse(await readFile('content/pages/manager-darren-moore.json','utf8')),readAsset:path=>readFile('build'+path,'utf8')};
  await verifyVisualEditor(options);
+ const editor={...options,workflow:true,html:await readFile('build/editor.html','utf8'),source:JSON.parse(await readFile('content/pages/component-preview-trial.json','utf8'))};
+ await verifyVisualEditor(editor);
+ const enabled=editor.html.replace('onsubmit="return false" inert','onsubmit="return false"');
+ assert.notEqual(enabled,editor.html);await assert.rejects(()=>verifyVisualEditor({...editor,html:enabled}));
  // The heading in the editor chrome is not the source: corrupt the actual JSON.
  const broken=options.html.replace('"heading":"Darren Moore"','"heading":"Altered practice name"');
  assert.notEqual(broken,options.html,'Negative control must change the seeded page.');
  await assert.rejects(()=>verifyVisualEditor({...options,html:broken}));
- console.log('PASS: isolated visual editor preserves its manager source, exact Astro markup, stylesheets and credential boundaries; corrupted seed rejected.');
+ console.log('PASS: isolated visual editor preserves its manager source, exact Astro markup, stylesheets and credential boundaries; corrupted seed and premature editing rejected.');
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)await verifyVisualEditorBuild();

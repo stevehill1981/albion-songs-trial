@@ -104,7 +104,7 @@ export function createMuseumClient(token,fetcher=fetch){
   async managerProfile(query){await access();return archive.manager(query);},
   async list({kind}){await access();const revision=await main();return{kind,revision,ids:await directory(kind,revision)};},
   async read({kind,id}){await access();const revision=await main();const entry=await record(kind,id,revision);requireValue(entry,'This published record does not exist.');return{kind,id,revision,...entry};},
-  async drafts({page=1}){await access();requireValue(Number.isInteger(page)&&page>=1&&page<=100,'Choose a valid draft page.');const prs=await api(`/pulls?state=open&base=main&per_page=50&page=${page}`);requireValue(Array.isArray(prs),'Drafts are unavailable.');return{page,drafts:prs.filter(pr=>pr.head?.ref?.startsWith('cms/mcp/')).map(pr=>({number:pr.number,title:pr.title,url:pr.html_url,commit:pr.head.sha})),hasMore:prs.length===50};},
+  async drafts({page=1,kind,id}){await access();if(kind!==undefined||id!==undefined)recordPath(kind,id);requireValue(Number.isInteger(page)&&page>=1&&page<=100,'Choose a valid draft page.');const prs=await api(`/pulls?state=open&base=main&per_page=50&page=${page}`);requireValue(Array.isArray(prs),'Drafts are unavailable.');return{page,drafts:prs.filter(pr=>pr.head?.ref?.startsWith(kind===undefined?'cms/mcp/':`cms/mcp/${kind}/${id}/`)).map(pr=>({number:pr.number,title:pr.title,url:pr.html_url,commit:pr.head.sha})),hasMore:prs.length===50};},
   async save({kind,id,document,baseRevision,draftNumber,expectedCommit}){
    await access();recordPath(kind,id);requireValue(shaPattern.test(baseRevision),'Read the current published revision before saving.');
    requireValue(await main()===baseRevision,'Published content has changed. Read it again before preparing a new draft.');
@@ -130,7 +130,7 @@ export function createMuseumClient(token,fetcher=fetch){
   async status({draftNumber,includeContent=false}){
    await access();const draft=await inspect(draftNumber);const checked=await checks(draft.pr.head.sha);const path=route(draft);
    const previewVerified=checked.checksPassed&&await previewMatches(checked.previewOrigin,draft.pr.head.sha,path);
-   return{draftNumber,kind:draft.kind,id:draft.id,state:draft.pr.state,commit:draft.pr.head.sha,baseRevision:draft.baseRevision,...(includeContent?await record(draft.kind,draft.id,draft.pr.head.sha):{}),...checked,previewVerified,previewUrl:checked.previewOrigin?checked.previewOrigin+path:null,publicUrl:site.origin+path,canPublish:draft.pr.state==='open'&&previewVerified&&await main()===draft.baseRevision};
+   return{draftNumber,kind:draft.kind,id:draft.id,state:draft.pr.state,...(draft.pr.merged===true&&shaPattern.test(draft.pr.merge_commit_sha)?{publicationRevision:draft.pr.merge_commit_sha}:{}),commit:draft.pr.head.sha,baseRevision:draft.baseRevision,...(includeContent?await record(draft.kind,draft.id,draft.pr.head.sha):{}),...checked,previewVerified,previewUrl:checked.previewOrigin?checked.previewOrigin+path:null,publicUrl:site.origin+path,canPublish:draft.pr.state==='open'&&previewVerified&&await main()===draft.baseRevision};
   },
   async publish({draftNumber,expectedCommit,baseRevision,confirmation}){
    await access();requireValue(confirmation==='Publish this previewed revision','Ask Marie to approve the preview, then pass the exact publication confirmation.');

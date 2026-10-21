@@ -23,13 +23,15 @@ export function blockEntries(page){
  return rows;
 }
 export function createDraft(initial){
- const baseline=structuredClone(initial);
+ let baseline=structuredClone(initial);
  let page=structuredClone(baseline),history=[],future=[],group=null,version=0;
  const emit=()=>{version++;};
  return{
   get page(){return structuredClone(page);},get version(){return version;},
   get canUndo(){return group!==null||history.length>0;},get canRedo(){return future.length>0;},
   get changed(){return JSON.stringify(page)!==JSON.stringify(baseline);},
+  acknowledgeSaved(snapshot){baseline=structuredClone(snapshot);emit();},
+  load(document){baseline=structuredClone(document);page=structuredClone(document);history=[];future=[];group=null;emit();},
   set(blockPath,fieldPath,value){
    const block=blockEntries(page).find(row=>row.path===blockPath)?.block;
    const field=block&&editableFields(block).find(row=>row.path===fieldPath);
