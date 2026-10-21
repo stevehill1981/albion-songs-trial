@@ -27,7 +27,7 @@
         }
       ],
       "emphasiseLastLine": false,
-      "heading": "Build an Albion page together.",
+      "heading": "Build an Albion page together. Unpublished validation test",
       "imageAlt": "The Hawthorns under floodlights, with supporters around the pitch",
       "text": "Try a heading, some text and a photograph. In the editor, these blocks preview using the same Astro components as this page.",
       "type": "intro"
