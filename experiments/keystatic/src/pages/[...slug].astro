@@ -1,0 +1,7 @@
+---
+import {getEntry,render} from 'astro:content';
+const page=await getEntry('pages',Astro.params.slug);
+if(!page)return Astro.redirect('/');
+const {Content}=await render(page);
+---
+<html lang="en-GB"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><title>{page.data.title} · Local trial</title><link rel="stylesheet" href="/styles.css"/><link rel="stylesheet" href="/museum.css"/><link rel="stylesheet" href="/songs.css"/><link rel="stylesheet" href="/layout.css"/></head><body><nav class="wrap section"><a href="/keystatic">Back to the local editor</a><p>Local saved preview. Saving here does not publish to Marie’s website.</p></nav><main><header class="wrap section"><h1>{page.data.title}</h1><p>{page.data.description}</p></header><Content/></main></body></html>

@@ -1,0 +1,13 @@
+---
+import StudioNode from '../components/StudioNode.astro';
+import {renderTree} from '../studio/render.mjs';
+import {paths} from '../studio/workspace.mjs';
+import {storeFor} from '../studio/server-store.mjs';
+if(!import.meta.env.DEV||!['127.0.0.1','localhost'].includes(Astro.url.hostname))return new Response('Local proof only',{status:403});
+const workspace=await storeFor(Astro.request).release(),resolved=paths(workspace);
+const requested=Astro.url.searchParams.get('path');const redirect=workspace.redirects.find(r=>r.from===requested);
+if(redirect)return Astro.redirect('/studio-release?path='+encodeURIComponent(resolved.get(redirect.page)),301);
+const page=requested?workspace.pages.find(p=>resolved.get(p.id)===requested):workspace.pages[0];
+if(!page)return new Response('This local page does not exist.',{status:404});
+---
+<html lang="en-GB"><head><meta charset="utf-8"/><title>{page.title} · local release</title></head><body><p>Local test release. The museum website is unchanged.</p><h1>{page.title}</h1><StudioNode node={renderTree(page.markdown)}/></body></html>

@@ -1,0 +1,30 @@
+{
+  "workspace": {
+    "version": 1,
+    "slug": "studio-proof",
+    "pages": [
+      {
+        "id": "managers",
+        "parent": null,
+        "segment": "managers",
+        "title": "Managers",
+        "markdown": "Explore Albion managers and their stories."
+      },
+      {
+        "id": "darren-moore",
+        "parent": "managers",
+        "segment": "darren-moore",
+        "title": "Darren Moore",
+        "markdown": "Birmingham-born Darren Moore joined Albion in September 2001.\n\n{% story heading=\"Before and at Albion\" text=\"He helped win promotions in 2002 and 2004.\" sourceLabel=\"Albion: Darren Moore in profile\" sourceURL=\"https://www.wba.co.uk/news/2018/may/darren-moore-in-profile\" /%}\n\n{% photograph heading=\"The Hawthorns\" photograph=\"hawthorns\" /%}"
+      },
+      {
+        "id": "local-child",
+        "parent": "managers",
+        "segment": "local-child",
+        "title": "Practice page",
+        "markdown": "This page exists only in the local studio proof."
+      }
+    ],
+    "redirects": []
+  }
+}

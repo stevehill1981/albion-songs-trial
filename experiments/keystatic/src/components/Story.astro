@@ -1,0 +1,6 @@
+---
+import TextPanel from '../../../../src/components/blocks/TextPanel.astro';
+const {heading='',text='',sourceLabel='',sourceURL}=Astro.props;
+const block={type:'text-panel',heading,paragraphs:[{parts:[{type:'text',text}]}],sources:sourceURL?[{label:sourceLabel||'Source',url:sourceURL}]:[]};
+---
+<TextPanel block={block}/>

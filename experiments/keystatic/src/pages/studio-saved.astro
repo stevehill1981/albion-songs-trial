@@ -1,0 +1,12 @@
+---
+import StudioNode from '../components/StudioNode.astro';
+import {renderTree} from '../studio/render.mjs';
+import {paths} from '../studio/workspace.mjs';
+import {storeFor} from '../studio/server-store.mjs';
+if(!import.meta.env.DEV||!['127.0.0.1','localhost'].includes(Astro.url.hostname))return new Response('Local proof only',{status:403});
+const row=await storeFor(Astro.request).saved(Number(Astro.url.searchParams.get('draft'))),workspace=row.document;
+const page=workspace.pages.find(p=>p.id===Astro.url.searchParams.get('page'))||workspace.pages[0];
+const tree=renderTree(page.markdown);
+Astro.response.headers.set('Cache-Control','no-store');
+---
+<html lang="en-GB"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><title>{page.title} · saved local test</title><link rel="stylesheet" href="/styles.css"/><link rel="stylesheet" href="/museum.css"/><link rel="stylesheet" href="/layout.css"/></head><body><nav class="wrap section"><p>Saved local test · {row.commit}</p>{workspace.pages.map(p=><p><a href={`?draft=${Astro.url.searchParams.get('draft')}&page=${p.id}`}>{p.title} · {paths(workspace).get(p.id)}</a></p>)}</nav><main><header class="wrap section"><h1>{page.title}</h1></header><StudioNode node={tree}/></main></body></html>

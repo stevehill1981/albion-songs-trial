@@ -1,7 +1,7 @@
 import {validateComponentPage} from '../../lib/component-preview.mjs';
 // No credential or network transport lives in this model. The caller provides a
 // bounded operation; a save acknowledges its captured document, never later text.
-export function createWorkflow({draft,call,onState=()=>{},onLoad=()=>{}}){
+export function createWorkflow({draft,call,onState=()=>{},onLoad=()=>{},validateDocument=validateComponentPage}){
  let state={pageId:draft.page.slug,ready:false,busy:false,baseRevision:null,draftNumber:null,commit:null,checked:null,reviewed:null,uncertain:false,blocked:false,publicationRevision:null,published:false,message:'Connect GitHub to load the saved page.'},generation=0;
  const emit=()=>onState({...state,dirty:draft.changed,canSave:state.ready&&!state.busy&&!state.uncertain&&!state.blocked&&!state.publicationRevision&&draft.changed,canReview:!!state.checked?.canPublish&&!state.busy&&!draft.changed&&!state.uncertain,canPublish:!!state.checked?.canPublish&&state.reviewed===state.commit&&!draft.changed&&!state.busy&&!state.uncertain});
  async function run(message,operation){
@@ -18,13 +18,13 @@ export function createWorkflow({draft,call,onState=()=>{},onLoad=()=>{}}){
   async load(draftNumber,pageId=state.pageId){return run('Loading saved content…',async current=>{
    state.ready=false;state.checked=null;state.reviewed=null;emit();
    const value=await call(draftNumber?{action:'open',draftNumber,pageId}:{action:'read',pageId});if(!current())return;
-   validateComponentPage(value.document);
+   validateDocument(value.document);
    if(value.document.slug!==pageId)throw Error('The saved content belongs to another page. Choose the page again.');
    draft.load(value.document);state={...state,pageId,ready:true,baseRevision:value.baseRevision||value.revision,draftNumber:draftNumber||null,commit:draftNumber?value.commit:null,checked:draftNumber?value:null,reviewed:null,uncertain:false,blocked:draftNumber?value.state!=='open':false,publicationRevision:value.publicationRevision||null,published:false,message:draftNumber?'Saved draft opened. Check its full-page preview before publishing.':'Published page loaded. Make a change, then save a draft.'};onLoad();
   });},
   async save(){
    if(!state.ready||state.busy||state.uncertain||state.blocked||state.publicationRevision||!draft.changed)return false;
-   try{validateComponentPage(draft.page);}catch{state.message='Complete the required fields before saving. Your edits remain here.';emit();return false;}
+   try{validateDocument(draft.page);}catch{state.message='Complete the required fields before saving. Your edits remain here.';emit();return false;}
    const snapshot=draft.page,args={action:'save',pageId:state.pageId,document:snapshot,baseRevision:state.baseRevision,...(state.draftNumber?{draftNumber:state.draftNumber,expectedCommit:state.commit}:{})};
    return run('Saving draft…',async current=>{
     const value=await call(args);if(!current())return;
