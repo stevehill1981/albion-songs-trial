@@ -1,3 +1,4 @@
+import {createDocumentCanvas} from './document-canvas.mjs';
 import {createDraft,blockEntries,editableFields,atPath} from './state.mjs';
 import {createInlineOverlay} from './inline-overlay.mjs';
 import {createWorkflow} from './workflow.mjs';
@@ -10,9 +11,12 @@ const status=document.querySelector('#preview-status'),form=document.querySelect
 let selected='blocks.0',token='',popup=null,authTimer=null,inline=null,pendingHtml=null;
 const $=id=>document.getElementById(id);
 let workflowState=null,pollTimer=null,pollCount=0,listPage=1,operationController=null;
-const workflow=data.workflow?createWorkflow({draft,call:editorCall,onState:renderWorkflow,onLoad:()=>{selected='blocks.0';pendingHtml=null;outline();select(selected);live.update(draft.page);}}):null;
+const workflow=data.workflow?createWorkflow({draft,call:editorCall,onState:renderWorkflow,onLoad:()=>{selected='blocks.0';pendingHtml=null;documentCanvas.render();$('document-page-title').textContent=draft.page.title;outline();select(selected);live.update(draft.page);}}):null;
 const label=block=>block.heading||({'intro':'Page introduction','section':'Section','photograph':'Photograph','text-panel':'Text and sources','manager-performance':'Recorded performance'}[block.type]);
+const documentCanvas=createDocumentCanvas({root:$('document-content'),getPage:()=>draft.page,photographs:data.photographs,onEdit:(path,field,value)=>{draft.set(path,field,value);changed();},onCommit:()=>draft.commit(),onSelect:path=>select(path),onDetails:path=>{select(path);$('block-fields').open=true;$('block-fields').scrollIntoView({block:'nearest',behavior:'instant'});$('block-fields').querySelector('summary').focus({preventScroll:true});}});
+function updatePageNavigation(){for(const button of document.querySelectorAll('#page-list [data-page-id]')){button.disabled=!token||!workflowState?.ready||workflowState.busy;button.setAttribute('aria-current',button.dataset.pageId===workflowState?.pageId?'page':'false');}}
 function buttons(){
+ documentCanvas.setReady(!workflow||!!workflowState?.ready);updatePageNavigation();
  $('undo').disabled=!draft.canUndo||!!workflow&&!workflowState?.ready;$('redo').disabled=!draft.canRedo||!!workflow&&!workflowState?.ready;$('reset').disabled=!!workflow&&!workflowState?.ready;
  if(workflow){$('draft-status').textContent=!workflowState?.ready?'Connect GitHub to load the saved page':draft.changed?'Unsaved changes':workflowState.draftNumber?'Saved draft':'Published version';return;}
  $('draft-status').textContent=draft.changed?'Practice changes only · not saved to the museum':'Original practice copy';
@@ -33,12 +37,12 @@ function select(path,{focus=false}={}){
   form.append(wrap);
  }
  for(const button of $('outline').querySelectorAll('button'))button.setAttribute('aria-current',String(button.dataset.path===path));
- markSelection();if(focus)$('block-fields').focus();
+ documentCanvas.select(path);markSelection();if(focus)$('block-fields').focus();
 }
 function outline(){
  const current=draft.page;$('outline').replaceChildren();
  for(const row of blockEntries(current)){
-  const button=document.createElement('button');button.type='button';button.dataset.path=row.path;if(row.parent)button.dataset.child='';button.textContent=label(row.block);button.setAttribute('aria-current',String(row.path===selected));button.addEventListener('click',()=>{select(row.path);scrollToBlock(row.path);});$('outline').append(button);
+  const button=document.createElement('button');button.type='button';button.dataset.path=row.path;if(row.parent)button.dataset.child='';button.textContent=label(row.block);button.setAttribute('aria-current',String(row.path===selected));button.addEventListener('click',()=>{select(row.path);documentCanvas.select(row.path,{scroll:true});scrollToBlock(row.path);});$('outline').append(button);
  }
 }
 function refreshLabels(){
@@ -83,7 +87,7 @@ const live=createLivePreview({request:async(page,signal)=>{
  status.textContent=update.message+(update.status==='error'?' The last successful Astro preview remains visible.':'');
  if(update.html!==undefined)putHtml(update.html);
 }});
-function changed(){workflow?.changed();pendingHtml=null;refreshLabels();buttons();live.update(draft.page);}
+function changed(){documentCanvas.refresh();workflow?.changed();pendingHtml=null;refreshLabels();buttons();live.update(draft.page);}
 function inlineNode(path,field){
  const node=nodeFor(path);if(!node)return null;
  if(field.inline==='heading')return node.querySelector('h1,h2');
@@ -120,13 +124,13 @@ $('sign-in').addEventListener('click',()=>{
  clearTimeout(authTimer);authTimer=setTimeout(()=>{popup?.close();popup=null;status.textContent='Sign-in timed out. Choose Connect GitHub to retry.';},600000);
 });
 $('sign-out').addEventListener('click',()=>{if(inline)finishInline();token='';operationController?.abort();clearTimeout(pollTimer);workflow?.disconnect();live.dispose();$('sign-out').hidden=true;$('sign-in').hidden=false;status.textContent='Disconnected. Reload to connect again. Saved drafts remain available after sign-in.';});
-for(const action of ['undo','redo','reset'])$(action).addEventListener('click',()=>{if(inline)finishInline();draft.commit();draft[action]();outline();select(selected);changed();});
+for(const action of ['undo','redo','reset'])$(action).addEventListener('click',()=>{if(inline)finishInline();draft.commit();draft[action]();documentCanvas.refresh();outline();select(selected);changed();});
 for(const width of ['desktop','phone'])$(width).addEventListener('click',()=>{$('preview-viewport').classList.toggle('phone',width==='phone');for(const id of ['desktop','phone'])$(id).setAttribute('aria-pressed',String(id===width));});
 window.addEventListener('beforeunload',event=>{if(draft.changed){event.preventDefault();event.returnValue='';}});
 window.addEventListener('pagehide',()=>{inline?.overlay?.destroy();inline=null;token='';operationController?.abort();clearTimeout(pollTimer);workflow?.disconnect();popup?.close();clearTimeout(authTimer);live.dispose();window.removeEventListener('message',receive);});
 frame.addEventListener('load',()=>{
- const doc=frame.contentDocument;doc.body.append(doc.importNode($('initial-render').content,true));annotate();outline();select(selected);buttons();
- status.textContent='Actual Astro components · choose a block to explore. Connect GitHub to render unsaved changes.';
+ const doc=frame.contentDocument;doc.body.append(doc.importNode($('initial-render').content,true));annotate();documentCanvas.render();outline();select(selected);buttons();
+ status.textContent='Website preview uses actual Astro components. Connect GitHub to preview unsaved writing.';
  doc.addEventListener('click',event=>{
   if(event.target.closest('summary'))return;
   const block=event.target.closest('[data-editor-block]');if(!block)return;
@@ -165,7 +169,7 @@ function renderWorkflow(state){
  $('publish-draft').disabled=!state.canPublish;
  $('saved-preview').hidden=!state.canReview;
  if(state.canReview)$('saved-preview').href=state.checked.previewUrl;else $('saved-preview').removeAttribute('href');
- $('fields').inert=!state.ready;
+ $('fields').inert=!state.ready;documentCanvas.setReady(state.ready);updatePageNavigation();
  buttons();
  if(state.ready){const url=new URL(location.href);url.searchParams.set('page',state.pageId);if(state.draftNumber)url.searchParams.set('draft',state.draftNumber);else url.searchParams.delete('draft');history.replaceState(null,'',url);}
 }
@@ -177,7 +181,7 @@ async function loadDocument(number,pageId){
  const requested=number??Number(params.get('draft'));
  const requestedPage=pageId??(workflow.state.ready?workflow.state.pageId:params.get('page')||data.page.slug);
  if(await workflow.load(Number.isSafeInteger(requested)&&requested>0?requested:undefined,requestedPage)){
-  $('saved-drafts').hidden=true;if(workflow.state.draftNumber)startPolling();
+  $('saved-drafts').hidden=true;document.body.classList.remove('pages-open');$('show-pages').setAttribute('aria-expanded','false');if(workflow.state.draftNumber)startPolling();
  }
 }
 function startPolling(){clearTimeout(pollTimer);pollCount=0;schedulePoll();}
@@ -194,6 +198,8 @@ async function listDrafts(page=1){
  $('more-drafts').hidden=!value.hasMore;
 }
 if(workflow){
+ $('page-search').addEventListener('input',()=>{const query=$('page-search').value.trim().toLocaleLowerCase('en-GB');let visible=0;for(const button of $('page-list').querySelectorAll('[data-page-id]')){button.hidden=!button.textContent.toLocaleLowerCase('en-GB').includes(query);if(!button.hidden)visible++;}$('no-pages').hidden=visible>0;});
+ for(const button of $('page-list').querySelectorAll('[data-page-id]'))button.addEventListener('click',()=>void loadDocument(0,button.dataset.pageId));
  $('page-choice').addEventListener('change',async()=>{const choice=$('page-choice').value;await loadDocument(0,choice);$('page-choice').value=workflow.state.pageId;});
  $('open-published').addEventListener('click',()=>void loadDocument(0));
  $('save-draft').addEventListener('click',async()=>{if(inline)finishInline();draft.commit();if(await workflow.save())startPolling();});
@@ -204,4 +210,8 @@ if(workflow){
  $('publish-draft').addEventListener('click',async()=>{if(inline)finishInline();if(await workflow.publish())startPolling();});
  document.addEventListener('visibilitychange',()=>{if(document.hidden)clearTimeout(pollTimer);});
 }
+$('show-pages').addEventListener('click',()=>{const open=document.body.classList.toggle('pages-open');$('show-pages').setAttribute('aria-expanded',String(open));});
+$('toggle-preview').addEventListener('click',()=>{const hidden=document.body.classList.toggle('preview-hidden');$('toggle-preview').textContent=hidden?'Show preview':'Hide preview';$('toggle-preview').setAttribute('aria-pressed',String(!hidden));documentCanvas.resize();});
+for(const view of ['write','preview'])$('view-'+view).addEventListener('click',()=>{document.body.dataset.workspaceView=view;for(const id of ['write','preview'])$('view-'+id).setAttribute('aria-pressed',String(id===view));documentCanvas.resize();});
+const resizeCanvas=()=>documentCanvas.resize();window.addEventListener('resize',resizeCanvas);window.addEventListener('pagehide',()=>window.removeEventListener('resize',resizeCanvas));
 frame.srcdoc='<!doctype html><html lang="en-GB"><head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/museum.css"><link rel="stylesheet" href="/albion.css"><link rel="stylesheet" href="/songs.css"><link rel="stylesheet" href="/layout.css"><style>body{margin:0}[data-editor-block]{position:relative;cursor:pointer}[data-editor-block]:hover{outline:2px dashed #486d9e;outline-offset:-3px}[data-selected="true"]{outline:3px solid #486d9e;outline-offset:-3px}[contenteditable]{outline:3px solid #b55b00!important;cursor:text;white-space:pre-wrap;text-transform:none;caret-color:currentColor}::selection{background:#ccdcf5;color:#142647}:focus-visible{outline:3px solid #b55b00;outline-offset:3px}a{pointer-events:none}</style></head><body></body></html>';

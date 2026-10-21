@@ -19,9 +19,13 @@ export async function verifyVisualEditor({html,context,source,readAsset,workflow
  assert(!client.includes('localStorage')&&!client.includes('sessionStorage'),'Do not persist the sign-in credential.');
  assert(html.includes('sandbox="allow-same-origin"')&&!html.includes('allow-scripts'));
  assert.equal(data.workflow,workflow);
+ assert(html.includes('class="document-mode"'),'The document workspace is missing.');
+ for(const id of ['document-content','document-panel','view-write','view-preview','toggle-preview'])assert(html.includes(`id="${id}"`),'Missing document workspace control: '+id);
+ assert(client.includes('data-document-block'),'The client document renderer is missing.');
  if(workflow){
   assert.deepEqual(data.pages.map(page=>page.id),EDITOR_PAGES,'The page chooser must match the endpoint rollout boundary.');
-  for(const item of data.pages){const source=validateComponentPage(JSON.parse(await readFile(new URL(`../content/pages/${item.id}.json`,import.meta.url),'utf8')));assert.equal(item.title,source.title);assert(html.includes(`<option value="${item.id}">`),'A supported page is absent from the chooser.');}
+  assert(html.includes('id="document-content" aria-label="Document content" inert'),'The writing canvas must wait for an authenticated load.');
+  for(const item of data.pages){const source=validateComponentPage(JSON.parse(await readFile(new URL(`../content/pages/${item.id}.json`,import.meta.url),'utf8')));assert.equal(item.title,source.title);assert(html.includes(`<option value="${item.id}">`),'A supported page is absent from the chooser.');assert(html.includes(`data-page-id="${item.id}" disabled`),'A page navigation button is missing or prematurely enabled.');}
   assert.deepEqual(data.page,source,'The saving editor must seed the real practice page losslessly.');
   for(const id of ['save-draft','open-drafts','check-draft','saved-preview','publish-draft'])assert(html.includes(`id="${id}"`),'Missing workflow control: '+id);
   assert(html.includes('id="fields" onsubmit="return false" inert'),'Editing must wait for a fresh authenticated read.');
@@ -37,6 +41,8 @@ export async function verifyVisualEditorBuild(){
  await verifyVisualEditor(editor);
  const missingPage=editor.html.replace('<option value="managers">','<option value="missing">');
  assert.notEqual(missingPage,editor.html);await assert.rejects(()=>verifyVisualEditor({...editor,html:missingPage}));
+ const unlockedCanvas=editor.html.replace('aria-label="Document content" inert','aria-label="Document content"');
+ assert.notEqual(unlockedCanvas,editor.html);await assert.rejects(()=>verifyVisualEditor({...editor,html:unlockedCanvas}));
  const enabled=editor.html.replace('onsubmit="return false" inert','onsubmit="return false"');
  assert.notEqual(enabled,editor.html);await assert.rejects(()=>verifyVisualEditor({...editor,html:enabled}));
  // The heading in the editor chrome is not the source: corrupt the actual JSON.
