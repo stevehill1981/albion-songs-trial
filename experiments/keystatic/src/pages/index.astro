@@ -1,0 +1,5 @@
+---
+import {getCollection} from 'astro:content';
+const pages=await getCollection('pages');
+---
+<html lang="en-GB"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><title>Keystatic local comparison</title></head><body><h1>Throstle &amp; Stripes editor comparison</h1><p>Disposable local content. Nothing here publishes to the museum.</p><p><a href="/keystatic">Open Keystatic</a></p><ul>{pages.map(page=><li><a href={`/${page.id}`}>{page.data.title}</a></li>)}</ul></body></html>

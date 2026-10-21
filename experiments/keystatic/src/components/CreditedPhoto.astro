@@ -1,0 +1,7 @@
+---
+import Photograph from '../../../../src/components/blocks/Photograph.astro';
+import hawthorns from '../../../../content/photographs/hawthorns.json';
+import team from '../../../../content/photographs/team-1888.json';
+const {heading='',photograph='hawthorns'}=Astro.props;
+---
+<Photograph block={{type:'photograph',heading,photograph}} context={{photographs:{hawthorns,'team-1888':team}}}/>
