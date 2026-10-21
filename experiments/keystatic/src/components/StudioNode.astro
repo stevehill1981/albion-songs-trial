@@ -1,0 +1,10 @@
+---
+import Story from './Story.astro';
+import CreditedPhoto from './CreditedPhoto.astro';
+const {node}=Astro.props;
+const allowed=new Set(['article','p','h1','h2','h3','h4','h5','h6','ul','ol','li','a','strong','em','s','blockquote','pre','code','br','hr','table','thead','tbody','tr','th','td']);
+const name=typeof node==='object'&&node!==null?node.name:null;
+if(name&&!allowed.has(name)&&!['studio-story','studio-photo'].includes(name))throw Error('Unsupported preview element.');
+const Tag=name;
+---
+{Array.isArray(node)?node.map(child=><Astro.self node={child}/>):typeof node==='string'||typeof node==='number'?node:name==='studio-story'?<Story {...node.attributes}/>:name==='studio-photo'?<CreditedPhoto {...node.attributes}/>:name?<Tag {...node.attributes}>{node.children.map(child=><Astro.self node={child}/>)}</Tag>:null}

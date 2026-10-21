@@ -1,0 +1,15 @@
+---
+import StudioNode from '../components/StudioNode.astro';
+import {renderTree} from '../studio/render.mjs';
+import {localJSON} from '../studio/local-request.mjs';
+import {validateWorkspace} from '../studio/workspace.mjs';
+export const prerender=false;export const partial=true;
+const request=Astro.request;
+if(!import.meta.env.DEV)return new Response('Local proof only',{status:403});
+if(request.method!=='POST'||request.headers.get('Origin')!==Astro.url.origin||!['127.0.0.1','localhost'].includes(Astro.url.hostname))return new Response('Open the local studio to preview.',{status:403});
+let body;try{body=await localJSON(request,import.meta.env.DEV);validateWorkspace(body.workspace);if(Object.keys(body).length!==2)throw Error();}catch{return new Response('Complete the site fields to preview.',{status:422});}
+const page=body.workspace.pages.find(p=>p.id===body.pageId);if(!page)return new Response('Choose an existing page.',{status:422});
+let tree;try{tree=renderTree(page.markdown);}catch(error){return new Response(error.message,{status:422});}
+Astro.response.headers.set('Cache-Control','no-store');Astro.response.headers.set('X-Studio-Renderer','astro-components');
+---
+<link rel="stylesheet" href="/styles.css"/><link rel="stylesheet" href="/museum.css"/><link rel="stylesheet" href="/layout.css"/><main><header class="wrap section"><h1>{page.title}</h1></header><StudioNode node={tree}/></main>

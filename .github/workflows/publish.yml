@@ -25,7 +25,11 @@ jobs:
         if: startsWith(github.ref_name, 'cms/')
         run: node scripts/check-editorial-diff.mjs
       - run: npm ci --no-fund --no-audit
+      - name: Install isolated studio test dependencies
+        run: npm ci --prefix experiments/keystatic --no-fund --no-audit
       - run: npm test
+      - name: Build the isolated studio with hosted writes disabled
+        run: npm run build:github --prefix experiments/keystatic
       - run: npm run build
       - name: Publish an exact draft preview or production revision
         env:

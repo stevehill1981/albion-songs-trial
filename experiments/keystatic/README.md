@@ -63,3 +63,41 @@ Official documentation:
 - https://keystatic.com/docs/content-components
 - https://keystatic.com/docs/github-mode
 - https://keystatic.com/docs/recipes/real-time-previews
+
+## Integrated Site studio: local proof
+
+The approved integration is available at `/studio`, which opens a singleton in
+Keystatic's full app. A standalone document field has no public app context; the
+singleton supplies that context without private imports or vendor patches.
+
+The studio adds a page tree with stable IDs, parent relationships and short
+addresses. Moving a parent moves its children in one workspace snapshot and
+retains old addresses as redirects. Invalid addresses, cycles, orphans and
+collisions are rejected. The fixture supports sourced story and credited photo
+blocks, rather than claiming conversion of the entire museum.
+
+Unsaved text renders through the museum's real Astro components alongside the
+Keystatic document. The preview frame cannot run scripts. Save keeps the working
+copy; **Check saved draft** renders every page into an immutable snapshot.
+**Open checked preview** reviews that exact snapshot. **Publish local test** uses
+the existing publication state machine and updates one local release atomically.
+Any later edit or rejected move cancels the review. Reopening an older draft
+cannot overwrite newer typing, and uncertain writes block repeated publication.
+
+Browser checks passed child creation, parent moves, live unsaved preview,
+save/reopen, post-review edit rejection and exact local publication. Old addresses
+redirected to moved pages; source links and photo credits survived. Backend tests
+reject forged revisions, stale release bases and concurrent conflicting releases.
+A rejected reserved address was visibly restored to the accepted value while the
+publication control became disabled.
+
+This proves a **local integration**, not remote editing for Marie. GitHub App
+sign-in, fresh hosted permissions, atomic GitHub commits, hosted preview checks,
+publication and free-plan CPU/quotas remain acceptance work. The proof's own write
+endpoint returns HTTP 403 in hosted builds; `npm run build:github` executes the
+compiled endpoint to verify that boundary. No service, dependency, paid plan or
+museum content was added or changed by this proof.
+
+Run `npm test` here for the fixture tests, or from the repository root for the
+combined suite. Evidence is outside the deployment tree at
+`../../../verification-evidence/keystatic-studio-proof-2026-10-21/`.

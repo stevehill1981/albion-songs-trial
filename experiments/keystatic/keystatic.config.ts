@@ -1,8 +1,11 @@
-import {config,fields,collection} from '@keystatic/core';
+import {seedWorkspace,validateWorkspace} from './src/studio/workspace.mjs';
+import Studio from './src/studio/Studio.jsx';
+import {config,fields,collection,singleton} from '@keystatic/core';
 import {block} from '@keystatic/core/content-components';
 export default config({
  storage:import.meta.env.PUBLIC_KEYSTATIC_TRIAL_GITHUB==='1'?{kind:'github',repo:'stevehill1981/albion-songs-trial',branchPrefix:'keystatic-trial/'}:{kind:'local'},
- ui:{brand:{name:'Throstle & Stripes · local trial'},navigation:{'Your website':['pages','collections']}},
+ singletons:{studio:singleton({label:'Site studio',path:'content/studio-proof',format:{data:'json'},schema:{workspace:{kind:'form',label:'Site studio',defaultValue:seedWorkspace,parse:value=>validateWorkspace(value||seedWorkspace()),serialize:value=>({value}),validate:validateWorkspace,reader:{parse:validateWorkspace},Input:Studio}}})},
+ ui:{brand:{name:'Throstle & Stripes · local trial'},navigation:{'Your website':['studio','pages','collections']}},
  collections:{
   pages:collection({label:'Pages',slugField:'title',path:'content/pages/**',previewUrl:'/{slug}',entryLayout:'content',format:{contentField:'body'},
    schema:{

@@ -2,6 +2,20 @@
   "name": "albion-keystatic-comparison",
   "private": true,
   "type": "module",
-  "scripts": {"dev":"astro dev --host 127.0.0.1 --port 54943", "build":"astro build"},
-  "dependencies": {"astro":"7.4.2","@keystatic/core":"0.6.9","@keystatic/astro":"6.0.0","@astrojs/react":"7.1.1","@astrojs/markdoc":"2.1.1","@astrojs/cloudflare":"14.4.2","react":"19.3.1","react-dom":"19.3.1"}
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 54943",
+    "build": "astro build",
+    "test": "node --test",
+    "build:github": "KEYSTATIC_CLOUDFLARE_BUILD=1 PUBLIC_KEYSTATIC_TRIAL_GITHUB=1 astro build && node scripts/check-hosted.mjs"
+  },
+  "dependencies": {
+    "astro": "7.4.2",
+    "@keystatic/core": "0.6.9",
+    "@keystatic/astro": "6.0.0",
+    "@astrojs/react": "7.1.1",
+    "@astrojs/markdoc": "2.1.1",
+    "@astrojs/cloudflare": "14.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  }
 }
