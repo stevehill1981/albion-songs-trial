@@ -70,3 +70,17 @@ test('a green static publication cannot conceal an absent or stale Astro runtime
  await waitForPreviewRuntime(origin,revision,{...options,fetcher:async(_url,request)=>make(request.method==='POST'?401:405)});
  for(const fetcher of [async()=>new Response('static HTML'),async()=>make(401),async(_url,request)=>make(request.method==='POST'?401:405,'stale')])await assert.rejects(waitForPreviewRuntime(origin,revision,{...options,fetcher}),/missing, stale/);
 });
+
+test('one recursive page validation retains nested rejection and default-field behaviour',async()=>{
+ const {validatePage}=await import('../src/lib/blocks.mjs');
+ const page=await fixture();const missingDefaults=structuredClone(page);
+ delete missingDefaults.blocks[1].columns[0].blocks[0].sources;
+ assert.deepEqual(validateComponentPage(structuredClone(missingDefaults)),validatePage(structuredClone(missingDefaults)));
+ const mutations=[
+  child=>{child.sources=[{label:'Unsafe',url:'javascript:alert(1)'}];},
+  child=>{child.paragraphs[0].parts[0].text='';},
+  child=>{child.extra='not a supported field';},
+  child=>{child.anchor='../outside';},
+ ];
+ for(const mutate of mutations){const invalid=structuredClone(page);mutate(invalid.blocks[1].columns[0].blocks[0]);assert.throws(()=>validatePage(structuredClone(invalid)));assert.throws(()=>validateComponentPage(structuredClone(invalid)));}
+});

@@ -1,3 +1,4 @@
+import {draftSnapshot} from '../scripts/test-support/draft-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -7,6 +8,7 @@ const token='unit_test_github_credential_only';
 const fixture=JSON.parse(await readFile(new URL('../content/pages/component-preview-trial.json',import.meta.url),'utf8'));
 const basePage=structuredClone(fixture);basePage.slug='museum-test';basePage.blocks[0].heading='Museum draft';
 function harness(){
+ let transformSnapshot=value=>value;
  const calls=[];let previewTarget="https://1234abcd-throstle-and-stripes.steve-e85.workers.dev",allowed=true,main=MAIN,head=HEAD,checked=true,published=MAIN,missingPreview=false,extraFile=false,merged=false,existing=null,managers=[{type:"file",name:"darren-moore.json"}];
  const pr=()=>({number:17,state:merged?'closed':'open',changed_files:extraFile?2:1,head:{sha:head,ref:'cms/mcp/pages/museum-test/1234abcd',repo:{full_name:REPOSITORY}},base:{ref:'main'}});
  const fetcher=async(url,init={})=>{
@@ -14,6 +16,10 @@ function harness(){
   if(url.startsWith('https://api.github.com/')){
    assert.equal(init.headers.Authorization,`Bearer ${token}`);assert.equal(init.redirect,'manual');
    const path=new URL(url).pathname.replace(`/repos/${REPOSITORY}`,'');const method=init.method||'GET';
+   if(path==='/graphql'){
+    assert.equal(method,'POST');const body=JSON.parse(init.body);assert.match(body.query,/^query MuseumDraft/);assert.deepEqual(body.variables,{number:17});
+    return Response.json(transformSnapshot(draftSnapshot({repository:{permissions:{push:allowed}},main,head,pr:pr(),files:[{filename:'content/pages/museum-test.json',status:'added'},...(extraFile?[{filename:'package.json',status:'modified'}]:[])],checked,previewTarget})));
+   }
    if(path==='')return Response.json({permissions:{push:allowed}});
    if(path==='/git/ref/heads/main')return Response.json({object:{sha:main}});
    if(path.startsWith('/git/ref/heads/cms/'))return Response.json({object:{sha:head}});
@@ -39,7 +45,7 @@ function harness(){
   if(url.endsWith('/version.json'))return Response.json({revision:url.includes('1234abcd-')?HEAD:published});
   return missingPreview?new Response('missing',{status:404}):new Response(`<meta name="trial-revision" content="${HEAD}">`);
  };
- return{client:createMuseumClient(token,fetcher),calls,set(values){({previewTarget=previewTarget,allowed=allowed,main=main,head=head,checked=checked,published=published,missingPreview=missingPreview,extraFile=extraFile,existing=existing,managers=managers}=values);}};
+ return{client:createMuseumClient(token,fetcher),calls,transformSnapshot(fn){transformSnapshot=fn;},set(values){({previewTarget=previewTarget,allowed=allowed,main=main,head=head,checked=checked,published=published,missingPreview=missingPreview,extraFile=extraFile,existing=existing,managers=managers}=values);}};
 }
 test('museum tools fail closed on missing push access and never accept arbitrary repository paths',async()=>{
  const h=harness();h.set({allowed:false});await assert.rejects(h.client.save({kind:'pages',id:'museum-test',document:basePage,baseRevision:MAIN}),/editor access/);assert.equal(h.calls.length,1);
@@ -167,4 +173,94 @@ test('publication accepts only the named museum version host',async()=>{
   'https://1234abcd-throstle-and-stripes.steve-e85.workers.dev/untrusted'
  ]){const h=harness();h.set({previewTarget});const result=await h.client.status({draftNumber:17});assert.equal(result.canPublish,false,previewTarget);assert.equal(result.previewOrigin,null);}
  const h=harness();assert.equal((await h.client.status({draftNumber:17})).canPublish,true);
+});
+
+test('record byte decoding preserves multilingual content and rejects malformed source encoding',async()=>{
+ const document=structuredClone(fixture);document.title='Marie’s Albion — café, 日本語 and ⚽';
+ const bytes=Buffer.from(JSON.stringify(document),'utf8');
+ const clientFor=(content,size=bytes.length)=>createMuseumClient(token,async(url,options)=>{
+  assert.equal(options.method,'GET');
+  const path=new URL(url).pathname.replace(`/repos/${REPOSITORY}`,'');
+  if(path==='')return Response.json({permissions:{push:true}});
+  if(path==='/git/ref/heads/main')return Response.json({object:{sha:MAIN}});
+  assert.equal(path,'/contents/content/pages/component-preview-trial.json');
+  return Response.json({encoding:'base64',size,sha:HEAD,content});
+ });
+ const wrapped=bytes.toString('base64').match(/.{1,60}/g).join('\n');
+ assert.deepEqual((await clientFor(wrapped).read({kind:'pages',id:'component-preview-trial'})).document,document);
+ for(const content of ['@@@@',Buffer.from([0xc3,0x28]).toString('base64'),Buffer.from([0xc0,0x80]).toString('base64')])await assert.rejects(()=>clientFor(content).read({kind:'pages',id:'component-preview-trial'}));
+ await assert.rejects(()=>clientFor(wrapped,MAX_DOCUMENT_BYTES+1).read({kind:'pages',id:'component-preview-trial'}));
+});
+
+test('combined draft lookup rejects partial data, truncated scope and mismatched heads before publication',async t=>{
+ const cases={
+  'GraphQL error with otherwise complete data':value=>{value.errors=[{message:'private upstream detail'}];},
+  'missing repository':value=>{value.data.repository=null;},
+  'unknown permission':value=>{value.data.repository.viewerPermission=null;},
+  'read-only permission':value=>{value.data.repository.viewerPermission='READ';},
+  'missing main revision':value=>{value.data.repository.ref=null;},
+  'missing merge state':value=>{delete value.data.repository.pullRequest.merged;},
+  'inconsistent merge state':value=>{value.data.repository.pullRequest.merged=true;},
+  'missing pull request':value=>{value.data.repository.pullRequest=null;},
+  'truncated files':value=>{value.data.repository.pullRequest.files.pageInfo.hasNextPage=true;},
+  'missing file connection':value=>{value.data.repository.pullRequest.files=null;},
+  'renamed content':value=>{value.data.repository.pullRequest.files.nodes[0].changeType='RENAMED';},
+  'foreign content':value=>{value.data.repository.pullRequest.files.nodes[0].path='package.json';},
+  'foreign repository':value=>{value.data.repository.pullRequest.headRepository.nameWithOwner='user_a/other';},
+  'foreign base branch':value=>{value.data.repository.pullRequest.baseRefName='other';},
+  'truncated commits':value=>{value.data.repository.pullRequest.history.pageInfo.hasNextPage=true;},
+  'empty history':value=>{value.data.repository.pullRequest.history.nodes=[];},
+  '100 commits':value=>{const h=value.data.repository.pullRequest.history;h.nodes=Array.from({length:100},()=>h.nodes[0]);},
+  'merge as initial commit':value=>{value.data.repository.pullRequest.history.nodes[0].commit.parents.nodes.push({oid:NEXT});},
+  'truncated parents':value=>{value.data.repository.pullRequest.history.nodes[0].commit.parents.pageInfo.hasNextPage=true;},
+  'malformed base':value=>{value.data.repository.pullRequest.history.nodes[0].commit.parents.nodes[0].oid='invalid';},
+  'history head disagreement':value=>{value.data.repository.pullRequest.history.nodes[0].commit.oid=NEXT;},
+  'check commit disagreement':value=>{value.data.repository.pullRequest.latest.nodes[0].commit.oid=NEXT;},
+  'missing latest commit':value=>{value.data.repository.pullRequest.latest.nodes=[];},
+  'truncated checks':value=>{value.data.repository.pullRequest.latest.nodes[0].commit.statusCheckRollup.contexts.pageInfo.hasNextPage=true;},
+ };
+ for(const [name,change]of Object.entries(cases))await t.test(name,async()=>{
+  const h=harness();h.transformSnapshot(value=>{change(value);return value;});
+  await assert.rejects(h.client.status({draftNumber:17}));
+  await assert.rejects(h.client.publish({draftNumber:17,expectedCommit:HEAD,baseRevision:MAIN,confirmation:'Publish this previewed revision'}));
+  assert(h.calls.every(call=>call.url==='https://api.github.com/graphql'),'Rejected metadata must not trigger writes or public preview reads');
+ });
+});
+test('combined lookup uses fresh permission, bounded fixed reads and unchanged status fields',async()=>{
+ const h=harness();const status=await h.client.status({draftNumber:17});
+ assert.deepEqual(status,{draftNumber:17,kind:'pages',id:'museum-test',state:'open',commit:HEAD,baseRevision:MAIN,checksPassed:true,previewOrigin:'https://1234abcd-throstle-and-stripes.steve-e85.workers.dev',validation:'success',deployment:'success',previewVerified:true,previewUrl:'https://1234abcd-throstle-and-stripes.steve-e85.workers.dev/museum-test',publicUrl:'https://throstle-and-stripes.steve-e85.workers.dev/museum-test',canPublish:true});
+ assert.equal(h.calls.length,3,'One GitHub snapshot plus two independently served preview checks');
+ h.set({allowed:false});await assert.rejects(h.client.publish({draftNumber:17,expectedCommit:HEAD,baseRevision:MAIN,confirmation:'Publish this previewed revision'}),/access/);
+ assert.equal(h.calls.length,4);assert(!h.calls.some(call=>call.url.endsWith('/merge')));
+ const query=h.calls[0].body.query;assert(!/mutation|\$owner|\$repo/.test(query));
+ for(const permission of ['WRITE','MAINTAIN','ADMIN']){const owner=harness();owner.transformSnapshot(value=>{value.data.repository.viewerPermission=permission;return value;});assert.equal((await owner.client.status({draftNumber:17})).canPublish,true);}
+});
+test('missing checks and newer reruns cannot inherit an older successful preview',async()=>{
+ for(const kind of ['null','missing','pending-build','pending-deploy','ambiguous','invalid-time']){
+  const h=harness();h.transformSnapshot(value=>{
+   const commit=value.data.repository.pullRequest.latest.nodes[0].commit,contexts=commit.statusCheckRollup.contexts;
+   if(kind==='null')commit.statusCheckRollup=null;
+   else if(kind==='missing')contexts.nodes=[];
+   else{
+    const old=contexts.nodes[kind==='pending-deploy'?0:1],rerun={...old,createdAt:'2026-10-21T11:00:00Z',startedAt:kind==='ambiguous'?old.startedAt:kind==='invalid-time'?'invalid':'2026-10-21T11:00:00Z',state:'PENDING',status:'IN_PROGRESS',conclusion:null};
+    contexts.nodes.push(rerun);
+   }return value;
+  });
+  if(['ambiguous','invalid-time'].includes(kind))await assert.rejects(h.client.status({draftNumber:17}));
+  else assert.equal((await h.client.status({draftNumber:17})).canPublish,false);
+  await assert.rejects(h.client.publish({draftNumber:17,expectedCommit:HEAD,baseRevision:MAIN,confirmation:'Publish this previewed revision'}));
+  assert(!h.calls.some(call=>call.url.endsWith('/merge')));
+ }
+});
+
+test('merged draft status retains its exact publication revision and cannot publish again',async()=>{
+ const h=harness();h.transformSnapshot(value=>{const pr=value.data.repository.pullRequest;pr.state='MERGED';pr.merged=true;pr.mergeCommit={oid:MERGED};return value;});
+ const result=await h.client.status({draftNumber:17});assert.equal(result.state,'closed');assert.equal(result.publicationRevision,MERGED);assert.equal(result.canPublish,false);
+ await assert.rejects(h.client.publish({draftNumber:17,expectedCommit:HEAD,baseRevision:MAIN,confirmation:'Publish this previewed revision'}));assert(!h.calls.some(c=>c.url.endsWith('/merge')));
+});
+test('GitHub snapshot HTTP failures and oversized responses stop without leaking upstream details',async()=>{
+ for(const response of [new Response(token,{status:403}),new Response(JSON.stringify({errors:[{message:token}]})),new Response('x'.repeat(2*1024*1024+1))]){
+  let calls=0;const client=createMuseumClient(token,async(url,init)=>{calls++;assert.equal(url,'https://api.github.com/graphql');assert.equal(init.method,'POST');assert(init.signal);return response;});
+  await assert.rejects(client.status({draftNumber:17}),error=>!error.message.includes(token));assert.equal(calls,1);
+ }
 });
