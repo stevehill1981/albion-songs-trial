@@ -79,3 +79,6 @@ const {verifyEditorBuild,verifyEditorNegativeControls}=await import('./verify-ed
 const editor=await verifyEditorBuild();
 const rejected=await verifyEditorNegativeControls();
 console.log(`PASS: source-built main editor has ${editor.assets} exact assets, licence notices and both image encoders; obsolete editor absent; ${rejected} negative controls rejected.`);
+
+const {verifyVisualEditorBuild}=await import('./verify-visual-editor.mjs');
+await verifyVisualEditorBuild();

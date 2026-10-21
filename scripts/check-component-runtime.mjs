@@ -7,6 +7,7 @@ import {resolve,join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
 import {renderPageContent} from '../src/lib/blocks.mjs';
+import {createDraft} from '../src/editor/visual/state.mjs';
 const directory=resolve('.cloudflare/output/v0/workers/default');
 const config=JSON.parse(await readFile(join(directory,'worker.config.json'),'utf8'));
 const context=JSON.parse(await readFile('src/generated/component-context.json','utf8'));
@@ -40,6 +41,10 @@ const norm=html=>html.replace(/\s+/g,' ').trim();
  }
  for(const id of ['darren-moore','steve-clarke','tony-mowbray'])variants.push(JSON.parse(await readFile(`content/pages/manager-${id}.json`,'utf8')));
  const switched=structuredClone(variants.at(-1));switched.blocks[1].manager='darren-moore';variants.push(switched);
+ const visual=createDraft(JSON.parse(await readFile('content/pages/manager-darren-moore.json','utf8')));
+ visual.set('blocks.0','heading','Practice <heading>');visual.commit();
+ visual.set('blocks.2','paragraphs.0.parts.0.text','An unsaved practice paragraph.');visual.commit();
+ variants.push(visual.page);visual.undo();variants.push(visual.page);
  const column=structuredClone(page);column.blocks[1].background='navy';column.blocks[1].columns=[{blocks:[{type:'manager-performance',anchor:'performance',navLabel:'',heading:'Recorded results',manager:'darren-moore'}]}];variants.push(column);
  const button=structuredClone(page);button.blocks[0].buttonLabel='Explore';variants.push(button);
  for(const draft of variants){
