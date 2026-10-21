@@ -8,9 +8,12 @@ import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
 import {harness,MAIN,HEAD,fixture,token} from './test-support/editor-harness.mjs';
 import {summarizeProfile} from './test-support/editor-profile.mjs';
 import {assertNoLegacyTemplates} from './check-runtime-templates.mjs';
+import {readReplay,replayFetcher} from './test-support/editor-response-replay.mjs';
 
-const [outputArg,workload,condition,runArg]=process.argv.slice(2);
+const [outputArg,workload,condition,runArg,replayArg,delivery='single']=process.argv.slice(2);
 assert(outputArg&&['read','save'].includes(workload)&&['fresh','preloaded'].includes(condition)&&/^[1-3]$/.test(runArg||''),'Use OUTPUT_DIRECTORY read|save fresh|preloaded 1|2|3');
+assert(['single','chunked'].includes(delivery));
+const replay=replayArg&&replayArg!=='compact'?await readReplay(replayArg):null;
 const output=resolve(outputArg),directory=resolve('.cloudflare/output/v0/workers/default');
 const config=JSON.parse(await readFile(join(directory,'worker.config.json'),'utf8'));
 const context=JSON.parse(await readFile('src/generated/component-context.json','utf8'));
@@ -20,8 +23,15 @@ assertNoLegacyTemplates(sources,JSON.parse(await readFile('src/lib/museum-patter
 const digest=createHash('sha256').update(JSON.stringify(sources)).digest('hex');
 const label=`${workload}-${condition}-${runArg}`,origin='https://museum.example';
 await mkdir(output,{recursive:true});
+// Freeze the exact measured source before any runtime starts. A later rebuild
+// can change generated metadata even at the same Git revision.
+const archive=`bundle-${digest}.json`,serializedSources=JSON.stringify(sources);
+try{await writeFile(join(output,archive),serializedSources,{flag:'wx'});}catch(error){if(error.code!=='EEXIST')throw error;assert.equal(await readFile(join(output,archive),'utf8'),serializedSources,'Measured bundle archive differs');}
 const temp=await mkdtemp(join(tmpdir(),'albion-editor-boundaries-'));
 const evidence={label,revision:context.revision,bundleDigest:digest,phases:[],calls:[],temporaryDirectory:temp,limitations:'Local fixture CPU samples, not hosted milliseconds or remote GitHub latency. Inspector attachment precedes the first route request, but follows isolate creation and eager entry bootstrap. Pre-upstream includes route startup/validation/first request; post-upstream includes response handling, further requests and framework completion.'};
+evidence.responseMode=replay?`public-${delivery}`:'compact';evidence.replayDigest=replay?.digest||null;
+evidence.bundleArchive=archive;
+if(replay)evidence.limitations+=' Fuller response models derive from public GETs; write responses are synthetic. Async 1024-byte chunks have 1 ms fixture delays, may be coalesced by the simulator bridge, and do not reproduce GitHub TLS/compression or actual delivery.';
 let runtime,inspector,currentHarness,command,boundaryError,split=false,phase='';
 const pending=new Map();
 const terminate=async()=>{inspector?.close();await runtime?.dispose();await rm(temp,{recursive:true,force:true});process.exit(1);};
@@ -59,7 +69,11 @@ try{
   await start('unsigned-startup');const response=await dispatch({action:workload},false);assert.equal(response.status,401);await response.text();await stop();assert.equal(currentHarness,undefined);
  }
  for(const attempt of ['first','repeat']){
-  currentHarness=harness();split=true;await start(`${attempt}-pre-upstream`);
+  currentHarness=harness();
+  if(replay){const adapter=replayFetcher(currentHarness.fetcher,replay.capture,delivery);currentHarness.fetcher=adapter.fetcher;currentHarness.replayStats=adapter.stats;}
+  // Replay comparisons measure the repeated operation whole; splitting its tiny
+  // pre-fetch slice again adds noise without helping the payload comparison.
+  split=!(replayArg&&attempt==='repeat');await start(split?`${attempt}-pre-upstream`:'repeat-whole');
   const body=workload==='read'?{action:'read'}:{action:'save',document:currentHarness.page,baseRevision:MAIN};
   const response=await dispatch(body);if(boundaryError)throw boundaryError;assert.equal(response.status,200,await response.clone().text());assert.equal(response.headers.get('Cache-Control'),'no-store');
   const result=await response.json();assert.equal(split,false,'Operation must reach the fixed GitHub fixture');
@@ -69,7 +83,7 @@ try{
   assert.deepEqual(calls.slice(0,2),[{method:'GET',path:''},{method:'GET',path:'/git/ref/heads/main'}],'Each operation must check fresh permission and revision');
   const expected=workload==='read'?['','/git/ref/heads/main','/contents/content/pages/component-preview-trial.json']:['','/git/ref/heads/main','/contents/content/collections','/contents/content/photographs','/contents/content/managers','/contents/content/pages/component-preview-trial.json','/git/refs','/contents/content/pages/component-preview-trial.json','/pulls'];
   assert.deepEqual(calls.map(c=>c.path),expected,'Missing or unexpected fixture work');
-  evidence.calls.push({attempt,calls});currentHarness=undefined;
+  evidence.calls.push({attempt,calls,...(replay?{responseModels:currentHarness.replayStats}:{})});currentHarness=undefined;
  }
 }finally{
  for(const wait of pending.values()){clearTimeout(wait.timer);wait.reject(Error('Inspector closed'));}pending.clear();
