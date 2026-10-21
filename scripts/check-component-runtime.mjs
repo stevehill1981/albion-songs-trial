@@ -2,7 +2,7 @@
 // simulator. Only the fixed GitHub access lookup is mocked; no auth bypass or
 // test credential is added to the deployed Worker.
 import assert from 'node:assert/strict';
-import {readFile,mkdtemp,rm} from 'node:fs/promises';
+import {readFile,mkdtemp,rm,writeFile} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
@@ -15,11 +15,16 @@ assert(config.compatibilityFlags.includes('global_fetch_strictly_public'),'Publi
 const context=JSON.parse(await readFile('src/generated/component-context.json','utf8'));
 const page=JSON.parse(await readFile('content/pages/component-preview-trial.json','utf8'));
 const fixture=JSON.parse(await readFile('test/fixtures/layout-initial.json','utf8'));
+const profilePath=process.env.ALBION_EDITOR_CPU_PROFILE;
+const profileWorkload=process.env.ALBION_EDITOR_CPU_WORKLOAD||'preview';
+const profileRounds=Number(process.env.ALBION_EDITOR_CPU_ROUNDS||60);
+if(profilePath){assert(['preview','read','status'].includes(profileWorkload));assert(Number.isSafeInteger(profileRounds)&&profileRounds>=1&&profileRounds<=100);}
 const temp=await mkdtemp(join(tmpdir(),'albion-astro-runtime-'));
 const token='unit_test_token_for_runtime_only';const origin='https://museum.example';
-let editorHarness=null;let allowed=true,lookups=0;const seen=[];let runtime;
+let editorHarness=null;let allowed=true,lookups=0;const seen=[];let runtime,inspector;
 try{
 runtime=new Miniflare(convertV4MiniflareOptions({
+ ...(profilePath?{inspectorPort:0}:{}),
  modulesRoot:join(directory,'bundle'),
  modules:[config.manifest.mainModule,...Object.keys(config.manifest.modules).filter(name=>name!==config.manifest.mainModule)].map(path=>({type:'ESModule',path:join(directory,'bundle',path)})),
  compatibilityDate:config.compatibilityDate,
@@ -79,7 +84,26 @@ const norm=html=>html.replace(/\s+/g,' ').trim();
  const queued=await operation({action:'publication',revision:MERGED});assert.equal((await queued.json()).state,'publishing');
  editorHarness=harness({live:true});const live=await operation({action:'publication',revision:MERGED});assert.equal((await live.json()).state,'live');
  editorHarness=harness({unchecked:true});const refused=await operation({action:'publish',draftNumber:17,baseRevision:MAIN,expectedCommit:HEAD,confirmation:'Publish this previewed revision'});assert.equal(refused.status,409);assert(!editorHarness.calls.some(c=>c.path.endsWith('/merge')));
+ if(profilePath){
+  const endpoint=await runtime.getInspectorURL();endpoint.protocol='http:';endpoint.pathname='/json';
+  const targets=await fetch(endpoint).then(r=>r.json());assert(targets.length>0,'The runtime inspector target is missing.');
+  inspector=new WebSocket(targets[0].webSocketDebuggerUrl);
+  await new Promise((resolve,reject)=>{inspector.onopen=resolve;inspector.onerror=reject;});
+  let sequence=0;const pending=new Map();
+  inspector.onmessage=event=>{const reply=JSON.parse(event.data),wait=pending.get(reply.id);if(wait){pending.delete(reply.id);clearTimeout(wait.timer);reply.error?wait.reject(Error(JSON.stringify(reply.error))):wait.resolve(reply.result);}};
+  const command=(method,params={})=>new Promise((resolve,reject)=>{const id=++sequence,timer=setTimeout(()=>{pending.delete(id);reject(Error('Inspector command timed out: '+method));},10000);pending.set(id,{resolve,reject,timer});inspector.send(JSON.stringify({id,method,params}));});
+  try{
+   await command('Profiler.enable');await command('Profiler.setSamplingInterval',{interval:100});await command('Profiler.start');
+   editorHarness=profileWorkload==='preview'?null:harness();allowed=true;
+   for(let i=0;i<profileRounds;i++){
+    const response=profileWorkload==='preview'?await send(page):await operation(profileWorkload==='read'?{action:'read'}:{action:'status',draftNumber:17});
+    assert.equal(response.status,200,await response.clone().text());await response.text();
+   }
+   const {profile}=await command('Profiler.stop');assert(profile.samples.length>0);await writeFile(profilePath,JSON.stringify(profile));
+   console.log(`Captured local workerd CPU profile: ${profileRounds} ${profileWorkload} operations; not hosted CPU compliance.`);
+  }finally{for(const wait of pending.values()){clearTimeout(wait.timer);wait.reject(Error('Inspector closed.'));}pending.clear();inspector.close();}
+ }
  console.log('PASS: compiled saving, checked preview and exact-revision publishing retain source content; unverified previews cannot merge and queued publication stays distinct from actually live.');
  console.log('PASS: compiled editor endpoint loads the exact practice page and rejects hostile origin, missing permission, missing sign-in and arbitrary record selection.');
  console.log(`PASS: compiled Astro/workerd renders ${variants.length+1} draft variants with matching markup; authentication, missing images, colours, columns and escaping checked.`);
-}finally{await runtime?.dispose();await rm(temp,{recursive:true,force:true});}
+}finally{inspector?.close();await runtime?.dispose();await rm(temp,{recursive:true,force:true});}
