@@ -2,6 +2,7 @@ import {draftSnapshot} from '../scripts/test-support/draft-snapshot.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
 import {createMuseumClient,recordPath,REPOSITORY,MAX_DOCUMENT_BYTES} from '../auth/mcp/github.mjs';
 const MAIN='a'.repeat(40),HEAD='b'.repeat(40),MERGED='c'.repeat(40),NEXT='d'.repeat(40);
 const token='unit_test_github_credential_only';
@@ -126,6 +127,39 @@ test('performance drafts require a published manager and reject editable numbers
  const allowed=harness();assert.equal((await allowed.client.save({kind:'pages',id:'museum-test',document,baseRevision:MAIN})).state,'draft');
  for(const managers of [[],{},[{type:'file',name:'different-person.json'}]]){const denied=harness();denied.set({managers});await assert.rejects(denied.client.save({kind:'pages',id:'museum-test',document,baseRevision:MAIN}),/manager/);assert(!denied.calls.some(c=>c.method!=='GET'));}
  const forged=structuredClone(document);forged.blocks.at(-1).played=999;const denied=harness();await assert.rejects(denied.client.save({kind:'pages',id:'museum-test',document:forged,baseRevision:MAIN}),/unexpected field/);assert(!denied.calls.some(c=>c.method!=='GET'));
+});
+
+test('editing reads defer immutable authoring metadata until a guide or schema is requested',()=>{
+ const source=`
+  import assert from 'node:assert/strict';
+  const clone=globalThis.structuredClone;let preparations=0;
+  globalThis.structuredClone=(...args)=>{preparations++;return clone(...args);};
+  const {createMuseumClient,authoringGuide,blockSchema}=await import('./auth/mcp/github.mjs');
+  assert.equal(preparations,0,'Importing the editor client must not prepare unused authoring metadata');
+  const document={slug:'museum-test',title:'Read fixture',blocks:[],collections:[]};
+  let allowed=true;const calls=[];
+  const client=createMuseumClient('unit_test_github_credential_only',async url=>{
+   calls.push(url);
+   if(url.endsWith('/albion-songs-trial'))return Response.json({permissions:{push:allowed}});
+   if(url.endsWith('/git/ref/heads/main'))return Response.json({object:{sha:'a'.repeat(40)}});
+   if(url.includes('/contents/'))return Response.json({encoding:'base64',size:100,sha:'b'.repeat(40),content:btoa(JSON.stringify(document))});
+   assert.fail('Unexpected upstream request');
+  });
+  assert.deepEqual((await client.read({kind:'pages',id:'museum-test'})).document,document);
+  assert.equal(preparations,0,'Reading content must not prepare unused guide/schema metadata');
+  allowed=false;
+  await assert.rejects(client.guide(),/access/);await assert.rejects(client.schema({type:'intro'}),/access/);
+  assert.equal(preparations,0,'Denied calls must not prepare authoring metadata');
+  allowed=true;
+  const guide=await client.guide();assert.equal(preparations,1);
+  assert.strictEqual(authoringGuide(),guide);assert.equal(preparations,1);
+  const schema=await client.schema({type:'intro'});assert.equal(preparations,2);
+  assert.strictEqual(blockSchema('intro').block,schema.block);assert.equal(preparations,2);
+  function frozen(value){if(value&&typeof value==='object'){assert(Object.isFrozen(value));for(const child of Object.values(value))frozen(child);}}
+  frozen(guide);frozen(schema.block);
+  assert(calls.filter(url=>url.endsWith('/albion-songs-trial')).length===5,'Read, denied guide/schema and successful guide/schema each check fresh permission');
+ `;
+ execFileSync(process.execPath,['--input-type=module','-e',source],{cwd:new URL('..',import.meta.url),stdio:'pipe',timeout:10000});
 });
 
 test('concise guide and on-demand schemas retain all editable fields without mutable shared data',async()=>{
