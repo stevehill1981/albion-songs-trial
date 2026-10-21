@@ -1,9 +1,9 @@
 # Saving and publishing from the visual editor
 
-Status: proposed design, 21 October 2026. The user requested draft saving and
+Status: approved for implementation, 21 October 2026. The user requested draft saving and
 publishing while preserving immediate/inline editing, simplicity and free service.
 AGENTS.md requires agreement before a new API route or significant convention;
-implementation awaits that agreement. No dependencies or service upgrades planned.
+The user approved the small endpoint reusing the existing safeguards. No dependencies or service upgrades planned.
 
 ## Recommended design
 

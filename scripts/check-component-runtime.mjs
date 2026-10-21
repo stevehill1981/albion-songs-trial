@@ -27,8 +27,12 @@ runtime=new Miniflare(convertV4MiniflareOptions({
  defaultPersistRoot:temp,
  outboundService:async request=>{
   seen.push({url:request.url,authorised:request.headers.get('Authorization')===`Bearer ${token}`});
-  assert.equal(request.url,'https://api.github.com/repos/stevehill1981/albion-songs-trial');assert.equal(request.headers.get('Authorization'),`Bearer ${token}`);lookups++;
-  return Response.json({permissions:{push:allowed}});
+  assert.equal(request.headers.get('Authorization'),`Bearer ${token}`);lookups++;
+  const root='https://api.github.com/repos/stevehill1981/albion-songs-trial';
+  if(request.url===root)return Response.json({permissions:{push:allowed}});
+  if(request.url===root+'/git/ref/heads/main')return Response.json({object:{sha:'a'.repeat(40)}});
+  if(request.url===root+'/contents/content/pages/component-preview-trial.json?ref='+'a'.repeat(40))return Response.json({encoding:'base64',size:JSON.stringify(page).length,sha:'b'.repeat(40),content:Buffer.from(JSON.stringify(page)).toString('base64')});
+  assert.fail('Unexpected compiled route request: '+request.url);
  }
 }));
 const send=draft=>runtime.dispatchFetch(origin+'/editor-preview',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json',Authorization:`Bearer ${token}`},body:JSON.stringify({page:draft})});
@@ -56,5 +60,14 @@ const norm=html=>html.replace(/\s+/g,' ').trim();
  const unknown=structuredClone(switched);unknown.blocks[1].manager='missing';assert.equal((await send(unknown)).status,422);
  const forged=structuredClone(switched);forged.blocks[1].summary={played:999};assert.equal((await send(forged)).status,422);
  allowed=false;assert.equal((await send(page)).status,403);
+ allowed=true;
+ const operation=(body,headers={})=>runtime.dispatchFetch(origin+'/editor-api',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json',Authorization:`Bearer ${token}`,...headers},body:JSON.stringify(body)});
+ assert.equal((await runtime.dispatchFetch(origin+'/editor-api')).status,405);
+ assert.equal((await operation({action:'read'},{Authorization:''})).status,401);
+ assert.equal((await operation({action:'read'},{Origin:'https://hostile.example'})).status,403);
+ assert.equal((await operation({action:'read',id:'songs'})).status,400);
+ const read=await operation({action:'read'});assert.equal(read.status,200,await read.clone().text());assert.equal(read.headers.get('Cache-Control'),'no-store');assert.deepEqual((await read.json()).document,page);
+ allowed=false;assert.equal((await operation({action:'read'})).status,403);
+ console.log('PASS: compiled editor endpoint loads the exact practice page and rejects hostile origin, missing permission, missing sign-in and arbitrary record selection.');
  console.log(`PASS: compiled Astro/workerd renders ${variants.length+1} draft variants with matching markup; authentication, missing images, colours, columns and escaping checked.`);
 }finally{await runtime?.dispose();await rm(temp,{recursive:true,force:true});}

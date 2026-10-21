@@ -32,7 +32,7 @@ if (auth) {
   config.manifest={type:'complete',mainModule:adapter.main,modules};
   config.compatibilityFlags=adapter.compatibility_flags;
   config.env={ASSETS:{type:'assets'}};
-  config.assets = {htmlHandling:'drop-trailing-slash',notFoundHandling:'none',runWorkerFirst:['/editor-preview']};
+  config.assets = {htmlHandling:'drop-trailing-slash',notFoundHandling:'none',runWorkerFirst:['/editor-preview','/editor-api']};
   config.observability={enabled:true,redactQueryString:true,logs:{enabled:true,headSamplingRate:1},traces:{enabled:true,headSamplingRate:1}};
 }
 await writeFile(`${worker}/worker.config.json`, JSON.stringify(config));
