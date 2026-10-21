@@ -132,7 +132,7 @@ Production publication remains gated by a checked-preview approval.
 
 ## Prototype outcome before hosted approval
 
-The extraction is implemented; production has not changed. All 124 tests and the
+At the prototype review, the extraction was implemented and production had not changed. All 124 tests and the
 full build pass, including the real compiled Astro editing/publication checks,
 normal editor assets and OAuth/MCP acceptance. The old 15 exported names remain.
 All 17 saved records, normalized defaults, schemas/CMS fields and 10 malformed
@@ -159,3 +159,63 @@ tests and restored before the successful full run. No validation rules were
 removed or relaxed. No dependency, sign-in scope, permission, cache or paid plan
 changed. The temporary first-request runner has been removed; raw profiles, exact
 reference outputs and comparison logs remain in the evidence directory.
+
+
+## Approved hosted comparison outcome
+
+The owner approved the exact PR 56 preview and bounded deployment. PR 56 merged
+normally after both required checks passed at the approved head; no protection was
+bypassed. Production is revision `43bf79a4c636bf51b7d767fe5cf285f86d02e1aa`,
+Worker `c8fb7105-ee9a-491f-93a7-a38bdc6dff9d`. Its production workflow completed
+successfully. Only the site Worker was deployed; do not claim the auth/MCP Worker
+was updated by this publication.
+
+The owner approved Safari after Chrome was busy with another task. The real
+browser passed existing GitHub sign-in, immediate component preview, saving the
+single authorised draft, reopening its persisted heading, and checking/opening its
+full-page preview. The exact diff of draft 57 was one heading; sources, credits
+and calculated results were unchanged. The hosted preview retained the 48-match,
+23-win, 13-draw, 12-loss, 79-for/60-against Moore table and its evidence notes.
+The draft was closed without merging at its unchanged head
+`02650a3dc349a8ea31bd4e2d293ecfe24446512e`; its recovery branch remains. No browser
+publish test was performed or authorised in this comparison. Compiled publication
+safeguards remain covered by the 124 passing tests and build checks.
+
+The final sanitized log contains 18 authenticated successful POST observations:
+
+- Six immediate previews: 11, 5, 5, 4, 5 and 2 ms CPU. The 5 ms quiet-interval
+  preview followed about 91 seconds without another preview, but only 51 seconds
+  without a recorded editor API call. This does not prove a cold isolate.
+- Twelve editor API calls: initial read 15 ms, the single save 14 ms, then
+  4, 2, 2, 2, 3, 2, 3, 4, 6 and 3 ms across readiness polling, checking and
+  reopening. The remaining read calls used 2–6 ms.
+- Every observed authenticated call returned HTTP 200/outcome ok. One unrelated
+  unauthenticated preview returned 401 and is excluded. Logged traffic is not a
+  guarantee of complete traffic or future reliability.
+
+The preceding published version's bounded browser observations were a 12 ms read
+and 12/34 ms previews. These were different sessions and timings, not matched or
+randomised trials. The smaller payload and observed previews support retaining
+the approved extraction; there was no functional regression or failed request in
+this run. They do not establish a reliable reduction in first-read/save CPU.
+The 11/14/15 ms observations still exceed the documented Free-plan 10 ms allowance;
+successful overruns are not headroom. The remaining CPU issue is open. Keep this
+baseline rather than make another speculative change in the same comparison.
+No paid service, dependency, permission or scope was added.
+
+The public practice page was fetched independently and matched the prior bytes
+except its approved revision marker. Python's initial public fetch was refused
+with `HTTP Error 403: Forbidden`; the existing Node fetch runtime succeeded and
+performed the actual comparison. Browser assets also matched the approved source.
+Evidence is retained under the existing verification-evidence directory in
+`metadata-split-final.json`, `metadata-split-final-public.json`,
+`metadata-split-deployed.json` and `safari-saved-draft-checked.png`.
+
+The Safari test disconnected and its two task-owned tabs were closed. Three old
+Chrome test tabs (1893424685, 1893424705 and 1893424722) remain because the
+browser connection reports `Debugger unattached` when closing them. They can be
+closed once that connection works; unrelated active Chrome work was not disturbed. The
+one-off remote CI branch `trial/lean-validation` was removed only after verifying
+its exact head was retained in main. No task runtime, temporary profiling script
+or linked worktree remains. This outcome record is documentation only and does
+not authorise another production deployment.
