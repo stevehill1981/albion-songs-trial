@@ -1,4 +1,4 @@
-import {validatePage,validateCollection,validateIdentifier,pageFields,collectionFields,blockTypes} from '../../src/lib/blocks.mjs';
+import {validatePage,validateCollection,validateIdentifier,pageFields,collectionFields,blockTypes} from '../../src/lib/block-schema.mjs';
 import site from '../../site.json' with {type:'json'};
 import {createArchiveClient} from './archive.mjs';
 export const REPOSITORY='stevehill1981/albion-songs-trial';

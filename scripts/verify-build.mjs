@@ -1,6 +1,8 @@
+import {checkPatternMetadata} from './pattern-metadata.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import {loadContent,publicPage} from '../src/lib/content.mjs';
+await checkPatternMetadata();
 const content=await loadContent();
 const version=JSON.parse(await readFile('public/version.json','utf8'));
 const norm=s=>s.replace(/\s+/g,' ').trim();
@@ -16,7 +18,7 @@ for(const c of content.collections){
  assert(index.includes(`/collections/${c.slug}`));
  for(const p of content.pages.filter(p=>p.collections.includes(c.slug)))assert(html.includes(`href="/${p.slug}"`));
 }
-for(const name of ['blocks','fact','layout-copy','image-paths','image-library','component-preview','live-preview','manager-performance'])assert.equal(await readFile(`build/admin/${name}.mjs`,'utf8'),await readFile(`src/lib/${name}.mjs`,'utf8'));
+for(const name of ['blocks','fact','layout-copy','image-paths','image-library','component-preview','live-preview','manager-performance','block-schema','inline-parts'])assert.equal(await readFile(`build/admin/${name}.mjs`,'utf8'),await readFile(`src/lib/${name}.mjs`,'utf8'));
 const config=JSON.parse(await readFile('build/admin/config.yml','utf8'));
 assert(config.collections.find(c=>c.name==='pages').create);
 assert(config.collections.find(c=>c.name==='pages').fields.find(f=>f.name==='blocks').types.some(t=>t.name==='section'));
@@ -82,3 +84,5 @@ console.log(`PASS: source-built main editor has ${editor.assets} exact assets, l
 
 const {verifyVisualEditorBuild}=await import('./verify-visual-editor.mjs');
 await verifyVisualEditorBuild();
+
+assert.equal(await readFile('build/admin/pattern-metadata.json','utf8'),await readFile('src/lib/pattern-metadata.json','utf8'));

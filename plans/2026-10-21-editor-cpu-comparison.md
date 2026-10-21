@@ -98,3 +98,64 @@ Recommended design, requiring agreement for a new generated-schema convention:
 
 Alternative: keep the published improvement and defer this larger module split.
 Neither option claims the current Free-plan spike is solved.
+
+## Approved prototype execution
+
+The owner approved the smaller validation module on 21 October 2026. Use this
+existing PR branch for the prototype; run the existing workflow explicitly on its
+exact pushed head because documentation branches do not trigger push builds.
+Production publication remains gated by a checked-preview approval.
+
+1. Capture existing validation outputs, normalized defaults, schema/CMS fields and
+   malformed nested cases for every page, saved template and collection. Retain
+   this reference in the task evidence directory and compare again after extraction.
+2. Add `src/lib/pattern-metadata.json` and `scripts/pattern-metadata.mjs`. The
+   committed projection contains all metadata except HTML, plus a digest of the
+   full authoritative catalogue. Explicit regeneration is separate from checking.
+   Both test and preparation entry points must fail on missing/stale metadata.
+3. Extract unchanged validators, field definitions and CMS conversion into
+   `src/lib/block-schema.mjs`; move `renderParts` into `src/lib/inline-parts.mjs`.
+   Keep `src/lib/blocks.mjs` exports compatible and legacy rendering unchanged.
+   Redirect preview, GitHub-client and BlockList/Intro/TextPanel imports.
+4. Update `scripts/prepare.mjs`, `scripts/verify-build.mjs`, `package.json` and
+   `.gitignore` for the new browser modules/metadata, retaining the normal editor's
+   complete catalogue. Add drift/parity tests in `test/block-schema.test.mjs`.
+5. Add an emitted-module check in `scripts/check-runtime-templates.mjs`, invoked
+   from `scripts/check-component-runtime.mjs`, proving no legacy template HTML is
+   in the runtime modules. Its negative controls inject known template markup and
+   must fail. Keep the static normal editor's catalogue intact.
+6. Run focused tests, full tests/build and actual compiled acceptance, then repeat
+   the same three bounded first-request captures. Inspect both source parity and
+   emitted artefacts before drawing a conclusion. Revert if the split does not
+   materially reduce the targeted work. Commit/push verified work, inspect hosted
+   checks and present the exact preview; do not deploy it without approval.
+
+## Prototype outcome before hosted approval
+
+The extraction is implemented; production has not changed. All 124 tests and the
+full build pass, including the real compiled Astro editing/publication checks,
+normal editor assets and OAuth/MCP acceptance. The old 15 exported names remain.
+All 17 saved records, normalized defaults, schemas/CMS fields and 10 malformed
+variants match the pre-extraction reference. Running the exact old implementation
+from the published Git revision also produces byte-identical bodies for all
+13 pages/templates.
+
+The emitted-code guard first rejected the actual old Worker artefact, then passed
+the new one: all 15 runtime modules exclude all 36 legacy HTML templates. Browser
+assets still include the complete authoritative catalogue, new metadata and every
+relative module import. Total emitted module bytes fell from 1,260,446 to 1,038,042;
+the shared component-preview chunk fell from 320,702 to 95,896 bytes.
+
+Identical one-operation first-request captures completed with compiled acceptance
+checks after profiling. Preview active samples fell from 314 to 70. Save samples
+were 97 before and 116 after, with more GC samples in the latter; status was 21
+versus 23. These short independent captures support a preview improvement, do not
+establish a save improvement, and are not hosted CPU timings or a statistical
+range. Keep the save/first-request concern open. The source payload reduction and
+preview evidence merit a bounded hosted comparison, subject to preview approval.
+
+A missing legacy-renderer validateFact import was caught by the existing rendering
+tests and restored before the successful full run. No validation rules were
+removed or relaxed. No dependency, sign-in scope, permission, cache or paid plan
+changed. The temporary first-request runner has been removed; raw profiles, exact
+reference outputs and comparison logs remain in the evidence directory.

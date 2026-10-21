@@ -4,7 +4,7 @@ import ManagerPerformance from './ManagerPerformance.astro';
 import TextPanel from './TextPanel.astro';
 import Photograph from './Photograph.astro';
 import Section from './Section.astro';
-import {validatePage} from '../../lib/blocks.mjs';
+import {validatePage} from '../../lib/block-schema.mjs';
 const {page,context}=Astro.props;
 validatePage(page);
 const components={'manager-performance':ManagerPerformance,intro:Intro,'text-panel':TextPanel,photograph:Photograph,section:Section};

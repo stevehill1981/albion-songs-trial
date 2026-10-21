@@ -2,6 +2,9 @@ import { copyFile, writeFile, readFile, mkdir, rm } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { validateFact } from '../src/lib/fact.mjs';
 import { loadContent } from '../src/lib/content.mjs';
+import {checkPatternMetadata} from './pattern-metadata.mjs';
+
+await checkPatternMetadata();
 
 validateFact(JSON.parse(await readFile('content/fact.json', 'utf8')));
 await rm('.astro-server',{recursive:true,force:true});
@@ -50,8 +53,9 @@ managerChoices(config);
 await writeFile('public/admin/config.yml',JSON.stringify(config,null,2)+'\n');
 await copyFile('src/lib/blocks.mjs','public/admin/blocks.mjs');
 await copyFile('src/lib/layout-copy.mjs','public/admin/layout-copy.mjs');
-for(const name of ['image-paths','image-library','component-preview','live-preview','manager-performance'])await copyFile(`src/lib/${name}.mjs`,`public/admin/${name}.mjs`);
+for(const name of ['image-paths','image-library','component-preview','live-preview','manager-performance','block-schema','inline-parts'])await copyFile(`src/lib/${name}.mjs`,`public/admin/${name}.mjs`);
 await copyFile('src/lib/museum-patterns.json','public/admin/museum-patterns.json');
+await copyFile('src/lib/pattern-metadata.json','public/admin/pattern-metadata.json');
 await writeFile('public/admin/preview-context.json',JSON.stringify({fact:content.fact,museumMarkup:content.museumMarkup,photoCredits:content.photoCredits,photographs:content.photographs,managerPerformance:content.managerPerformance}));
 await writeFile('public/admin/layout-library.json',JSON.stringify([...content.templates.map(p=>({key:`template:${p.slug}`,kind:'Template',title:p.title,blocks:p.blocks})),...content.pages.map(p=>({key:`page:${p.slug}`,kind:'Page',title:p.title,blocks:p.blocks}))]));
 const origin = site.origin || '';

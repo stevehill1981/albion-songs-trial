@@ -9,9 +9,15 @@ import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
 import {renderPageContent} from '../src/lib/blocks.mjs';
 import {harness,MAIN,HEAD,MERGED} from './test-support/editor-harness.mjs';
 import {createDraft} from '../src/editor/visual/state.mjs';
+import {assertNoLegacyTemplates} from './check-runtime-templates.mjs';
 const directory=resolve('.cloudflare/output/v0/workers/default');
 const config=JSON.parse(await readFile(join(directory,'worker.config.json'),'utf8'));
 assert(config.compatibilityFlags.includes('global_fetch_strictly_public'),'Public saved-preview checks require the same public-fetch setting as the auth Worker.');
+const moduleNames=[config.manifest.mainModule,...Object.keys(config.manifest.modules).filter(name=>name!==config.manifest.mainModule)];
+const sources=await Promise.all(moduleNames.map(async name=>({name,source:await readFile(join(directory,'bundle',name),'utf8')})));
+const patterns=JSON.parse(await readFile('src/lib/museum-patterns.json','utf8'));
+assertNoLegacyTemplates(sources,patterns);
+console.log(`PASS: ${sources.length} emitted Worker modules exclude all ${patterns.length} legacy HTML templates.`);
 const context=JSON.parse(await readFile('src/generated/component-context.json','utf8'));
 const page=JSON.parse(await readFile('content/pages/component-preview-trial.json','utf8'));
 const fixture=JSON.parse(await readFile('test/fixtures/layout-initial.json','utf8'));
@@ -26,7 +32,7 @@ try{
 runtime=new Miniflare(convertV4MiniflareOptions({
  ...(profilePath?{inspectorPort:0}:{}),
  modulesRoot:join(directory,'bundle'),
- modules:[config.manifest.mainModule,...Object.keys(config.manifest.modules).filter(name=>name!==config.manifest.mainModule)].map(path=>({type:'ESModule',path:join(directory,'bundle',path)})),
+ modules:moduleNames.map(path=>({type:'ESModule',path:join(directory,'bundle',path)})),
  compatibilityDate:config.compatibilityDate,
  compatibilityFlags:config.compatibilityFlags,
  // Static routing is checked through Astro's preview server and hosted URLs.
