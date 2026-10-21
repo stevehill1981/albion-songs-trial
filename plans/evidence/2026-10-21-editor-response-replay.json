@@ -1,6 +1,6 @@
 {
   "revision": "965f7f287a42069260520877a08fe0fe7b253797",
-  "bundleDigest": "7908695fe993d0b239477f11579485df2abace48311129e6828e258e044f16f4",
+  "bundleDigest": "ff496c666b67f73c78297bc89226c20efe58ca3d9a09ef8848741903dd30ff05",
   "replayDigest": "dbea440b45e1499b875ecacb2f4d689a356a7aae2e78e8a717afb4e0b053eea1",
   "successfulRuntimes": 18,
   "usableProfiles": 72,
@@ -10,14 +10,14 @@
       "workload": "read",
       "phase": "unsigned-startup",
       "activeSamples": [
-        45,
-        33,
-        42
+        62,
+        41,
+        38
       ],
-      "median": 42,
+      "median": 41,
       "range": [
-        33,
-        45
+        38,
+        62
       ]
     },
     {
@@ -25,14 +25,14 @@
       "workload": "read",
       "phase": "first-pre-upstream",
       "activeSamples": [
-        21,
-        4,
-        3
+        35,
+        6,
+        5
       ],
-      "median": 4,
+      "median": 6,
       "range": [
-        3,
-        21
+        5,
+        35
       ]
     },
     {
@@ -40,44 +40,44 @@
       "workload": "read",
       "phase": "first-post-upstream",
       "activeSamples": [
-        11,
-        5,
-        5
+        12,
+        6,
+        6
       ],
-      "median": 5,
+      "median": 6,
       "range": [
-        5,
+        6,
+        12
+      ]
+    },
+    {
+      "mode": "compact",
+      "workload": "read",
+      "phase": "repeat-whole",
+      "activeSamples": [
+        11,
+        8,
+        6
+      ],
+      "median": 8,
+      "range": [
+        6,
         11
       ]
     },
     {
       "mode": "compact",
-      "workload": "read",
-      "phase": "repeat-whole",
-      "activeSamples": [
-        5,
-        3,
-        6
-      ],
-      "median": 5,
-      "range": [
-        3,
-        6
-      ]
-    },
-    {
-      "mode": "compact",
       "workload": "save",
       "phase": "unsigned-startup",
       "activeSamples": [
-        31,
-        31,
-        29
+        40,
+        36,
+        43
       ],
-      "median": 31,
+      "median": 40,
       "range": [
-        29,
-        31
+        36,
+        43
       ]
     },
     {
@@ -85,164 +85,164 @@
       "workload": "save",
       "phase": "first-pre-upstream",
       "activeSamples": [
-        10,
-        9,
-        9
-      ],
-      "median": 9,
-      "range": [
-        9,
-        10
-      ]
-    },
-    {
-      "mode": "compact",
-      "workload": "save",
-      "phase": "first-post-upstream",
-      "activeSamples": [
-        25,
-        13,
-        13
-      ],
-      "median": 13,
-      "range": [
-        13,
-        25
-      ]
-    },
-    {
-      "mode": "compact",
-      "workload": "save",
-      "phase": "repeat-whole",
-      "activeSamples": [
-        8,
-        17,
-        16
-      ],
-      "median": 16,
-      "range": [
-        8,
-        17
-      ]
-    },
-    {
-      "mode": "public-single",
-      "workload": "read",
-      "phase": "unsigned-startup",
-      "activeSamples": [
-        31,
-        31,
-        31
-      ],
-      "median": 31,
-      "range": [
-        31,
-        31
-      ],
-      "modelBytesPerOperation": [
-        13498
-      ],
-      "hostChunksPerOperation": [
-        3
-      ]
-    },
-    {
-      "mode": "public-single",
-      "workload": "read",
-      "phase": "first-pre-upstream",
-      "activeSamples": [
-        3,
-        4,
-        4
-      ],
-      "median": 4,
-      "range": [
-        3,
-        4
-      ],
-      "modelBytesPerOperation": [
-        13498
-      ],
-      "hostChunksPerOperation": [
-        3
-      ]
-    },
-    {
-      "mode": "public-single",
-      "workload": "read",
-      "phase": "first-post-upstream",
-      "activeSamples": [
-        4,
-        4,
-        4
-      ],
-      "median": 4,
-      "range": [
-        4,
-        4
-      ],
-      "modelBytesPerOperation": [
-        13498
-      ],
-      "hostChunksPerOperation": [
-        3
-      ]
-    },
-    {
-      "mode": "public-single",
-      "workload": "read",
-      "phase": "repeat-whole",
-      "activeSamples": [
-        5,
-        6,
-        5
-      ],
-      "median": 5,
-      "range": [
-        5,
-        6
-      ],
-      "modelBytesPerOperation": [
-        13498
-      ],
-      "hostChunksPerOperation": [
-        3
-      ]
-    },
-    {
-      "mode": "public-single",
-      "workload": "save",
-      "phase": "unsigned-startup",
-      "activeSamples": [
-        49,
-        34,
-        31
-      ],
-      "median": 34,
-      "range": [
-        31,
-        49
-      ],
-      "modelBytesPerOperation": [
-        51797
-      ],
-      "hostChunksPerOperation": [
-        9
-      ]
-    },
-    {
-      "mode": "public-single",
-      "workload": "save",
-      "phase": "first-pre-upstream",
-      "activeSamples": [
-        41,
+        14,
         12,
-        9
+        11
       ],
       "median": 12,
       "range": [
+        11,
+        14
+      ]
+    },
+    {
+      "mode": "compact",
+      "workload": "save",
+      "phase": "first-post-upstream",
+      "activeSamples": [
+        22,
+        15,
+        19
+      ],
+      "median": 19,
+      "range": [
+        15,
+        22
+      ]
+    },
+    {
+      "mode": "compact",
+      "workload": "save",
+      "phase": "repeat-whole",
+      "activeSamples": [
+        29,
+        23,
+        21
+      ],
+      "median": 23,
+      "range": [
+        21,
+        29
+      ]
+    },
+    {
+      "mode": "public-single",
+      "workload": "read",
+      "phase": "unsigned-startup",
+      "activeSamples": [
+        38,
+        36,
+        39
+      ],
+      "median": 38,
+      "range": [
+        36,
+        39
+      ],
+      "modelBytesPerOperation": [
+        13498
+      ],
+      "hostChunksPerOperation": [
+        3
+      ]
+    },
+    {
+      "mode": "public-single",
+      "workload": "read",
+      "phase": "first-pre-upstream",
+      "activeSamples": [
+        8,
+        7,
+        6
+      ],
+      "median": 7,
+      "range": [
+        6,
+        8
+      ],
+      "modelBytesPerOperation": [
+        13498
+      ],
+      "hostChunksPerOperation": [
+        3
+      ]
+    },
+    {
+      "mode": "public-single",
+      "workload": "read",
+      "phase": "first-post-upstream",
+      "activeSamples": [
         9,
-        41
+        10,
+        6
+      ],
+      "median": 9,
+      "range": [
+        6,
+        10
+      ],
+      "modelBytesPerOperation": [
+        13498
+      ],
+      "hostChunksPerOperation": [
+        3
+      ]
+    },
+    {
+      "mode": "public-single",
+      "workload": "read",
+      "phase": "repeat-whole",
+      "activeSamples": [
+        7,
+        5,
+        6
+      ],
+      "median": 6,
+      "range": [
+        5,
+        7
+      ],
+      "modelBytesPerOperation": [
+        13498
+      ],
+      "hostChunksPerOperation": [
+        3
+      ]
+    },
+    {
+      "mode": "public-single",
+      "workload": "save",
+      "phase": "unsigned-startup",
+      "activeSamples": [
+        39,
+        40,
+        42
+      ],
+      "median": 40,
+      "range": [
+        39,
+        42
+      ],
+      "modelBytesPerOperation": [
+        51797
+      ],
+      "hostChunksPerOperation": [
+        9
+      ]
+    },
+    {
+      "mode": "public-single",
+      "workload": "save",
+      "phase": "first-pre-upstream",
+      "activeSamples": [
+        13,
+        13,
+        12
+      ],
+      "median": 13,
+      "range": [
+        12,
+        13
       ],
       "modelBytesPerOperation": [
         51797
@@ -256,14 +256,14 @@
       "workload": "save",
       "phase": "first-post-upstream",
       "activeSamples": [
-        24,
-        22,
-        21
+        30,
+        28,
+        29
       ],
-      "median": 22,
+      "median": 29,
       "range": [
-        21,
-        24
+        28,
+        30
       ],
       "modelBytesPerOperation": [
         51797
@@ -277,77 +277,77 @@
       "workload": "save",
       "phase": "repeat-whole",
       "activeSamples": [
-        16,
         11,
+        15,
+        16
+      ],
+      "median": 15,
+      "range": [
+        11,
+        16
+      ],
+      "modelBytesPerOperation": [
+        51797
+      ],
+      "hostChunksPerOperation": [
+        9
+      ]
+    },
+    {
+      "mode": "public-chunked",
+      "workload": "read",
+      "phase": "unsigned-startup",
+      "activeSamples": [
+        36,
+        42,
+        32
+      ],
+      "median": 36,
+      "range": [
+        32,
+        42
+      ],
+      "modelBytesPerOperation": [
+        13498
+      ],
+      "hostChunksPerOperation": [
+        15
+      ]
+    },
+    {
+      "mode": "public-chunked",
+      "workload": "read",
+      "phase": "first-pre-upstream",
+      "activeSamples": [
+        7,
+        6,
+        3
+      ],
+      "median": 6,
+      "range": [
+        3,
+        7
+      ],
+      "modelBytesPerOperation": [
+        13498
+      ],
+      "hostChunksPerOperation": [
+        15
+      ]
+    },
+    {
+      "mode": "public-chunked",
+      "workload": "read",
+      "phase": "first-post-upstream",
+      "activeSamples": [
+        11,
+        13,
         10
       ],
       "median": 11,
       "range": [
         10,
-        16
-      ],
-      "modelBytesPerOperation": [
-        51797
-      ],
-      "hostChunksPerOperation": [
-        9
-      ]
-    },
-    {
-      "mode": "public-chunked",
-      "workload": "read",
-      "phase": "unsigned-startup",
-      "activeSamples": [
-        33,
-        29,
-        30
-      ],
-      "median": 30,
-      "range": [
-        29,
-        33
-      ],
-      "modelBytesPerOperation": [
-        13498
-      ],
-      "hostChunksPerOperation": [
-        15
-      ]
-    },
-    {
-      "mode": "public-chunked",
-      "workload": "read",
-      "phase": "first-pre-upstream",
-      "activeSamples": [
-        4,
-        4,
-        4
-      ],
-      "median": 4,
-      "range": [
-        4,
-        4
-      ],
-      "modelBytesPerOperation": [
-        13498
-      ],
-      "hostChunksPerOperation": [
-        15
-      ]
-    },
-    {
-      "mode": "public-chunked",
-      "workload": "read",
-      "phase": "first-post-upstream",
-      "activeSamples": [
-        12,
-        9,
-        9
-      ],
-      "median": 9,
-      "range": [
-        9,
-        12
+        13
       ],
       "modelBytesPerOperation": [
         13498
@@ -362,13 +362,13 @@
       "phase": "repeat-whole",
       "activeSamples": [
         9,
-        7,
-        5
-      ],
-      "median": 7,
-      "range": [
-        5,
+        11,
         9
+      ],
+      "median": 9,
+      "range": [
+        9,
+        11
       ],
       "modelBytesPerOperation": [
         13498
@@ -382,14 +382,14 @@
       "workload": "save",
       "phase": "unsigned-startup",
       "activeSamples": [
-        31,
-        33,
-        33
+        30,
+        30,
+        36
       ],
-      "median": 33,
+      "median": 30,
       "range": [
-        31,
-        33
+        30,
+        36
       ],
       "modelBytesPerOperation": [
         51797
@@ -404,12 +404,12 @@
       "phase": "first-pre-upstream",
       "activeSamples": [
         10,
-        9,
+        7,
         10
       ],
       "median": 10,
       "range": [
-        9,
+        7,
         10
       ],
       "modelBytesPerOperation": [
@@ -424,14 +424,14 @@
       "workload": "save",
       "phase": "first-post-upstream",
       "activeSamples": [
-        28,
-        25,
-        28
+        34,
+        35,
+        37
       ],
-      "median": 28,
+      "median": 35,
       "range": [
-        25,
-        28
+        34,
+        37
       ],
       "modelBytesPerOperation": [
         51797
@@ -445,14 +445,14 @@
       "workload": "save",
       "phase": "repeat-whole",
       "activeSamples": [
-        12,
-        21,
-        20
+        25,
+        25,
+        25
       ],
-      "median": 20,
+      "median": 25,
       "range": [
-        12,
-        21
+        25,
+        25
       ],
       "modelBytesPerOperation": [
         51797

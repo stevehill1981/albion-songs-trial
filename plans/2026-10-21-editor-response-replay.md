@@ -57,18 +57,15 @@ Median active V8 samples, three ordered observations per cell:
 
 | Mode | First read after responses begin | Repeated whole read | First save after responses begin | Repeated whole save |
 | --- | ---: | ---: | ---: | ---: |
-| Existing compact fixtures | 5 | 5 | 13 | 16 |
-| Fuller public models, single chunks | 4 | 5 | 22 | 11 |
-| Fuller public models, asynchronous chunks | 9 | 7 | 28 | 20 |
+| Existing compact fixtures | 6 | 8 | 19 | 23 |
+| Fuller public models, single chunks | 9 | 6 | 29 | 15 |
+| Fuller public models, asynchronous chunks | 11 | 9 | 35 | 25 |
 
-The read's pre-upstream median is 4 in every mode, while its response-processing
-median changes with synthetic delivery. Payload size alone does not increase the
-observed read work here. First-save response processing increases with fuller
-models and with streaming. Repeated-save measurements are not monotonic with size
-(16 versus 11), and ranges overlap: do not claim that larger responses always
-cost more or extrapolate a hosted percentage. These small local samples suggest
-transport/body handling is worth representing in tests, not that a particular
-operation or startup boundary is now the proven live root cause.
+The first-save response phase increases across compact/full/streamed modes in
+this retained run. Read ranges overlap, and repeated-save measurements are not
+monotonic with size (23 versus 15). Do not claim larger responses always cost
+more, or extrapolate a hosted percentage. These small local samples support
+representing transport/body handling in tests, not a proven live root cause.
 
 All captures start after isolate creation and use a local mock service bridge.
 The models serialize captured public JSON again, so they are not byte-exact HTTP
@@ -94,8 +91,9 @@ assertion `An idle-only capture cannot measure the handler`; it was not counted
 as zero or retried into the matrix. The original four-argument save smoke passed
 with its original four phase names. That preserves the old command/phase contract,
 while documenting that very short slices can still be unusable at this sampling
-interval. There were 26 attempted runtimes: 18 canonical, six superseded models,
-one successful compatibility smoke and one unusable read smoke. Normal runtime
+interval. Before the archive correction below there were 26 attempted runtimes: 18
+unarchived comparison runs, six superseded models, one successful compatibility
+smoke and one unusable read smoke. Normal runtime
 finally blocks disposed them, including the failure path.
 
 ## Outcome
@@ -116,8 +114,33 @@ their original behaviour and guard against unusable samples.
 ## Final verification
 
 All 130 tests and the final full build pass, including normal compiled editor
-acceptance and OAuth/MCP checks. The rebuilt source digest matches every retained
-replay capture. Independent public reads serve the approved PR 61 merge revision
+acceptance and OAuth/MCP checks. Every final retained capture now references a source archive written before
+runtime creation and verified against that capture’s digest. Independent public reads serve the approved PR 61 merge revision
 965f7f287a42069260520877a08fe0fe7b253797 with unchanged practice-page content.
 All diagnostic runtime directories are gone and capture/build processes exited.
 The replay follow-up changes local scripts/tests and evidence only.
+
+
+## Archive verification correction
+
+The final rebuild digest comparison failed (ff496c… versus measured 790869…).
+The complete original measured bundle had not been archived, so the exact reason
+for that difference is not established. Rebuilt files cannot substitute for the
+actual measured files. A shell sequence wrongly continued after the failed
+verification, and commit c6a1af9 therefore included an unproven final-verification
+claim. This follow-up removes that claim; it was not a successful check.
+
+The profiler now writes the exact compiled source archive before starting each
+runtime and verifies an existing archive instead of overwriting it. The replay
+summarizer hashes every referenced archive and rejects missing or changed data.
+All 18 comparison runtimes were repeated against one frozen, archived bundle,
+producing the canonical 72 profiles and table above. Earlier corrected-model
+results remain under `superseded-unarchived-build/` and are excluded. There were
+44 runtime attempts in total: 18 final canonical, 18 unarchived comparisons, six
+superseded write-model runs, one successful compatibility smoke and one idle-only
+smoke. None of these diagnostic corrections changed production code.
+
+A deliberately corrupted archive in an isolated temporary evidence directory must
+fail the summarizer's exact archive check. Do not label a different missing-file
+failure as this negative control passing. No archive key/source bytes are
+committed to the public repository; the archives stay in local evidence storage.

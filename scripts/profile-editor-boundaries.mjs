@@ -23,9 +23,14 @@ assertNoLegacyTemplates(sources,JSON.parse(await readFile('src/lib/museum-patter
 const digest=createHash('sha256').update(JSON.stringify(sources)).digest('hex');
 const label=`${workload}-${condition}-${runArg}`,origin='https://museum.example';
 await mkdir(output,{recursive:true});
+// Freeze the exact measured source before any runtime starts. A later rebuild
+// can change generated metadata even at the same Git revision.
+const archive=`bundle-${digest}.json`,serializedSources=JSON.stringify(sources);
+try{await writeFile(join(output,archive),serializedSources,{flag:'wx'});}catch(error){if(error.code!=='EEXIST')throw error;assert.equal(await readFile(join(output,archive),'utf8'),serializedSources,'Measured bundle archive differs');}
 const temp=await mkdtemp(join(tmpdir(),'albion-editor-boundaries-'));
 const evidence={label,revision:context.revision,bundleDigest:digest,phases:[],calls:[],temporaryDirectory:temp,limitations:'Local fixture CPU samples, not hosted milliseconds or remote GitHub latency. Inspector attachment precedes the first route request, but follows isolate creation and eager entry bootstrap. Pre-upstream includes route startup/validation/first request; post-upstream includes response handling, further requests and framework completion.'};
 evidence.responseMode=replay?`public-${delivery}`:'compact';evidence.replayDigest=replay?.digest||null;
+evidence.bundleArchive=archive;
 if(replay)evidence.limitations+=' Fuller response models derive from public GETs; write responses are synthetic. Async 1024-byte chunks have 1 ms fixture delays, may be coalesced by the simulator bridge, and do not reproduce GitHub TLS/compression or actual delivery.';
 let runtime,inspector,currentHarness,command,boundaryError,split=false,phase='';
 const pending=new Map();

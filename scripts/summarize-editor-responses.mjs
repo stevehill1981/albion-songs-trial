@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile,writeFile,access} from 'node:fs/promises';
 import {join,resolve,basename} from 'node:path';
+import {createHash} from 'node:crypto';
 import {summarizeProfile} from './test-support/editor-profile.mjs';
 assert(process.argv[2],'Supply the response evidence directory');const directory=resolve(process.argv[2]);
 const rows=[],captures=[];let digest,revision,replayDigest;
@@ -11,6 +12,8 @@ for(const mode of ['compact','public-single','public-chunked'])for(const workloa
   const label=`${workload}-preloaded-${run}`,data=JSON.parse(await readFile(join(directory,mode,label+'.json'),'utf8'));
   assert.equal(data.responseMode,mode);assert.equal(data.label,label);assert.deepEqual(data.phases.map(row=>row.phase),phases);
   digest??=data.bundleDigest;revision??=data.revision;assert.equal(data.bundleDigest,digest);assert.equal(data.revision,revision);
+  assert.equal(data.bundleArchive,`bundle-${digest}.json`);const archive=await readFile(join(directory,mode,data.bundleArchive));
+  assert.equal(createHash('sha256').update(archive).digest('hex'),digest,'Measured bundle archive does not match');
   if(mode!=='compact'){replayDigest??=data.replayDigest;assert.equal(data.replayDigest,replayDigest);}
   assert(basename(data.temporaryDirectory).startsWith('albion-editor-boundaries-'));await assert.rejects(access(data.temporaryDirectory),{code:'ENOENT'});
   assert.equal(data.calls.length,2);
