@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
+import {EDITOR_PAGES} from '../src/lib/editor-pages.mjs';
+import {validateComponentPage} from '../src/lib/component-preview.mjs';
 import {renderPageContent} from '../src/lib/blocks.mjs';
 export async function verifyVisualEditor({html,context,source,readAsset,workflow=false}={}){
  const data=JSON.parse(html.match(/<script id="visual-data" type="application\/json">([\s\S]*?)<\/script>/)?.[1]||'null');
@@ -18,6 +20,8 @@ export async function verifyVisualEditor({html,context,source,readAsset,workflow
  assert(html.includes('sandbox="allow-same-origin"')&&!html.includes('allow-scripts'));
  assert.equal(data.workflow,workflow);
  if(workflow){
+  assert.deepEqual(data.pages.map(page=>page.id),EDITOR_PAGES,'The page chooser must match the endpoint rollout boundary.');
+  for(const item of data.pages){const source=validateComponentPage(JSON.parse(await readFile(new URL(`../content/pages/${item.id}.json`,import.meta.url),'utf8')));assert.equal(item.title,source.title);assert(html.includes(`<option value="${item.id}">`),'A supported page is absent from the chooser.');}
   assert.deepEqual(data.page,source,'The saving editor must seed the real practice page losslessly.');
   for(const id of ['save-draft','open-drafts','check-draft','saved-preview','publish-draft'])assert(html.includes(`id="${id}"`),'Missing workflow control: '+id);
   assert(html.includes('id="fields" onsubmit="return false" inert'),'Editing must wait for a fresh authenticated read.');
@@ -31,6 +35,8 @@ export async function verifyVisualEditorBuild(){
  await verifyVisualEditor(options);
  const editor={...options,workflow:true,html:await readFile('build/editor.html','utf8'),source:JSON.parse(await readFile('content/pages/component-preview-trial.json','utf8'))};
  await verifyVisualEditor(editor);
+ const missingPage=editor.html.replace('<option value="managers">','<option value="missing">');
+ assert.notEqual(missingPage,editor.html);await assert.rejects(()=>verifyVisualEditor({...editor,html:missingPage}));
  const enabled=editor.html.replace('onsubmit="return false" inert','onsubmit="return false"');
  assert.notEqual(enabled,editor.html);await assert.rejects(()=>verifyVisualEditor({...editor,html:enabled}));
  // The heading in the editor chrome is not the source: corrupt the actual JSON.

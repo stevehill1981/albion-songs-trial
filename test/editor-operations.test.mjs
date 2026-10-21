@@ -37,3 +37,19 @@ test('a failed read-only GraphQL POST is never reported as an uncertain content 
  const response=await editorOperation(request,async url=>{calls++;assert.equal(url,'https://api.github.com/graphql');throw Error(token);});
  assert.equal(calls,1);assert.equal(response.status,503);const data=await response.json();assert.equal(data.error.uncertain,false);assert(!JSON.stringify(data).includes(token));
 });
+
+test('page selection reads and saves a supported manager while isolating its drafts',async()=>{
+ const {readFile}=await import('node:fs/promises');
+ const fixture=JSON.parse(await readFile(new URL('../content/pages/manager-darren-moore.json',import.meta.url),'utf8'));
+ const h=harness({fixture}),pageId=fixture.slug;
+ const read=await h.call({action:'read',pageId});assert.equal(read.status,200);assert.deepEqual((await read.json()).document,fixture);
+ assert.deepEqual((await (await h.call({action:'drafts',pageId})).json()).drafts.map(d=>d.number),[17]);
+ assert.equal((await h.call({action:'save',pageId,document:h.page,baseRevision:MAIN})).status,200);
+ const write=h.calls.find(c=>c.method==='PUT');assert.equal(write.path,`/contents/content/pages/${pageId}.json`);assert.deepEqual(JSON.parse(Buffer.from(write.body.content,'base64')),h.page);
+ const denied=await h.call({action:'open',pageId:EDITOR_PAGE,draftNumber:17});assert.equal(denied.status,403);
+});
+test('unsupported selections and mismatched document identities never write',async()=>{
+ for(const pageId of ['songs','../managers','new-page','',null]){const h=harness();assert.equal((await h.call({action:'read',pageId})).status,403);assert.equal(h.calls.length,0);}
+ for(const action of ['open','status','publish']){const h=harness();const response=await h.call({action,pageId:'managers',draftNumber:17,...(action==='publish'?{baseRevision:MAIN,expectedCommit:HEAD,confirmation:'Publish this previewed revision'}:{})});assert.equal(response.status,403);assert(!h.calls.some(c=>c.method!=='GET'&&c.path!=='/graphql'));}
+ const h=harness();assert.equal((await h.call({action:'save',pageId:'managers',document:h.page,baseRevision:MAIN})).status,422);assert.equal(h.calls.length,0);
+});

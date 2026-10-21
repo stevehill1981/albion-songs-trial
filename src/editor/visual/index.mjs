@@ -161,7 +161,9 @@ function renderWorkflow(state){
  workflowState=state;
  $('workflow-status').textContent=state.message;
  $('save-draft').disabled=!state.canSave;
- $('open-drafts').disabled=!token||state.busy;
+ $('open-drafts').disabled=!token||state.busy||!state.ready;
+ $('page-choice').disabled=!token||state.busy;
+ if(state.ready){$('page-choice').value=state.pageId;$('public-page').href='/'+state.pageId;}
  $('check-draft').disabled=!state.ready||state.busy||!state.draftNumber&&!state.publicationRevision;
  $('check-draft').textContent=state.publicationRevision?'Check publication':'Check saved version';
  $('publish-draft').disabled=!state.canPublish;
@@ -169,13 +171,16 @@ function renderWorkflow(state){
  if(state.canReview)$('saved-preview').href=state.checked.previewUrl;else $('saved-preview').removeAttribute('href');
  $('fields').inert=!state.ready;
  buttons();
- if(state.ready){const url=new URL(location.href);if(state.draftNumber)url.searchParams.set('draft',state.draftNumber);else url.searchParams.delete('draft');history.replaceState(null,'',url);}
+ if(state.ready){const url=new URL(location.href);url.searchParams.set('page',state.pageId);if(state.draftNumber)url.searchParams.set('draft',state.draftNumber);else url.searchParams.delete('draft');history.replaceState(null,'',url);}
 }
-async function loadDocument(number){
+async function loadDocument(number,pageId){
+ if(inline)finishInline();
  if(draft.changed&&!window.confirm('Discard your unsaved changes and open the saved version?'))return;
  clearTimeout(pollTimer);
- const requested=number??Number(new URL(location.href).searchParams.get('draft'));
- if(await workflow.load(Number.isSafeInteger(requested)&&requested>0?requested:undefined)){
+ const params=new URL(location.href).searchParams;
+ const requested=number??Number(params.get('draft'));
+ const requestedPage=pageId??(workflow.state.ready?workflow.state.pageId:params.get('page')||data.page.slug);
+ if(await workflow.load(Number.isSafeInteger(requested)&&requested>0?requested:undefined,requestedPage)){
   $('saved-drafts').hidden=true;if(workflow.state.draftNumber)startPolling();
  }
 }
@@ -188,11 +193,12 @@ function schedulePoll(){
 async function listDrafts(page=1){
  const value=await workflow.list(page);if(!value)return;
  listPage=page;$('saved-drafts').hidden=false;$('draft-list').replaceChildren();
- for(const item of value.drafts){const button=document.createElement('button');button.type='button';button.textContent=`Open saved practice draft #${item.number}`;button.addEventListener('click',()=>void loadDocument(item.number));$('draft-list').append(button);}
- if(!value.drafts.length){const text=document.createElement('p');text.textContent='No practice-page drafts on this list page.';$('draft-list').append(text);}
+ for(const item of value.drafts){const button=document.createElement('button');button.type='button';button.textContent=`Open saved draft #${item.number}`;button.addEventListener('click',()=>void loadDocument(item.number));$('draft-list').append(button);}
+ if(!value.drafts.length){const text=document.createElement('p');text.textContent='No saved drafts for this page on this list page.';$('draft-list').append(text);}
  $('more-drafts').hidden=!value.hasMore;
 }
 if(workflow){
+ $('page-choice').addEventListener('change',async()=>{const choice=$('page-choice').value;await loadDocument(0,choice);$('page-choice').value=workflow.state.pageId;});
  $('open-published').addEventListener('click',()=>void loadDocument(0));
  $('save-draft').addEventListener('click',async()=>{if(inline)finishInline();draft.commit();if(await workflow.save())startPolling();});
  $('open-drafts').addEventListener('click',()=>void listDrafts());
