@@ -1,4 +1,5 @@
 import {createDraft,blockEntries,editableFields,atPath} from './state.mjs';
+import {createInlineOverlay} from './inline-overlay.mjs';
 import {createWorkflow} from './workflow.mjs';
 import {readAuthMessage} from './auth.mjs';
 import {createLivePreview} from '../../lib/live-preview.mjs';
@@ -95,14 +96,13 @@ function beginInline(path,field){
  if(inline)finishInline();
  const node=inlineNode(path,field);if(!node){status.textContent='That field is not in the last successful preview yet. Use the field beside the page, then try again.';return;}
  const before=atPath(atPath(draft.page,path),field.path);
- node.textContent=before;node.contentEditable='plaintext-only';node.setAttribute('role','textbox');node.setAttribute('aria-label',field.label);node.tabIndex=0;
- inline={node,path,field,before};node.focus();
- const selection=frame.contentWindow.getSelection(),range=node.ownerDocument.createRange();range.selectNodeContents(node);range.collapse(false);selection.removeAllRanges();selection.addRange(range);
+ inline={node,path,field,before,overlay:null};
+ inline.overlay=createInlineOverlay({frame,node,label:field.label,value:before,onInput:value=>{if(!inline)return;draft.set(path,field.path,value);changed();},onFinish:finishInline});
 }
 function finishInline({cancel=false}={}){
- if(!inline)return;const {node,path,field,before}=inline;inline=null;
+ if(!inline)return;const {path,field,before,overlay}=inline;inline=null;overlay?.destroy();
  if(cancel){draft.set(path,field.path,before);changed();}
- node.removeAttribute('contenteditable');node.removeAttribute('role');node.removeAttribute('aria-label');node.removeAttribute('tabindex');draft.commit();
+ draft.commit();
  if(pendingHtml){const html=pendingHtml;pendingHtml=null;putHtml(html);}
  select(selected);buttons();
 }
@@ -123,7 +123,7 @@ $('sign-out').addEventListener('click',()=>{if(inline)finishInline();token='';op
 for(const action of ['undo','redo','reset'])$(action).addEventListener('click',()=>{if(inline)finishInline();draft.commit();draft[action]();outline();select(selected);changed();});
 for(const width of ['desktop','phone'])$(width).addEventListener('click',()=>{$('preview-viewport').classList.toggle('phone',width==='phone');for(const id of ['desktop','phone'])$(id).setAttribute('aria-pressed',String(id===width));});
 window.addEventListener('beforeunload',event=>{if(draft.changed){event.preventDefault();event.returnValue='';}});
-window.addEventListener('pagehide',()=>{token='';operationController?.abort();clearTimeout(pollTimer);workflow?.disconnect();popup?.close();clearTimeout(authTimer);live.dispose();window.removeEventListener('message',receive);});
+window.addEventListener('pagehide',()=>{inline?.overlay?.destroy();inline=null;token='';operationController?.abort();clearTimeout(pollTimer);workflow?.disconnect();popup?.close();clearTimeout(authTimer);live.dispose();window.removeEventListener('message',receive);});
 frame.addEventListener('load',()=>{
  const doc=frame.contentDocument;doc.body.append(doc.importNode($('initial-render').content,true));annotate();outline();select(selected);buttons();
  status.textContent='Actual Astro components · choose a block to explore. Connect GitHub to render unsaved changes.';
@@ -140,10 +140,6 @@ frame.addEventListener('load',()=>{
   const field=editableFields(value).find(field=>field.inline&&inlineNode(block.dataset.editorBlock,field)?.contains(event.target));
   if(field)beginInline(block.dataset.editorBlock,field);
  });
- doc.addEventListener('input',event=>{if(!inline||event.target!==inline.node)return;const value=inline.node.innerText.replaceAll('\r\n','\n');draft.set(inline.path,inline.field.path,value);changed();});
- doc.addEventListener('focusout',event=>{if(inline&&event.target===inline.node)finishInline();});
- doc.addEventListener('keydown',event=>{if(inline&&event.key==='Escape'){event.preventDefault();finishInline({cancel:true});}if(inline&&(event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();finishInline();}});
- doc.addEventListener('paste',event=>{if(!inline||event.target!==inline.node)return;event.preventDefault();const text=event.clipboardData.getData('text/plain');const selection=frame.contentWindow.getSelection();if(!selection.rangeCount)return;const range=selection.getRangeAt(0);range.deleteContents();const node=doc.createTextNode(text);range.insertNode(node);range.setStartAfter(node);range.collapse(true);selection.removeAllRanges();selection.addRange(range);inline.node.dispatchEvent(new Event('input',{bubbles:true}));});
 });
 async function editorCall(body){
  operationController=new AbortController();
