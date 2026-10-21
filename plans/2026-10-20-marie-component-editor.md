@@ -285,3 +285,43 @@ the earlier hosted page; this is not attributed to museum code and did not preve
 the verified interactions. Keep cross-browser and authenticated typing acceptance
 open. The next gate is approval to publish only this isolated lab route on the
 existing production origin, enabling normal GitHub sign-in without widening origins.
+
+### Approved deployment and authenticated test, 21 October
+
+The user approved publication of the exact isolated lab candidate and its live
+sign-in/preview/typing test. PR 48 merged as
+`42dbd5992a9f558a92802fca036ac9fc41d5e77d`. Production served that revision, the
+lab route and eight exact asset hashes; the normal editor and archives matched
+the checked candidate.
+
+Safari was concurrently used by another task, so it was left alone. The in-app
+browser did not expose the sign-in popup. A separate Chrome test tab completed
+the existing GitHub popup flow with unchanged app, scope and origin. An unsaved
+heading rendered through Astro in an observed 815 ms (one sample including tool
+overhead, not a latency distribution). Incomplete heading input retained the
+last good view and recovered after correction. Navy/roomy section settings and
+a newly selected 1892 photograph rendered with the correct credit. The calculated
+performance table stayed unchanged. Direct paragraph editing preserved its source
+link, and undo restored the original paragraph.
+
+The direct heading test caught a case-conversion bug: CSS `text-transform:uppercase`
+made `innerText` return uppercase while `textContent` still held Mixed Case. The
+input handler then stored the transformed text. Keep the active plain-text editor
+untransformed with editor-only `[contenteditable] { text-transform:none }`; removal
+of contenteditable restores public typography. This retains browser handling of
+line breaks and does not replace structured prose or change public styles. Verify
+actual case/newline behaviour in a disposable browser fixture before proposing
+the fix for checked publication. No new dependencies or auth changes.
+
+The controlled Chrome regression used the exact iframe markup/style stack in two
+frames, with original and candidate active-edit styling. Reading the original
+heading yielded `MIXED CASE` from source `MiXeD Case`; the candidate yielded
+`MiXeD Case` for both. Native Enter followed by typing produced
+`MiXeD Case\nSecond Line` unchanged. This checks the CSS fix against the browser
+behaviour that caused the bug; it is not a substitute for the full authenticated
+workflow recheck after deploying the fix. No sign-in or permission check was
+mocked for the fixture.
+
+The live lab also passed Escape cancellation of a direct paragraph edit, restoring
+the original sourced paragraph. All practice changes were confined to the tab.
+The fix build and all 79 tests passed. No paid plan, dependency or service was added.

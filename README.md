@@ -147,8 +147,9 @@ are available, but unsaved Astro rendering and direct typing are unavailable.
 No auth origin expansion, token relay or production replacement is included.
 The browser token stays in memory and is cleared on disconnect/page exit.
 
-Browser acceptance, same-origin sign-in and deployed preview CPU/latency remain
-open gates. The current environment cannot start browser automation because its
-configured `/Volumes/Data/Reference-PDFs` writable root is inaccessible. Do not
-infer working in-place interaction from the unit/build checks. See
+Same-origin GitHub sign-in, unsaved Astro rendering, paragraph editing/undo and
+source preservation passed in Chrome on 21 October 2026. Browser testing caught
+an uppercase-style heading bug; its editor-only fix passed a controlled case and
+newline regression and still needs the complete live workflow recheck. Deployed
+preview CPU/latency and wider browser/IME acceptance remain open gates. See
 `plans/2026-10-20-marie-component-editor.md` for scope and subsequent gates.
