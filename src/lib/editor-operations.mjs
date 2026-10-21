@@ -18,7 +18,7 @@ export async function editorOperation(request,fetcher=fetch){
  if(length&&(!/^\d+$/.test(length)||Number(length)>MAX_BYTES))return failure('size','This editor accepts up to 64 KB of page content.',413);
  let data;
  try{data=JSON.parse(await boundedText(request,MAX_BYTES));}catch{return failure('body','Send a complete editor operation within the content limit.',400);}
- if(!data||Array.isArray(data)||!Object.hasOwn(fields,data.action)||Object.keys(data).some(key=>key!=='action'&&!fields[data.action].includes(key)))return failure('operation','Choose a supported practice-page operation.',400);
+ if(!data||Array.isArray(data)||typeof data.action!=='string'||!Object.hasOwn(fields,data.action)||Object.keys(data).some(key=>key!=='action'&&!fields[data.action].includes(key)))return failure('operation','Choose a supported practice-page operation.',400);
  const {action,...args}=data;
  if(['open','status','publish'].includes(action)&&!number(args.draftNumber)||action==='drafts'&&(args.page!==undefined&&(!number(args.page)||args.page>100)))return failure('number','Choose a valid saved draft or draft-list page.',400);
  if(['save','publish'].includes(action)&&(!sha(args.baseRevision)||args.draftNumber!==undefined&&(!number(args.draftNumber)||!sha(args.expectedCommit)))||action==='publish'&&(!sha(args.expectedCommit)||args.confirmation!=='Publish this previewed revision')||action==='publication'&&!sha(args.revision))return failure('revision','Use the saved revision and check its preview before publishing.',400);

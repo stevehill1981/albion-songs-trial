@@ -1,0 +1,8 @@
+---
+import VisualEditor from '../components/editor/VisualEditor.astro';
+import {loadContent} from '../lib/content.mjs';
+import site from '../../site.json';
+import page from '../../content/pages/component-preview-trial.json';
+const context=await loadContent();
+---
+<VisualEditor page={page} context={context} site={site} workflow/>
