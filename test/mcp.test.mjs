@@ -168,3 +168,20 @@ test('publication accepts only the named museum version host',async()=>{
  ]){const h=harness();h.set({previewTarget});const result=await h.client.status({draftNumber:17});assert.equal(result.canPublish,false,previewTarget);assert.equal(result.previewOrigin,null);}
  const h=harness();assert.equal((await h.client.status({draftNumber:17})).canPublish,true);
 });
+
+test('record byte decoding preserves multilingual content and rejects malformed source encoding',async()=>{
+ const document=structuredClone(fixture);document.title='Marie’s Albion — café, 日本語 and ⚽';
+ const bytes=Buffer.from(JSON.stringify(document),'utf8');
+ const clientFor=(content,size=bytes.length)=>createMuseumClient(token,async(url,options)=>{
+  assert.equal(options.method,'GET');
+  const path=new URL(url).pathname.replace(`/repos/${REPOSITORY}`,'');
+  if(path==='')return Response.json({permissions:{push:true}});
+  if(path==='/git/ref/heads/main')return Response.json({object:{sha:MAIN}});
+  assert.equal(path,'/contents/content/pages/component-preview-trial.json');
+  return Response.json({encoding:'base64',size,sha:HEAD,content});
+ });
+ const wrapped=bytes.toString('base64').match(/.{1,60}/g).join('\n');
+ assert.deepEqual((await clientFor(wrapped).read({kind:'pages',id:'component-preview-trial'})).document,document);
+ for(const content of ['@@@@',Buffer.from([0xc3,0x28]).toString('base64'),Buffer.from([0xc0,0x80]).toString('base64')])await assert.rejects(()=>clientFor(content).read({kind:'pages',id:'component-preview-trial'}));
+ await assert.rejects(()=>clientFor(wrapped,MAX_DOCUMENT_BYTES+1).read({kind:'pages',id:'component-preview-trial'}));
+});
