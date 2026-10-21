@@ -83,3 +83,58 @@ first-read-save-comparison.json, first-read-save-metadata-parity.json and the
 first-read-save-test/build logs in the existing verification-evidence directory.
 The temporary runner is removed after retaining its exact source. Runtime-owned
 temporary directories were disposed by the runner's finally block each time.
+
+
+## Approved hosted comparison and rollback
+
+The owner approved publishing PR 58 and one unpublished practice-page draft,
+closing it afterward, with rollback if access broke or reliability worsened.
+The protected merge was b1b8e0e8b6b01bc6a575cb0c2c28a6a2cd4fd01a; its production
+workflow 39600284688 passed. Worker 9b368f5e-481a-47d2-802c-80700928057e served
+the candidate from 12:32:29 UTC on 21 October 2026. The earlier exact rollback
+version was recorded before deployment. No auth/MCP Worker was deployed.
+
+Safari's existing GitHub sign-in, initial content read, immediate preview and
+single save all succeeded. Draft 59 changed only its clearly named test heading;
+its head was 09202d7b0ec3d9bacae3fcd528fa6020cba0b590. Sources, credits and
+calculated results were unchanged. The draft build and preview checks passed.
+It was closed without merging and its branch remains recoverable. No content
+was published. The task-owned Safari tab disconnected and closed afterward.
+
+The final candidate log contains 12 authenticated successful requests, all HTTP
+200/outcome ok: initial read 22 ms, initial preview 22 ms, edited preview 9 ms,
+the single save 26 ms, and readiness/status reads 12/4/3/3/4/3/3/5 ms CPU.
+One unauthenticated preview returned 401 and is excluded. This is not a matched
+randomised experiment or proof that the refactor caused the increase, but it
+failed to establish a hosted benefit over the earlier first read 15 ms/save
+14 ms baseline. Local sample improvements must not be presented as live savings.
+
+As authorised, restore the previously verified Worker, not another speculative
+fix. Deployment f5f75fe0-9968-4592-9489-8975bb15f1f1 restored version
+c8fb7105-ee9a-491f-93a7-a38bdc6dff9d to 100% at 12:35:26 UTC. Independent
+public reads confirmed revision 43bf79a4c636bf51b7d767fe5cf285f86d02e1aa and
+identical practice-page content. The retained older comparison HTML had a
+612d809 revision marker; the initial exact comparison rejected that expected
+marker difference, then the check explicitly substituted the known rollback
+marker and passed. A browser observation timed out once, reconnected, and then
+positively confirmed the restored version's saved-preview check. Two restored
+status observations used 19/16 ms and succeeded. The CPU issue is still open;
+there is no Free-plan headroom guarantee for either version.
+
+Complete the source rollback as part of the authorised restoration:
+
+1. Restore auth/mcp/github.mjs and test/mcp.test.mjs byte-for-byte from revision
+   43bf79a4c636bf51b7d767fe5cf285f86d02e1aa. This reverts the candidate and its
+   associated startup-only regression test together; all baseline tests remain.
+2. Preserve this investigation and the earlier outcome record. Run all baseline
+   tests/build, verify only the two baseline files plus this record differ from
+   the candidate, and use the protected PR preview/check process to merge the
+   exact source restoration. No further feature, dependency or pattern change.
+3. Verify the resulting site uses the restored implementation and unchanged
+   content. Retain the old rollback version until completion. Stop here and
+   propose a narrower diagnostic rather than stack another unmeasured repair.
+
+Evidence: first-read-save-{rollback,deployed,production-proof,hosted-final,
+rollback-check,restored}.json and first-read-save-restored-editor.png in the
+existing verification-evidence directory. All credentials and raw request bodies
+are excluded from the saved telemetry.
